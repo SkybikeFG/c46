@@ -1,0 +1,427 @@
+<?xml version="1.0"?>
+<PropertyList>
+<!--Animation File for the airplane WITHOUT the engines AND the main Gear, which is seperated to "engine.xml"-->
+<!-- For the FlightGear Curtiss Wright CW-20 / C-46A Commando in 2016/2017-->
+<path>c46.ac</path>
+  <offsets>
+	  <x-m>  0.00  </x-m>
+	  <y-m>  0.00 </y-m>
+	  <z-m>  0.00 </z-m>
+ </offsets>
+<!-- x -12 __ z -3 -->
+
+
+<!-- L I V E R I E S-->
+<nasal>
+ <load>
+   var livery_update = aircraft.livery_update.new("Aircraft/c46/Models/Liveries", 10);
+ </load>
+ <unload>
+   livery_update.stop();
+ </unload>
+</nasal>
+
+<animation>
+ <type>material</type>
+ <object-name>C46Fuselage</object-name>
+ <object-name>GearTailBaydoorL</object-name>
+ <object-name>GearTailBaydoorR</object-name>
+ <object-name>Rudder</object-name>
+ <object-name>RudderTrim</object-name>
+ <object-name>yPitot</object-name>
+ <object-name>yCables</object-name>
+ <object-name>yGlideslope</object-name>
+ <property-base>sim/model/livery</property-base>
+ <texture-prop>texture-fuselage</texture-prop>
+ <texture>USnavyFuselage.png</texture>
+ </animation>
+ 
+ <animation>
+ <type>material</type>
+ <object-name>AileronL</object-name>
+ <object-name>AileronR</object-name>
+ <object-name>FlapsLCenter</object-name>
+ <object-name>FlapsLOUT</object-name>
+ <object-name>FlapsRCenter</object-name>
+ <object-name>FlapsROUT</object-name>
+ <object-name>StabilizerL</object-name>
+ <object-name>StabilizerLElevator</object-name>
+ <object-name>StabilizerLElevatorTab</object-name>
+ <object-name>StabilizerR</object-name>
+ <object-name>StabilizerRElevator</object-name>
+ <object-name>StabilizerRElevatorTab</object-name>
+ <object-name>WingsR</object-name>
+ <property-base>sim/model/livery</property-base>
+ <texture-prop>texture-wings</texture-prop>
+ <texture>Wings.png</texture>
+ </animation>
+
+
+
+<model>
+ <path>Aircraft/c46/Models/Lights/beacon.xml</path>
+ <offsets>
+  <x-m>  -1.86 </x-m>
+  <y-m>  0.000 </y-m>
+  <z-m>  1.137 </z-m>
+ </offsets>
+</model>
+<!-- Flag delete later (see also aircraft-set.xml)-->
+<model>
+ <name>flag</name>
+ <path>Aircraft/c46/Models/flag.ac</path>
+ <offsets>
+  <x-m> -7.380 </x-m>
+  <y-m>  0.696 </y-m>
+  <z-m>  0.597 </z-m>
+  <roll-deg> -10 </roll-deg>
+ </offsets>
+</model>
+
+<animation>
+ <type>select</type>
+ <object-name>flag</object-name>
+ <condition>
+  <property>/controls/flag-visible</property>
+ </condition>
+</animation>
+
+<!-- AILERON LEFT -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>AileronL</object-name>
+ <property>surface-positions/left-aileron-pos-norm</property>
+ <factor>-30</factor>
+ <axis>
+  <x1-m> -1.479</x1-m>
+  <y1-m> -9.291</y1-m>
+  <z1-m> -1.118</z1-m>
+  <x2-m> -1.578</x2-m>
+  <y2-m>-15.566</y2-m>
+  <z2-m> -0.396</z2-m>
+ </axis>
+</animation>
+
+<!-- AILERON RIGHT -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>AileronR</object-name>
+ <property>surface-positions/right-aileron-pos-norm</property>
+ <factor>-30</factor>
+ <axis>
+  <x1-m> -1.479</x1-m>
+  <y1-m>  9.291</y1-m>
+  <z1-m> -1.118</z1-m>
+  <x2-m> -1.578</x2-m>
+  <y2-m> 15.566</y2-m>
+  <z2-m> -0.396</z2-m>
+ </axis>
+</animation>
+
+<!-- ELEVATOR LEFT -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>StabilizerLElevator</object-name>
+ <object-name>StabilizerLElevatorTab</object-name>
+ <property>surface-positions/elevator-pos-norm</property>
+ <factor>-25</factor>
+ <axis>
+  <x1-m>  9.530</x1-m>
+  <y1-m>  4.841</y1-m>
+  <z1-m> -0.494</z1-m>
+  <x2-m>  9.531</x2-m>
+  <y2-m>  0.741</y2-m>
+  <z2-m> -0.474</z2-m>
+ </axis>
+</animation>
+
+<!-- ELEVATOR RIGHT -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>StabilizerRElevator</object-name>
+ <object-name>StabilizerRElevatorTab</object-name>
+ <property>surface-positions/elevator-pos-norm</property>
+ <factor>25</factor>
+ <axis>
+  <x1-m> 9.530</x1-m>
+  <y1-m>-4.841</y1-m>
+  <z1-m>-0.474</z1-m>
+  <x2-m> 9.531</x2-m>
+  <y2-m>-0.741</y2-m>
+  <z2-m>-0.494</z2-m>
+ </axis>
+</animation>
+
+<!-- ENGINES  -->
+
+<model>
+ <path>Aircraft/c46/Models/engineR.xml</path>
+ <offsets>
+  <x-m> 0.000 </x-m>
+  <y-m> 3.933 </y-m>
+  <z-m> 0 </z-m><!--0.0-->
+  <pitch-deg>0</pitch-deg><!--2-->
+ </offsets>
+</model>
+<model>
+ <path>Aircraft/c46/Models/engineL.xml</path>
+ <offsets>
+  <x-m> 0.000 </x-m>
+  <y-m> -3.933 </y-m>
+  <z-m> 0 </z-m>
+  <pitch-deg>0</pitch-deg>
+ </offsets>
+</model>
+
+<!-- FLAPS -->
+<animation>
+ <type>rotate</type>
+ <object-name>FlapsROut</object-name>
+ <property>surface-positions/flap-pos-norm</property>
+ <factor> 45</factor>
+ <axis>
+  <x1-m> -1.252</x1-m>
+  <y1-m>  4.888</y1-m>
+  <z1-m> -1.738</z1-m>
+  <x2-m> -1.433</x2-m>
+  <y2-m>  9.277</y2-m>
+  <z2-m> -1.123</z2-m>
+ </axis>
+</animation>
+<animation>
+ <type>rotate</type>
+ <object-name>FlapsLOut</object-name>
+ <property>surface-positions/flap-pos-norm</property>
+ <factor>-45</factor>
+ <axis>
+  <x1-m> -1.252</x1-m>
+  <y1-m> -4.888</y1-m>
+  <z1-m> -1.738</z1-m>
+  <x2-m> -1.433</x2-m>
+  <y2-m> -9.277</y2-m>
+  <z2-m> -1.123</z2-m>
+ </axis>
+</animation>
+<animation>
+ <type>rotate</type>
+ <object-name>FlapsLCenter</object-name>
+ <object-name>FlapsRCenter</object-name>
+ <property>surface-positions/flap-pos-norm</property>
+ <factor> 45</factor>
+ <center>
+  <x-m>-1.252</x-m>
+  <y-m> 4.888</y-m>
+  <z-m>-1.738</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+
+<!-- RUDDER -->
+
+<animation>
+ <type>rotate</type>
+ <object-name>Rudder</object-name>
+ <object-name>RudderTrim</object-name>
+ <property>surface-positions/rudder-pos-norm</property>
+ <factor>35</factor>
+ <axis>
+  <x1-m> 9.789 </x1-m>
+  <y1-m> 0.000 </y1-m>
+  <z1-m> 3.285 </z1-m>
+  <x2-m> 9.789 </x2-m>
+  <y2-m> 0.000  </y2-m>
+  <z2-m> 7.185 </z2-m>
+ </axis>
+</animation>
+
+
+
+
+
+<!-- TAILGEAR  [0]-->
+<animation><!--Hide when gear up-->
+  <object-name>GearTailUp</object-name>
+  <object-name>GearTailTorqueBarLow</object-name>
+  <object-name>GearTailTorqueBarUp</object-name>
+  <object-name>GearTailWheel</object-name>
+  <object-name>GearTailShockAbsorberLow</object-name>
+  <object-name>GearTailShockAbsorberUp</object-name>
+  <type>select</type>
+  <condition>
+   <not>
+    <equals>
+     <property>gear/gear/position-norm</property>
+     <value>0</value>
+    </equals>
+   </not>
+  </condition>
+ </animation>
+ 
+ 
+<!--steering-->
+<animation>
+  <type>rotate</type>
+  <object-name>GearTailTorqueBarLow</object-name>
+  <object-name>GearTailTorqueBarUp</object-name>
+  <object-name>GearTailWheel</object-name>
+  <object-name>GearTailShockAbsorberLow</object-name>
+  <object-name>GearTailShockAbsorberUp</object-name>
+  <property>gear/gear/steering-norm</property>
+  <interpolation>
+	<entry><ind>-0.3</ind><dep>-90</dep></entry>
+	<entry><ind> 0.0</ind><dep>  0</dep></entry>
+	<entry><ind> 0.3</ind><dep> 90</dep></entry>
+  </interpolation>  
+ <factor>1</factor>  
+  <axis>
+    <x2-m> 6.510</x2-m>
+    <y2-m> 0.0</y2-m>
+    <z2-m>-1.617</z2-m>
+    <x1-m> 6.352</x1-m>
+    <y1-m> 0.0</y1-m>
+    <z1-m>-1.219</z1-m>
+  </axis>
+</animation>
+
+<!--ShockAbsorber-->
+<animation>
+  <type>rotate</type>
+  <object-name>GearTailTorqueBarLow</object-name>
+  <object-name>GearTailWheel</object-name>
+  <object-name>GearTailShockAbsorberLow</object-name>
+  <property>gear/gear/compression-ft</property>
+  <interpolation>
+	<entry><ind>0.0</ind><dep> 0.0</dep></entry>
+	<entry><ind>0.3</ind><dep>-25.0</dep></entry>
+  </interpolation>  
+ <factor>1</factor>  
+ <center>
+  <x-m> 6.404</x-m>
+  <y-m> 0.000</y-m>
+  <z-m>-2.360</z-m>
+ </center>
+ <axis>
+  <x> 0</x>
+  <y> 1</y>
+  <z> 0</z>
+ </axis>
+</animation>
+<animation><!--lower shock absorber-upper needs no animation-->
+  <type>rotate</type>
+  <object-name>GearTailShockAbsorberLow</object-name>
+  <property>gear/gear/compression-ft</property>
+  <interpolation>
+	<entry><ind>0.0</ind><dep> 0.0</dep></entry>
+	<entry><ind>0.3</ind><dep> 25.0</dep></entry>
+  </interpolation>  
+ <factor>1</factor>  
+ <center>
+  <x-m> 6.784</x-m>
+  <y-m> 0.000</y-m>
+  <z-m>-2.341</z-m>
+ </center>
+ <axis>
+  <x> 0</x>
+  <y> 1</y>
+  <z> 0</z>
+ </axis>
+</animation>
+
+<!--Gear up/down-->
+<animation><!--Baydoor-->
+  <type>rotate</type>
+  <object-name>GearTailBaydoorL</object-name>
+  <property>gear/gear[2]/position-norm</property>
+  <interpolation>
+    <entry><ind>0.0 </ind><dep> 0.0</dep></entry>
+    <entry><ind>0.05 </ind><dep> 0.0</dep></entry>
+	<entry><ind>0.15 </ind><dep>90.0</dep></entry>
+    <entry><ind>1.0 </ind><dep>90.0</dep></entry>
+  </interpolation>   
+  <axis>
+    <x2-m> 6.303</x2-m>
+    <y2-m>-0.348</y2-m>
+    <z2-m>-1.645</z2-m>
+    <x1-m> 7.797</x1-m>
+    <y1-m>-0.263</y1-m>
+    <z1-m>-1.327</z1-m>
+  </axis>
+</animation> 
+<animation>
+  <type>rotate</type>
+  <object-name>GearTailBaydoorR</object-name>
+  <property>gear/gear[2]/position-norm</property>
+  <interpolation>
+    <entry><ind>0.0 </ind><dep> 0.0</dep></entry>
+    <entry><ind>0.0 </ind><dep> 0.0</dep></entry>
+	<entry><ind>0.2 </ind><dep>90.0</dep></entry>
+    <entry><ind>1.0 </ind><dep>90.0</dep></entry>
+  </interpolation>   
+  <axis>
+    <x1-m> 6.303</x1-m>
+    <y1-m> 0.348</y1-m>
+    <z1-m>-1.645</z1-m>
+    <x2-m> 7.797</x2-m>
+    <y2-m> 0.263</y2-m>
+    <z2-m>-1.327</z2-m>
+  </axis>
+</animation>
+
+
+
+
+<animation><!--Gear in-->
+  <type>rotate</type>
+  <object-name>GearTailUp</object-name>
+  <object-name>GearTailTorqueBarLow</object-name>
+  <object-name>GearTailTorqueBarUp</object-name>
+  <object-name>GearTailWheel</object-name>
+  <object-name>GearTailShockAbsorberLow</object-name>
+  <object-name>GearTailShockAbsorberUp</object-name>
+  <property>gear/gear/position-norm</property>
+  <interpolation>
+    <entry><ind>0.23 </ind><dep>-90</dep></entry>
+    <entry><ind>1  </ind><dep> 0</dep></entry>
+  </interpolation>   
+<center>
+   <x-m> 6.338</x-m>
+   <y-m> 0.000</y-m>
+   <z-m>-1.544</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+</animation> 
+
+
+
+<!--TAILWHEEL-->
+<animation>
+ <type>spin</type>
+ <object-name>GearTailWheel</object-name>
+ <property>gear/gear/rollspeed-ms</property>
+ <factor>-26.899</factor><!--r=0.355[m]  60[s]/(2*PI*r[m])=[rpm]-->
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+ <center>
+  <x-m> 7.270</x-m>
+  <y-m> 0.000</y-m>
+  <z-m>-2.389</z-m>
+ </center>
+</animation>
+</PropertyList>
+

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+************************************************************************
+JSBSim Curtiss Wright C-46
+started in October, 2016 at the first Blender model.
+Developed under GNU-GPL for FlightGear FS.
+************************************************************************
+-->
+<PropertyList>
+ <sim>
+  <description>Curtiss Wright C-46</description>
+  <long-description>The Curtiss Wright C-46 Commando is a WWII twin-engine, taildragger and cargo aircraft. 
+  It was designed in 1937 as a pressurized passenger airliner. In WWII there were 3,181 build - around half a dozen Commandos are still flying today
+  </long-description>
+  
+  <author>Arnd Lebert</author>
+  <status>alpha</status>
+  <aircraft-version>2017.1</aircraft-version>
+  <rating>
+   <FDM type="int">2</FDM>
+   <systems type="int">0</systems>
+   <cockpit type="int">0</cockpit>
+   <model type="int">3</model>
+  </rating>
+
+  <flight-model>jsb</flight-model>
+  <aero>c46</aero>
+    <startup>
+      <splash-texture>Aircraft/c46/splash.png</splash-texture>
+	  <splash-texture>Aircraft/c46/splash1.png</splash-texture>
+	  <!--splash-title>Text</splash-title-->
+    </startup>
+
+  <model>
+   <path>Aircraft/c46/Models/c46-model.xml</path>
+   <livery>
+    <file type="string">USnavy</file>
+   </livery>
+  </model> 
+
+  <sound>
+   <path>Aircraft/c46/Sound/c46-sound.xml</path>
+  </sound>
+
+  <view>
+   <internal archive="y">true</internal>
+   <config>
+     <!-- x/y/z == right/up/back -->
+     <x-offset-m archive="y"> -0.300 </x-offset-m>
+     <y-offset-m archive="y">  3.15 </y-offset-m>
+     <z-offset-m archive="y"> 1.55 </z-offset-m>
+     <pitch-offset-deg>0</pitch-offset-deg>
+   </config>
+  </view>
+
+  <view n="100">
+   <name>Passenger</name>
+   <enabled type="bool">false</enabled><!--    NOT WORKING -->
+   <type>lookfrom</type>
+   <internal type="bool">true</internal>
+   <config>
+    <from-model type="bool">true</from-model>
+    <from-model-idx type="int">0</from-model-idx>
+    <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+    <default-pitch-deg type="double">0</default-pitch-deg>
+    <default-heading-deg type="double">0</default-heading-deg>
+    <x-offset-m type="double">-0.551</x-offset-m>
+    <y-offset-m type="double"> 0.183</y-offset-m>
+    <z-offset-m type="double">-3.021</z-offset-m>
+    <pitch-offset-deg>0</pitch-offset-deg>
+    <dynamic-view type="bool">true</dynamic-view>
+   </config>
+  </view>
+
+  <chase-distance-m type="double" archive="y">-40.0</chase-distance-m>
+
+  <hud>   
+   <enable3d>false</enable3d>
+  </hud>
+
+  <help>
+   <title>Curtiss C-46</title>
+  </help>
+
+
+  <menubar>
+   <default>
+
+    <menu n="10">
+     <label>C-46</label>
+     <enabled type="bool">true</enabled>
+
+	 <item>
+	  <label>Select Livery</label>
+	   <binding>
+	    <command>nasal</command>
+		<script>aircraft.livery.dialog.open();</script>
+	   </binding>
+	 </item>
+	 
+     <!--item>
+      <label>Flag</label>
+      <binding>
+       <command>property-toggle</command>
+       <property>/controls/flag-visible</property>
+      </binding>
+     </item-->
+	
+    </menu>
+   </default>
+  </menubar>
+
+ </sim>
+
+<controls>
+
+ <!--flag-visible>1</flag-visible-->
+
+ <flight>
+  <elevator-trim>0.4</elevator-trim>
+ </flight>
+
+ <gear>
+  <brake-parking>1</brake-parking>
+  <tailwheel-lock>1</tailwheel-lock>
+ </gear>
+
+ <lighting>
+  <strobe>1</strobe>
+  <beacon>1</beacon>
+  <landing-lights>1</landing-lights>
+  <nav-lights>1</nav-lights>
+ </lighting>
+
+</controls>
+
+<limits>
+ <max-flap-extension-speed>
+  <flaps>1.000</flaps>
+  <speed>60</speed>
+ </max-flap-extension-speed>
+ <vne>180</vne>
+</limits>
+
+<nasal>
+ <c46>
+  <file>Aircraft/c46/Nasal/c46.nas</file>
+  <file>Aircraft/Generic/limits.nas</file>
+ </c46>
+</nasal>
+
+ <payload>
+  <!--weight>
+   <name type="string">Crew, Interior</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+   <min-lb type="double">100.0</min-lb>
+   <max-lb type="double">3000</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Fwd. Passenger/Cargo Area</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">8456.25</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Aft. Passenger/Cargo Area</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">8456.25</max-lb>
+  </weight-->
+<!--  <weight>
+   <name type="string">Aft. Cargo Area</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">2060.0</max-lb>
+  </weight>-->
+ � </payload>
+
+</PropertyList>

@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Animation file for the Engine AND main Gear-->
+<PropertyList>
+
+  <path>Engine.ac</path>
+<!--
+  ENGINE   R   -   or [1]
+  Never forget to do your changes also at EngineL.xml   (or the whole thing 
+  will explode and destroy your hardware and sweet panda babys will die and ...)
+  -->
+  
+  <animation><!--this animation list R = L-->
+    <object-name>EngineMountR</object-name>
+	<object-name>EnginePropBlade</object-name>
+	<object-name>EnginePropBlade2</object-name>
+	<object-name>EnginePropBlade3</object-name>
+	<object-name>EnginePropHubCap</object-name>
+	<object-name>EngineRExhaust</object-name>
+	<object-name>GearMainAxisRightEng</object-name>
+	<object-name>GearMainAxisLeftEng</object-name>
+	<object-name>GearMainBaydoorL</object-name>
+	<object-name>GearMainBaydoorR</object-name>
+	<object-name>GearMainReBack</object-name>
+	<object-name>GearMainReSideArms</object-name>
+	<object-name>GearMainReStabDown</object-name>
+	<object-name>GearMainReStabil</object-name>
+	<object-name>GearMainRunner</object-name>
+	<object-name>GearMainTorqueBarLow</object-name>
+	<object-name>GearMainTorqueBarUp</object-name>
+	<object-name>GearMainWheelL</object-name>
+	<object-name>GearMainWheelR</object-name>
+  </animation>
+
+  <!--  Just for RIGHT  ENGINE[0] #  #-->
+ <animation><!--hide doublicated parts of left engine-->
+  <object-name>GearMainAxisLeftEng</object-name>
+  <object-name>GearMainWheelL</object-name>
+  <type>range</type>
+  <min-m>0.001</min-m>
+  <max-m>0.002</max-m>
+ </animation>
+ 
+<!--  #   #   #   #   #   E N G I N E S  #   #   #   #   #   -->
+  <!-- Prop --> 
+  <animation>
+    <name>Blades3D</name>
+    <object-name>EnginePropBlade</object-name>
+	<object-name>EnginePropBlade2</object-name>
+	<object-name>EnginePropBlade3</object-name>
+  </animation>
+  
+  <animation>
+    <name>Prop</name>
+    <object-name>Blades3D</object-name>
+	<object-name>EnginePropHubCap</object-name><!-- surfaces for fast turning missing-->
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>Prop</object-name>
+    <property>/engines/engine[1]/rpm</property>
+    <factor> 1 </factor>
+    <center>
+      <x-m>-8.712 </x-m>
+      <y-m> 0.005 </y-m>
+      <z-m>-1.707 </z-m>
+    </center>
+    <axis>
+      <x> -1.000 </x>
+      <y>  0.000 </y>
+      <z>  0.000 </z>
+    </axis>
+  </animation>
+
+  <model><!-- Smoke left-->
+ <name>engine_smoke_l</name>
+ <path>Aircraft/c46/Models/smoke.xml</path>
+ <condition>
+  <equals>
+   <property>/engines/engine[1]/cranking</property>
+   <value>1</value>
+  </equals>
+ </condition>
+ <offsets>
+  <x-m>-6.400</x-m>
+  <y-m> 0.921</y-m>
+  <z-m>-2.092</z-m>
+ </offsets>
+</model>
+
+<model><!--smoke of right exhaust-->
+ <name>engine_smoke_r</name>
+ <path>Aircraft/c46/Models/smoke.xml</path>
+ <condition>
+  <equals>
+   <property>/engines/engine[1]/cranking</property>
+   <value>1</value>
+  </equals>
+ </condition>
+ <offsets>
+  <x-m> -6.400</x-m>
+  <y-m> -0.921</y-m>
+  <z-m> -2.092</z-m>
+ </offsets>
+</model>
+
+
+<!-- #  #   #   #    #    M A I N ___ G E A R     #     #     #    #    #    #-->
+<!-- GEAR -->
+ <animation><!--Hide when gear up-->
+  <object-name>GearMainAxisRightEng</object-name>
+  <object-name>GearMainAxisLeftEng</object-name>
+  <object-name>GearMainReBack</object-name>
+  <object-name>GearMainReSideArms</object-name>
+  <object-name>GearMainReStabDown</object-name>
+  <object-name>GearMainReStabil</object-name>
+  <object-name>GearMainRunner</object-name>
+  <object-name>GearMainTorqueBarLow</object-name>
+  <object-name>GearMainTorqueBarUp</object-name>
+  <object-name>GearMainWheelL</object-name>
+  <object-name>GearMainWheelR</object-name>
+  <type>select</type>
+  <condition>
+   <not>
+    <equals>
+     <property>gear/gear[2]/position-norm</property>
+     <value>0</value>
+    </equals>
+   </not>
+  </condition>
+ </animation>
+ 
+ 
+<!--absorber-->
+<animation>
+ <type>translate</type>
+ <object-name>GearMainWheelR</object-name>
+ <object-name>GearMainTorqueBarLow</object-name>
+ <object-name>GearMainAxisRightEng</object-name>
+ <property>gear/gear[2]/compression-ft</property>
+ <factor>1</factor>
+ <axis>
+  <x1-m>-4.589</x1-m>
+  <y1-m> 0.000</y1-m>
+  <z1-m>-3.092</z1-m>
+  <x2-m>-4.471</x2-m>
+  <y2-m> 0.000</y2-m>
+  <z2-m>-2.356</z2-m>
+ </axis>
+</animation>
+
+<!--TorqueBar
+Data(no weight on gear): lower end (-4.474|?|-3.135) connection point (-4.297|?|-2.888)  upper end (-4.393|?|-2.571) so lenth of every bar is 0.364m(1.194ft). 
+Way of shock absorber between fix points of upper/lower bar is 0.5698m(1.869ft)(= absorberLenthNormal) which means that (the lower) bar turns up to 43.38 deg when the absorber reduces the lenth to 0.
+cos(position[deg]) = halfAbsorberLength[ft] / lengthBar[ft]  <=>  position[deg] = (+-) acos( ((absorberLenthNormal[ft]-compression[ft])/2) / LenthBar[ft])   then - 38.494922857[deg](starting position)
+or in MSexcel DEG(ARCCOS(((1.869-A1)/2)/1.194))-38.494922857 -->
+<animation>
+  <type>rotate</type>
+  <object-name>GearMainTorqueBarUp</object-name>
+  <property>gear/gear[2]/compression-ft</property>
+  <interpolation>
+	<entry><ind>0.0</ind><dep> 0.000</dep></entry>
+	<entry><ind>0.1</ind><dep>11.12</dep></entry>
+	<entry><ind>0.2</ind><dep>21.496</dep></entry>
+	<entry><ind>0.3</ind><dep>31.293</dep></entry>
+	<entry><ind>0.4</ind><dep>40.625</dep></entry>
+	<entry><ind>0.5</ind><dep>49.577</dep></entry>
+	<entry><ind>0.6</ind><dep>58.214</dep></entry>
+	<entry><ind>0.7</ind><dep>66.586</dep></entry>
+	<entry><ind>0.8</ind><dep>74.735</dep></entry>
+	<entry><ind>0.9</ind><dep>82.695</dep></entry>
+	<entry><ind>1.0</ind><dep>90.495</dep></entry>
+  </interpolation>  
+ <factor>10</factor>  
+ <center>
+  <x-m>-4.393</x-m>
+  <y-m> 0.000</y-m>
+  <z-m>-2.571</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>-1</y>
+  <z>0</z>
+ </axis>
+</animation>
+ 
+<animation>
+  <type>rotate</type>
+  <object-name>GearMainTorqueBarLow</object-name>
+  <property>gear/gear[2]/compression-ft</property>
+  <interpolation>
+	<entry><ind>0.0</ind><dep> 0.000</dep></entry>
+	<entry><ind>0.1</ind><dep>11.12</dep></entry>
+	<entry><ind>0.2</ind><dep>21.496</dep></entry>
+	<entry><ind>0.3</ind><dep>31.293</dep></entry>
+	<entry><ind>0.4</ind><dep>40.625</dep></entry>
+	<entry><ind>0.5</ind><dep>49.577</dep></entry>
+	<entry><ind>0.6</ind><dep>58.214</dep></entry>
+	<entry><ind>0.7</ind><dep>66.586</dep></entry>
+	<entry><ind>0.8</ind><dep>74.735</dep></entry>
+	<entry><ind>0.9</ind><dep>82.695</dep></entry>
+	<entry><ind>1.0</ind><dep>90.495</dep></entry>
+  </interpolation>
+ <factor>10</factor>  
+ <center>
+  <x-m>-4.475</x-m>
+  <y-m> 0.000</y-m>
+  <z-m>-3.135</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation> 
+<!--retract gear-->
+
+
+<animation><!--Baydoor-->
+  <type>rotate</type>
+  <object-name>GearMainBaydoorL</object-name>
+  <property>gear/gear[2]/position-norm</property>
+  <interpolation>
+    <entry><ind>0.0 </ind><dep> 0.0</dep></entry>
+	<entry><ind>0.01</ind><dep> 1.0</dep></entry>
+    <entry><ind>0.1 </ind><dep>45.0</dep></entry>
+  </interpolation>   
+  <axis>
+    <x2-m>-5.486</x2-m>
+    <y2-m>-0.813</y2-m>
+    <z2-m>-2.082</z2-m>
+    <x1-m>-3.397</x1-m>
+    <y1-m>-0.623</y1-m>
+    <z1-m>-2.075</z1-m>
+  </axis>
+</animation> 
+<animation>
+  <type>rotate</type>
+  <object-name>GearMainBaydoorR</object-name>
+  <property>gear/gear[2]/position-norm</property>
+  <interpolation><!--different to left door!-->
+    <entry><ind>0.0 </ind><dep> 0.0</dep></entry>
+	<entry><ind>0.05 </ind><dep> 0.0</dep></entry>
+	<entry><ind>0.06</ind><dep> 1.0</dep></entry>
+	<entry><ind>0.15 </ind><dep>45.0</dep></entry>
+    <entry><ind>1.0 </ind><dep>45.0</dep></entry>
+  </interpolation>   
+  <axis>
+    <x1-m>-5.486</x1-m>
+    <y1-m> 0.813</y1-m>
+    <z1-m>-2.082</z1-m>
+    <x2-m>-3.397</x2-m>
+    <y2-m> 0.623</y2-m>
+    <z2-m>-2.075</z2-m>
+  </axis>
+</animation> 
+
+<!-- 
+1. sidearms+following     -86.6 ( -4.421 ? -1.559 )
+2. MainRunner+following   166   ( -4.584 ? -2.479 )
+3. GearMainReStabDown+4.   90   ( -4.472 ? -2.521 )
+4. GearMainReBack        -157   ( -3.990 ? -2.430 )
+5. GearMainReStabil(on 2.) 55   ( -4.392 ? -2.029 )-->
+<animation><!--1. sidearms+following     -86.6 ( -4.421 ? -1.559 )-->
+  <type>rotate</type>
+  <object-name>GearMainAxisRightEng</object-name>
+  <object-name>GearMainAxisLeftEng</object-name>
+  <object-name>GearMainReBack</object-name>
+  <object-name>GearMainReSideArms</object-name>
+  <object-name>GearMainReStabDown</object-name>
+  <object-name>GearMainReStabil</object-name>
+  <object-name>GearMainRunner</object-name>
+  <object-name>GearMainTorqueBarLow</object-name>
+  <object-name>GearMainTorqueBarUp</object-name>
+  <object-name>GearMainWheelL</object-name>
+  <object-name>GearMainWheelR</object-name>
+  <property>gear/gear[2]/position-norm</property>
+  <interpolation>
+    <entry><ind>0.05 </ind><dep>-86.6</dep></entry>
+    <entry><ind>0.90 </ind><dep>  0.0</dep></entry>
+  </interpolation>   
+<center>
+   <x-m> -4.421 </x-m>
+   <y-m>  1.000 </y-m>
+   <z-m> -1.559 </z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+</animation> 
+<animation><!--2. MainRunner+following   166   ( -4.584 ? -2.479 )-->
+  <type>rotate</type>
+  <object-name>GearMainAxisRightEng</object-name>
+  <object-name>GearMainAxisLeftEng</object-name>
+  <object-name>GearMainReBack</object-name>
+  <object-name>GearMainReStabDown</object-name>
+  <object-name>GearMainReStabil</object-name>
+  <object-name>GearMainRunner</object-name>
+  <object-name>GearMainTorqueBarLow</object-name>
+  <object-name>GearMainTorqueBarUp</object-name>
+  <object-name>GearMainWheelL</object-name>
+  <object-name>GearMainWheelR</object-name>
+  <property>gear/gear[2]/position-norm</property>
+  <interpolation>
+    <entry><ind>0.05 </ind><dep>166</dep></entry>
+    <entry><ind>0.90 </ind><dep>  0</dep></entry>
+  </interpolation>   
+<center>
+   <x-m> -4.584 </x-m>
+   <y-m>  1.000 </y-m>
+   <z-m> -2.479 </z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+</animation> 
+<animation><!--3. GearMainReStabDown+4.   90   ( -4.472 ? -2.521 )-->
+  <type>rotate</type>
+  <object-name>GearMainReStabDown</object-name>
+  <object-name>GearMainReBack</object-name>
+  <property>gear/gear[2]/position-norm</property>
+  <interpolation>
+    <entry><ind>0.05 </ind><dep>90</dep></entry>
+    <entry><ind>0.90 </ind><dep> 0</dep></entry>
+  </interpolation>   
+<center>
+   <x-m> -4.472 </x-m>
+   <y-m>  1.000 </y-m>
+   <z-m> -2.521 </z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+</animation> 
+<animation><!--4. New as locked-track-->
+  <type>locked-track</type>
+  <object-name>GearMainReBack</object-name>
+  <center>
+    <x-m> -3.99 </x-m>
+    <y-m>  0.00 </y-m>
+    <z-m> -2.43 </z-m>
+  </center>
+  <lock-axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </lock-axis>
+  <track-axis>
+    <x>1.57</x>
+    <y>0</y>
+    <z>0.66</z>
+  </track-axis>
+  <target-name>EngineMountR</target-name>
+  <target-center>
+    <x-m>-2.434</x-m>
+    <y-m> 0.000</y-m>
+    <z-m>-1.769</z-m>
+  </target-center>
+</animation>
+  
+<animation><!--5. New as locked-track-->
+  <type>locked-track</type>
+  <object-name>GearMainReStabil</object-name>
+  <center>
+   <x-m>-4.392</x-m>
+   <y-m> 1.000</y-m>
+   <z-m>-2.029</z-m>
+  </center>
+  <lock-axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </lock-axis>
+  <track-axis>
+    <x> 0.609</x>
+    <y> 0.000</y>
+    <z>-0.346</z>
+  </track-axis>
+  <target-name>GearMainReBack</target-name>
+  <target-center>
+    <x-m>-3.783</x-m>
+    <y-m> 0.000</y-m>
+    <z-m>-2.375</z-m>
+  </target-center>
+</animation>
+
+<!--Wheel spinning-->
+<animation>
+ <type>spin</type>
+ <object-name>GearMainWheelR</object-name>
+ <property>gear/gear[2]/rollspeed-ms</property>
+ <factor>-11.937</factor><!--r=0.8[m]  60[s]/(2*PI*r[m])=[rpm]-->
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+ <center>
+  <x-m>-4.902</x-m>
+  <y-m> 0.000</y-m>
+  <z-m>-4.136</z-m>
+ </center>
+</animation>
+</PropertyList>

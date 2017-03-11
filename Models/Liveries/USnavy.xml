@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+  <sim>
+    <model>
+      <livery>
+        <name type="string">US Navy blue</name>
+        <texture>Liveries/USnavyFuselage.png</texture>
+      </livery>
+      <livery-wings>
+        <texture>Liveries/Wings.png</texture>
+      </livery-wings>
+	  <livery-prop>
+        <texture>Liveries/Prop.png</texture>
+	  </livery-prop>
+    </model>
+  </sim>
+</PropertyList>

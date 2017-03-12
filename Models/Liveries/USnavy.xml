@@ -11,7 +11,7 @@
         <texture>Liveries/Wings.png</texture>
       </livery-wings>
 	  <livery-prop>
-        <texture>Liveries/Prop.png</texture>
+        <texture>Liveries/Propeller.png</texture>
 	  </livery-prop>
     </model>
   </sim>

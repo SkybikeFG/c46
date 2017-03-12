@@ -10,7 +10,7 @@ OBJECT poly
 name "EngineMountR"
 loc -12.0000000 -3.0000000 3.9332299
 crease 35.0
-texture "Wings.png"
+texture "Liveries/Wings.png"
 texrep 1 1
 numvert 520
 5.6093578 0.5155112 -4.4939556
@@ -3676,7 +3676,7 @@ OBJECT poly
 name "EnginePropBlade"
 loc -8.7117615 -1.7071228 0.0052125
 crease 35.0
-texture "Prop.png"
+texture "Liveries/Propeller.png"
 texrep 1 1
 numvert 111
 0.3836176 0.0352043 0.0882124
@@ -4556,7 +4556,7 @@ OBJECT poly
 name "EnginePropBlade2"
 loc -8.7117615 -1.7071228 0.0052125
 crease 35.0
-texture "Prop.png"
+texture "Liveries/Propeller.png"
 texrep 1 1
 numvert 111
 0.3836176 -0.0939963 -0.0136184
@@ -5436,7 +5436,7 @@ OBJECT poly
 name "EnginePropBlade3"
 loc -8.7117615 -1.7071228 0.0052125
 crease 35.0
-texture "Prop.png"
+texture "Liveries/Propeller.png"
 texrep 1 1
 numvert 111
 0.3836176 0.0587921 -0.0745940
@@ -6316,7 +6316,7 @@ OBJECT poly
 name "EnginePropHubCap"
 loc -8.1417618 -1.7071228 0.0052125
 crease 35.0
-texture "Prop.png"
+texture "Liveries/Propeller.png"
 texrep 1 1
 numvert 88
 -0.0473007 -0.0000000 -0.0513531
@@ -6984,7 +6984,7 @@ OBJECT poly
 name "EngineRExhaust"
 loc -6.6131697 -2.1006691 -1.1426716
 crease 35.0
-texture "Wings.png"
+texture "Liveries/Wings.png"
 texrep 1 1
 numvert 64
 0.1713561 0.0786853 0.2256234
@@ -9881,7 +9881,7 @@ OBJECT poly
 name "GearMainBaydoorL"
 loc -12.0000000 -3.0000000 3.9332299
 crease 35.0
-texture "Wings.png"
+texture "Liveries/Wings.png"
 texrep 1 1
 numvert 46
 8.5690384 0.7622070 -3.5087414
@@ -10234,7 +10234,7 @@ OBJECT poly
 name "GearMainBaydoorR"
 loc -12.0000000 -3.0000000 3.9332299
 crease 35.0
-texture "Wings.png"
+texture "Liveries/Wings.png"
 texrep 1 1
 numvert 46
 8.5690384 0.7622070 -4.3577209
@@ -12922,7 +12922,7 @@ OBJECT poly
 name "GearMainWheelL"
 loc -11.1970472 -2.2252178 1.3721890
 crease 35.0
-texture "Wings.png"
+texture "Liveries/Wings.png"
 texrep 1 1
 numvert 299
 6.2949905 -2.7110267 -1.3891274
@@ -14816,7 +14816,7 @@ OBJECT poly
 name "GearMainWheelR"
 loc -11.1970472 -2.2252178 -1.3721890
 crease 35.0
-texture "Wings.png"
+texture "Liveries/Wings.png"
 texrep 1 1
 numvert 299
 6.2949905 -2.7110267 1.3891274

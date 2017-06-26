@@ -10,6 +10,16 @@
  </offsets>
 <!-- x -12 __ z -3 -->
 
+<model>
+ <name>Cockpit</name>
+ <path>Aircraft/c46/Models/Cockpit/Cockpit.ac</path>
+ <offsets>
+  <x-m> 0.000 </x-m>
+  <y-m> 0.000 </y-m>
+  <z-m> 0.000 </z-m>
+  <roll-deg> 0 </roll-deg>
+ </offsets>
+</model>
 
 <!-- L I V E R I E S-->
 <nasal>
@@ -64,17 +74,6 @@
   <x-m>  -1.86 </x-m>
   <y-m>  0.000 </y-m>
   <z-m>  1.137 </z-m>
- </offsets>
-</model>
-<!-- Flag delete later (see also aircraft-set.xml)-->
-<model>
- <name>flag</name>
- <path>Aircraft/c46/Models/flag.ac</path>
- <offsets>
-  <x-m> -7.380 </x-m>
-  <y-m>  0.696 </y-m>
-  <z-m>  0.597 </z-m>
-  <roll-deg> -10 </roll-deg>
  </offsets>
 </model>
 

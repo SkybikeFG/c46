@@ -46,9 +46,9 @@ Developed under GNU-GPL for FlightGear FS.
    <internal archive="y">true</internal>
    <config>
      <!-- x/y/z == right/up/back -->
-     <x-offset-m archive="y"> -0.300 </x-offset-m>
-     <y-offset-m archive="y">  3.15 </y-offset-m>
-     <z-offset-m archive="y"> 1.55 </z-offset-m>
+     <x-offset-m archive="y"> 0.56 </x-offset-m>
+     <y-offset-m archive="y"> 0.18 </y-offset-m>
+     <z-offset-m archive="y"> -9.90 </z-offset-m>
      <pitch-offset-deg>0</pitch-offset-deg>
    </config>
   </view>

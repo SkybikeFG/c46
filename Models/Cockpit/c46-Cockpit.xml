@@ -1,0 +1,154 @@
+<!-- C46 cockpit -->
+<!-- 2018 -->
+
+
+<PropertyList>
+
+  <path>Cockpit.ac</path>
+
+  <!-- Sub-Model Imports -->
+
+  <!--model>
+    <name>Instruments</name>
+    <path>Aircraft/c46/Models/c46_Instruments.xml</path>
+  </model-->
+
+  <model>
+    <name>Pedestal</name>
+    <path>Aircraft/c46/Models/Cockpit/c46-Pedestal.xml</path>
+  </model>
+
+  <!-- Pedals (pilot(P)/copilot(C))-->
+  <animation>
+    <type>translate</type>
+    <object-name>DRudderLP</object-name>
+    <property>controls/flight/rudder</property>
+    <factor>0.10</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>translate</type>
+    <object-name>DRudderRP</object-name>
+    <property>controls/flight/rudder</property>
+    <factor>0.10</factor>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>DRudderLC</object-name>
+    <property>controls/flight/rudder</property>
+    <factor>0.10</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>translate</type>
+    <object-name>DRudderRC</object-name>
+    <property>controls/flight/rudder</property>
+    <factor>0.10</factor>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+
+  <!-- Yokes -->
+
+  <animation>
+    <type>select</type>
+    <object-name>DYokeColumnP</object-name>
+    <object-name>DYokeP</object-name>
+    <object-name>DYokeColumnC</object-name>
+    <object-name>DYokeC</object-name>
+    <condition>
+      <not>
+        <property>sim/model/options/hide-yokes</property>
+      </not>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>DYokeColumnP</object-name>
+    <object-name>DYokeP</object-name>
+    <property>controls/flight/elevator</property>
+    <factor>-5</factor>
+    <center>
+      <x-m>-10.3717</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-0.95438</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>DYokeP</object-name>
+    <property>controls/flight/aileron</property>
+    <factor>-90</factor>
+    <center>
+      <x-m>0.0</x-m>
+      <y-m>-0.4</y-m>
+      <z-m>-0.188</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>DYokeColumnC</object-name>
+    <object-name>DYokeC</object-name>
+    <property>controls/flight/elevator</property>
+    <factor>-5</factor>
+    <center>
+      <x-m>-10.3717</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-0.95438</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>DYokeC</object-name>
+    <property>controls/flight/aileron</property>
+    <factor>-90</factor>
+    <center>
+      <x-m>0.0</x-m>
+      <y-m>0.4</y-m>
+      <z-m>-0.188</z-m>
+    </center>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+</PropertyList>

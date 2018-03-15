@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ tail-wheel.xml  - Cap10B by PAF team
+
+ Written by Flavien BLANC
+ Modified by PAF team  - April 2012
+ Modified for c46 by Arnd Lebert 2018
+
+ Copyright (C) 2011-2012  Flavien BLANC  - http://equipe-flightgear.forumactif.com/u56
+ Copyright (C) 2012  Clément DE L'HAMAIDE  - http://equipe-flightgear.forumactif.com/u115
+
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License as
+ published by the Free Software Foundation; either version 2 of the
+ License, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not see <http://www.gnu.org/licenses/>.
+ #################################
+ What it does:
+ if(fcs/tail-wheel-lock-cmd-norm==1)
+     {TW locked and steerable to rudder}
+ else{TW free}
+-->
+
+<system name="tail_wheel_control">
+
+ <property value="0.0">fcs/tail-wheel-lock-cmd-norm</property>
+
+ <channel name="tail wheel">
+
+    <switch name="fcs/tail-wheel-free">
+        <default value="1.0"/>
+        <test value="0.0">
+            fcs/tail-wheel-lock-cmd-norm GT 0.05
+        </test>
+        <output>gear/unit[2]/castered</output>
+    </switch>
+
+    <fcs_function name="fcs/tail-wheel-locked-deg">
+       <function>
+          <product>
+            <property> fcs/rudder-pos-norm </property>
+            <value> 12.0 </value><!--Strenth of steering-->
+          </product>
+       </function>
+       <output>fcs/steer-pos-deg[2]</output>
+    </fcs_function>
+
+ </channel>
+
+</system>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
+<!--?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?-->
 
 <fdm_config name="c46" version="2.0" release="ALPHA"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -11,7 +11,8 @@
   <version>201703$Revision: 1.77 $</version>
   <description> Models a c46. </description>
  </fileheader>
-
+<!--Note: Source for most of the data here: Northland Air Manitoba - Pilots Operating Handbook 
+      Chapter:Section:Subject, Page-->
 <!--
   File:     c46.xml
   Inputs:
@@ -51,15 +52,14 @@
     K:                  0.04
     Mcrit:              0.70
 -->
-
- <metrics>
-   <wingarea  unit="FT2">  1359.48 </wingarea>
-   <wingspan  unit="FT" >   107.97 </wingspan>
+ <metrics><!--4:6:5, 78-81-->
+   <wingarea  unit="FT2">  1359.48 </wingarea><!--includingAlerons-->
+   <wingspan  unit="FT" >   108.97 </wingspan>
    <wing_incidence unit="DEG"> 5.10 </wing_incidence>
-   <chord     unit="FT" >    12.30 </chord>
-   <htailarea unit="FT2">   217.67 </htailarea>
+   <chord     unit="FT" >    12.30 </chord><!--16.6(root) to 5.6(tips)-->
+   <htailarea unit="FT2">   307.96 </htailarea><!--181.48/ total(+elevators): 307.96/ aeromatic: 217.67-->
    <htailarm  unit="FT" >    41.11 </htailarm>
-   <vtailarea  unit="FT2">  154.57 </vtailarea>
+   <vtailarea  unit="FT2">  165.0 </vtailarea><!--stab+rudder=112.2+52.8=165.0--><!--154.57-->
    <vtailarm  unit="FT" >    41.11 </vtailarm>
    <location name="AERORP" unit="M">
      <x>  9.00 </x>
@@ -70,9 +70,6 @@
      <x>  0.00 </x>
      <y>  0.00 </y>
      <z>  0.00 </z>
-     <!--<x>    1.862 </x>
-     <y>   -0.61 </y>
-     <z>    1.651 </z-->
    </location>
    <location name="VRP" unit="M">
      <x>    12.0 </x>
@@ -89,7 +86,7 @@
    <location name="CG" unit="M">
      <x>    8.87 </x>
      <y>    0.00 </y>
-     <z>   -0.83<!-- -0.5816--> </z>
+     <z>   -0.83</z>
    </location>
    <pointmass name="Payload">
     <description> 1162.81 LBS should bring model up to entered max weight </description>
@@ -97,7 +94,7 @@
     <location name="POINTMASS" unit="M">
      <x>   8.87 </x>
      <y>     0.00 </y>
-     <z>   0<!-- -0.5816--> </z>
+     <z>   0</z>
    </location>
   </pointmass>
  </mass_balance>
@@ -191,30 +188,13 @@
 
  </propulsion>
 
+ 
  <ground_reactions>
-
-  <contact type="BOGEY" name="TAIL">
-    <location unit="M">
-      <x>   19.45 </x>
-      <y>    0.00 </y>
-      <z>   -2.69 </z>
-    </location>
-    <static_friction>  0.80 </static_friction>
-    <dynamic_friction> 0.50 </dynamic_friction>
-    <rolling_friction> 0.05 </rolling_friction>
-    <spring_coeff  unit="LBS/FT">     45008.46 </spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC"> 2504.23 </damping_coeff><!--aeromatic had 22504.23, but it bounces-->
-    <damping_coeff_rebound unit="LBS/FT/SEC">2500</damping_coeff_rebound>
-    <steerability> STEERABLE </steerability>
-    <max_steer unit="DEG"> 360 </max_steer>
-    <brake_group>NONE</brake_group>
-    <retractable> 1 </retractable>
-  </contact>
-
+  <!--MAIN GEAR LEFT-->
   <contact type="BOGEY" name="LEFT_MAIN">
     <location unit="M">
       <x>   7.13 </x>
-      <y>  -3.98 </y><!--not-->
+      <y>  -3.98 </y>
       <z>  -4.8 </z>
     </location>
     <static_friction>  0.80 </static_friction>
@@ -227,10 +207,11 @@
     <retractable> 1 </retractable>
   </contact>
 
+  <!--MAIN GEAR RIGHT-->
   <contact type="BOGEY" name="RIGHT_MAIN">
     <location unit="M">
       <x>   7.13 </x>
-      <y>   3.98 </y><!--not-->
+      <y>   3.98 </y>
       <z>  -4.8 </z>
     </location>
     <static_friction>  0.80 </static_friction>
@@ -240,6 +221,24 @@
     <damping_coeff unit="LBS/FT/SEC"> 22504.23 </damping_coeff>
     <max_steer unit="DEG">0</max_steer>
     <brake_group> RIGHT </brake_group>
+    <retractable> 1 </retractable>
+  </contact>
+  
+<!-- TAIL GEAR -->
+  <contact type="BOGEY" name="TAIL">
+    <location unit="M">
+      <x>   19.45 </x>
+      <y>    0.00 </y>
+      <z>   -2.69 </z>
+    </location>
+    <static_friction>  0.80 </static_friction>
+    <dynamic_friction> 0.50 </dynamic_friction>
+    <rolling_friction> 0.05 </rolling_friction>
+    <spring_coeff  unit="LBS/FT">     45008.46 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC"> 2504.23 </damping_coeff><!--aeromatic had 22504.23, but it bounces-->
+    <damping_coeff_rebound unit="LBS/FT/SEC">2500</damping_coeff_rebound>
+    <max_steer unit="DEG"> 360 </max_steer>
+    <brake_group>NONE</brake_group>
     <retractable> 1 </retractable>
   </contact>
 
@@ -273,9 +272,8 @@
  <system file="Aircraft control.xml"/>
  <system file="Landing Gear.xml"/>
  <system file="Flaps.xml"/>
-
+ <system file="tail-wheel"/>
  <flight_control name="FCS: c46">
-
  </flight_control>
 
  <aerodynamics>

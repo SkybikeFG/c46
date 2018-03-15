@@ -3,13 +3,12 @@
 <PropertyList>
   <sim>
     <model>
-	<livery>
-		<name type="string">US Navy blue</name>
-		<texture-fuselage>Liveries/USnavyFuselage.png</texture-fuselage>
-		<texture-wings>Liveries/Wings.png</texture-wings>
-		<texture-propeller>Liveries/Propeller.png</texture-propeller>
-	</livery>
+      <livery>
+			<name type="string">US Navy blue</name>
+			<texture-fuselage>Liveries/USnavyFuselage.png</texture-fuselage>
+			<texture-wings>Liveries/Wings.png</texture-wings>
+			<texture-propeller>Liveries/Propeller.png</texture-propeller>
+	  </livery>
     </model>
   </sim>
 </PropertyList>
-

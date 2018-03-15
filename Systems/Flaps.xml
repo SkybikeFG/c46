@@ -1,4 +1,15 @@
 <?xml version="1.0"?>
+<!--Flaps System File for the c46
+by Arnd Lebert
+
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License as
+ published by the Free Software Foundation; either version 2 of the
+ License, or (at your option) any later version.
+
+Northland Air Manitoba - {Chapter}:{Section}:{Subject}, {Page}
+Flaps in general: 4:30:20, 142 - operating times:4:30:10, 139 - total 12s
+-->
 <system name="Flaps">
   <channel name="Flaps">
    <kinematic name="Flaps Control">
@@ -9,15 +20,19 @@
          <time>      0 </time>
       </setting>
       <setting>
-         <position> 10 </position>
+         <position>  5 </position>
          <time>      4 </time>
       </setting>
       <setting>
+         <position> 10 </position>
+         <time>      3 </time>
+      </setting>
+	  <setting>
          <position> 20 </position>
          <time>      3 </time>
       </setting>
 	  <setting>
-         <position> 30 </position>
+         <position> 35 </position>
          <time>      3 </time>
       </setting>
     </traverse>
@@ -28,7 +43,7 @@
     <input>fcs/flap-pos-deg</input>
     <domain>
       <min>  0 </min>
-      <max> 30 </max>
+      <max> 35 </max>
     </domain>
     <range>
       <min> 0 </min>

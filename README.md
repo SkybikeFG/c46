@@ -10,15 +10,15 @@ ________________________________________________________
 * Author: Arnd Lebert @2016/2017
 * FDM: JSBsim
 * Exterior: 3D model, with animations, liveries
-* Interior: none
+* Interior: basic cockpit, no instruments but 3D pedestal and animated yokes and pedals
 * Special features: None
-_________________________________________________________
+________________________________________________________
 
 [Check for Updates](https://github.com/SkybikeFG/c46) or download the [latest version](https://github.com/SkybikeFG/c46/archive/master.zip)
 
 Also visit [my wiki](https://github.com/skybikefg/c46/wiki) for news, tutorials, todos, more information...: 
 
-You can help :+1: (for example by contributing your favourite liveries). Contact me to get the latest paintkits.
+You can help :+1: (by contributing your favourite liveries or submitting bugs).
 - [Github: SkybikeFG](https://github.com/skybikefg)
 - [FlightGear Wiki](http://wiki.flightgear.org/User:Skybike)
 - [FlightGear Forum](https://forum.flightgear.org/memberlist.php?mode=viewprofile&u=19886)

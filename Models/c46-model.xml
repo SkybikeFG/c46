@@ -10,6 +10,12 @@
  </offsets>
 <!-- x -12 __ z -3 -->
 
+<model>
+ <name>Cockpit</name>
+ <path>Aircraft/c46/Models/Cockpit/c46-Cockpit.xml</path>
+ <!--links to pedestaral and panel-->
+</model>
+
 
 <!-- L I V E R I E S-->
 <nasal>
@@ -64,17 +70,6 @@
   <x-m>  -1.86 </x-m>
   <y-m>  0.000 </y-m>
   <z-m>  1.137 </z-m>
- </offsets>
-</model>
-<!-- Flag delete later (see also aircraft-set.xml)-->
-<model>
- <name>flag</name>
- <path>Aircraft/c46/Models/flag.ac</path>
- <offsets>
-  <x-m> -7.380 </x-m>
-  <y-m>  0.696 </y-m>
-  <z-m>  0.597 </z-m>
-  <roll-deg> -10 </roll-deg>
  </offsets>
 </model>
 
@@ -275,7 +270,7 @@
   <object-name>GearTailWheel</object-name>
   <object-name>GearTailShockAbsorberLow</object-name>
   <object-name>GearTailShockAbsorberUp</object-name>
-  <property>gear/gear/steering-norm</property>
+  <property>gear/gear[2]/steering-norm</property>
   <interpolation>
 	<entry><ind>-0.3</ind><dep>-90</dep></entry>
 	<entry><ind> 0.0</ind><dep>  0</dep></entry>
@@ -410,7 +405,7 @@
 <animation>
  <type>spin</type>
  <object-name>GearTailWheel</object-name>
- <property>gear/gear/rollspeed-ms</property>
+ <property>gear/gear[2]/rollspeed-ms</property>
  <factor>-26.899</factor><!--r=0.355[m]  60[s]/(2*PI*r[m])=[rpm]-->
  <axis>
   <x>0</x>

@@ -16,7 +16,7 @@ Developed under GNU-GPL for FlightGear FS.
   <author>Arnd Lebert</author>
   <status>alpha</status>
   <aircraft-version>2018.1</aircraft-version>
-  <minimum-fg-version>2017.1</minimum-fg-version>
+  <minimum-fg-version>2017.2</minimum-fg-version>
   <rating>
    <FDM type="int">2</FDM>
    <systems type="int">0</systems>
@@ -29,6 +29,7 @@ Developed under GNU-GPL for FlightGear FS.
     <startup>
       <splash-texture>Aircraft/c46/splash.png</splash-texture>
 	  <splash-texture>Aircraft/c46/splash1.png</splash-texture>
+	  <!--splash-title>Text</splash-title-->
     </startup>
 
   <tags>
@@ -64,7 +65,7 @@ Developed under GNU-GPL for FlightGear FS.
    <config>
      <default-field-of-view-deg type="double">70</default-field-of-view-deg>
      <!-- x/y/z == right/up/back -->
-     <x-offset-m archive="y"> -0.45 </x-offset-m><!--56-->
+     <x-offset-m archive="y"> -0.40 </x-offset-m><!--56-->
      <y-offset-m archive="y"> 0.25 </y-offset-m><!--20-->
      <z-offset-m archive="y"> -9.90 </z-offset-m>
      <pitch-offset-deg>0</pitch-offset-deg>
@@ -78,10 +79,23 @@ Developed under GNU-GPL for FlightGear FS.
 	  <config>
 	      <default-field-of-view-deg type="double">70</default-field-of-view-deg>
 		  <from-model type="bool">true</from-model>
-		  <x-offset-m type="double" archive="y">0.45</x-offset-m>
+		  <x-offset-m type="double" archive="y">0.40</x-offset-m>
 		  <y-offset-m type="double" archive="y">0.25</y-offset-m>
 		  <z-offset-m type="double" archive="y">-9.90</z-offset-m>
 		  <pitch-offset-deg type="double">-15.0</pitch-offset-deg>
+	  </config>
+  </view>
+    <view n="102">
+	  <name>Pedestal View</name>
+	  <type>lookfrom</type>
+	  <internal type="bool">true</internal>
+	  <config>
+	      <default-field-of-view-deg type="double">80</default-field-of-view-deg>
+		  <from-model type="bool">true</from-model>
+		  <x-offset-m type="double" archive="y">0.00</x-offset-m>
+		  <y-offset-m type="double" archive="y">0.30</y-offset-m>
+		  <z-offset-m type="double" archive="y">-9.9</z-offset-m>
+		  <pitch-offset-deg type="double">-68.0</pitch-offset-deg>
 	  </config>
   </view>
 
@@ -110,11 +124,25 @@ Developed under GNU-GPL for FlightGear FS.
 		<script>aircraft.livery.dialog.open();</script>
 	   </binding>
 	 </item>
+
     </menu>
    </default>
   </menubar>
-
+  <flaps>
+    <setting>0.00</setting>
+    <setting>0.25</setting>
+    <setting>0.43</setting>
+    <setting>0.71</setting>
+    <setting>1.00</setting>
+   </flaps>
  </sim>
+ 
+ <nasal>
+ <c46>
+  <file>Aircraft/c46/Nasal/c46.nas</file>
+  <file>Aircraft/Generic/limits.nas</file>
+ </c46>
+</nasal>
 
  <consumables>
 	 <fuel>
@@ -132,9 +160,9 @@ Developed under GNU-GPL for FlightGear FS.
  </consumables>
  
 <controls>
- <flight>
-  <elevator-trim>0.4</elevator-trim>
- </flight>
+  <flight>
+    <elevator-trim>0.0</elevator-trim>
+  </flight>
 
  <gear>
   <brake-parking>1</brake-parking>
@@ -148,6 +176,7 @@ Developed under GNU-GPL for FlightGear FS.
  </lighting>
 
 </controls>
+
 
 <limits>
     <mass-and-balance><!--Manitoba 4:6:5: page 78-->
@@ -163,13 +192,6 @@ Developed under GNU-GPL for FlightGear FS.
     <max-positive-g type="double">2.5</max-positive-g>
     <vne type="double">234</vne>
   </limits>
-
-<nasal>
- <c46>
-  <file>Aircraft/c46/Nasal/c46.nas</file>
-  <file>Aircraft/Generic/limits.nas</file>
- </c46>
-</nasal>
 
  <payload> 
  Â <weight>

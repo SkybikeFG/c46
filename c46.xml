@@ -86,7 +86,7 @@
    <location name="CG" unit="M">
      <x>    8.87 </x>
      <y>    0.00 </y>
-     <z>   -0.83</z>
+     <z>   -0.83 </z>
    </location>
    <pointmass name="Payload">
     <description> 1162.81 LBS should bring model up to entered max weight </description>
@@ -94,7 +94,7 @@
     <location name="POINTMASS" unit="M">
      <x>   8.87 </x>
      <y>     0.00 </y>
-     <z>   0</z>
+     <z>   0 </z>
    </location>
   </pointmass>
  </mass_balance>
@@ -273,6 +273,7 @@
  <system file="Landing Gear.xml"/>
  <system file="Flaps.xml"/>
  <system file="tail-wheel"/>
+ <system file="Oilcooler.xml"/>
  <flight_control name="FCS: c46">
  </flight_control>
 

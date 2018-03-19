@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Oilcooler.xml  - Cap10B by PAF team
+
+ Written for c46 by Arnd Lebert 2018
+
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License as
+ published by the Free Software Foundation; either version 2 of the
+ License, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not see <http://www.gnu.org/licenses/>.
+ #################################
+ 
+ * Creation of "/controls/engines/engine[0]/oilcooler" in c46.nas
+ * constantly overwrites <cooling factor> in engine file>
+ * <cooling factor> should be around 0.6
+ * set levers in animation to "/controls/engines/engine[0/1]/oilcooler" from 0 to 1
+   * This Property is currently a "BOOL" - just 0 or 1 possible. 
+ * Offset + (Impact*lever) = 0.6 + ( 0.1 * 1(lever full) ) = 0.7 max cooling/0.6 min cooling
+-->
+
+<system name="oilcooler-control">
+ <channel name="oil cooler"> 
+    <fcs_function name="propulsion/engine[0]/cooling-factor">
+       <function>
+	    <sum>
+          <product>
+            <property>/controls/engines/engine[0]/oilcooler </property>
+            <value> 0.1 </value><!--Impact-->
+          </product>
+		  <value> 0.6 </value><!--Offset-->
+		</sum>		  
+       </function>
+       <output>propulsion/engine[0]/cooling-factor</output>
+    </fcs_function>  
+
+    <fcs_function name="propulsion/engine[1]/cooling-factor">
+       <function>
+	    <sum>
+          <product>
+            <property>/controls/engines/engine[1]/oilcooler </property>
+            <value> 0.1 </value><!--Impact-->
+          </product>
+		  <value> 0.6 </value><!--Offset-->
+		</sum>		  
+       </function>
+       <output>propulsion/engine[1]/cooling-factor</output>
+    </fcs_function>
+ </channel>
+</system>

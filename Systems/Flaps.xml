@@ -20,20 +20,20 @@ Flaps in general: 4:30:20, 142 - operating times:4:30:10, 139 - total 12s
          <time>      0 </time>
       </setting>
       <setting>
-         <position>  5 </position>
+         <position>  8.75 </position>
          <time>      4 </time>
       </setting>
       <setting>
-         <position> 10 </position>
-         <time>      3 </time>
+         <position> 15 </position>
+         <time>      2 </time>
       </setting>
 	  <setting>
-         <position> 20 </position>
-         <time>      3 </time>
+         <position> 25 </position>
+         <time>      2 </time>
       </setting>
 	  <setting>
          <position> 35 </position>
-         <time>      3 </time>
+         <time>      5 </time>
       </setting>
     </traverse>
     <output>fcs/flap-pos-deg</output>
@@ -43,7 +43,7 @@ Flaps in general: 4:30:20, 142 - operating times:4:30:10, 139 - total 12s
     <input>fcs/flap-pos-deg</input>
     <domain>
       <min>  0 </min>
-      <max> 35 </max>
+      <max> 40<!--35--> </max>
     </domain>
     <range>
       <min> 0 </min>

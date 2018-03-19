@@ -8,33 +8,66 @@
 
   Inputs:
     name:           PrattWhitneyR2800DoubleWasp  (model R-2800-51M1)
-	                (if you should find "propHamiltonStandard3Blade".xml (important: prefix: "prop") 
-					 somewhere - that happened by mistake - change it to this filename)
     type:           Piston Engine
     power:          2000 hp
+	
+	Power charts: PilotsFlightOpsInstructions Jul.1943 Page 59
+	            RPM |Pressure| HP |critical|Boost|minutes
+                    |(Boost) |    |altitude|     |Duration
+	Take off    2700   52     2000   1,500  LOW   5   -ratedBoost1
+	
+	Max Contin  2400   41.5   1600   5,300  LOW  60
+	                   40     1450  14,000  HIGH 60   -ratedBoost2
+					   
+	Max Cruise  2100   32.3   1100  10,000  LOW   -
+	                   30      975  20,000  HIGH  -
+Pressure - 29.92inHg(sealevel)
 -->
 
 <piston_engine name="propHamiltonStandard3Blade">
-  <minmp unit="INHG">         10.0 </minmp>
-  <maxmp unit="INHG">         52.0 </maxmp><!--21(aeromatic)-airmanitoba4-10-5-->
-    <displacement unit="IN3"> 3798.92 </displacement>
-  <maxhp>       2000.0 </maxhp>
-  <cycles>         4.0 </cycles>
-  <idlerpm>      650.0 </idlerpm>
-  <maxrpm>      2905.0 </maxrpm><!-- overspeed (airmanitoba)/ regular at maxhp: 2700rpm-->
-  <sparkfaildrop>  0.1 </sparkfaildrop>
-  <compression-ratio>6.75</compression-ratio><!--wikipedia: 6.75:1-->
-  <volumetric-efficiency> 0.71 </volumetric-efficiency><!--wikipedia/aeromatic0.85-->
-  <man-press-lag> 0.1 </man-press-lag>
-  <static-friction  unit="HP"> 9.99715 </static-friction>
-  <starter-torque> 1599.54 </starter-torque>
-  <starter-rpm> 1400 </starter-rpm>
- <!-- Defining <bsfc> over-rides the built-in horsepower calculations -->
- <!--<bsfc>           0.45 </bsfc>-->
-  <stroke unit="IN">  6    </stroke><!-- <Wikipedia/Aeromatic>4.375-->
-  <bore unit="IN">    5.75 </bore><!--Wikipedia-->
-  <cylinders>         18   </cylinders><!--42-->
+  <minmp unit="INHG">        10 </minmp>
+  <maxmp unit="INHG">        52 </maxmp><!--21(aeromatic)-airmanitoba4-10-5-->
+  <displacement unit="IN3">2800 </displacement><!--aeromatic: 3798.92-->
+  <bore unit="IN">         5.75 </bore><!-- Unused-airmanitoba,page86-->
+  <stroke unit="IN">       6    </stroke>
+  <cylinders>             18    </cylinders>
+  <cylinder-head-mass>    21.0 </cylinder-head-mass><!--guessed-->
   
-  <numboostspeeds> 2 </numboostspeeds>
-  <boostmanual> 0 </boostmanual>
+  <compression-ratio>6.75</compression-ratio>
+  <sparkfaildrop>    0.1 </sparkfaildrop>
+  <maxhp>         2000.0 </maxhp>
+  <cycles>           4.0 </cycles>
+  <idlerpm>        650.0 </idlerpm>
+  <maxrpm>        2905.0 </maxrpm><!-- overspeed (airmanitoba)/ regular at maxhp: 2700rpm-->
+  <cooling-factor>   0.6 </cooling-factor><!--overwritten by oilcooler system-->
+  
+  <boostmanual>    1 </boostmanual><!--cockpit switch-->
+  <numboostspeeds> 2 </numboostspeeds><!--p86-->  
+  <boostoverride>  0 </boostoverride>
+  <takeoffboost>   0 </takeoffboost>
+  
+<!--Low speed supercharger:TakeOff-->
+  <ratedboost1 unit="INHG"> 22.08 </ratedboost1>
+  <ratedpower1>    2000 </ratedpower1>
+  <ratedrpm1>      2700 </ratedrpm1>
+  <ratedaltitude1> 1500 </ratedaltitude1>
+  
+<!--High supercharger:Maximum Continuous at HIGH-->
+  <ratedboost2 unit="INHG"> 20.08 </ratedboost2>
+  <ratedpower2>    1450 </ratedpower2>
+  <ratedrpm2>      2400 </ratedrpm2>
+  <ratedaltitude2> 14000 </ratedaltitude2>
+  
+  
+  <volumetric-efficiency>      0.71 </volumetric-efficiency><!--wikipedia/aeromatic0.85-->
+  <static-friction  unit="HP"> 9.99715 </static-friction>
+  <man-press-lag>    0.1 </man-press-lag>
+  <starter-torque> 1599.54 </starter-torque>
+  <starter-rpm>    1400 </starter-rpm>
+ <!--<bsfc>           0.45 </bsfc> Defining <bsfc> over-rides the built-in horsepower calculations -->
+ 
+  <oil-viscosity-index>  94 </oil-viscosity-index><!--oil:aeroshell 100-->
+  <oil-pressure-relief-valve-psi> 90 </oil-pressure-relief-valve-psi>
+  <design-oil-temp-degK> 363 </design-oil-temp-degK><!--90°C-->
+  
 </piston_engine>

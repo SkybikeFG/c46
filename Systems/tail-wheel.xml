@@ -35,6 +35,14 @@
 
  <channel name="tail wheel">
 
+    <switch name="systems/gear/tail-wheel-stick-forward">
+        <default value="1"/>
+        <test value="0">
+            /controls/gear/tailwheel-lock GE 0.5
+        </test>
+        <output>fcs/tail-wheel-lock-cmd-norm</output>
+    </switch>
+
     <switch name="fcs/tail-wheel-free">
         <default value="1.0"/>
         <test value="0.0">

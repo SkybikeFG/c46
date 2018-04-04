@@ -11,7 +11,7 @@ ________________________________________________________
 * FDM: JSBsim
 * Exterior: animated 3D model, 2 liveries
 * Interior: animated pedestal, basic 3D cockpit but no panel
-* Special features: Oilcooler and tailwheel lock system
+* Systems: Oilcooler and tailwheel lock system
 __________________________________________________________
 
 [Check for Updates](https://github.com/SkybikeFG/c46) or download the [latest version](https://github.com/SkybikeFG/c46/archive/master.zip)

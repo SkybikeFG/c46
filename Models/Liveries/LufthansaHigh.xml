@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Lufthansa Cargo</name>
+			<texture-fuselage>Liveries/LufthansaHigh.png</texture-fuselage>
+			<texture-wings>Liveries/Wings.png</texture-wings>
+			<texture-propeller>Liveries/Propeller.png</texture-propeller>
+	  </livery>
+    </model>
+  </sim>
+</PropertyList>

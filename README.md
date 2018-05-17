@@ -10,7 +10,7 @@ ________________________________________________________
 * Author: Arnd Lebert @2016/2017/2018
 * FDM: JSBsim
 * Exterior: animated 3D model, 2 liveries
-* Interior: animated pedestal, basic 3D cockpit but no panel
+* Interior: animated pedestal, basic 3D cockpit, some Instruments
 * Systems: Oilcooler and tailwheel lock system
 __________________________________________________________
 
@@ -18,7 +18,7 @@ __________________________________________________________
 
 Also visit [my wiki](https://github.com/skybikefg/c46/wiki) for news, tutorials, todos, more information...: 
 
-You can help :+1: (by contributing your favourite liveries or submitting bugs).
+You can help :+1: (by contributing your favourite liveries, sending nice screenshots or submitting bugs).
 - [Github: SkybikeFG](https://github.com/skybikefg)
 - [FlightGear Wiki](http://wiki.flightgear.org/User:Skybike)
 - [FlightGear Forum](https://forum.flightgear.org/memberlist.php?mode=viewprofile&u=19886)

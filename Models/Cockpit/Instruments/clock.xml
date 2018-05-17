@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+<!--scaled to 0 0.65 0.65-->
+ <path>clock.ac</path>
+
+ <animation>
+  <type>material</type>
+  <object-name>clock</object-name>
+  <object-name>second</object-name>
+  <object-name>minute</object-name>
+  <object-name>hour</object-name>
+  <object-name>frame</object-name>
+    <emission>
+        <red>0.028</red>
+        <green>0.014</green>
+        <blue>0.007</blue>
+        <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    </emission>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>second</object-name>
+  <property>/sim/time/utc/day-seconds</property>
+  <factor>6</factor>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>minute</object-name>
+  <property>/sim/time/utc/day-seconds</property>
+  <factor>0.1</factor>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>hour</object-name>
+  <property>/sim/time/utc/day-seconds</property>
+  <factor>0.008333</factor>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+</PropertyList>
+
+

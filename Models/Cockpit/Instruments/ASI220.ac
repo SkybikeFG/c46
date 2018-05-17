@@ -1,0 +1,65 @@
+AC3Db
+MATERIAL "Fuselage.001" rgb 0.800 0.800 0.800  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 12 trans 0.000
+MATERIAL "Untitled" rgb 0.640 0.640 0.640  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 12 trans 0.000
+MATERIAL "ASI" rgb 0.056 0.061 0.060  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.130 0.130 0.130  shi 12 trans 0.000
+MATERIAL "uni" rgb 0.800 0.800 0.800  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 12 trans 0.000
+OBJECT world
+name "Blender_exporter_v2.24__ASI.ac"
+kids 2
+OBJECT poly
+name "ASImain"
+data 20
+C46Fuselage.mesh.018
+crease 35.0
+texture "ASI.png"
+texrep 1 1
+numvert 8
+0 0 -0.041
+0 0.02899 -0.02899
+0 0.041 0
+0 0.02899 0.02899
+-0 -0 0.041
+-0 -0.02899 0.02899
+-0 -0.041 -0
+-0 -0.02899 -0.02899
+numsurf 1
+SURF 0X0
+mat 0
+refs 8
+1 0.873392 0.866931
+2 0.504569 1.023487
+3 0.133069 0.873392
+4 -0.023487 0.504568
+5 0.126608 0.133069
+6 0.495432 -0.023488
+7 0.866931 0.126608
+0 1.023487 0.495431
+kids 0
+OBJECT poly
+name "ASIneedle"
+data 20
+C46Fuselage.mesh.019
+crease 35.0
+texture "uni.png"
+texrep 1 1
+numvert 5
+0.00043 0.0253 0.00104
+0.00043 -0.0023 0.00134
+0.00043 0.0253 -0.00104
+0.00043 -0.0023 -0.00134
+0.00043 0.03338 -0
+numsurf 2
+SURF 0X0
+mat 3
+refs 4
+0 0.838875 0.824075
+1 0.827846 0.434672
+3 0.925367 0.434672
+2 0.914339 0.824075
+SURF 0X0
+mat 3
+refs 3
+0 0.838875 0.824075
+2 0.914339 0.824075
+4 0.876607 0.938103
+kids 0

@@ -13,7 +13,7 @@
 <model>
  <name>Cockpit</name>
  <path>Aircraft/c46/Models/Cockpit/c46-Cockpit.xml</path>
- <!--links to pedestaral and panel-->
+ <!--links to pedestal and panel-->
 </model>
 
 

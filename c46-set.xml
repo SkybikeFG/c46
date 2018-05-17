@@ -20,7 +20,7 @@ Developed under GNU-GPL for FlightGear FS.
   <rating>
    <FDM type="int">2</FDM>
    <systems type="int">0</systems>
-   <cockpit type="int">0</cockpit>
+   <cockpit type="int">1</cockpit>
    <model type="int">3</model>
   </rating>
 
@@ -35,6 +35,7 @@ Developed under GNU-GPL for FlightGear FS.
   <tags>
       <tag>1940s</tag>
       <tag>2-engine</tag>
+	  <tag>transport</tag>
       <tag>cargo</tag>
 	  <tag>transport</tag>
       <tag>ifr</tag>
@@ -43,7 +44,9 @@ Developed under GNU-GPL for FlightGear FS.
       <tag>propeller</tag>
       <tag>radial</tag>
       <tag>retractable-gear</tag>
+	  <tag>twin-engine</tag>
       <tag>tail-dragger</tag>
+	  <tag>variable-pitch</tag>
   </tags>
 	
   <model>
@@ -124,10 +127,10 @@ Developed under GNU-GPL for FlightGear FS.
 		<script>aircraft.livery.dialog.open();</script>
 	   </binding>
 	 </item>
-
     </menu>
    </default>
   </menubar>
+  
   <flaps>
     <setting>0.00</setting>
     <setting>0.25</setting>
@@ -138,10 +141,12 @@ Developed under GNU-GPL for FlightGear FS.
  </sim>
  
  <nasal>
- <c46>
-  <file>Aircraft/c46/Nasal/c46.nas</file>
-  <file>Aircraft/Generic/limits.nas</file>
- </c46>
+  <c46>
+    <file>Aircraft/c46/Nasal/c46.nas</file>
+    <file>Aircraft/Generic/limits.nas</file>
+	<file>Aircraft/Instruments-3d/ki266/ki266.nas</file>
+	<file>Aircraft/Instruments-3d/garmin196/garmin196.nas</file>
+  </c46>
 </nasal>
 
  <consumables>
@@ -176,7 +181,6 @@ Developed under GNU-GPL for FlightGear FS.
  </lighting>
 
 </controls>
-
 
 <limits>
     <mass-and-balance><!--Manitoba 4:6:5: page 78-->

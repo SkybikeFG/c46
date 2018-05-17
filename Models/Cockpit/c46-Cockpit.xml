@@ -8,15 +8,17 @@
 
   <!-- Sub-Model Imports -->
 
-  <!--model>
-    <name>Instruments</name>
-    <path>Aircraft/c46/Models/c46_Instruments.xml</path>
-  </model-->
-
   <model>
     <name>Pedestal</name>
     <path>Aircraft/c46/Models/Cockpit/c46-Pedestal.xml</path>
   </model>
+  
+  <model>
+    <name>Instrumentss</name>
+    <path>Aircraft/c46/Models/Cockpit/c46-Panel.xml</path>
+  </model>
+
+
 
   <!-- Pedals (pilot(P)/copilot(C))-->
   <animation>

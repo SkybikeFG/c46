@@ -108,11 +108,8 @@ Developed under GNU-GPL for FlightGear FS.
    <enable3d>false</enable3d>
   </hud>
 
-  <help>
-   <title>Curtiss C-46</title>
-  </help>
-
-
+  <help include="Help/c46-help.xml"/>
+  
   <menubar>
    <default>
 
@@ -198,12 +195,12 @@ Developed under GNU-GPL for FlightGear FS.
   </limits>
 
  <payload> 
- Â <weight>
- Â  <name type="string">Payload</name>
- Â  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs"/>
- Â  <min-lb type="double">10</min-lb>
- Â  <max-lb type="double">541.41</max-lb>
- Â </weight>
+  <weight>
+   <name type="string">Payload</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs"/>
+   <min-lb type="double">10</min-lb>
+   <max-lb type="double">541.41</max-lb>
+  </weight>
 </payload>
 
 

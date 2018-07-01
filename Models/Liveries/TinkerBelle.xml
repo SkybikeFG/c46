@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Tinker Belle</name>
+			<texture-fuselage>Liveries/TinkerBelle.png</texture-fuselage>
+			<texture-wings>Liveries/TBWings.png</texture-wings>
+			<texture-propeller>Liveries/TBPropeller.png</texture-propeller>
+	  </livery>
+    </model>
+  </sim>
+</PropertyList>

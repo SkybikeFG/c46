@@ -7,7 +7,8 @@
         <name type="string">Aerocondor Colombia</name>
 			<texture-fuselage>Liveries/AerocondorFuselage.png</texture-fuselage>
 			<texture-wings>Liveries/Wings.png</texture-wings>
-			<texture-propeller>Liveries/Propeller.png</texture-propeller>
+			<texture-propeller>Liveries/PropellerCone.png</texture-propeller>
+			<propeller-cone type="bool">1</propeller-cone>
 	  </livery>
     </model>
   </sim>

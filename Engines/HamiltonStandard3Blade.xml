@@ -17,19 +17,27 @@
                   Cp0: 0.0850602
                   Ct0: 0.19819
   static thrust (lbs): 8193.58
+  
+  Manual: Northland air 4:15:5/ page 115
+    General
+      A 3-bladed Hmilton Standard, hydrodynamic, constant-speed, full feathering propeller is installed on each engine.
+	   a. Gear Ratio  -  0.5:1    Anti-Icing  -  Alcohol
+	   b. Propellor pitch settings are as follows (meassured at 72'' blade station)
+	       low pitch-10°   high pitch-42°   feathered-83°
 -->
 
 <propeller version="1.01" name="prop">
   <ixx> 194.554 </ixx>
   <diameter unit="IN"> 160 </diameter>
-  <numblades> 4 </numblades><!--4-->
+  <numblades> 3 </numblades><!--4-->
   <gearratio> 1.91867 </gearratio>
   <cp_factor> 1.00 </cp_factor>
-  <ct_factor> 4 </ct_factor> <!-- set to match the number of blades -->
-  <minpitch> 12 </minpitch>
-  <maxpitch> 45 </maxpitch>
+  <ct_factor> 3 </ct_factor> <!-- set to match the number of blades -->
+  <minpitch> 10 </minpitch><!--12-->
+  <maxpitch> 42 </maxpitch><!--45-->
   <minrpm> 1196.14 </minrpm>
   <maxrpm> 1407.22 </maxrpm>
+  <!--constspeed>1</constspeed-->
 
  <!-- thrust coefficient as a function of advance ratio and blade angle -->
   <table name="C_THRUST" type="internal">

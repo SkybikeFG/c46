@@ -16,6 +16,7 @@
 	<object-name>EnginePropBlade2</object-name>
 	<object-name>EnginePropBlade3</object-name>
 	<object-name>EnginePropHubCap</object-name>
+	<object-name>EnginePropHub</object-name>
 	<object-name>EngineRExhaust</object-name>
 	<object-name>GearMainAxisRightEng</object-name>
 	<object-name>GearMainAxisLeftEng</object-name>
@@ -31,8 +32,54 @@
 	<object-name>GearMainWheelL</object-name>
 	<object-name>GearMainWheelR</object-name>
   </animation>
+  
+  <!-- Livery animation -->
+  <animation>
+	<type>material</type>
+	<object-name>EnginePropBlade</object-name>
+	<object-name>EnginePropBlade2</object-name>
+	<object-name>EnginePropBlade3</object-name>
+	<object-name>EnginePropHubCap</object-name>
+	<object-name>EnginePropHub</object-name>
+   <property-base>sim/model/livery</property-base>
+   <texture-prop>texture-propeller</texture-prop>
+   <texture>Propeller.png</texture>
+  </animation>
+ 
+  <animation>
+   <type>material</type>
+	<object-name>EngineMountR</object-name>
+	<object-name>EngineRExhaust</object-name>
+	<object-name>GearMainBaydoorL</object-name>
+	<object-name>GearMainBaydoorR</object-name>
+	<object-name>GearMainWheelL</object-name>
+	<object-name>GearMainWheelR</object-name>
+   <property-base>sim/model/livery</property-base>
+   <texture-prop>texture-wings</texture-prop>
+   <texture>Wings.png</texture>
+  </animation>
+  
+  <animation>
+   <object-name>EnginePropHubCap</object-name>
+   <type>select</type>
+    <condition>
+     <property>sim/model/livery/propeller-cone</property>
+	</condition>
+  </animation>
+  
+  <animation>
+   <object-name>EnginePropHub</object-name>
+   <type>select</type>
+   <condition>
+    <not>
+     <property>sim/model/livery/propeller-cone</property>
+    </not>
+   </condition>
+  </animation>
+  
+  
 
-<!--  Just for L E F T  E N G I N E [0] #  #-->
+<!--  Just for LEFT  ENGINE[0] #  #-->
  <animation><!--hide parts for right engine-->
   <object-name>GearMainAxisRightEng</object-name>
   <object-name>GearMainWheelR</object-name>
@@ -55,7 +102,8 @@
   <animation>
     <name>Prop</name>
     <object-name>Blades3D</object-name>
-	<object-name>EnginePropHubCap</object-name><!-- surfaces for fast turning missing-->
+	<object-name>EnginePropHubCap</object-name>
+	<object-name>EnginePropHub</object-name><!-- surfaces for fast turning missing-->
   </animation>
 
   <animation>

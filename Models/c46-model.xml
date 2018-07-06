@@ -37,32 +37,33 @@
  <object-name>yPitot</object-name>
  <object-name>yCables</object-name>
  <object-name>yGlideslope</object-name>
+ <object-name>yLoopAerialLowBack</object-name>
+ <object-name>yLoopAerialLowFront</object-name>
+ <object-name>yLoopAerialUp</object-name>
  <property-base>sim/model/livery</property-base>
  <texture-prop>texture-fuselage</texture-prop>
  <texture>USnavyFuselage.png</texture>
  </animation>
  
  <animation>
- <type>material</type>
- <object-name>AileronL</object-name>
- <object-name>AileronR</object-name>
- <object-name>FlapsLCenter</object-name>
- <object-name>FlapsLOUT</object-name>
- <object-name>FlapsRCenter</object-name>
- <object-name>FlapsROUT</object-name>
- <object-name>StabilizerL</object-name>
- <object-name>StabilizerLElevator</object-name>
- <object-name>StabilizerLElevatorTab</object-name>
- <object-name>StabilizerR</object-name>
- <object-name>StabilizerRElevator</object-name>
- <object-name>StabilizerRElevatorTab</object-name>
- <object-name>WingsR</object-name>
- <property-base>sim/model/livery</property-base>
- <texture-prop>texture-wings</texture-prop>
- <texture>Wings.png</texture>
+  <type>material</type>
+    <object-name>AileronL</object-name>
+    <object-name>AileronR</object-name>
+    <object-name>FlapsLCenter</object-name>
+    <object-name>FlapsLOut</object-name>
+    <object-name>FlapsRCenter</object-name>
+    <object-name>FlapsROut</object-name>
+    <object-name>StabilizerL</object-name>
+    <object-name>StabilizerLElevator</object-name>
+    <object-name>StabilizerLElevatorTab</object-name>
+    <object-name>StabilizerR</object-name>
+    <object-name>StabilizerRElevator</object-name>
+    <object-name>StabilizerRElevatorTab</object-name>
+    <object-name>WingR</object-name>
+    <property-base>sim/model/livery</property-base>
+   <texture-prop>texture-wings</texture-prop>
+   <texture>Wings.png</texture>
  </animation>
-
-
 
 <model>
  <path>Aircraft/c46/Models/Lights/beacon.xml</path>

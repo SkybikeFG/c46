@@ -27,13 +27,13 @@ Pressure - 29.92inHg(sealevel)
 <piston_engine name="propHamiltonStandard3Blade">
   <minmp unit="INHG">        10 </minmp>
   <maxmp unit="INHG">        52 </maxmp><!--21(aeromatic)-airmanitoba4-10-5-->
-  <displacement unit="IN3">2800 </displacement><!--aeromatic: 3798.92-->
+  <displacement unit="IN3">2804 </displacement><!--aeromatic: 3798.92-->
   <bore unit="IN">         5.75 </bore><!-- Unused-airmanitoba,page86-->
   <stroke unit="IN">       6    </stroke>
   <cylinders>             18    </cylinders>
   <cylinder-head-mass>    21.0 </cylinder-head-mass><!--guessed-->
   
-  <compression-ratio>6.75</compression-ratio>
+  <compression-ratio>6.65</compression-ratio><!--airmanitoba 86-->
   <sparkfaildrop>    0.1 </sparkfaildrop>
   <maxhp>         2000.0 </maxhp>
   <cycles>           4.0 </cycles>

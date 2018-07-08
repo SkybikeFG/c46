@@ -25,7 +25,7 @@ Developed under GNU-GPL for FlightGear FS.
   </rating>
 
   <flight-model>jsb</flight-model>
-  <aero>c46</aero>
+  <aero>Systems/c46</aero>
     <startup>
       <splash-texture>Aircraft/c46/splash.png</splash-texture>
 	  <splash-texture>Aircraft/c46/splash1.png</splash-texture>

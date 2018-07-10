@@ -112,7 +112,9 @@
        <roll>     0.00 </roll>
         <yaw>     0.00 </yaw>
     </orient>
-    <feed> 0 </feed>
+    <!-- 9 Jul 18 - changed from "0" -->
+	<feed>2</feed>
+	
 
     <thruster file="HamiltonStandard3Blade">
      <sense> 1 </sense>
@@ -140,7 +142,8 @@
        <roll>     0.00 </roll>
         <yaw>     0.00 </yaw>
     </orient>
-    <feed> 1 </feed>
+    <!-- 9 Jul 18 - changed from "1" -->
+	<feed>3</feed>
 
     <thruster file="HamiltonStandard3Blade">
      <sense> 1 </sense>
@@ -157,7 +160,8 @@
     </thruster>
   </engine>
   
-<!--  #   #   #   #   F U E L   T A N K  -->
+<!--  #   #   #   #   F U E L   T A N K S  #   #   #   #   -->
+<!-- Original Configuration 
   <tank type="FUEL" number="0">
      <location unit="M">
        <x>   8.87 </x>
@@ -184,11 +188,103 @@
      </location>
      <capacity unit="LBS"> 3810.72 </capacity>
      <contents unit="LBS"> 1905.36 </contents>
+  </tank> -->
+  
+  <!-- 9 Jul 18 - Updated configuration using DC3 model and JSBSim tutorial -->
+  <!-- 1422 gallons total - not sure about the unusable exactly -->
+  <!-- Engines are fed from simulated "collector" tanks, 6 and 7 -->
+  
+  <tank type="FUEL" number="0"> <!-- Aft left - 175 gal at full -->
+     <location unit="M">
+       <x>2.810</x>
+       <y>2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">1085.00</capacity>
+     <contents unit="LBS">1085</contents>
   </tank>
-
+  
+  <tank type="FUEL" number="1"> <!-- Aft right - 175 gal at full -->
+     <location unit="M">
+       <x>2.810</x>
+       <y>-2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">1085.00</capacity>
+     <contents unit="LBS">1085</contents>
+  </tank>
+  
+  <tank type="FUEL" number="2"> <!-- Center left - 292 gal at full -->
+     <location unit="M">
+       <x>3.749</x>
+       <y>2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">1810.42</capacity>
+     <contents unit="LBS">1810</contents>
+  </tank>
+  
+  <tank type="FUEL" number="3"> <!-- Center right - 292 gal at full -->
+     <location unit="M">
+       <x>3.749</x>
+       <y>-2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">1810.42</capacity>
+     <contents unit="LBS">1810</contents>
+  </tank>
+  
+  <tank type="FUEL" number="4"> <!-- Fwd left - 244 gal at full -->
+     <location unit="M">
+       <x>3.749</x>
+       <y>2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">1512.80</capacity>
+     <contents unit="LBS">1512</contents>
+  </tank>
+  
+  <tank type="FUEL" number="5"> <!-- Fwd right - 244 gal at full -->
+     <location unit="M">
+       <x>3.749</x>
+       <y>-2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">1512.80</capacity>
+     <contents unit="LBS">1512</contents>
+  </tank>
+  
+  <!-- see /Systems/fuel.xml for details on how these are fed -->
+  <tank type="FUEL" number="6"> <!-- Collector - left engine - .5 gal at full -->
+     <location unit="M">
+       <x>3.749</x>
+       <y>2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">0.5</capacity>
+     <contents unit="LBS">0</contents>
+  </tank>
+  
+  <tank type="FUEL" number="7"> <!-- Collector - right engine - .5 gal at full -->
+     <location unit="M">
+       <x>3.749</x>
+       <y>-2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">0.5</capacity>
+     <contents unit="LBS">0</contents>
+  </tank>
+  
+  
+  
  </propulsion>
 
+ <!-- 
  <system file="fuel"/>
+ -->
+  
+ <consumables include="Consumables.xml"/>
+ 
  
  
  <ground_reactions>

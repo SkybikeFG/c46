@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+  
+  <fuel>
+    <tank n="0">
+      <level-gal_us>350</level-gal_us>
+	  <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+    <tank n="1">
+      <level-gal_us>350</level-gal_us>
+	  <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+    <tank n="2">
+      <level-gal_us>350</level-gal_us>
+	  <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+    <tank n="3">
+      <level-gal_us>350</level-gal_us>
+	  <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+	<tank n="4">
+      <level-gal_us>350</level-gal_us>
+	  <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+	<tank n="5">
+      <level-gal_us>350</level-gal_us>
+	  <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+  </fuel>
+  
+</PropertyList>

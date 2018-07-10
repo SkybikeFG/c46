@@ -26,11 +26,11 @@ Developed under GNU-GPL for FlightGear FS.
 
   <flight-model>jsb</flight-model>
   <aero>Systems/c46</aero>
-    <startup>
-      <splash-texture>Aircraft/c46/splash.png</splash-texture>
-	  <splash-texture>Aircraft/c46/splash1.png</splash-texture>
-	  <!--splash-title>Text</splash-title-->
-    </startup>
+  <startup>
+	<splash-texture>Aircraft/c46/splash.png</splash-texture>
+    <splash-texture>Aircraft/c46/splash1.png</splash-texture>
+	<!--splash-title>Text</splash-title-->
+  </startup>
 
   <tags>
       <tag>1940s</tag>
@@ -146,21 +146,7 @@ Developed under GNU-GPL for FlightGear FS.
   </c46>
 </nasal>
 
- <consumables>
-	 <fuel>
-		 <tank n="0">
-			 <level-gal_us>350</level-gal_us>
-		 </tank>
-		 <tank n="1">
-			 <level-gal_us>350</level-gal_us>
-		 </tank>
-		 <tank n="2">
-			 <level-gal_us>350</level-gal_us>
-		 </tank>
 
-	 </fuel>
- </consumables>
- 
 <controls>
   <flight>
     <elevator-trim>0.0</elevator-trim>

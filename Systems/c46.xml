@@ -88,13 +88,31 @@
      <y>    0.00 </y>
      <z>   -0.83 </z>
    </location>
-   <pointmass name="Payload">
+   <pointmass name="Payload"> <!-- n=0 - "Cargo" in payload.xml -->
     <description> 1162.81 LBS should bring model up to entered max weight </description>
     <weight unit="LBS"> 581.41 </weight>
     <location name="POINTMASS" unit="M">
-     <x>   8.87 </x>
-     <y>     0.00 </y>
-     <z>   0 </z>
+     <x> 8.87 </x>
+     <y> 0.00 </y>
+     <z> 0 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Pilot"> <!-- n=1 -->
+    <description></description>
+    <weight unit="LBS"> 185.00 </weight>
+    <location name="POINTMASS" unit="M">
+     <x> 8.87 </x>
+     <y> 0.00 </y>
+     <z> 0 </z>>
+   </location>
+  </pointmass>
+  <pointmass name="CoPilot"> <!-- n=2 -->
+    <description></description>
+    <weight unit="LBS"> 185.00 </weight>
+    <location name="POINTMASS" unit="M">
+     <x> 8.87 </x>
+     <y> 0.00 </y>
+     <z> 0 </z>
    </location>
   </pointmass>
  </mass_balance>
@@ -112,7 +130,7 @@
        <roll>     0.00 </roll>
         <yaw>     0.00 </yaw>
     </orient>
-    <!-- 9 Jul 18 - changed from "0" -->
+    <!-- 9 Jul 18 - changed from "0" - needs to be set here until we get fuel system completed -->
 	<feed>2</feed>
 	
 
@@ -142,7 +160,7 @@
        <roll>     0.00 </roll>
         <yaw>     0.00 </yaw>
     </orient>
-    <!-- 9 Jul 18 - changed from "1" -->
+    <!-- 9 Jul 18 - changed from "1" - needs to be set here until we get fuel system completed -->
 	<feed>3</feed>
 
     <thruster file="HamiltonStandard3Blade">
@@ -282,8 +300,8 @@
  <!-- 
  <system file="fuel"/>
  -->
-  
- <consumables include="Consumables.xml"/>
+ 
+ 
  
  
  

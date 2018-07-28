@@ -3,28 +3,29 @@
 <PropertyList>
   
   <fuel>
-    <tank n="0">
-      <level-gal_us>350</level-gal_us>
-	  <unusable-gal_us>5.0</unusable-gal_us>
+    <tank n="0"> 
+	  <name>Aft Left</name>
+      <unusable-gal_us>5.0</unusable-gal_us>
     </tank>
-    <tank n="1">
-      <level-gal_us>350</level-gal_us>
-	  <unusable-gal_us>5.0</unusable-gal_us>
+    <tank n="1"> <name>Aft Right</name>
+      <unusable-gal_us>5.0</unusable-gal_us>
     </tank>
-    <tank n="2">
-      <level-gal_us>350</level-gal_us>
-	  <unusable-gal_us>5.0</unusable-gal_us>
+    <tank n="2"> <name>Center Left</name>
+      <unusable-gal_us>5.0</unusable-gal_us>
     </tank>
-    <tank n="3">
-      <level-gal_us>350</level-gal_us>
-	  <unusable-gal_us>5.0</unusable-gal_us>
+    <tank n="3"> <name>Center Right</name>
+      <unusable-gal_us>5.0</unusable-gal_us>
     </tank>
-	<tank n="4">
-      <level-gal_us>350</level-gal_us>
-	  <unusable-gal_us>5.0</unusable-gal_us>
+	<tank n="4"> <name>Forward Left</name>
+      <unusable-gal_us>5.0</unusable-gal_us>
     </tank>
-	<tank n="5">
-      <level-gal_us>350</level-gal_us>
+	<tank n="5"> <name>Forward Right</name>
+      <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+	<tank n="6"> <name>Feeder Left</name>
+      <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+	<tank n="7"> <name>Feeder Right</name>
 	  <unusable-gal_us>5.0</unusable-gal_us>
     </tank>
   </fuel>

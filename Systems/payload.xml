@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+   <weight>
+     <name type="string">Cargo</name>
+     <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+     <min-lb type="double">0.0</min-lb>
+     <max-lb type="double">5000</max-lb>
+  </weight>
+   <weight>
+     <name type="string">Pilot</name>
+     <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+     <min-lb type="double">0.0</min-lb>
+     <max-lb type="double">250.0</max-lb>
+  </weight>
+  <weight>
+     <name type="string">Co-Pilot</name>
+     <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+     <min-lb type="double">0.0</min-lb>
+     <max-lb type="double">250.0</max-lb>
+  </weight>
+</PropertyList>

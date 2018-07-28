@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+    <checklist>
+        <title>Before Start Checklist</title>
+        <page>
+            <item>
+                <name>Pedestal - Cross Over Valve</name>
+                <value>Down</value>                
+            </item>
+            <item>
+                <name>Pedestal - Emergency Brake Valve</name>
+                <value>Down</value>                
+            </item>
+            <item>
+                <name>Pedestal - Glider Release</name>
+				<value>Down</value>
+			</item>
+			<item>
+                <name>Pedestal - Carburetor Filter Doors</name>
+				<value>Down</value>
+			</item>
+			<item>
+                <name>Pedestal - Parking Brake</name>
+				<value>On</value>
+			</item>
+			<item>
+                <name>Pedestal - Super Chargers</name>
+				<value>Low Blower</value>
+			</item>
+			<item>
+                <name>Pedestal - Carburetor Heat</name>
+				<value>Cold</value>
+			</item>
+			<item>
+                <name>Pedestal - Landing Gear Handle</name>
+				<value>Down and Latched</value>
+			</item>
+			<item>
+                <name>Pedestal - Wing Flaps</name>
+				<value>Up</value>
+			</item>
+			<item>
+                <name>Pedestal - Tailwheel</name>
+				<value>Locked</value>
+			</item>
+			<item>
+                <name>Pedestal - Prop Selector Switches</name>
+				<value>Auto</value>
+			</item>			
+        </page>
+		<page>
+			<item>
+                <name>Circuit Breakers</name>
+				<value>In</value>
+			</item>
+			<item>
+                <name>Feather Switches</name>
+				<value>Normal</value>
+			</item>
+			<item>
+                <name>Aileron tabs</name>
+				<value>Free and Clear</value>
+			</item>
+			<item>
+                <name>Rudder tabs</name>
+				<value>Free and Clear</value>
+			</item>
+			<item>
+                <name>Elevator tabs</name>
+				<value>Free and Clear</value>
+			</item>
+			<item>
+                <name>Control Booster Shut Off</name>
+				<value>On</value>
+			</item>
+			<item>
+                <name>Oil Cooler Shutters</name>
+				<value>Closed</value>
+			</item>
+			<item>
+                <name>Mixture Controls</name>
+				<value>Idle Cut Off</value>
+			</item>
+			<item>
+                <name>Prop Governors</name>
+				<value>Full Forward</value>
+			</item>
+			<item>
+                <name>Throttles</name>
+				<value>Cracked (1/4 up)</value>
+			</item>
+			<item>
+                <name>Cowl Flaps</name>
+				<value>Open</value>
+			</item>
+		</page>
+		<page>
+			<item>
+                <name>Pilot Sill - Pilot Anti Ice Valve</name>
+				<value>Off</value>
+			</item>
+			<item>
+                <name>Pilot Sill - Nose Valve</name>
+				<value>As Desired</value>
+			</item>
+			<item>
+                <name>Pilot Sill - Fuel Selector Valve</name>
+				<value>As Desired</value>
+			</item>
+		</page>
+		<page>
+			<item>
+                <name>Front Panel - Airspeed Selector Valve</name>
+				<value>Airspeed Tube</value>
+			</item>
+			<item>
+                <name>Front Panel - Autopilot Bleed</name>
+				<value>Normal</value>
+			</item>
+			<item>
+                <name>Front Panel - Autopilot Shutoff</name>
+				<value>Off</value>
+			</item>
+		</page>
+		<page>
+			<item>
+                <name>Copilot Sill - Pitot Blowout Valve</name>
+				<value>Instruments</value>
+			</item>
+			<item>
+                <name>Copilot Sill - Accumulator Shutoff Valve</name>
+				<value>Down</value>
+			</item>
+			<item>
+                <name>Copilot Sill - Pitot Heat Switches</name>
+				<value>Off</value>
+			</item>
+		</page>
+		<page>
+			<item>
+                <name>Overhead - Light Switches</name>
+				<value>Off</value>
+			</item>
+			<item>
+                <name>Overhead - Anti Ice Switches</name>
+				<value>Off</value>
+			</item>
+			<item>
+                <name>Overhead - Radios</name>
+				<value>Off</value>
+			</item>
+			<item>
+                <name>Overhead - Circuit Breakers</name>
+				<value>Off</value>
+			</item>
+			<item>
+                <name>Overhead - Heaters</name>
+				<value>Off</value>
+			</item>
+		</page>
+    </checklist>
+
+    
+</PropertyList>

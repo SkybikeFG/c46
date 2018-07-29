@@ -140,7 +140,9 @@ Developed under GNU-GPL for FlightGear FS.
    </flaps>
    
    <!-- 27 Jul 18 -->
+   <!-- This works. Waiting on more cockpit items. TODO
    <checklists include="Tutorials/c46-checklists.xml"/>
+   -->
 
  </sim>
  

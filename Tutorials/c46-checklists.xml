@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-
+ <group>
+   <name>Preflight</name>
     <checklist>
         <title>Before Start Checklist</title>
         <page>
@@ -162,5 +163,238 @@
 		</page>
     </checklist>
 
-    
+	<checklist>
+        <title>Engine Start Checklist</title>
+        <page>
+            <item>
+                <name>Battery Switches</name>
+                <value>On</value>                
+            </item>
+			<item>
+                <name>Master and Ignition Switches</name>
+                <value>On</value>                
+            </item>
+			<item>
+                <name>Inverter Switch</name>
+                <value>On</value>                
+            </item>
+			<item>
+                <name>Generator Switches</name>
+                <value>On</value>                
+            </item>
+			<item>
+                <name>Fuel Gauges</name>
+                <value>Check Quantity</value>                
+            </item>
+			<item>
+                <name>Booster/Sump Pump Switches</name>
+                <value>On</value>                
+            </item>
+			<item>
+                <name>Engine Starter</name>
+                <value>On</value>                
+            </item>
+		</page>
+		<page>
+			<item>
+                <name>Engine Running - Boost Pump Switch</name>
+                <value>Off</value>                
+            </item>
+			<item>
+                <name>Engine Running - Battery Switches</name>
+                <value>On</value>                
+            </item>
+			<item>
+                <name>Engine Running - Lights</name>
+                <value>As Needed</value>                
+            </item>
+		</page>
+	</checklist>
+  </group>
+  
+  <group>
+  <name>Taxi, Runup, Takeoff</name>
+	<checklist>
+	<title>Before Taxi</title>
+		
+		<item>
+			<name>Crew on board, Hatches secure, Ladder in</name>
+			<value>Verify</value>                
+		</item>
+		<item>
+			<name>Hydraulic Pressure - Booster</name>
+			<value>750-1050 psi</value>                
+		</item>
+		<item>
+			<name>Hydraulic Pressure - Main</name>
+			<value>1050-1350 psi</value>                
+		</item>
+		<item>
+			<name>Radios</name>
+			<value>On</value>                
+		</item>
+		<item>
+			<name>Altimeter</name>
+			<value>Set</value>                
+		</item>
+		<item>
+			<name>Clock</name>
+			<value>Set</value>                
+		</item>
+		<item>
+			<name>Gyros</name>
+			<value>Set</value>                
+		</item>
+		<item>
+			<name>Flight Controls</name>
+			<value>Free</value>                
+		</item>
+		<item>
+			<name>Chocks</name>
+			<value>Removed</value>                
+		</item>
+		<item>
+			<name>Clearance to move</name>
+			<value>Obtained</value>                
+		</item>
+		<item>
+			<name>Parking Brake</name>
+			<value>Off</value>                
+		</item>
+		<item>
+			<name>Tail Wheel</name>
+			<value>Unlocked</value>                
+		</item>		
+		
+	</checklist>
+	
+	<checklist>
+	<title>Engine Run Up</title>
+		<item>
+			<name>Parking Brake</name>
+			<value>On</value>                
+		</item>	
+		<item>
+			<name>Tail Wheel</name>
+			<value>Locked (if straight)</value>                
+		</item>	
+		<item>
+			<name>Fuel Booster Pumps</name>
+			<value>Off</value>                
+		</item>	
+		<item>
+			<name>Oil Coolers</name>
+			<value>As Desired</value>                
+		</item>	
+		<item>
+			<name>Mixture</name>
+			<value>Autorich</value>                
+		</item>	
+		<item>
+			<name>Cowl Flaps</name>
+			<value>Open</value>                
+		</item>	
+		<item>
+			<name>Fuel Selector</name>
+			<value>Takeoff Tanks</value>                
+		</item>	
+		<item>
+			<name>Check Engine Gauges</name>
+			<value>Proper Readings</value>                
+		</item>
+		<item>
+			<name>Check Superchargers, then return to LOW</name>
+			<value>Proper Readings</value>                
+		</item>
+		<item>
+			<name>Check Carburetor Heat, then return to COLD</name>
+			<value>Proper Readings</value>                
+		</item>
+		<item>
+			<name>Check Generators</name>
+			<value>Proper Readings</value>                
+		</item>
+		<item>
+			<name>Check Manual Prop Controls</name>
+			<value>Proper Readings</value>                
+		</item>
+		<item>
+			<name>Check Magnetos</name>
+			<value>Proper Readings</value>                
+		</item>
+		<item>
+			<name>Check Pitot Heaters</name>
+			<value>Proper Readings</value>                
+		</item>
+		<item>
+			<name>Check Suction Gauge</name>
+			<value>Proper Readings</value>                
+		</item>
+	</checklist>
+	
+	<checklist>
+	<title>Before Takeoff</title>
+		<item>
+			<name>Prop Selector Switches</name>
+			<value>Auto</value>                
+		</item>
+		<item>
+			<name>Circuit Breakers</name>
+			<value>In</value>                
+		</item>
+		<item>
+			<name>Booster Pumps</name>
+			<value>On</value>                
+		</item>
+		<item>
+			<name>Trim Tabs</name>
+			<value>Neutral</value>                
+		</item>
+		<item>
+			<name>Control Boost</name>
+			<value>On</value>                
+		</item>
+		<item>
+			<name>Mixtures</name>
+			<value>Auto Rich</value>                
+		</item>
+		<item>
+			<name>Prop Controls</name>
+			<value>Full Forward</value>                
+		</item>
+		<item>
+			<name>Cowl Flaps</name>
+			<value>Trail</value>                
+		</item>
+		<item>
+			<name>Fuel Selector Valves</name>
+			<value>Takeoff Tanks</value>                
+		</item>
+		<item>
+			<name>Gyro Instruments</name>
+			<value>Set and Uncaged</value>                
+		</item>
+		<item>
+			<name>Engine Instruments</name>
+			<value>Normal Readings</value>                
+		</item>	
+	</checklist>
+	
+	<checklist>
+	<title>Takeoff</title>
+		<item>
+			<name>Friction Locks</name>
+			<value>Tightened</value>                
+		</item>
+		<item>
+			<name>Tailwheel</name>
+			<value>Locked</value>                
+		</item>	
+		<item>
+			<name>Flight Controls</name>
+			<value>Free</value>                
+		</item>	
+	
+	</checklist>
+  </group>
 </PropertyList>

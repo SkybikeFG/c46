@@ -126,7 +126,7 @@ Developed under GNU-GPL for FlightGear FS.
 	    <command>nasal</command>
 		<script>aircraft.livery.dialog.open();</script>
 	   </binding>
-	 </item>
+	 </item>	 
     </menu>
    </default>
   </menubar>
@@ -138,6 +138,10 @@ Developed under GNU-GPL for FlightGear FS.
     <setting>0.71</setting>
     <setting>1.00</setting>
    </flaps>
+   
+   <!-- 27 Jul 18 -->
+   <checklists include="Tutorials/c46-checklists.xml"/>
+
  </sim>
  
  <nasal>
@@ -156,9 +160,6 @@ Developed under GNU-GPL for FlightGear FS.
 
 <!-- 27 Jul 18 -->
 <payload include="Systems/payload.xml"/>
-
-<!-- 27 Jul 18 -->
-<checklists include="Tutorials/c46-checklists.xml"/>
 
 
 <!-- TODO

@@ -55,7 +55,8 @@
        <function>
           <product>
             <property> fcs/rudder-pos-norm </property>
-            <value> 12.0 </value><!--Strenth of steering-->
+            <!-- 3 Aug 18 - changed from 12 to 0 to simulate no steering with tail wheel -->
+			<value> 0 </value><!--Strenth of steering-->
           </product>
        </function>
        <output>fcs/steer-pos-deg[2]</output>

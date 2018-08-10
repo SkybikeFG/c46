@@ -143,7 +143,7 @@ Developed under GNU-GPL for FlightGear FS.
    <!-- This works. Waiting on more cockpit items. TODO
    <checklists include="Tutorials/c46-checklists.xml"/>
    -->
-
+  <help include="Help/c46-help.xml"/>
  </sim>
  
  <nasal>
@@ -154,8 +154,6 @@ Developed under GNU-GPL for FlightGear FS.
 	<file>Aircraft/Instruments-3d/garmin196/garmin196.nas</file>
   </c46>
 </nasal>
-
-<help include="Help/c46-help.xml"/>
 
 <!-- 27 Jul 18 -->
 <consumables include="Systems/consumables.xml"/>

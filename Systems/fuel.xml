@@ -277,15 +277,4 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
 
 
   
-  <!-- Aft left -->
-  <tank x="2.810" y=" 2.341" z="-1.258" capacity="1085"/>
-	<!-- Center left -->
-  <tank x="3.749" y=" 2.341" z="-1.258" capacity="1810"/> 
-  <!-- Fwd left -->
-  <tank x="3.749" y=" 2.341" z="-1.258" capacity="1512"/> 
-  <!-- Main right -->
-  <tank x="3.749" y="-2.341" z="-1.258" capacity="1260"/> 
-  <!-- Fwd right -->
-  <tank x="3.749" y="-2.341" z="-1.258" capacity="1810"/> 
-  <!-- Aft right -->
-  <tank x="2.810" y="-2.341" z="-1.258" capacity="1085"/> 
+ 

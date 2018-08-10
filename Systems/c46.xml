@@ -92,7 +92,7 @@
     <description> 1162.81 LBS should bring model up to entered max weight </description>
     <weight unit="LBS"> 581.41 </weight>
     <location name="POINTMASS" unit="M">
-     <x> 8.87 </x>
+     <x> 10 </x>
      <y> 0.00 </y>
      <z> 0 </z>
    </location>
@@ -101,8 +101,8 @@
     <description></description>
     <weight unit="LBS"> 185.00 </weight>
     <location name="POINTMASS" unit="M">
-     <x> 8.87 </x>
-     <y> 0.00 </y>
+     <x> 1.5 </x>
+     <y> 0.25 </y>
      <z> 0 </z>>
    </location>
   </pointmass>
@@ -110,8 +110,8 @@
     <description></description>
     <weight unit="LBS"> 185.00 </weight>
     <location name="POINTMASS" unit="M">
-     <x> 8.87 </x>
-     <y> 0.00 </y>
+     <x> 1.5 </x>
+     <y> -0.25 </y>
      <z> 0 </z>
    </location>
   </pointmass>
@@ -214,9 +214,9 @@
   
   <tank type="FUEL" number="0"> <!-- Aft left - 175 gal at full -->
      <location unit="M">
-       <x>2.810</x>
-       <y>2.341</y>
-       <z>-1.258</z>
+       <x>10.0</x>
+       <y>-7.15</y>
+       <z>-1.5</z>
      </location>
      <capacity unit="LBS">1085.00</capacity>
      <contents unit="LBS">1085</contents>
@@ -224,9 +224,9 @@
   
   <tank type="FUEL" number="1"> <!-- Aft right - 175 gal at full -->
      <location unit="M">
-       <x>2.810</x>
-       <y>-2.341</y>
-       <z>-1.258</z>
+       <x>10.0</x>
+       <y>7.15</y>
+       <z>-1.5</z>
      </location>
      <capacity unit="LBS">1085.00</capacity>
      <contents unit="LBS">1085</contents>
@@ -234,9 +234,9 @@
   
   <tank type="FUEL" number="2"> <!-- Center left - 292 gal at full -->
      <location unit="M">
-       <x>3.749</x>
-       <y>2.341</y>
-       <z>-1.258</z>
+       <x>8.95</x>
+       <y>-7.15</y>
+       <z>-1.5</z>
      </location>
      <capacity unit="LBS">1810.42</capacity>
      <contents unit="LBS">1810</contents>
@@ -244,9 +244,9 @@
   
   <tank type="FUEL" number="3"> <!-- Center right - 292 gal at full -->
      <location unit="M">
-       <x>3.749</x>
-       <y>-2.341</y>
-       <z>-1.258</z>
+       <x>8.95</x>
+       <y>7.15</y>
+       <z>-1.5</z>
      </location>
      <capacity unit="LBS">1810.42</capacity>
      <contents unit="LBS">1810</contents>
@@ -254,9 +254,9 @@
   
   <tank type="FUEL" number="4"> <!-- Fwd left - 244 gal at full -->
      <location unit="M">
-       <x>3.749</x>
-       <y>2.341</y>
-       <z>-1.258</z>
+       <x>7.825</x>
+       <y>-7.15</y>
+       <z>-1.5</z>
      </location>
      <capacity unit="LBS">1512.80</capacity>
      <contents unit="LBS">1512</contents>
@@ -264,9 +264,9 @@
   
   <tank type="FUEL" number="5"> <!-- Fwd right - 244 gal at full -->
      <location unit="M">
-       <x>3.749</x>
-       <y>-2.341</y>
-       <z>-1.258</z>
+       <x>7.825</x>
+       <y>7.15</y>
+       <z>-1.5</z>
      </location>
      <capacity unit="LBS">1512.80</capacity>
      <contents unit="LBS">1512</contents>
@@ -276,7 +276,7 @@
   <tank type="FUEL" number="6"> <!-- Collector - left engine - .5 gal at full -->
      <location unit="M">
        <x>3.749</x>
-       <y>2.341</y>
+       <y>-2.341</y>
        <z>-1.258</z>
      </location>
      <capacity unit="LBS">0.5</capacity>
@@ -286,7 +286,7 @@
   <tank type="FUEL" number="7"> <!-- Collector - right engine - .5 gal at full -->
      <location unit="M">
        <x>3.749</x>
-       <y>-2.341</y>
+       <y>2.341</y>
        <z>-1.258</z>
      </location>
      <capacity unit="LBS">0.5</capacity>

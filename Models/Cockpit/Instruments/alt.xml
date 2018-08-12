@@ -12,9 +12,9 @@
   <object-name>Needle1000</object-name>
   <object-name>Needle100</object-name>
   <emission>
-    <red>  0.028</red>
+    <red>0.028</red>
     <green>0.014</green>
-    <blue> 0.007</blue>
+    <blue>0.007</blue>
     <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
   </emission>
  </animation>
@@ -23,9 +23,9 @@
   <type>material</type>
   <object-name>disk</object-name>
   <emission>
-   <red>0.45</red>
-   <green>0.09</green>
-   <blue>0.00001</blue>
+   <red>0.0004</red>
+   <green>0.0004</green>
+   <blue>0.0004</blue>
    <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
   </emission>
  </animation>

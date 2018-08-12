@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<!--Written by Arnd Lebert for c46 08/08/2018
+    needs warningLightOrange (also for Red) and the texture fireWarning
+	a light begins to blink as soon as the oil pressure reaches 95psi-->
+<PropertyList>
+
+  <path>warningLightOrange.ac</path>
+
+  <animation>
+    <object-name>Base</object-name>
+    <object-name>LightOrange</object-name>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>LightOrange</object-name>
+	<condition>
+	  <and>
+        <greater-than>
+          <property>/fdm/jsbsim/propulsion/engine[0]/oil-pressure-psi</property>
+          <value>92</value><!--should be 95psi, but its boring then-->
+        </greater-than>
+		<greater-than>
+		  <expression>
+            <mod>
+              <property>/sim/time/mp-clock-sec</property>
+			  <value>1</value>
+			</mod>
+          </expression>
+		  <value>0.5</value>
+		</greater-than>
+	  </and>
+    </condition>
+    <emission>
+	   <red>1.0</red>
+       <green>0.5</green>
+       <blue>0.1</blue>
+       <factor>100</factor>
+    </emission>
+  </animation>
+
+</PropertyList>
+

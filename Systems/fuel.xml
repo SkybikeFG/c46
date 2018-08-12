@@ -41,7 +41,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
          <test logic="AND" value="0.5">
             /controls/fuel/left-valve EQ 2               
             propulsion/tank[2]/contents-lbs GT 0
-            /consumables/fuel/tank[4]/level-lbs LT 0.25
+            /consumables/fuel/tank[6]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
          </test>            
          <test logic="AND" value="0.5">
@@ -147,7 +147,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
          <test logic="AND" value="0.5">
             /controls/fuel/right-valve EQ 2               
             propulsion/tank[2]/contents-lbs GT 0
-            /consumables/fuel/tank[4]/level-lbs LT 0.25
+            /consumables/fuel/tank[7]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
          </test>            
          <test logic="AND" value="0.5">

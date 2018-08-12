@@ -46,6 +46,7 @@ Developed under GNU-GPL for FlightGear FS.
   <startup>
 	<splash-texture>Aircraft/c46/splash.png</splash-texture>
     <splash-texture>Aircraft/c46/splash1.png</splash-texture>
+	<splash-texture>Aircraft/c46/splash3.png</splash-texture>
 	<!--splash-title>Text</splash-title-->
   </startup>
   

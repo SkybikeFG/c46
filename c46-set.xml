@@ -20,7 +20,7 @@ Developed under GNU-GPL for FlightGear FS.
   <rating>
    <FDM type="int">2</FDM>
    <systems type="int">0</systems>
-   <cockpit type="int">1</cockpit>
+   <cockpit type="int">2</cockpit>
    <model type="int">3</model>
   </rating>
 
@@ -145,13 +145,13 @@ Developed under GNU-GPL for FlightGear FS.
    <checklists include="Tutorials/c46-checklists.xml"/>
    -->
   <help include="Help/c46-help.xml"/>
- </sim>
+</sim>
  
- <nasal>
+<nasal>
   <c46>
     <file>Aircraft/c46/Nasal/c46.nas</file>
+	<file>Aircraft/c46/Nasal/deicing.nas</file>
     <file>Aircraft/Generic/limits.nas</file>
-	<file>Aircraft/Instruments-3d/ki266/ki266.nas</file>
 	<file>Aircraft/Instruments-3d/garmin196/garmin196.nas</file>
   </c46>
 </nasal>
@@ -171,17 +171,22 @@ Developed under GNU-GPL for FlightGear FS.
   <flight>
     <elevator-trim>0.0</elevator-trim>
   </flight>
+  
+  <fuel>
+    <left-valve type="int">0</left-valve>
+    <right-valve type="int">1</right-valve>
+  </fuel>
 
- <gear>
-  <brake-parking>1</brake-parking>
- </gear>
+  <gear>
+    <brake-parking>1</brake-parking>
+  </gear>
 
- <lighting>
-  <strobe>1</strobe>
-  <beacon>1</beacon>
-  <landing-lights>1</landing-lights>
-  <nav-lights>1</nav-lights>
- </lighting>
+  <lighting>
+    <strobe>1</strobe>
+    <beacon>1</beacon>
+    <landing-lights>1</landing-lights>
+    <nav-lights>1</nav-lights>
+  </lighting>
 
 </controls>
 
@@ -198,9 +203,9 @@ Developed under GNU-GPL for FlightGear FS.
     <max-negative-g type="double">-1.0</max-negative-g>
     <max-positive-g type="double">2.5</max-positive-g>
     <vne type="double">234</vne>
-  </limits>
+</limits>
 
- <payload> 
+<payload> 
   <weight>
    <name type="string">Payload</name>
    <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs"/>

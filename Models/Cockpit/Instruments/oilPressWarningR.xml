@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?> 
 <!--Written by Arnd Lebert for c46 08/08/2018
     needs warningLightOrange (also for Red) and the texture fireWarning
-	a light begins to blink as soon as the oil pressure reaches 95psi-->
+	
+	a light begins to blink as soon as the oil pressure reaches 95psi (not sure about that)
+	
+	And it "will light up when the fuel pressure is below 45psi" (NorthlandAirManitoba 4:25:5)-->
 <PropertyList>
 
   <path>warningLightOrange.ac</path>
@@ -11,6 +14,7 @@
     <object-name>LightOrange</object-name>
   </animation>
 
+  <!--blink - above 95psi-->
   <animation>
     <type>material</type>
     <object-name>LightOrange</object-name>
@@ -18,7 +22,7 @@
 	  <and>
         <greater-than>
           <property>/fdm/jsbsim/propulsion/engine[1]/oil-pressure-psi</property>
-          <value>94</value><!--should be 95psi, but its boring then-->
+          <value>96</value><!--should be 95psi-->
         </greater-than>
 		<greater-than>
 		  <expression>
@@ -39,5 +43,28 @@
     </emission>
   </animation>
 
+  <!--constant - below 45psi-->
+  <animation>
+    <type>material</type>
+    <object-name>LightOrange</object-name>
+	<condition>
+	  <and>
+        <less-than>
+          <property>/fdm/jsbsim/propulsion/engine[1]/oil-pressure-psi</property>
+          <value>45</value><!--should be 45psi-->
+        </less-than>
+		<greater-than>
+          <property>/fdm/jsbsim/propulsion/engine[1]/oil-pressure-psi</property>
+          <value>2</value><!--engine not running-->
+		</greater-than>
+	  </and>
+    </condition>
+    <emission>
+	   <red>1.0</red>
+       <green>0.5</green>
+       <blue>0.1</blue>
+       <factor>100</factor>
+    </emission>
+  </animation>
 </PropertyList>
 

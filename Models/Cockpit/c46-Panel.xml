@@ -154,22 +154,143 @@
   |XXXXXX|_____|______|
   -->
   <model>
-    <path>Aircraft/Instruments-3d/adf/adf.xml</path>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/deIcingPress.xml</path>
     <offsets>
       <x-m>-10.715 </x-m>
-      <y-m> -0.420 </y-m>
-      <z-m> -0.250 </z-m>
+      <y-m> -0.560 </y-m>
+      <z-m> -0.280 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.560 </y-m>
+      <z-m> -0.280 </z-m>
     </offsets>
   </model>
   
   <model>
-    <path>Aircraft/Instruments-3d/ki206/ki206.xml</path>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/suction.xml</path>
     <offsets>
       <x-m>-10.715 </x-m>
-      <y-m> -0.315 </y-m>
-      <z-m> -0.250 </z-m>
+      <y-m> -0.480 </y-m>
+      <z-m> -0.280 </z-m>
     </offsets>
   </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.480 </y-m>
+      <z-m> -0.280 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/ki227_228.xml</path>
+    <offsets>
+      <x-m>-10.714 </x-m>
+      <y-m> -0.330 </y-m>
+      <z-m> -0.270 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
+    <offsets>
+      <x-m>-10.714 </x-m>
+      <y-m> -0.330 </y-m>
+      <z-m> -0.270 </z-m>
+    </offsets>
+  </model>
+  
+  
+ <!--2nd row-->
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/fuelQuantFord.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.700 </y-m>
+      <z-m> -0.390 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.700 </y-m>
+      <z-m> -0.390 </z-m>
+    </offsets>
+  </model>  
+  
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/fuelQuantCenter.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.600 </y-m>
+      <z-m> -0.390 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.600 </y-m>
+      <z-m> -0.390 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/fuelQuantAft.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.500 </y-m>
+      <z-m> -0.390 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.500 </y-m>
+      <z-m> -0.390 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/oilQuant.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.400 </y-m>
+      <z-m> -0.390 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.400 </y-m>
+      <z-m> -0.390 </z-m>
+    </offsets>
+  </model>  
+  
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/outsideTemp.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.310 </y-m>
+      <z-m> -0.380 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.310 </y-m>
+      <z-m> -0.380 </z-m>
+    </offsets>
+  </model>
+  
   
   <!-- C -->
   <!--_______________

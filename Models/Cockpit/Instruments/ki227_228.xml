@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <!--
+  Taken from the default Cessna C127p which is GNU GPL V2+
+  
   ADF based on ki227 by Torsten Dreyer
 -->
 
@@ -34,10 +36,10 @@
     <object-name>Marker</object-name>
     <object-name>HDGSelector</object-name>
     <emission>
-      <red>1.0</red>
-      <green>0.2</green>
-      <blue>0.0</blue>
-      <factor-prop>sim/model/material/instruments/factor</factor-prop>
+	   <red>0.028</red>
+       <green>0.014</green>
+       <blue>0.007</blue>
+       <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
     </emission>
   </animation>
 

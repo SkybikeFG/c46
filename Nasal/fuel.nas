@@ -25,7 +25,8 @@ var fuelpressTank = func(tank){
 	#var pressurePsi = getprop("/environment/pressure-psi");
 	#var airTemp = getprop("/environment/temperature-degc");
 	
-	var press = 17;
+	var press = 16.5;
+		
 	
 	#Tank 100% to 50% -> full pressure
 	if( levelNorm < 0.5 ){
@@ -33,12 +34,16 @@ var fuelpressTank = func(tank){
 		
 		if( levelGalUS < 20){#Overheating of sump pump when less than 20gal:
 			press = press - (10-levelGalUS/2);#linear 20gal (-0psi) to 0gal (-10psi)
-			
-			if(levelGalUS ==0){#empty, no pressure
-				press = 0;
-			}
 		}
 	}
+	
+	if(tank == getprop("/controls/fuel/left-valve") and getprop("controls/fuel/boostpumps-l-high")==1){
+		press = press + 2;}#boostpumps==1
+	if(tank == getprop("/controls/fuel/right-valve") and getprop("controls/fuel/boostpumps-r-high")==1){
+		press = press + 2;}
+		
+	if(levelGalUS ==0){#empty, no pressure
+		press = 0;}
 	# Add new calculations here:
 	
 	setprop("/consumables/fuel/tank["~tank~"]/pressure-pump-psi", press);

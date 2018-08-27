@@ -14,3 +14,7 @@ var armrestp = props.globals.initNode("/controls/seat/armrest-copilot",0,"BOOL")
 #Fuel pressure, needs more work
 setprop("/engines/engine[0]/fuel-psi-norm",18);
 setprop("/engines/engine[1]/fuel-psi-norm",18);
+
+#Instruments
+setprop("/systems/electrical/outputs/KNS80",28);
+setprop("/systems/electrical/outputs/comm[0]",28);

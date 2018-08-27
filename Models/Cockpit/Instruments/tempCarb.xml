@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?> 
+<!--2018 - Arnd Lebert - C46 - GNU GPLv2-->
 <!--Used A-26 carb temperature as instrument template-->
 <PropertyList>
 
@@ -25,10 +26,10 @@
   </animation>
 
 
-  <!--animation> 
+  <animation> 
     <type>rotate</type>
     <object-name>needleR</object-name>
-    <property>engines/engine[1]/carb-temp-degc</property>
+    <property>engines/engine[1]/carbtemp-degc</property>
     <interpolation>
       <entry><ind> -50 </ind><dep>  65 </dep></entry>
       <entry><ind>   0 </ind><dep>  34 </dep></entry>
@@ -51,7 +52,7 @@
   <animation> 
     <type>rotate</type>
     <object-name>needleL</object-name>
-    <property>engines/engine[0]/carb-temp-degc</property>
+    <property>engines/engine[0]/carbtemp-degc</property>
     <interpolation>
       <entry><ind> -50 </ind><dep> -65 </dep></entry>
       <entry><ind>   0 </ind><dep> -34 </dep></entry>
@@ -69,7 +70,7 @@
       <y> 0 </y>
       <z> 0 </z>
     </axis>
-  </animation-->
+  </animation>
 
 </PropertyList>
 

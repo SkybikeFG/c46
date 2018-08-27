@@ -463,44 +463,67 @@
     </offsets>
   </model>   
   
-  <!-- OLD INSTRUMENTS-->
+    <!-- D -->
+  <!--_______________
+   /  A  |  C  |  E  \
+  |______|_____|______|
+  |   B  |xxxxx|  F   |
+  |______|xxxxx|______|
+  -->
   <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/kr87-adf/kr87.xml</path>
-    <offsets>
-      <x-m>-10.720 </x-m>
-      <y-m> -0.087 </y-m>
-      <z-m> -0.260 </z-m>
-    </offsets>
-  </model>
-  
-  <model><!--COMM1/NAV1-->
-    <path>Aircraft/c46/Models/Cockpit/Instruments/kx165/kx165-1.xml</path>
-    <offsets>
-      <x-m>-10.720 </x-m>
-      <y-m> -0.087 </y-m>
-      <z-m> -0.210 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/kx165/kx165-2.xml</path>
-    <offsets>
-      <x-m>-10.720 </x-m>
-      <y-m>  0.087 </y-m>
-      <z-m> -0.210 </z-m>
-    </offsets>
-  </model>
-  
-  <model><!--COMM1/NAV1-->
     <path>Aircraft/c46/Models/Cockpit/Instruments/kma20/kma20.xml</path>
     <offsets>
-      <x-m>-10.350 </x-m>
-      <y-m>  0. </y-m>
-      <z-m> -0.40 </z-m>
+      <x-m>-10.360 </x-m>
+      <y-m> -0.255 </y-m>
+      <z-m> -0.320 </z-m>
     </offsets>
   </model>
   
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/kx165/kx165-1.xml</path>
+    <offsets>
+      <x-m>-10.360 </x-m>
+      <y-m> -0.255 </y-m>
+      <z-m> -0.320 </z-m>
+    </offsets>
+  </model>
   
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/ky196/ky196-comm2.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.145 </y-m>
+      <z-m> -0.320 </z-m>
+    </offsets>
+  </model>
   
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/kln94/kln94.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.145 </y-m>
+      <z-m> -0.370 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/kns80/kns80.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.145 </y-m>
+      <z-m> -0.20 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/kr85/kr85.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.144 </y-m>
+      <z-m> -0.26 </z-m>
+    </offsets>
+  </model>
+    
   <!-- E -->
   <!--_______________
    /  A  |  C  |XXXXX\
@@ -509,7 +532,6 @@
   |______|_____|______|
   -->
   <!--1st row-->
-<!--1st row-->
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/asi220.xml</path>
     <offsets>
@@ -622,4 +644,140 @@
       <z-m> -0.126 </z-m>
     </offsets>
   </model> 
+  
+  <!-- F -->
+  <!--_______________
+   /  A  |  C  |     \
+  |______|_____|______|
+  |   B  |  D  |XXXXXX|
+  |______|_____|XXXXXX|
+  -->
+  <!--1st row-->
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/flaps.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.320 </y-m>
+      <z-m> -0.290 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.320 </y-m>
+      <z-m> -0.290 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/hydPressMain.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.390 </y-m>
+      <z-m> -0.290 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.390 </y-m>
+      <z-m> -0.290 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/hydPressLeft.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.460 </y-m>
+      <z-m> -0.290 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.460 </y-m>
+      <z-m> -0.290 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/hydPressRight.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.530 </y-m>
+      <z-m> -0.290 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.530 </y-m>
+      <z-m> -0.290 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/voltAC.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.600 </y-m>
+      <z-m> -0.290 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.600 </y-m>
+      <z-m> -0.290 </z-m>
+    </offsets>
+  </model>
+  
+  <!--2nd row-->
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/warningLightRed.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.410 </y-m>
+      <z-m> -0.370 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/warningLightRed.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.430 </y-m>
+      <z-m> -0.370 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/warningLightRed.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.450 </y-m>
+      <z-m> -0.370 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/outsideTemp.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.500 </y-m>
+      <z-m> -0.390 </z-m>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.500 </y-m>
+      <z-m> -0.390 </z-m>
+    </offsets>
+  </model>
 </PropertyList>

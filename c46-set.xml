@@ -19,7 +19,7 @@ Developed under GNU-GPL for FlightGear FS.
   <minimum-fg-version>2017.2</minimum-fg-version>
   <rating>
    <FDM type="int">2</FDM>
-   <systems type="int">0</systems>
+   <systems type="int">1</systems>
    <cockpit type="int">2</cockpit>
    <model type="int">3</model>
   </rating>
@@ -153,6 +153,7 @@ Developed under GNU-GPL for FlightGear FS.
 	<file>Aircraft/c46/Nasal/deicing.nas</file>
     <file>Aircraft/Generic/limits.nas</file>
 	<file>Aircraft/Instruments-3d/garmin196/garmin196.nas</file>
+	 <file>Aircraft/c46/Nasal/fuel.nas</file>
   </c46>
 </nasal>
 
@@ -205,6 +206,7 @@ Developed under GNU-GPL for FlightGear FS.
     <vne type="double">234</vne>
 </limits>
 
+<!--
 <payload> 
   <weight>
    <name type="string">Payload</name>
@@ -213,7 +215,7 @@ Developed under GNU-GPL for FlightGear FS.
    <max-lb type="double">541.41</max-lb>
   </weight>
 </payload>
-
+-->
 
 <!--
 More:

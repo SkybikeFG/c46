@@ -23,10 +23,12 @@
       <unusable-gal_us>5.0</unusable-gal_us>
     </tank>
 	<tank n="6"> <name>Feeder Left</name>
-      <unusable-gal_us>5.0</unusable-gal_us>
+      <unusable-gal_us>0.1</unusable-gal_us>
+	  <hidden type="bool">true</hidden>
     </tank>
 	<tank n="7"> <name>Feeder Right</name>
-	  <unusable-gal_us>5.0</unusable-gal_us>
+	  <unusable-gal_us>0.1</unusable-gal_us>
+	  <hidden type="bool">true</hidden>
     </tank>
   </fuel>
   

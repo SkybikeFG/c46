@@ -131,7 +131,8 @@
         <yaw>     0.00 </yaw>
     </orient>
     <!-- 9 Jul 18 - changed from "0" - needs to be set here until we get fuel system completed -->
-	<feed>2</feed>
+	<feed>6</feed>
+	<!--<feed>2</feed>-->
 	
 
     <thruster file="HamiltonStandard3Blade">
@@ -161,7 +162,8 @@
         <yaw>     0.00 </yaw>
     </orient>
     <!-- 9 Jul 18 - changed from "1" - needs to be set here until we get fuel system completed -->
-	<feed>3</feed>
+	<feed>7</feed>
+	<!--<feed>3</feed>-->
 
     <thruster file="HamiltonStandard3Blade">
      <sense> 1 </sense>
@@ -281,6 +283,8 @@
      </location>
      <capacity unit="LBS">0.5</capacity>
      <contents unit="LBS">0</contents>
+     <priority>1</priority>
+     <hidden type="bool">true</hidden>
   </tank>
   
   <tank type="FUEL" number="7"> <!-- Collector - right engine - .5 gal at full -->
@@ -291,18 +295,15 @@
      </location>
      <capacity unit="LBS">0.5</capacity>
      <contents unit="LBS">0</contents>
+     <priority>1</priority>
+     <hidden type="bool">true</hidden>
   </tank>
   
   
   
  </propulsion>
 
- <!-- 
- <system file="fuel"/>
- -->
- 
- 
- 
+ <system file="fuel"/> 
  
  
  <ground_reactions>

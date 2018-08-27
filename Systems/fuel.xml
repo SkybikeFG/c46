@@ -27,41 +27,48 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/through-left-valve">
          <default value="0"/>
          <test logic="AND" value="0.5">
-            /controls/fuel/left-valve EQ 0               
-            propulsion/tank[0]/contents-lbs GT 0
+            /controls/fuel/left-valve EQ 0
+			propulsion/tank[0]/contents-lbs GT 0
             /consumables/fuel/tank[6]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
          </test>            
-         <test logic="AND" value="0.5">
+         <!--
+		 <test logic="AND" value="0.5">
             /controls/fuel/left-valve EQ 1
-            propulsion/tank[1]/contents-lbs GT 0
+            /consumables/fuel/tank[1]/empty EQ 0
             /consumables/fuel/tank[6]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
          </test>
+		 -->
          <test logic="AND" value="0.5">
             /controls/fuel/left-valve EQ 2               
             propulsion/tank[2]/contents-lbs GT 0
             /consumables/fuel/tank[6]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
-         </test>            
+         </test>
+			<!--
          <test logic="AND" value="0.5">
             /controls/fuel/left-valve EQ 3
-            propulsion/tank[3]/contents-lbs GT 0
+            /consumables/fuel/tank[3]/empty EQ 0
             /consumables/fuel/tank[6]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
          </test>
+		 -->		 
 		 <test logic="AND" value="0.5">
             /controls/fuel/left-valve EQ 4
             propulsion/tank[4]/contents-lbs GT 0
             /consumables/fuel/tank[6]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
          </test>
+		 <!--
 		 <test logic="AND" value="0.5">
             /controls/fuel/left-valve EQ 5
             propulsion/tank[5]/contents-lbs GT 0
             /consumables/fuel/tank[6]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
          </test>
+		 -->
+		 
          <output>propulsion/tank[6]/external-flow-rate-pps</output> <!-- Tank 6 filling -->
       </switch>
  
@@ -132,41 +139,47 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <!-- from selected 'actual' tank to Collector Tank 7 Fuel Flow Rate in pps -->
       <switch name="fuel/through-right-valve">
          <default value="0"/>
+		 <!--
          <test logic="AND" value="0.5">
             /controls/fuel/right-valve EQ 0               
             propulsion/tank[0]/contents-lbs GT 0
             /consumables/fuel/tank[7]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
-         </test>            
+         </test>  
+		-->		 
          <test logic="AND" value="0.5">
             /controls/fuel/right-valve EQ 1
             propulsion/tank[1]/contents-lbs GT 0
             /consumables/fuel/tank[7]/level-lbs LT 0.25
-            /engines/engine[0]/fuel-psi-norm GT 5
+            /engines/engine[1]/fuel-psi-norm GT 5
          </test>
+		 <!--
          <test logic="AND" value="0.5">
             /controls/fuel/right-valve EQ 2               
             propulsion/tank[2]/contents-lbs GT 0
             /consumables/fuel/tank[7]/level-lbs LT 0.25
-            /engines/engine[0]/fuel-psi-norm GT 5
-         </test>            
+            /engines/engine[1]/fuel-psi-norm GT 5
+         </test> 
+			-->
          <test logic="AND" value="0.5">
             /controls/fuel/right-valve EQ 3
             propulsion/tank[3]/contents-lbs GT 0
             /consumables/fuel/tank[7]/level-lbs LT 0.25
-            /engines/engine[0]/fuel-psi-norm GT 5
+            /engines/engine[1]/fuel-psi-norm GT 5
          </test>
+		 <!--
 		 <test logic="AND" value="0.5">
             /controls/fuel/right-valve EQ 4
             propulsion/tank[4]/contents-lbs GT 0
             /consumables/fuel/tank[7]/level-lbs LT 0.25
-            /engines/engine[0]/fuel-psi-norm GT 5
+            /engines/engine[1]/fuel-psi-norm GT 5
          </test>
+		 -->
 		 <test logic="AND" value="0.5">
             /controls/fuel/right-valve EQ 5
             propulsion/tank[5]/contents-lbs GT 0
             /consumables/fuel/tank[7]/level-lbs LT 0.25
-            /engines/engine[0]/fuel-psi-norm GT 5
+            /engines/engine[1]/fuel-psi-norm GT 5
          </test>
          <output>propulsion/tank[7]/external-flow-rate-pps</output> <!-- Tank 7 filling -->
       </switch>

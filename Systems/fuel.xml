@@ -27,48 +27,41 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/through-left-valve">
          <default value="0"/>
          <test logic="AND" value="0.5">
-            /controls/fuel/left-valve EQ 0
-			propulsion/tank[0]/contents-lbs GT 0
+            /controls/fuel/left-feed EQ 0               
+            propulsion/tank[0]/contents-lbs GT 0
             /consumables/fuel/tank[6]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
          </test>            
-         <!--
-		 <test logic="AND" value="0.5">
-            /controls/fuel/left-valve EQ 1
-            /consumables/fuel/tank[1]/empty EQ 0
+         <test logic="AND" value="0.5">
+            /controls/fuel/left-feed EQ 1
+            propulsion/tank[1]/contents-lbs GT 0
             /consumables/fuel/tank[6]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
          </test>
-		 -->
          <test logic="AND" value="0.5">
-            /controls/fuel/left-valve EQ 2               
+            /controls/fuel/left-feed EQ 2               
             propulsion/tank[2]/contents-lbs GT 0
             /consumables/fuel/tank[6]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
-         </test>
-			<!--
+         </test>            
          <test logic="AND" value="0.5">
-            /controls/fuel/left-valve EQ 3
-            /consumables/fuel/tank[3]/empty EQ 0
+            /controls/fuel/left-feed EQ 3
+            propulsion/tank[3]/contents-lbs GT 0
             /consumables/fuel/tank[6]/level-lbs LT 0.25
-            /engines/engine[0]/fuel-psi-norm GT 5
+           /engines/engine[0]/fuel-psi-norm GT 5
          </test>
-		 -->		 
 		 <test logic="AND" value="0.5">
-            /controls/fuel/left-valve EQ 4
+            /controls/fuel/left-feed EQ 4
             propulsion/tank[4]/contents-lbs GT 0
             /consumables/fuel/tank[6]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
          </test>
-		 <!--
 		 <test logic="AND" value="0.5">
-            /controls/fuel/left-valve EQ 5
+            /controls/fuel/left-feed EQ 5
             propulsion/tank[5]/contents-lbs GT 0
             /consumables/fuel/tank[6]/level-lbs LT 0.25
             /engines/engine[0]/fuel-psi-norm GT 5
          </test>
-		 -->
-		 
          <output>propulsion/tank[6]/external-flow-rate-pps</output> <!-- Tank 6 filling -->
       </switch>
  
@@ -78,7 +71,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/from-tank0-to-tank6">
          <default value="0"/>
          <test value="-fuel/through-left-valve">
-            /controls/fuel/left-valve EQ 0      
+            /controls/fuel/left-feed EQ 0      
          </test>
       </switch>      
  
@@ -86,7 +79,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/from-tank1-to-tank6">
          <default value="0"/>
          <test value="-fuel/through-left-valve">
-            /controls/fuel/left-valve EQ 1      
+            /controls/fuel/left-feed EQ 1      
          </test>
       </switch>
  
@@ -94,7 +87,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/from-tank2-to-tank6">
          <default value="0"/>
          <test value="-fuel/through-left-valve">
-            /controls/fuel/left-valve EQ 2      
+            /controls/fuel/left-feed EQ 2      
          </test>
       </switch>      
  
@@ -102,7 +95,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/from-tank3-to-tank6">
          <default value="0"/>
          <test value="-fuel/through-left-valve">
-            /controls/fuel/left-valve EQ 3      
+            /controls/fuel/left-feed EQ 3      
          </test>
       </switch>
 	  
@@ -110,7 +103,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/from-tank4-to-tank6">
          <default value="0"/>
          <test value="-fuel/through-left-valve">
-            /controls/fuel/left-valve EQ 4      
+            /controls/fuel/left-feed EQ 4      
          </test>
       </switch>
 	  
@@ -118,7 +111,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/from-tank5-to-tank6">
          <default value="0"/>
          <test value="-fuel/through-left-valve">
-            /controls/fuel/left-valve EQ 5      
+            /controls/fuel/left-feed EQ 5      
          </test>
       </switch>
  
@@ -139,44 +132,38 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <!-- from selected 'actual' tank to Collector Tank 7 Fuel Flow Rate in pps -->
       <switch name="fuel/through-right-valve">
          <default value="0"/>
-		 <!--
          <test logic="AND" value="0.5">
-            /controls/fuel/right-valve EQ 0               
+            /controls/fuel/right-feed EQ 0               
             propulsion/tank[0]/contents-lbs GT 0
             /consumables/fuel/tank[7]/level-lbs LT 0.25
-            /engines/engine[0]/fuel-psi-norm GT 5
-         </test>  
-		-->		 
+            /engines/engine[1]/fuel-psi-norm GT 5
+         </test>            
          <test logic="AND" value="0.5">
-            /controls/fuel/right-valve EQ 1
+            /controls/fuel/right-feed EQ 1
             propulsion/tank[1]/contents-lbs GT 0
             /consumables/fuel/tank[7]/level-lbs LT 0.25
             /engines/engine[1]/fuel-psi-norm GT 5
          </test>
-		 <!--
          <test logic="AND" value="0.5">
-            /controls/fuel/right-valve EQ 2               
+            /controls/fuel/right-feed EQ 2               
             propulsion/tank[2]/contents-lbs GT 0
             /consumables/fuel/tank[7]/level-lbs LT 0.25
             /engines/engine[1]/fuel-psi-norm GT 5
-         </test> 
-			-->
+         </test>            
          <test logic="AND" value="0.5">
-            /controls/fuel/right-valve EQ 3
+            /controls/fuel/right-feed EQ 3
             propulsion/tank[3]/contents-lbs GT 0
             /consumables/fuel/tank[7]/level-lbs LT 0.25
             /engines/engine[1]/fuel-psi-norm GT 5
          </test>
-		 <!--
 		 <test logic="AND" value="0.5">
-            /controls/fuel/right-valve EQ 4
+            /controls/fuel/right-feed EQ 4
             propulsion/tank[4]/contents-lbs GT 0
             /consumables/fuel/tank[7]/level-lbs LT 0.25
             /engines/engine[1]/fuel-psi-norm GT 5
          </test>
-		 -->
 		 <test logic="AND" value="0.5">
-            /controls/fuel/right-valve EQ 5
+            /controls/fuel/right-feed EQ 5
             propulsion/tank[5]/contents-lbs GT 0
             /consumables/fuel/tank[7]/level-lbs LT 0.25
             /engines/engine[1]/fuel-psi-norm GT 5
@@ -190,7 +177,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/from-tank0-to-tank7">
          <default value="0"/>
          <test value="-fuel/through-right-valve">
-            /controls/fuel/right-valve EQ 0      
+            /controls/fuel/right-feed EQ 0      
          </test>
       </switch>      
  
@@ -198,7 +185,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/from-tank1-to-tank7">
          <default value="0"/>
          <test value="-fuel/through-right-valve">
-            /controls/fuel/right-valve EQ 1      
+            /controls/fuel/right-feed EQ 1      
          </test>
       </switch>
  
@@ -206,7 +193,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/from-tank2-to-tank7">
          <default value="0"/>
          <test value="-fuel/through-right-valve">
-            /controls/fuel/right-valve EQ 2      
+            /controls/fuel/right-feed EQ 2      
          </test>
       </switch>      
  
@@ -214,7 +201,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/from-tank3-to-tank7">
          <default value="0"/>
          <test value="-fuel/through-right-valve">
-            /controls/fuel/right-valve EQ 3      
+            /controls/fuel/right-feed EQ 3      
          </test>
       </switch>
 	  
@@ -222,7 +209,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/from-tank4-to-tank7">
          <default value="0"/>
          <test value="-fuel/through-right-valve">
-            /controls/fuel/right-valve EQ 4      
+            /controls/fuel/right-feed EQ 4      
          </test>
       </switch>
 	  
@@ -230,7 +217,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
       <switch name="fuel/from-tank5-to-tank7">
          <default value="0"/>
          <test value="-fuel/through-right-valve">
-            /controls/fuel/right-valve EQ 5      
+            /controls/fuel/right-feed EQ 5      
          </test>
       </switch>
  

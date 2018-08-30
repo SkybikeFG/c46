@@ -14,7 +14,7 @@ Developed under GNU-GPL for FlightGear FS.
   </long-description>
   
   <author>Arnd Lebert</author>
-  <status>alpha</status>
+  <status>beta</status>
   <aircraft-version>2018.1</aircraft-version>
   <minimum-fg-version>2017.2</minimum-fg-version>
   <rating>

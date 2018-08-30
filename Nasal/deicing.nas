@@ -13,7 +13,7 @@
 #####
 
 
-var carbtemp = func{
+var carbtemp = func(){
     var airTemp = getprop("/environment/temperature-degc");
     var tempCarbL = ( getprop("/engines/engine[0]/cht-degf") - 32) * 5/9;
 	var tempCarbR = ( getprop("/engines/engine[1]/cht-degf") - 32) * 5/9;
@@ -36,10 +36,10 @@ var carbtemp = func{
 	setprop("/engines/engine[1]/carbtemp-degc", tempCarbR);
 }
 
-var carbTimer = maketimer(2, carbtemp );
+var carbTimer = maketimer(2, func{carbtemp();} );
 _setlistener("/sim/signals/fdm-initialized", func(){ carbTimer.start(); });
 
 #initialise
 setprop("/engines/engine[0]/carbtemp-degc", 20);
 setprop("/engines/engine[1]/carbtemp-degc", 20);
-printf("C46 deicing system loaded");
+printf("C46 deicing system initialized");

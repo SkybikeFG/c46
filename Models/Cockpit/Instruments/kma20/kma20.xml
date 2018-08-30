@@ -23,6 +23,8 @@
         "instrumentation/kma20/sens",
         "instrumentation/kma20/knob"
         );
+		
+		C172p detailed team: wlbragg - giberto - mathieugouin - onox
     -->
 
     <params>
@@ -44,27 +46,6 @@
     </params>
 
     <path>kma20.ac</path>
-
-    <!--effect>
-        <inherits-from>../../../../Effects/interior/lm-kma20r</inherits-from>
-        <object-name>Knob</object-name>
-    </effect>
-    <effect>
-        <inherits-from>../../../../Effects/interior/lm-kma20</inherits-from>
-        <object-name>Chassis</object-name>
-        <object-name>AUTO</object-name>
-        <object-name>COM1</object-name>
-        <object-name>COM2</object-name>
-        <object-name>NAV1</object-name>
-        <object-name>NAV2</object-name>
-        <object-name>ADF</object-name>
-        <object-name>DME</object-name>
-        <object-name>MKR</object-name>
-        <object-name>SENS</object-name>
-        <object-name>M</object-name>
-        <object-name>A</object-name>
-        <object-name>O</object-name>
-    </effect-->
 
     <animation>
         <type>material</type>
@@ -163,10 +144,6 @@
                 <max>1</max>
                 <wrap>0</wrap>
             </binding>
-            <binding>
-                <command>nasal</command>
-                <script>c172p.click("kma20")</script>
-            </binding>
         </action>
         <hovered>
             <binding>
@@ -209,10 +186,6 @@
                 <min>-1</min>
                 <max>1</max>
                 <wrap>0</wrap>
-            </binding>
-            <binding>
-                <command>nasal</command>
-                <script>c172p.click("kma20")</script>
             </binding>
         </action>
         <hovered>
@@ -257,10 +230,6 @@
                 <max>1</max>
                 <wrap>0</wrap>
             </binding>
-            <binding>
-                <command>nasal</command>
-                <script>c172p.click("kma20")</script>
-            </binding>
         </action>
         <hovered>
             <binding>
@@ -303,10 +272,6 @@
                 <min>-1</min>
                 <max>1</max>
                 <wrap>0</wrap>
-            </binding>
-            <binding>
-                <command>nasal</command>
-                <script>c172p.click("kma20")</script>
             </binding>
         </action>
         <hovered>
@@ -351,10 +316,6 @@
                 <max>1</max>
                 <wrap>0</wrap>
             </binding>
-            <binding>
-                <command>nasal</command>
-                <script>c172p.click("kma20")</script>
-            </binding>
         </action>
         <hovered>
             <binding>
@@ -397,10 +358,6 @@
                 <min>-1</min>
                 <max>1</max>
                 <wrap>0</wrap>
-            </binding>
-            <binding>
-                <command>nasal</command>
-                <script>c172p.click("kma20")</script>
             </binding>
         </action>
         <hovered>
@@ -445,10 +402,6 @@
                 <max>1</max>
                 <wrap>0</wrap>
             </binding>
-            <binding>
-                <command>nasal</command>
-                <script>c172p.click("kma20")</script>
-            </binding>
         </action>
         <hovered>
             <binding>
@@ -492,10 +445,6 @@
                 <max>1</max>
                 <wrap>0</wrap>
             </binding>
-            <binding>
-                <command>nasal</command>
-                <script>c172p.click("kma20")</script>
-            </binding>
         </action>
         <hovered>
             <binding>
@@ -536,10 +485,6 @@
                 <min>-1</min>
                 <max>0</max>
                 <wrap>0</wrap>
-            </binding>
-            <binding>
-                <command>nasal</command>
-                <script>c172p.click("kma20")</script>
             </binding>
         </action>
         <hovered>
@@ -587,10 +532,6 @@
                 <min>-1</min>
                 <max>1</max>
                 <wrap>0</wrap>
-            </binding>
-            <binding>
-                <command>nasal</command>
-                <script>c172p.click("kma20")</script>
             </binding>
         </action>
         <hovered>
@@ -648,10 +589,6 @@
                     <property alias="../../../../../params/test"/>
                     <value>0</value>
                 </binding>
-                <binding>
-                    <command>nasal</command>
-                    <script>c172p.click("kma20")</script>
-                </binding>
             </mod-up>
             <binding>
                 <condition>
@@ -663,10 +600,6 @@
                 <command>property-assign</command>
                 <property alias="../../../../params/test"/>
                 <property alias="../../../../params/sens"/>
-            </binding>
-            <binding>
-                <command>nasal</command>
-                <script>c172p.click("kma20")</script>
             </binding>
         </action>
         <hovered>
@@ -707,10 +640,6 @@
                 <min>-1</min>
                 <max>1</max>
                 <wrap>0</wrap>
-            </binding>
-            <binding>
-                <command>nasal</command>
-                <script>c172p.click("kma20-dial")</script>
             </binding>
         </action>
         <hovered>

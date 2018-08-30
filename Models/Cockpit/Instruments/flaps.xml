@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<!--2018 - Arnd Lebert - C46 - GNU GPLv2-->
+<PropertyList>
+
+  <path>flaps.ac</path>
+  <animation>
+    <object-name>Face</object-name>
+    <object-name>Needle</object-name>
+  </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>Face</object-name>
+    <object-name>Needle</object-name>
+    <emission>
+	   <red>0.028</red>
+       <green>0.014</green>
+       <blue>0.007</blue>
+       <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    </emission>
+  </animation>
+
+  <!--without hydraulic pressure the needle drops to -35deg (to implement later)-->
+  <animation>
+    <type>rotate</type>
+    <object-name>Needle</object-name>
+    <property>/surface-positions/flap-pos-norm</property>
+    <interpolation>
+      <entry><ind> 0.00  </ind><dep>  0 </dep></entry>
+	  <entry><ind> 0.22 </ind><dep> 22.5</dep></entry>
+      <entry><ind> 0.38 </ind><dep> 45 </dep></entry>
+	  <entry><ind> 0.62 </ind><dep> 67.5</dep></entry>
+	  <entry><ind> 0.87 </ind><dep> 90 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> -1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>
+

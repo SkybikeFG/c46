@@ -20,22 +20,25 @@
 <PropertyList>
 
         <title>Curtiss Wright C-46 Commando</title>
-        <line>---------Startup--------------></line>
+        <line>--------- Engine Start--------------></line>
 		<line>Switch the magnetos to 3 ("}" button three times).</line>
 		<line>Start the engine starter with "s". This takes a few seconds.</line>
 		<line>When you hear/see the running engine release the s button.</line>
 		<line>---------Taxiing--------------></line>
 		<line>Set the flaps to two notches ("]" two times).</line>
 		<line>Release parking Brake (B or lever on center console).</line>
-		<line>Lock the tailwheel to the rudder by pressing l (or using the lever on the center console),</line>
-		<line>or use your brakes on , and . (float/point) buttons for steering.</line>
+		<line>Lock the tailwheel straight by pressing "l" (or using the lever on the center console),</line>
+		<line>or use your brakes on , and . (comma/period) buttons for steering.</line>
 		<line>---------Takeoff--------------></line>
 		<line>Full power to takeoff.</line>
-		<line>Rotate at correct takeoff speed for load.</line>
+		<line>Tail will come up about 60 mph.</line>
+		<line>Rotate at correct takeoff speed for load (85-95 mph).</line>
 		<line>---------Climbout--------------></line>
 		<line>Bring up gear by pressing "g".</line>
+		<line>Climb out at 120 mph up to 1000' above ground level.</line>
 		<line>Open oil cooler doors by using levers on center console.</line>
 		<line>Retract the flaps as needed.</line>
+		<line>Reduce throttle, and continue climb out at 130 - 140 mph.</line>
 		<line>Set Supercharger to high (lever up) upon reaching 10,000 ft.</line>
 
 </PropertyList>

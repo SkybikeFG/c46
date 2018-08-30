@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<!--2018 - Arnd Lebert - C46 - GNU GPLv2-->
+<PropertyList>
+
+  <path>deIcingPress.ac</path>
+  <animation>
+    <object-name>Face</object-name>
+    <object-name>Needle</object-name>
+  </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>Face</object-name>
+    <object-name>Needle</object-name>
+    <emission>
+	   <red>0.028</red>
+       <green>0.014</green>
+       <blue>0.007</blue>
+       <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    </emission>
+  </animation>
+
+  <!--There is no deicing pressure system. Uses vacuum system instead, as it behaves as wanted (boils up at engine start as well).-->
+  <animation>
+    <type>rotate</type>
+    <object-name>Needle</object-name>
+    <property>/systems/vacuum/suction-inhg</property>
+    <interpolation>
+      <entry><ind>  0 </ind><dep>   0 </dep></entry>
+      <!--<entry><ind>  10</ind><dep> 107 </dep></entry>-->
+	  <entry><ind> 5.5 </ind><dep> 270 </dep></entry><!-- 25 -->
+    </interpolation>
+    <axis>
+      <x> -1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>
+

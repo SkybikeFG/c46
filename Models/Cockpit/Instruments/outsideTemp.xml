@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+
+<PropertyList>
+<!--2018 - Arnd Lebert - C46 - GNU GPLv2-->
+  <path>outsideTemp.ac</path>
+
+  <animation>
+    <object-name>Face</object-name>
+	<object-name>Cover</object-name>
+    <object-name>Needle</object-name>
+  </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>Face</object-name>
+    <object-name>Needle</object-name>
+    <emission>
+	   <red>0.028</red>
+       <green>0.014</green>
+       <blue>0.007</blue>
+       <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    </emission>
+  </animation>
+
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>Needle</object-name>
+    <property>/environment/temperature-degc</property>
+    <interpolation>
+      <entry><ind>  50 </ind><dep>  60 </dep></entry>
+      <entry><ind>   0 </ind><dep>   0 </dep></entry>
+	  <entry><ind> -50 </ind><dep> -60 </dep></entry>
+    </interpolation>
+	<center>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> -0.0095 </z-m>  
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>
+

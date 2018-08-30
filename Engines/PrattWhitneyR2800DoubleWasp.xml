@@ -66,7 +66,7 @@ Pressure - 29.92inHg(sealevel)
   <starter-rpm>    1400 </starter-rpm>
  <!--<bsfc>           0.45 </bsfc> Defining <bsfc> over-rides the built-in horsepower calculations -->
  
-  <oil-viscosity-index>  94 </oil-viscosity-index><!--oil:aeroshell 100-->
+  <!--oil-viscosity-index>  94 </oil-viscosity-index--><!--oil:aeroshell 100-->
   <oil-pressure-relief-valve-psi> 90 </oil-pressure-relief-valve-psi>
   <design-oil-temp-degK> 363 </design-oil-temp-degK><!--90°C-->
   

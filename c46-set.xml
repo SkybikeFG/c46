@@ -14,172 +14,237 @@ Developed under GNU-GPL for FlightGear FS.
   </long-description>
   
   <author>Arnd Lebert</author>
-  <status>alpha</status>
+  <status>beta</status>
   <aircraft-version>2018.1</aircraft-version>
   <minimum-fg-version>2017.2</minimum-fg-version>
   <rating>
    <FDM type="int">2</FDM>
-   <systems type="int">0</systems>
-   <cockpit type="int">1</cockpit>
+   <systems type="int">1</systems>
+   <cockpit type="int">2</cockpit>
    <model type="int">3</model>
   </rating>
 
-  <flight-model>jsb</flight-model>
-  <aero>c46</aero>
-    <startup>
-      <splash-texture>Aircraft/c46/splash.png</splash-texture>
-	  <splash-texture>Aircraft/c46/splash1.png</splash-texture>
-	  <!--splash-title>Text</splash-title-->
-    </startup>
-
-  <tags>
+    <tags>
       <tag>1940s</tag>
       <tag>2-engine</tag>
-	  <tag>transport</tag>
       <tag>cargo</tag>
-	  <tag>transport</tag>
-      <tag>ifr</tag>
       <tag>curtiss-wright</tag>
+      <tag>ifr</tag>
       <tag>piston</tag>
       <tag>propeller</tag>
       <tag>radial</tag>
       <tag>retractable-gear</tag>
-	  <tag>twin-engine</tag>
       <tag>tail-dragger</tag>
-	  <tag>variable-pitch</tag>
-  </tags>
-	
-  <model>
-    <path>Aircraft/c46/Models/c46-model.xml</path>
-    <livery>
-      <file type="string">USnavy</file>
-    </livery>
-    <options>
-      <hide-yokes type="bool" archive="y">false</hide-yokes>
-    </options>
-  </model> 
+      <tag>transport</tag>
+      <tag>twin-engine</tag>
+      <tag>variable-pitch</tag>
+    </tags>
+  
+    <flight-model>jsb</flight-model>
+    <aero>Systems/c46</aero>
+    <startup>
+      <splash-texture>Aircraft/c46/splash.png</splash-texture>
+      <splash-texture>Aircraft/c46/splash1.png</splash-texture>
+      <splash-texture>Aircraft/c46/splash3.png</splash-texture>
+      <!--splash-title>Text</splash-title-->
+    </startup>
+  
+    <model>
+      <path>Aircraft/c46/Models/c46-model.xml</path>
+      <!--
+      <livery>
+        <file type="string">USnavy</file>
+      </livery>
+      -->
+      <options>
+        <hide-yokes type="bool" archive="y">false</hide-yokes>
+      </options>
+    </model> 
 
-  <sound>
-   <path>Aircraft/c46/Sound/c46-sound.xml</path>
-  </sound>
+    <sound>
+      <path>Aircraft/c46/Sound/c46-sound.xml</path>
+    </sound>
 
-  <view>
-   <internal archive="y">true</internal>
-   <config>
-     <default-field-of-view-deg type="double">70</default-field-of-view-deg>
-     <!-- x/y/z == right/up/back -->
-     <x-offset-m archive="y"> -0.40 </x-offset-m><!--56-->
-     <y-offset-m archive="y"> 0.25 </y-offset-m><!--20-->
-     <z-offset-m archive="y"> -9.90 </z-offset-m>
-     <pitch-offset-deg>0</pitch-offset-deg>
-   </config>
-  </view>
+    <view>
+     <internal archive="y">true</internal>
+      <config>
+        <default-field-of-view-deg type="double">70</default-field-of-view-deg>
+        <!-- x/y/z == right/up/back -->
+        <x-offset-m archive="y"> -0.40 </x-offset-m><!--56-->
+        <y-offset-m archive="y"> 0.25 </y-offset-m><!--20-->
+        <z-offset-m archive="y"> -9.90 </z-offset-m>
+        <pitch-offset-deg>0</pitch-offset-deg>
+      </config>
+    </view>
 
-  <view n="101">
-	  <name>Copilot View</name>
-	  <type>lookfrom</type>
-	  <internal type="bool">true</internal>
-	  <config>
-	      <default-field-of-view-deg type="double">70</default-field-of-view-deg>
-		  <from-model type="bool">true</from-model>
-		  <x-offset-m type="double" archive="y">0.40</x-offset-m>
-		  <y-offset-m type="double" archive="y">0.25</y-offset-m>
-		  <z-offset-m type="double" archive="y">-9.90</z-offset-m>
-		  <pitch-offset-deg type="double">-15.0</pitch-offset-deg>
-	  </config>
-  </view>
+    <view n="101">
+      <name>Copilot View</name>
+      <type>lookfrom</type>
+      <internal type="bool">true</internal>
+      <config>
+        <default-field-of-view-deg type="double">70</default-field-of-view-deg>
+  	    <from-model type="bool">true</from-model>
+        <x-offset-m type="double" archive="y">0.40</x-offset-m>
+        <y-offset-m type="double" archive="y">0.25</y-offset-m>
+        <z-offset-m type="double" archive="y">-9.90</z-offset-m>
+        <pitch-offset-deg type="double">-15.0</pitch-offset-deg>
+      </config>
+    </view>
     <view n="102">
-	  <name>Pedestal View</name>
-	  <type>lookfrom</type>
-	  <internal type="bool">true</internal>
-	  <config>
-	      <default-field-of-view-deg type="double">80</default-field-of-view-deg>
-		  <from-model type="bool">true</from-model>
-		  <x-offset-m type="double" archive="y">0.00</x-offset-m>
-		  <y-offset-m type="double" archive="y">0.30</y-offset-m>
-		  <z-offset-m type="double" archive="y">-9.9</z-offset-m>
-		  <pitch-offset-deg type="double">-68.0</pitch-offset-deg>
-	  </config>
-  </view>
+      <name>Pedestal View</name>
+      <type>lookfrom</type>
+      <internal type="bool">true</internal>
+      <config>
+        <default-field-of-view-deg type="double">80</default-field-of-view-deg>
+	    <from-model type="bool">true</from-model>
+        <x-offset-m type="double" archive="y">0.00</x-offset-m>
+        <y-offset-m type="double" archive="y">0.30</y-offset-m>
+        <z-offset-m type="double" archive="y">-9.9</z-offset-m>
+        <pitch-offset-deg type="double">-68.0</pitch-offset-deg>
+       </config>
+    </view>
 
-  <chase-distance-m type="double" archive="y">-40.0</chase-distance-m>
+    <chase-distance-m type="double" archive="y">-40.0</chase-distance-m>
 
-  <hud>   
-   <enable3d>false</enable3d>
-  </hud>
+    <hud>   
+      <enable3d>false</enable3d>
+    </hud>
 
-  <help include="Help/c46-help.xml"/>
   
-  <menubar>
-   <default>
-
-    <menu n="10">
-     <label>C-46</label>
-     <enabled type="bool">true</enabled>
-
-	 <item>
-	  <label>Select Livery</label>
-	   <binding>
-	    <command>nasal</command>
-		<script>aircraft.livery.dialog.open();</script>
-	   </binding>
-	 </item>
-    </menu>
-   </default>
-  </menubar>
   
-  <flaps>
-    <setting>0.00</setting>
-    <setting>0.25</setting>
-    <setting>0.43</setting>
-    <setting>0.71</setting>
-    <setting>1.00</setting>
-   </flaps>
- </sim>
+  
+    <menubar>
+      <default>
+        <menu n="10">
+          <label>C-46</label>
+          <enabled type="bool">true</enabled>
+          <item>
+            <label>Select Livery</label>
+            <binding>
+              <command>nasal</command>
+    	      <script>aircraft.livery.dialog.open();</script>
+            </binding>
+          </item>	 
+        </menu>
+      </default>
+    </menubar>
+  
+    <flaps>
+      <setting>0.00</setting>
+      <setting>0.25</setting>
+      <setting>0.43</setting>
+      <setting>0.71</setting>
+      <setting>1.00</setting>
+    </flaps>
+   
+    <!-- 27 Jul 18 -->
+    <!-- This works. Waiting on more cockpit items. TODO
+    <checklists include="Tutorials/c46-checklists.xml"/>
+    -->
+  
+    <help include="Help/c46-help.xml"/>
+  </sim>
  
- <nasal>
-  <c46>
-    <file>Aircraft/c46/Nasal/c46.nas</file>
-    <file>Aircraft/Generic/limits.nas</file>
-	<file>Aircraft/Instruments-3d/ki266/ki266.nas</file>
-	<file>Aircraft/Instruments-3d/garmin196/garmin196.nas</file>
-  </c46>
-</nasal>
+  <nasal>
+    <c46>
+      <file>Aircraft/c46/Nasal/c46.nas</file>
+	  <file>Aircraft/c46/Nasal/deicing.nas</file>
+	  <file>Aircraft/c46/Nasal/fuel.nas</file>
+      <file>Aircraft/Generic/limits.nas</file>
+	  <!--<file>Aircraft/Instruments-3d/garmin196/garmin196.nas</file>-->	
+	  <file>Aircraft/c46/Models/Cockpit/Instruments/kr85/kr85.nas</file>
+	  <file>Aircraft/c46/Models/Cockpit/Instruments/kma20/kma20.nas</file>
+    </c46>
+    <systems>
+      <file>Aircraft/c46/Models/Cockpit/Instruments/kns80/KNS80.nas</file>
+    </systems>
+  </nasal>
 
- <consumables>
-	 <fuel>
-		 <tank n="0">
-			 <level-gal_us>350</level-gal_us>
-		 </tank>
-		 <tank n="1">
-			 <level-gal_us>350</level-gal_us>
-		 </tank>
-		 <tank n="2">
-			 <level-gal_us>350</level-gal_us>
-		 </tank>
+  <!-- 27 Jul 18 -->
+  <consumables include="Systems/consumables.xml"/>
 
-	 </fuel>
- </consumables>
- 
-<controls>
-  <flight>
-    <elevator-trim>0.0</elevator-trim>
-  </flight>
+  <!-- 27 Jul 18 -->
+  <payload include="Systems/payload.xml"/>
 
- <gear>
-  <brake-parking>1</brake-parking>
- </gear>
 
- <lighting>
-  <strobe>1</strobe>
-  <beacon>1</beacon>
-  <landing-lights>1</landing-lights>
-  <nav-lights>1</nav-lights>
- </lighting>
+  <!-- TODO
+  <tutorials include="Tutorials/c46-tutorials.xml"/>
+  -->
+
+  <controls>
+    <flight>
+      <elevator-trim>0.0</elevator-trim>
+    </flight>
+
+    <fuel>
+      <left-valve type="int">0</left-valve>
+      <right-valve type="int">1</right-valve>
+	  <boostpumps-l-high type="bool">0</boostpumps-l-high>
+	  <boostpumps-r-high type="bool">0</boostpumps-r-high>
+    </fuel>
+
+    <gear>
+      <brake-parking>1</brake-parking>
+    </gear>
+
+    <lighting>
+      <strobe>1</strobe>
+      <beacon>1</beacon>
+      <landing-lights>1</landing-lights>
+      <nav-lights>1</nav-lights>
+    </lighting>
 
 </controls>
 
-<limits>
+  <instrumentation>
+    <kma20 include="Aircraft/Instruments-3d/kma20/kma20init.xml"/>
+    <encoder>
+      <serviceable type="bool">true</serviceable>
+    </encoder>
+    <adf n="0">
+      <ident-audible type="bool">false</ident-audible>
+      <volume type="double">0.7</volume>
+      <frequencies>
+        <dial-1-khz type="int">0</dial-1-khz>
+        <dial-100-khz type="int">0</dial-100-khz>
+      </frequencies>
+    </adf>
+    <comm n="0">
+      <power-btn type="bool">1</power-btn>
+      <frequencies>
+        <dial-khz type="int">0</dial-khz>
+        <dial-mhz type="int">0</dial-mhz>
+      </frequencies>
+      <volume-selected type="double">0.7</volume-selected>
+    </comm>
+    <comm n="1">
+      <power-btn type="bool">1</power-btn>
+      <frequencies>
+        <dial-khz type="int">0</dial-khz>
+        <dial-mhz type="int">0</dial-mhz>
+      </frequencies>
+      <volume-selected type="double">0.7</volume-selected>
+    </comm>
+    <nav n="0">
+      <volume type="double">0.7</volume>
+      <frequencies>
+        <dial-khz type="int">0</dial-khz>
+        <dial-mhz type="int">0</dial-mhz>
+      </frequencies>
+      <ident-audible type="bool">false</ident-audible>
+    </nav>
+    <nav n="1">
+      <volume type="double">0.7</volume>
+      <frequencies>
+        <dial-khz type="int">0</dial-khz>
+        <dial-mhz type="int">0</dial-mhz>
+      </frequencies>
+      <ident-audible type="bool">false</ident-audible>
+    </nav>
+  </instrumentation>
+
+
+  <limits>
     <mass-and-balance><!--Manitoba 4:6:5: page 78-->
       <maximum-takeoff-mass-lbs type="double">48000</maximum-takeoff-mass-lbs>
       <maximum-landing-mass-lbs type="double">48000</maximum-landing-mass-lbs>
@@ -194,19 +259,20 @@ Developed under GNU-GPL for FlightGear FS.
     <vne type="double">234</vne>
   </limits>
 
- <payload> 
-  <weight>
-   <name type="string">Payload</name>
-   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs"/>
-   <min-lb type="double">10</min-lb>
-   <max-lb type="double">541.41</max-lb>
-  </weight>
-</payload>
+  <!--
+  <payload>
+    <weight>
+      <name type="string">Payload</name>
+      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs"/>
+      <min-lb type="double">10</min-lb>
+      <max-lb type="double">541.41</max-lb>
+    </weight>
+  </payload>
+  -->
 
-
-<!--
-More:
-constants: V1 : 89, V2: 93 (Manitoba 4:5:10 p68)
--->
+  <!--
+  More:
+  constants: V1 : 89, V2: 93 (NAM 4:5:10)
+  -->
 
 </PropertyList>

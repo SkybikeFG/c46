@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+  
+  <fuel>
+    <tank n="0"> 
+	  <name>Aft Left</name>
+      <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+    <tank n="1"> <name>Aft Right</name>
+      <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+    <tank n="2"> <name>Center Left</name>
+      <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+    <tank n="3"> <name>Center Right</name>
+      <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+	<tank n="4"> <name>Forward Left</name>
+      <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+	<tank n="5"> <name>Forward Right</name>
+      <unusable-gal_us>5.0</unusable-gal_us>
+    </tank>
+	<tank n="6"> <name>Feeder Left</name>
+      <unusable-gal_us>0.1</unusable-gal_us>
+	  <hidden type="bool">true</hidden>
+    </tank>
+	<tank n="7"> <name>Feeder Right</name>
+	  <unusable-gal_us>0.1</unusable-gal_us>
+	  <hidden type="bool">true</hidden>
+    </tank>
+  </fuel>
+  
+</PropertyList>

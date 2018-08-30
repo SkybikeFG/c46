@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<!--2018 - Arnd Lebert - C46 - GNUGPLv2+-->
+<PropertyList>
+
+  <path>fuelQuantCenter.ac</path>
+
+  <animation>
+    <object-name>fond2</object-name>
+    <object-name>face</object-name>
+    <object-name>needleL</object-name>
+    <object-name>needleR</object-name>
+  </animation>
+
+  <animation> 
+    <type>material</type>
+    <object-name>face</object-name>
+    <object-name>needleL</object-name>
+    <object-name>needleR</object-name>
+    <emission>
+	   <red>0.028</red>
+       <green>0.014</green>
+       <blue>0.007</blue>
+       <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    </emission>
+  </animation>
+
+
+  <animation> 
+    <type>rotate</type>
+    <object-name>needleR</object-name>
+    <property>/consumables/fuel/tank[3]/level-gal_us</property>
+    <interpolation>
+      <entry><ind>   0 </ind><dep>  48 </dep></entry>
+      <entry><ind>  40 </ind><dep>  28 </dep></entry>
+      <entry><ind>  60 </ind><dep>  18 </dep></entry>
+      <entry><ind>  80 </ind><dep>  13 </dep></entry>
+	  <entry><ind> 160 </ind><dep> -7 </dep></entry>
+      <entry><ind> 280 </ind><dep> -36 </dep></entry>
+	  <entry><ind> 292 </ind><dep> -41 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> 0.00 </x-m>
+      <y-m> 0.03 </y-m>
+      <z-m> 0.00 </z-m>  
+    </center>
+    <axis> 
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation> 
+    <type>rotate</type>
+    <object-name>needleL</object-name>
+    <property>/consumables/fuel/tank[2]/level-gal_us</property>
+    <interpolation>
+      <entry><ind>   0 </ind><dep> -48 </dep></entry>
+      <entry><ind>  40 </ind><dep> -28 </dep></entry>
+      <entry><ind>  60 </ind><dep> -18 </dep></entry>
+      <entry><ind>  80 </ind><dep> -13 </dep></entry>
+	  <entry><ind> 160 </ind><dep>  7 </dep></entry>
+      <entry><ind> 280 </ind><dep>  36 </dep></entry>
+	  <entry><ind> 292 </ind><dep>  41 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> 0.00 </x-m>
+      <y-m>-0.03 </y-m>
+      <z-m> 0.00 </z-m>  
+    </center>
+    <axis> 
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>
+

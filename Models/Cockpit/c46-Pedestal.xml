@@ -28,6 +28,7 @@
 	<object-name>P2AileronTab1</object-name>
 	<object-name>P2BoostPumpsL</object-name>
 	<object-name>P2BoostPumpsR</object-name>
+	<object-name>P2Crossfeed</object-name>
 	<object-name>P2FeatherL</object-name>
 	<object-name>P2FeatherR</object-name>
 	<object-name>P2LandingLightL</object-name>
@@ -46,90 +47,6 @@
 	<object-name>P4EmergencyBrake</object-name>
 	<object-name>PPedestal</object-name>
   </animation>
-
-  <!-- see my cockpit in darkness --> 
-  <!--animation>
-    <type>material</type> 
-    <object-name>ParkingBrakeTubeL</object-name>
-    <object-name>ParkingBrakeTubeR</object-name>
-    <object-name>ParkingBrakeLeverL</object-name>
-    <object-name>ParkingBrakeLeverR</object-name>
-    <object-name>ParkingBrakeSupportL</object-name>
-    <object-name>ParkingBrakeSupportR</object-name>
-    <object-name>ElevatorBooster</object-name>
-    <object-name>ElBoosterBracket</object-name>
-    <object-name>APKnobPitch</object-name>
-    <object-name>APKnobHdg</object-name>
-    <object-name>RudderTabCursor</object-name>
-    <object-name>AileronTabCursor</object-name>
-    <object-name>RudderTabCursorFace</object-name>
-    <object-name>AileronTabCursorFace</object-name>
-    <object-name>RudderTabNeedle</object-name>
-    <object-name>AileronTabNeedle</object-name>
-    <object-name>LandingGearLever</object-name>
-    <object-name>EmerBrakeLever</object-name>
-    <object-name>ServoLeverAileron</object-name>
-    <object-name>ServoLeverRudder</object-name>
-    <object-name>ServoLeverElevator</object-name>
-    <object-name>PedestalShelf</object-name>
-    <object-name>PedestalMain</object-name>
-    <object-name>PedestalDrum</object-name>
-    <object-name>PedestalDrumCyl</object-name>
-    <object-name>FlapLever</object-name>
-    <object-name>PropPitch</object-name>
-    <object-name>ElectricElevatorTab</object-name>
-    <object-name>ReverseLock</object-name>
-    <object-name>AileronBooster</object-name>
-    <object-name>RudderBooster</object-name>
-    <object-name>MainThrottle4</object-name>
-    <object-name>ReverseThrottle4</object-name>
-    <object-name>MainThrottle3</object-name>
-    <object-name>ReverseThrottle3</object-name>
-    <object-name>MainThrottle2</object-name>
-    <object-name>ReverseThrottle2</object-name>
-    <object-name>MainThrottle1</object-name>
-    <object-name>ReverseThrottle1</object-name>
-    <object-name>PedestalShelfText</object-name>
-    <object-name>sockle.000</object-name>
-    <object-name>sockle.001</object-name>
-    <object-name>switch.000</object-name>
-    <object-name>switch.001</object-name>
-    <emission>
-      <red>0.2</red>
-      <green>0.2</green>
-      <blue>0.2</blue>
-      <factor-prop>/controls/lighting/chart</factor-prop>
-    </emission>
-  </animation-->
-
-  <!-- Panel Glows -->
-
-  <!--animation>
-    <type>material</type>
-    <object-name>PedestalShelfText</object-name>  
-    <condition>
-      <not><property>sim/rendering/rembrandt/enabled</property></not>
-    </condition>
-    <emission>
-      <red>0.7</red>
-      <green>0.2</green>
-      <blue>0.1</blue>
-      <factor-prop>/controls/lighting/panel-norm</factor-prop>
-    </emission>
-  </animation>
-
-  <animation>
-    <type>material</type>
-    <object-name>RudderTabCursorFace</object-name>
-    <object-name>AileronTabCursorFace</object-name>
-    <emission>
-      <red>0.4</red>
-      <green>0.2</green>
-      <blue>0.1</blue>
-      <factor-prop>/controls/lighting/panel-norm</factor-prop>
-    </emission>
-  </animation-->
-
 
   <!--###########################################################################-->
   
@@ -652,7 +569,107 @@
       </binding>
     </hovered>
   </animation>
- 
+  
+  <animation>
+    <type>translate</type>
+    <object-name>P2Crossfeed</object-name>
+    <property>controls/fuel/crossfeed</property>
+    <interpolation>
+      <entry><ind>   0</ind><dep>-0.006</dep></entry>
+      <entry><ind>   1</ind><dep> 0.006</dep></entry>
+    </interpolation>
+    <axis>
+      <x>-1</x><!--sin(30°)-->
+      <y>0</y>
+      <z>-0.5</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>P2Crossfeed</object-name>
+    <action>
+      <button>0</button>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/fuel/crossfeed</property>
+      </binding>
+    </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>crossfeed</tooltip-id>
+        <label>Crossfeed %s</label>
+        <property>controls/fuel/crossfeed</property>
+        <mapping>nasal</mapping>
+        <script>
+          var crossfeedName = ['off', 'on'];
+          return crossfeedName[(arg[0])];
+        </script>
+      </binding>
+    </hovered>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>P2BoostPumpsL</object-name>
+    <property>controls/fuel/boostpumps-l-high</property>
+    <interpolation>
+      <entry><ind>   0</ind><dep> 30</dep></entry>
+      <entry><ind>   1</ind><dep>-30</dep></entry>
+    </interpolation>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+	<center>
+      <x-m>-10.227</x-m>
+      <y-m>  0.000</y-m>
+      <z-m>-0.5877</z-m>
+    </center>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>P2BoostPumpsL</object-name>
+    <action>
+      <button>0</button>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/fuel/boostpumps-l-high</property>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>P2BoostPumpsR</object-name>
+    <property>controls/fuel/boostpumps-r-high</property>
+    <interpolation>
+      <entry><ind>   0</ind><dep> 30</dep></entry>
+      <entry><ind>   1</ind><dep>-30</dep></entry>
+    </interpolation>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+	<center>
+      <x-m>-10.227</x-m>
+      <y-m>  0.000</y-m>
+      <z-m>-0.5877</z-m>
+    </center>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>P2BoostPumpsR</object-name>
+    <action>
+      <button>0</button>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/fuel/boostpumps-r-high</property>
+      </binding>
+    </action>
+  </animation>
  
  <!--Lower pedestal rotary lever section ("P3"), centre [-10.06; 0; -0.73], angle -20 to 75 -->
    <animation>
@@ -948,8 +965,4 @@
       </binding>
     </action>
   </animation>
-
-<!--########################################## -->
-<!-- AP + Wiper -->
-  
 </PropertyList>

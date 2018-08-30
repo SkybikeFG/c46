@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+
+<PropertyList>
+<!--2018 - Arnd Lebert - C46 - GNU GPLv2-->
+<!--The AC (not DC) is a system to run some instruments. It is powered by inverters located in main DC system.
+   15961 p12 "INVERTER CIRCUIT. The inverter system consists of two inverters located under the pilots' floor
+   which are controlled by a switch. The "MAIN" inverter is to be used for all normal operation, and "SPARE"
+   inverter only on failture of "MAIN" inverter. The output of the inverters is messured by an ac voltmeter...
+   The normal setting of the inverters is 115 volts with a minimum of 110 volts and a maximum of 130 volts. 
+   This is controlled by a governor which regulates the output...-->
+  <path>voltsAC.ac</path>
+
+  <animation>
+    <object-name>Face</object-name>
+	<object-name>Cover</object-name>
+    <object-name>Needle</object-name>
+  </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>Face</object-name>
+    <object-name>Needle</object-name>
+    <emission>
+	   <red>0.028</red>
+       <green>0.014</green>
+       <blue>0.007</blue>
+       <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    </emission>
+  </animation>
+
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>Needle</object-name>
+    <property>/systems/electrical/volts</property>
+    <interpolation><!-- 0 100 115 130 -->
+      <entry><ind> 00.000 </ind><dep> -60 </dep></entry>
+      <entry><ind> 20.100 </ind><dep>   0 </dep></entry>
+	  <entry><ind> 24.115 </ind><dep>  30 </dep></entry>
+	  <entry><ind> 26.130 </ind><dep>  60 </dep></entry>
+    </interpolation>
+	<center>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> -0.0095 </z-m>  
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>
+

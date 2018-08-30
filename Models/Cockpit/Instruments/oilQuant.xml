@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<!--NAM 4:25:5 "NACELLE OIL TANKS
+  The total volume of each nacelle tank is 44.2 US gallons,
+  but the filler opening is located somewhat below the top
+  of each tank thereby limiting the operating capacity to
+  39.8 US gallons. They are normally serviced to 34 gallons."
+  
+  Due to the lack of an oil system we have no real animation here. 
+  Only idea is, as the oil pressure grows the tanks level goes down.-->
+
+<PropertyList>
+
+  <path>oilQuant.ac</path>
+
+  <animation>
+    <object-name>Face</object-name>
+    <object-name>Needle1</object-name>
+    <object-name>Needle2</object-name>
+  </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>Face</object-name>
+    <object-name>Needle1</object-name>
+    <object-name>Needle2</object-name>
+    <emission>
+	   <red>0.028</red>
+       <green>0.014</green>
+       <blue>0.007</blue>
+       <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Needle1</object-name>
+    <property>/fdm/jsbsim/propulsion/engine[0]/oil-pressure-psi</property>
+    <interpolation>
+      <entry><ind>  0 </ind><dep>  295 </dep></entry>
+      <entry><ind> 200 </ind><dep> 275 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> -1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Needle2</object-name>
+    <property>/fdm/jsbsim/propulsion/engine[1]/oil-pressure-psi</property>
+    <interpolation>
+      <entry><ind>  0 </ind><dep>   285 </dep></entry>
+      <entry><ind> 200 </ind><dep> 270 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> -1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>
+

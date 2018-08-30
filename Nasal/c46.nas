@@ -7,5 +7,14 @@ var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 0.8,], "/con
 var oilcoolerl = props.globals.initNode("/controls/engines/engine[0]/oilcooler",0,"BOOL");#Left Oilcooler
 var oilcoolerr = props.globals.initNode("/controls/engines/engine[1]/oilcooler",0,"BOOL");#Right Oilcooler
 
-ki266.new(0); # for your first dme at /instrumentation/dme[0]
-#ki266.new(1); # if you have another at /instrumentation/dme[1]
+#Armrests
+var armrestc = props.globals.initNode("/controls/seat/armrest-copilot",0,"BOOL");
+var armrestp = props.globals.initNode("/controls/seat/armrest-copilot",0,"BOOL");
+
+#Fuel pressure, needs more work
+setprop("/engines/engine[0]/fuel-psi-norm",18);
+setprop("/engines/engine[1]/fuel-psi-norm",18);
+
+#Instruments
+setprop("/systems/electrical/outputs/KNS80",28);
+setprop("/systems/electrical/outputs/comm[0]",28);

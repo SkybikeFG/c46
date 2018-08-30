@@ -97,7 +97,7 @@
           <property>engines/engine[0]/running</property>
           <less-than>
             <property>engines/engine[0]/rpm</property>
-            <value>1700</value>
+            <value>700</value>
           </less-than>
         </and>
       </condition>
@@ -418,7 +418,7 @@
           <property>engines/engine[1]/running</property>
           <less-than>
             <property>engines/engine[1]/rpm</property>
-            <value>1700</value>
+            <value>700</value>
           </less-than>
         </and>
       </condition>

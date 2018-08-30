@@ -14,10 +14,9 @@
   </model>
   
   <model>
-    <name>Instrumentss</name>
+    <name>Instruments</name>
     <path>Aircraft/c46/Models/Cockpit/c46-Panel.xml</path>
   </model>
-
 
 
   <!-- Pedals (pilot(P)/copilot(C))-->
@@ -151,6 +150,194 @@
       <y>0.0</y>
       <z>0.0</z>
     </axis>
+  </animation>
+  
+  
+  <!--Seat and Copilot-->
+  <animation>
+    <type>pick</type>
+    <object-name>DSeatParmrest</object-name>  
+    <action>
+      <button>0</button>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/seat/armrest-pilot</property>
+      </binding>
+    </action>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>DSeatParmrest</object-name>
+	<property>controls/seat/armrest-pilot</property>
+    <factor>105</factor>	
+    <center>
+      <x-m>-9.87</x-m>
+      <y-m> 0.0</y-m>
+      <z-m>-0.285</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>pick</type>
+    <object-name>DSeatCarmrest</object-name>  
+    <action>
+      <button>0</button>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/seat/armrest-copilot</property>
+      </binding>
+    </action>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>DSeatCarmrest</object-name>
+	<property>controls/seat/armrest-copilot</property>
+    <factor>105</factor>
+    <center>
+      <x-m>-9.87</x-m>
+      <y-m> 0.0</y-m>
+      <z-m>-0.285</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <object-name>DCopilot</object-name>
+    <type>select</type>
+    <condition>
+	  <not>
+	    <equals>
+		  <property>/sim/current-view/view-number</property>
+		  <value>8</value><!--Copilots view-->
+	    </equals>
+	  </not>
+	</condition>
+  </animation>
+  
+  
+  <!--Fuel Select-->
+  <animation>
+    <name>fuelSelectors</name>
+	<object-name>DfuelSelectCL</object-name>
+    <object-name>DfuelSelectCR</object-name>
+    <object-name>DfuelSelectP</object-name>
+    <object-name>DfuelSelectC</object-name>
+    <object-name>DfuelSelectPL</object-name>
+    <object-name>DfuelSelectPR</object-name>
+  </animation>
+  <!--animation>
+    <object-name>fuelSelectors</object-name>
+    <type>pick</type> 
+	<action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <command>nasal</command>
+        <script>c46.openFuelDialog()</script>
+      </binding>
+    </action>
+  </animation-->
+ 
+ 
+  <animation>
+    <type>pick</type>
+	<object-name>DfuelSelectCL</object-name>
+    <object-name>DfuelSelectPL</object-name>
+    <action>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/fuel/left-valve</property>
+		<offset>-1</offset>
+        <step>2</step>
+        <min>-2</min>
+        <max>6</max><!-- -2 0 2 4 -->
+        <wrap>true</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/fuel/left-valve</property>
+        <step>-2</step>
+        <min>-2</min>
+        <max>6</max>
+        <wrap>true</wrap>
+      </binding>
+    </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>leftFuelselect</tooltip-id>
+        <label>Selected tank left: %s</label>
+        <property>controls/fuel/left-valve</property>
+        <mapping>nasal</mapping>
+        <script>
+          var leftNames = ['OFF', 'E -1', 'AFT', 'E 1', 'CENTER', 'E 3', 'FORD', 'E 5'];
+          return leftNames[(arg[0] + 2)];
+        </script>
+      </binding>
+    </hovered>
+  </animation>
+  
+  <animation>
+    <type>pick</type>
+	<object-name>DfuelSelectCR</object-name>
+    <object-name>DfuelSelectPR</object-name>
+    <action>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/fuel/right-valve</property>
+        <step>2</step>
+        <min>-1</min>
+        <max>7</max>
+        <wrap>true</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/fuel/right-valve</property>
+        <step>-2</step>
+        <min>-1</min>
+        <max>7</max>
+        <wrap>true</wrap>
+      </binding>
+    </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>rightFuelselect</tooltip-id>
+        <label>Selected tank right: %s</label>
+        <property>controls/fuel/right-valve</property>
+        <mapping>nasal</mapping>
+        <script>
+          var rightNames = ['E -2', 'OFF', 'E 0', 'AFT', 'E 2', 'CENTER', 'E 4', 'FORD'];
+          return rightNames[(arg[0] + 2)];
+        </script>
+      </binding>
+    </hovered>
   </animation>
 
 </PropertyList>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<!--2018 - Arnd Lebert - C46 - GNUGPLv2+-->
+<PropertyList>
+
+  <path>fuelQuantAft.ac</path>
+
+  <animation>
+    <object-name>fond2</object-name>
+    <object-name>face</object-name>
+    <object-name>needleL</object-name>
+    <object-name>needleR</object-name>
+  </animation>
+
+  <animation> 
+    <type>material</type>
+    <object-name>face</object-name>
+    <object-name>needleL</object-name>
+    <object-name>needleR</object-name>
+    <emission>
+	   <red>0.028</red>
+       <green>0.014</green>
+       <blue>0.007</blue>
+       <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    </emission>
+  </animation>
+
+
+  <animation> 
+    <type>rotate</type>
+    <object-name>needleR</object-name>
+    <property>/consumables/fuel/tank[1]/level-gal_us</property>
+    <interpolation>
+      <entry><ind>   0 </ind><dep>  48 </dep></entry>
+      <entry><ind>  20 </ind><dep>  27 </dep></entry>
+      <entry><ind>  40 </ind><dep>   6 </dep></entry>
+      <entry><ind>  60 </ind><dep>  -4 </dep></entry>
+	  <entry><ind> 100 </ind><dep> -23 </dep></entry>
+      <entry><ind> 120 </ind><dep> -38 </dep></entry>
+	  <entry><ind> 130 </ind><dep> -42 </dep></entry>
+	  <entry><ind> 175 </ind><dep> -52 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> 0.00 </x-m>
+      <y-m> 0.03 </y-m>
+      <z-m> 0.00 </z-m>  
+    </center>
+    <axis> 
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation> 
+    <type>rotate</type>
+    <object-name>needleL</object-name>
+    <property>/consumables/fuel/tank[0]/level-gal_us</property>
+    <interpolation>
+      <entry><ind>   0 </ind><dep> -48 </dep></entry>
+      <entry><ind>  20 </ind><dep> -27 </dep></entry>
+      <entry><ind>  40 </ind><dep>  -6 </dep></entry>
+      <entry><ind>  60 </ind><dep>   4 </dep></entry>
+	  <entry><ind> 100 </ind><dep>  23 </dep></entry>
+      <entry><ind> 120 </ind><dep>  38 </dep></entry>
+	  <entry><ind> 130 </ind><dep>  42 </dep></entry>
+	  <entry><ind> 175 </ind><dep>  52 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> 0.00 </x-m>
+      <y-m>-0.03 </y-m>
+      <z-m> 0.00 </z-m>  
+    </center>
+    <axis> 
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>
+

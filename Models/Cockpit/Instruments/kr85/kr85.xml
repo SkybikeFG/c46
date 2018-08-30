@@ -1,0 +1,308 @@
+<?xml version="1.0"?>
+<!--KR85 - based on fg default intruments kr87-adf - model by Skybike - 2018 - GNU GPL v2+-->
+<PropertyList>
+
+    <params>
+        <right-display>/instrumentation/adf[0]/right-display</right-display>
+        <dimming>instrumentation/adf[0]/dimming-norm</dimming>
+        <dial-1-khz>instrumentation/adf[0]/frequencies/dial-1-khz</dial-1-khz>
+        <dial-100-khz>instrumentation/adf[0]/frequencies/dial-100-khz</dial-100-khz>
+    </params>
+
+    <path>kr85.ac</path>
+
+    <!--animation>
+        <type>select</type>
+        <object-name>indicator</object-name>
+        <condition>
+            <property>/instrumentation/adf[0]/operable</property>
+        </condition>
+    </animation-->
+
+    <animation>
+        <type>material</type>
+        <object-name>indicator</object-name>
+		<condition>
+            <property>/instrumentation/adf[0]/operable</property>
+        </condition>
+        <emission>
+	      <red>0.015</red>
+          <green>0.015</green>
+          <blue>0.015</blue>
+          <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>noshadow</type>
+    </animation>
+
+    <!--animation>
+        <type>material</type>
+        <object-name>knobs.ADF</object-name>
+        <object-name>knobs.BFO</object-name>
+        <object-name>knobs.FRQ</object-name>
+        <object-name>knobs.FLT</object-name>
+        <object-name>knobs.SET</object-name>
+        <emission>
+            <red>0.5</red>
+            <green>0.1</green>
+            <blue>0.00005</blue>
+            <factor-prop>/sim/model/c172p/lighting/adf</factor-prop>
+        </emission>
+    </animation-->
+
+    <!-- Use FREQ -->
+    <animation>
+        <type>select</type>
+        <object-name>indicator.Use.1000</object-name>
+        <condition>
+            <greater-than-equals>
+                <property>/instrumentation/adf[0]/frequencies/selected-khz</property>
+                <value type="int">1000</value>
+            </greater-than-equals>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>textranslate</type>
+        <object-name>indicator.Use.1000</object-name>
+        <property>/instrumentation/adf[0]/frequencies/selected-khz</property>
+        <step>1000</step>
+        <factor>0.0001</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>textranslate</type>
+        <object-name>indicator.Use.100</object-name>
+        <property>/instrumentation/adf[0]/frequencies/selected-khz</property>
+        <step>100</step>
+        <factor>0.001</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>textranslate</type>
+        <object-name>indicator.Use.10</object-name>
+        <property>/instrumentation/adf[0]/frequencies/selected-khz</property>
+        <step>10</step>
+        <factor>0.01</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>textranslate</type>
+        <object-name>indicator.Use.1</object-name>
+        <property>/instrumentation/adf[0]/frequencies/selected-khz</property>
+        <step>1</step>
+        <factor>0.1</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <!-- Knobs and buttons -->
+	<!--Volume knob-->
+	<animation>
+        <type>knob</type>
+        <object-name>Volume</object-name>
+        <property>/instrumentation/adf[0]/volume-norm</property>
+        <factor>-270</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m> 0.0</x-m>
+            <y-m>-0.063</y-m>
+            <z-m>-0.03</z-m>
+        </center>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>/instrumentation/adf[0]/volume-norm</property>
+                <factor>0.1</factor>
+                <min>0.1</min>
+                <max>1.0</max>
+            </binding>
+		</action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>adf-volume</tooltip-id>
+                <label>Volume: %d%%</label>
+                <property>/instrumentation/adf[0]/volume-norm</property>
+                <mapping>percent</mapping>
+            </binding>
+        </hovered>
+    </animation>
+
+    <!-- Modes knob -->
+    <animation>
+        <type>knob</type>
+        <object-name>Modes</object-name>
+        <property>/instrumentation/adf[0]/modes</property>
+        <factor>-70</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m> 0.00</x-m>
+            <y-m>-0.06</y-m>
+            <z-m> 0.00</z-m>
+        </center>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>/instrumentation/adf[0]/modes</property>
+                <factor>1</factor>
+                <min>0</min>
+                <max>3</max>
+            </binding>
+            <!-- Switch on if volume greater than 0.0 -->
+            <binding>
+                <condition>
+                    <greater-than>
+                        <property>/instrumentation/adf[0]/modes</property>
+                        <value>0.0</value>
+                    </greater-than>
+                </condition>
+                <command>property-assign</command>
+                <property>/instrumentation/adf[0]/power-btn</property>
+                <value type="bool">1</value>
+            </binding>
+            <!-- Switch off if volume less than 0.1 -->
+            <binding>
+                <condition>
+                    <less-than>
+                        <property>/instrumentation/adf[0]/modes</property>
+                        <value>0.1</value>
+                    </less-than>
+                </condition>
+                <command>property-assign</command>
+                <property>/instrumentation/adf[0]/power-btn</property>
+                <value type="bool">0</value>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>adf-volume</tooltip-id>
+                <label>Mode: %s</label>
+                <property>/instrumentation/adf[0]/modes</property>
+                <mapping>nasal</mapping>
+                <script>
+                var adfModes = ['OFF', 'ADF', 'ANT', 'BFO'];
+                return adfModes[(arg[0])];
+                </script>
+            </binding>
+        </hovered>
+    </animation>
+
+    <!-- Inner frequency (1 kHz) knob -->
+    <animation>
+        <type>knob</type>
+        <object-name>FRQInner</object-name>
+        <property alias="/params/dial-1-khz"/>
+        <factor>-2.5</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.0</x-m>
+            <y-m> 0.05</y-m>
+            <z-m>-0.015</z-m>
+        </center>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>/instrumentation/adf[0]/frequencies/selected-khz</property>
+                <factor>1</factor>
+                <min>200</min>
+                <max>1800</max>
+                <resolution>1</resolution>
+                <wrap>true</wrap>
+            </binding>
+            <binding>
+                <command>property-adjust</command>
+                <property alias="/params/dial-1-khz"/>
+                <factor>4</factor>
+                <min>0</min>
+                <max>360</max>
+                <wrap>true</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>adf-kHz</tooltip-id>
+                <label>Adjust ADF frequency by 1 kHz</label>
+            </binding>
+        </hovered>
+    </animation>
+
+    <!-- Outer frequency (100 KHz) knob -->
+    <animation>
+        <type>knob</type>
+        <object-name>FRQOuter</object-name>
+        <property alias="/params/dial-100-khz"/>
+        <factor>-2.5</factor>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.0</x-m>
+            <y-m> 0.05</y-m>
+            <z-m>-0.015</z-m>
+        </center>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>/instrumentation/adf[0]/frequencies/selected-khz</property>
+                <factor>100</factor>
+                <min>200</min>
+                <max>1800</max>
+                <resolution>1</resolution>
+                <wrap>true</wrap>
+            </binding>
+            <binding>
+                <command>property-adjust</command>
+                <property alias="/params/dial-100-khz"/>
+                <factor>4</factor>
+                <min>0</min>
+                <max>360</max>
+                <wrap>true</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>adf-100kHz</tooltip-id>
+                <label>Adjust ADF frequency by 100 kHz</label>
+            </binding>
+        </hovered>
+    </animation>
+
+</PropertyList>

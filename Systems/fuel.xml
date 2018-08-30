@@ -1,0 +1,280 @@
+<?xml version="1.0"?>  
+
+<!--
+***********************************************************************************
+Curtiss C-46 Commando, initial 3D with JSBSim FDM by Arnd Lebert, 2016 - 2018
+Developed under GNU-GPL for FlightGear FS.
+ 
+July 2018, Snowblind1, fuel system for JSBSim FDM
+***********************************************************************************
+ -->
+
+<system name="fuel"> 
+	<!-- This is based on the JSBSim tutorial. The idea is to feed the engines from the phantom tanks 6 and 7. This provides shortcuts on dealing with multiple tanks in the wings. -->
+	
+	
+	<!-- *********************************************************************************** -->
+	<!-- ************ LEFT ENGINE *************** -->
+	<!-- *********************************************************************************** -->
+ 
+ 
+   <channel name="Engine 0 Rotary Left Valve Logic">
+ 
+      <!-- Tank 6 level maintenance -->
+      <!-- Collector Tank 6 works like a constant-level carburetor for left engine -->
+      
+      <!-- from selected 'actual' tank to Collector Tank 6 Fuel Flow Rate in pps -->
+      <switch name="fuel/through-left-valve">
+         <default value="0"/>
+         <test logic="AND" value="0.5">
+            /controls/fuel/left-feed EQ 0               
+            propulsion/tank[0]/contents-lbs GT 0
+            /consumables/fuel/tank[6]/level-lbs LT 0.25
+            /engines/engine[0]/fuel-psi-norm GT 5
+         </test>            
+         <test logic="AND" value="0.5">
+            /controls/fuel/left-feed EQ 1
+            propulsion/tank[1]/contents-lbs GT 0
+            /consumables/fuel/tank[6]/level-lbs LT 0.25
+            /engines/engine[0]/fuel-psi-norm GT 5
+         </test>
+         <test logic="AND" value="0.5">
+            /controls/fuel/left-feed EQ 2               
+            propulsion/tank[2]/contents-lbs GT 0
+            /consumables/fuel/tank[6]/level-lbs LT 0.25
+            /engines/engine[0]/fuel-psi-norm GT 5
+         </test>            
+         <test logic="AND" value="0.5">
+            /controls/fuel/left-feed EQ 3
+            propulsion/tank[3]/contents-lbs GT 0
+            /consumables/fuel/tank[6]/level-lbs LT 0.25
+           /engines/engine[0]/fuel-psi-norm GT 5
+         </test>
+		 <test logic="AND" value="0.5">
+            /controls/fuel/left-feed EQ 4
+            propulsion/tank[4]/contents-lbs GT 0
+            /consumables/fuel/tank[6]/level-lbs LT 0.25
+            /engines/engine[0]/fuel-psi-norm GT 5
+         </test>
+		 <test logic="AND" value="0.5">
+            /controls/fuel/left-feed EQ 5
+            propulsion/tank[5]/contents-lbs GT 0
+            /consumables/fuel/tank[6]/level-lbs LT 0.25
+            /engines/engine[0]/fuel-psi-norm GT 5
+         </test>
+         <output>propulsion/tank[6]/external-flow-rate-pps</output> <!-- Tank 6 filling -->
+      </switch>
+ 
+      <!-- for Tanks 0, 1, 2, 3, 4, 5 consumption -->
+
+      <!-- from Tank 0 to Collector Tank 6 through Left Valve Fuel Flow Rate in pps -->
+      <switch name="fuel/from-tank0-to-tank6">
+         <default value="0"/>
+         <test value="-fuel/through-left-valve">
+            /controls/fuel/left-feed EQ 0      
+         </test>
+      </switch>      
+ 
+      <!-- from Tank 1 to Collector Tank 6 through Left Valve Fuel Flow Rate in pps -->            
+      <switch name="fuel/from-tank1-to-tank6">
+         <default value="0"/>
+         <test value="-fuel/through-left-valve">
+            /controls/fuel/left-feed EQ 1      
+         </test>
+      </switch>
+ 
+     <!-- from Tank 2 to Collector Tank 6 through Left Valve Fuel Flow Rate in pps -->            
+      <switch name="fuel/from-tank2-to-tank6">
+         <default value="0"/>
+         <test value="-fuel/through-left-valve">
+            /controls/fuel/left-feed EQ 2      
+         </test>
+      </switch>      
+ 
+      <!-- from Tank 3 to Collector Tank 6 through Left Valve Fuel Flow Rate in pps -->            
+      <switch name="fuel/from-tank3-to-tank6">
+         <default value="0"/>
+         <test value="-fuel/through-left-valve">
+            /controls/fuel/left-feed EQ 3      
+         </test>
+      </switch>
+	  
+	  <!-- from Tank 4 to Collector Tank 6 through Left Valve Fuel Flow Rate in pps -->            
+      <switch name="fuel/from-tank4-to-tank6">
+         <default value="0"/>
+         <test value="-fuel/through-left-valve">
+            /controls/fuel/left-feed EQ 4      
+         </test>
+      </switch>
+	  
+	  <!-- from Tank 5 to Collector Tank 6 through Left Valve Fuel Flow Rate in pps -->            
+      <switch name="fuel/from-tank5-to-tank6">
+         <default value="0"/>
+         <test value="-fuel/through-left-valve">
+            /controls/fuel/left-feed EQ 5      
+         </test>
+      </switch>
+ 
+ 
+   </channel>
+   
+   
+	<!-- *********************************************************************************** -->
+	<!-- ************ RIGHT ENGINE *************** -->
+	<!-- *********************************************************************************** -->
+ 
+ 
+   <channel name="Engine 1 Rotary right Valve Logic">
+ 
+      <!-- Tank 7 level maintenance -->
+      <!-- Collector Tank 7 works like a constant-level carburetor for right engine -->
+      
+      <!-- from selected 'actual' tank to Collector Tank 7 Fuel Flow Rate in pps -->
+      <switch name="fuel/through-right-valve">
+         <default value="0"/>
+         <test logic="AND" value="0.5">
+            /controls/fuel/right-feed EQ 0               
+            propulsion/tank[0]/contents-lbs GT 0
+            /consumables/fuel/tank[7]/level-lbs LT 0.25
+            /engines/engine[1]/fuel-psi-norm GT 5
+         </test>            
+         <test logic="AND" value="0.5">
+            /controls/fuel/right-feed EQ 1
+            propulsion/tank[1]/contents-lbs GT 0
+            /consumables/fuel/tank[7]/level-lbs LT 0.25
+            /engines/engine[1]/fuel-psi-norm GT 5
+         </test>
+         <test logic="AND" value="0.5">
+            /controls/fuel/right-feed EQ 2               
+            propulsion/tank[2]/contents-lbs GT 0
+            /consumables/fuel/tank[7]/level-lbs LT 0.25
+            /engines/engine[1]/fuel-psi-norm GT 5
+         </test>            
+         <test logic="AND" value="0.5">
+            /controls/fuel/right-feed EQ 3
+            propulsion/tank[3]/contents-lbs GT 0
+            /consumables/fuel/tank[7]/level-lbs LT 0.25
+            /engines/engine[1]/fuel-psi-norm GT 5
+         </test>
+		 <test logic="AND" value="0.5">
+            /controls/fuel/right-feed EQ 4
+            propulsion/tank[4]/contents-lbs GT 0
+            /consumables/fuel/tank[7]/level-lbs LT 0.25
+            /engines/engine[1]/fuel-psi-norm GT 5
+         </test>
+		 <test logic="AND" value="0.5">
+            /controls/fuel/right-feed EQ 5
+            propulsion/tank[5]/contents-lbs GT 0
+            /consumables/fuel/tank[7]/level-lbs LT 0.25
+            /engines/engine[1]/fuel-psi-norm GT 5
+         </test>
+         <output>propulsion/tank[7]/external-flow-rate-pps</output> <!-- Tank 7 filling -->
+      </switch>
+ 
+      <!-- for Tanks 0, 1, 2, 3, 4, 5 consumption -->
+
+      <!-- from Tank 0 to Collector Tank 7 through right Valve Fuel Flow Rate in pps -->
+      <switch name="fuel/from-tank0-to-tank7">
+         <default value="0"/>
+         <test value="-fuel/through-right-valve">
+            /controls/fuel/right-feed EQ 0      
+         </test>
+      </switch>      
+ 
+      <!-- from Tank 1 to Collector Tank 7 through right Valve Fuel Flow Rate in pps -->            
+      <switch name="fuel/from-tank1-to-tank7">
+         <default value="0"/>
+         <test value="-fuel/through-right-valve">
+            /controls/fuel/right-feed EQ 1      
+         </test>
+      </switch>
+ 
+     <!-- from Tank 2 to Collector Tank 7 through right Valve Fuel Flow Rate in pps -->            
+      <switch name="fuel/from-tank2-to-tank7">
+         <default value="0"/>
+         <test value="-fuel/through-right-valve">
+            /controls/fuel/right-feed EQ 2      
+         </test>
+      </switch>      
+ 
+      <!-- from Tank 3 to Collector Tank 7 through right Valve Fuel Flow Rate in pps -->            
+      <switch name="fuel/from-tank3-to-tank7">
+         <default value="0"/>
+         <test value="-fuel/through-right-valve">
+            /controls/fuel/right-feed EQ 3      
+         </test>
+      </switch>
+	  
+	  <!-- from Tank 4 to Collector Tank 7 through right Valve Fuel Flow Rate in pps -->            
+      <switch name="fuel/from-tank4-to-tank7">
+         <default value="0"/>
+         <test value="-fuel/through-right-valve">
+            /controls/fuel/right-feed EQ 4      
+         </test>
+      </switch>
+	  
+	  <!-- from Tank 5 to Collector Tank 7 through right Valve Fuel Flow Rate in pps -->            
+      <switch name="fuel/from-tank5-to-tank7">
+         <default value="0"/>
+         <test value="-fuel/through-right-valve">
+            /controls/fuel/right-feed EQ 5      
+         </test>
+      </switch>
+ 
+ 
+   </channel>
+   
+	<!-- *********************************************************************************** -->
+	<!-- ************ TOTAL FLOW RATE per TANK *************** -->
+	<!-- *********************************************************************************** -->
+ 
+     <channel name="Total flow rates">
+ 
+      <summer name="fuel/tank0-flow-rate">
+         <input>fuel/from-tank0-to-tank6</input>
+         <input>fuel/from-tank0-to-tank7</input>
+         <output>propulsion/tank[0]/external-flow-rate-pps</output>
+      </summer>
+ 
+       <summer name="fuel/tank1-flow-rate">
+         <input>fuel/from-tank1-to-tank6</input>
+         <input>fuel/from-tank1-to-tank7</input>
+         <output>propulsion/tank[1]/external-flow-rate-pps</output>
+      </summer>
+ 
+      <summer name="fuel/tank2-flow-rate">
+         <input>fuel/from-tank2-to-tank6</input>
+         <input>fuel/from-tank2-to-tank7</input>
+         <output>propulsion/tank[2]/external-flow-rate-pps</output>
+      </summer>
+ 
+      <summer name="fuel/tank3-flow-rate">
+         <input>fuel/from-tank3-to-tank6</input>
+         <input>fuel/from-tank3-to-tank7</input>
+         <output>propulsion/tank[3]/external-flow-rate-pps</output>
+      </summer>
+	  
+	  <summer name="fuel/tank4-flow-rate">
+         <input>fuel/from-tank4-to-tank6</input>
+         <input>fuel/from-tank4-to-tank7</input>
+         <output>propulsion/tank[4]/external-flow-rate-pps</output>
+      </summer>
+	  
+	  <summer name="fuel/tank5-flow-rate">
+         <input>fuel/from-tank5-to-tank6</input>
+         <input>fuel/from-tank5-to-tank7</input>
+         <output>propulsion/tank[5]/external-flow-rate-pps</output>
+      </summer>
+ 
+   </channel>
+   
+   
+   
+</system>
+
+
+
+
+
+  
+ 

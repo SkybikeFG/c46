@@ -9,11 +9,24 @@ Developed under GNU-GPL for FlightGear FS.
 <PropertyList>
  <sim>
   <description>Curtiss Wright C-46</description>
-  <long-description>The Curtiss Wright C-46 Commando is a WWII twin-engine, taildragger and cargo aircraft. 
-  It was designed in 1937 as a pressurized passenger airliner. In WWII there were 3,181 build - around half a dozen Commandos are still flying today
+  <long-description>The Curtiss Wright C-46 Commando is a WWII era twin-engine taildragger cargo aircraft. Originally designed and built as a pressurized airliner in 1937, the CW-20 was outfitted for wartime use early in the war. 
+  With its larger engines and cargo capacity, it was immediately pressed into service flying cargo over "the Hump" between India and China. It was actually the largest transport aircraft used during the war. Early models were beset with fuel leak issues in the wing root,
+  resulting in many lost aircraft until those issues were resolved. Of the 3,181 built, around half a dozen Commandos are still flying today.
   </long-description>
   
-  <author>Arnd Lebert</author>
+  <authors>
+     <author n="0">
+	    <name>Arnd Lebert</name>
+		<description>3D Model, FDM, systems, liveries, etc.</description>
+		<nick>SkyBikeFG</nick>
+	 </author>
+	 <author n="1">
+	    <name>John Gilbert</name>
+		<description>Systems, liveries</description>
+		<nick>Snowblind1</nick>
+	 </author>
+  </authors>
+  
   <status>beta</status>
   <aircraft-version>2018.1</aircraft-version>
   <minimum-fg-version>2017.2</minimum-fg-version>
@@ -39,6 +52,13 @@ Developed under GNU-GPL for FlightGear FS.
       <tag>twin-engine</tag>
       <tag>variable-pitch</tag>
     </tags>
+	
+	<urls>
+	   <home-page>https://github.com/skybikefg/c46/wiki</home-page>
+	   <support>http://forum.flightgear.org</support>
+	   <wikipedia>https://en.wikipedia.org/wiki/Curtiss_C-46_Commando </wikipedia>
+	   <code-repository>https://github.com/SkybikeFG/c46</code-repository>
+	</urls>
   
     <flight-model>jsb</flight-model>
     <aero>Systems/c46</aero>
@@ -51,11 +71,6 @@ Developed under GNU-GPL for FlightGear FS.
   
     <model>
       <path>Aircraft/c46/Models/c46-model.xml</path>
-      <!--
-      <livery>
-        <file type="string">USnavy</file>
-      </livery>
-      -->
       <options>
         <hide-yokes type="bool" archive="y">false</hide-yokes>
       </options>
@@ -109,10 +124,7 @@ Developed under GNU-GPL for FlightGear FS.
     <hud>   
       <enable3d>false</enable3d>
     </hud>
-
-  
-  
-  
+ 
     <menubar>
       <default>
         <menu n="10">
@@ -143,6 +155,42 @@ Developed under GNU-GPL for FlightGear FS.
     -->
   
     <help include="Help/c46-help.xml"/>
+	
+	<!-- Save these properties between sessions -->
+        <aircraft-data>                       
+                        
+            <path>/controls/engines/engine[0]/mixture</path>
+            <path>/controls/engines/engine[0]/throttle</path>
+            <path>/controls/engines/engine[0]/propeller-pitch</path>
+            			
+			<path>/controls/engines/engine[1]/mixture</path>
+            <path>/controls/engines/engine[1]/throttle</path>
+            <path>/controls/engines/engine[1]/propeller-pitch</path>
+                        
+            <path>/controls/lighting/landing-lights</path>
+            <path>/controls/lighting/taxi-light</path>
+            <path>/controls/lighting/strobe</path>
+            <path>/controls/lighting/beacon</path>
+            <path>/controls/lighting/nav-lights</path>
+                        
+            <path>/controls/engines/engine/cowl-flaps-norm</path>
+            <path>/controls/flight/elevator-trim</path>
+            <path>/controls/flight/rudder-trim</path>
+            <path>/controls/flight/flaps</path>
+            
+            <path>/instrumentation/comm[0]/frequencies/selected-mhz</path>
+            <path>/instrumentation/comm[0]/frequencies/standby-mhz</path>
+            <path>/instrumentation/comm[0]/power-btn</path>
+            <path>/instrumentation/comm[0]/volume</path>
+            <path>/instrumentation/comm[1]/frequencies/selected-mhz</path>
+            <path>/instrumentation/comm[1]/frequencies/standby-mhz</path>
+            <path>/instrumentation/comm[1]/power-btn</path>
+            <path>/instrumentation/comm[1]/volume</path>
+            <path>/instrumentation/altimeter/setting-inhg</path>            
+            
+        </aircraft-data>
+	
+	
   </sim>
  
   <nasal>
@@ -160,10 +208,7 @@ Developed under GNU-GPL for FlightGear FS.
     </systems>
   </nasal>
 
-  <!-- 27 Jul 18 -->
   <consumables include="Systems/consumables.xml"/>
-
-  <!-- 27 Jul 18 -->
   <payload include="Systems/payload.xml"/>
 
 
@@ -196,6 +241,11 @@ Developed under GNU-GPL for FlightGear FS.
 
 </controls>
 
+<instrumentation n="0">
+    <path>Aircraft/c46/Systems/instrumentation.xml</path>
+</instrumentation>  
+
+  <!--
   <instrumentation>
     <kma20 include="Aircraft/Instruments-3d/kma20/kma20init.xml"/>
     <encoder>
@@ -242,7 +292,7 @@ Developed under GNU-GPL for FlightGear FS.
       <ident-audible type="bool">false</ident-audible>
     </nav>
   </instrumentation>
-
+-->
 
   <limits>
     <mass-and-balance><!--Manitoba 4:6:5: page 78-->
@@ -258,17 +308,6 @@ Developed under GNU-GPL for FlightGear FS.
     <max-positive-g type="double">2.5</max-positive-g>
     <vne type="double">234</vne>
   </limits>
-
-  <!--
-  <payload>
-    <weight>
-      <name type="string">Payload</name>
-      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs"/>
-      <min-lb type="double">10</min-lb>
-      <max-lb type="double">541.41</max-lb>
-    </weight>
-  </payload>
-  -->
 
   <!--
   More:

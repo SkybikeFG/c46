@@ -18,3 +18,8 @@ setprop("/engines/engine[1]/fuel-psi-norm",18);
 #Instruments
 setprop("/systems/electrical/outputs/KNS80",28);
 setprop("/systems/electrical/outputs/comm[0]",28);
+
+#Rembrandt not supported
+if(getprop("/sim/rendering/rembrandt/enabled")==1){
+    printf("Rembrandt not supported! Use ALS.");
+	gui.popupTip("Rembrandt is not supported. Please use ALS instead", 20);}

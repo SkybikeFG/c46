@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <!--
 **********************************************************************
@@ -24,8 +24,6 @@ file, these values will be used (they are hardcoded).
 -->
 
 <PropertyList>
-
-  <!--<instrumentation>-->
     <kma20 include="Aircraft/Instruments-3d/kma20/kma20init.xml"/>
     <encoder>
       <serviceable type="bool">true</serviceable>
@@ -70,4 +68,4 @@ file, these values will be used (they are hardcoded).
       </frequencies>
       <ident-audible type="bool">false</ident-audible>
     </nav>
-  <!--</instrumentation>-->
+</PropertyList>

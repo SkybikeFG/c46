@@ -17,7 +17,7 @@
 props.globals.initNode("/controls/fuel/crossfeed", 0, "BOOL");
 props.globals.initNode("/controls/fuel/left-feed", getprop("/controls/fuel/left-valve"), "INT");
 props.globals.initNode("/controls/fuel/right-feed", getprop("/controls/fuel/right-valve"), "INT");
-props.globals.initNode("/consumables/fuel/tank[10]/pressure-pump-psi", 0, "INT");
+props.globals.initNode("/consumables/fuel/tank[99]/pressure-pump-psi", 0, "INT");#Off position tank[99], as getprop(".../tank[-1]/...") trows an error
 
 var fuelpressTank = func(tank){
 	var levelGalUS = getprop("/consumables/fuel/tank["~tank~"]/level-gal_us");
@@ -37,9 +37,9 @@ var fuelpressTank = func(tank){
 		}
 	}
 	
-	if(tank == getprop("/controls/fuel/left-valve") and getprop("controls/fuel/boostpumps-l-high")==1){
+	if(tank == getprop("/controls/fuel/left-valve") and getprop("/controls/fuel/boostpumps-l-high")==1){
 		press = press + 2;}#boostpumps==1
-	if(tank == getprop("/controls/fuel/right-valve") and getprop("controls/fuel/boostpumps-r-high")==1){
+	if(tank == getprop("/controls/fuel/right-valve") and getprop("/controls/fuel/boostpumps-r-high")==1){
 		press = press + 2;}
 		
 	if(levelGalUS ==0){#empty, no pressure
@@ -70,9 +70,9 @@ var selectTank = func(){
 		var leftValve = getprop("/controls/fuel/left-valve");
 		var rightValve = getprop("/controls/fuel/right-valve");
 		if(leftValve<0){# off position
-			leftValve=10}
+			leftValve=99}
 		if(rightValve<0){# off position
-			rightValve=10}
+			rightValve=99}
 		setprop("/controls/fuel/left-feed", leftValve);
 		setprop("/controls/fuel/right-feed", rightValve);
 		

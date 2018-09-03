@@ -482,9 +482,9 @@
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/kx165/kx165-1.xml</path>
     <offsets>
-      <x-m>-10.360 </x-m>
-      <y-m> -0.255 </y-m>
-      <z-m> -0.320 </z-m>
+      <x-m>-10.715 </x-m>
+      <y-m> -0.145 </y-m>
+      <z-m> -0.240 </z-m>
     </offsets>
   </model>
   
@@ -516,11 +516,20 @@
   </model>
   
   <model>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/kt76a/kt76a.xml</path>
+    <offsets>
+      <x-m>-10.359 </x-m>
+      <y-m>  0.029 </y-m>
+      <z-m> -0.119 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/kr85/kr85.xml</path>
     <offsets>
       <x-m>-10.715 </x-m>
       <y-m>  0.144 </y-m>
-      <z-m> -0.26 </z-m>
+      <z-m> -0.302 </z-m>
     </offsets>
   </model>
     

@@ -244,11 +244,9 @@ Developed under GNU-GPL for FlightGear FS.
       <nav-lights>1</nav-lights>
     </lighting>
 
-</controls>
+  </controls>
 
-<instrumentation n="0">
-    <path>Aircraft/c46/Systems/instrumentation.xml</path>
-</instrumentation>  
+  <instrumentation include="Systems/instrumentation.xml"/>
 
   <!--
   <instrumentation>

@@ -283,7 +283,7 @@
      </location>
      <capacity unit="LBS">0.5</capacity>
      <contents unit="LBS">0</contents>
-     <priority>1</priority>
+     <priority>0</priority>
      <hidden type="bool">true</hidden>
   </tank>
   
@@ -295,7 +295,7 @@
      </location>
      <capacity unit="LBS">0.5</capacity>
      <contents unit="LBS">0</contents>
-     <priority>1</priority>
+     <priority>0</priority>
      <hidden type="bool">true</hidden>
   </tank>
   

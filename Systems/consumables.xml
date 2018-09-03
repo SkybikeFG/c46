@@ -30,6 +30,40 @@
 	  <unusable-gal_us>0.1</unusable-gal_us>
 	  <hidden type="bool">true</hidden>
     </tank>
+	<tank n="8"> <name>Left Strainer Valve</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="9"> <name>Right Strainer Valve</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="10"> <name>Left Firewall Shutoff Valve</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="11"> <name>Right Firewall Shutoff Valve</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="12"> <name>Left Engine Pump</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="13"> <name>Right Engine Pump</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="14"> <name>Left Carburetor</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="15"> <name>Right Carburetor</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="16"> <name>Left Primer Solenoid</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="17"> <name>Right Primer Solenoid</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="18"> <name>Heater Valve</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	
   </fuel>
   
 </PropertyList>

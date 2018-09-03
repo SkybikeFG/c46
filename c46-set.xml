@@ -39,6 +39,7 @@ Developed under GNU-GPL for FlightGear FS.
 
     <tags>
       <tag>1940s</tag>
+	  <tag>ww2</tag>
       <tag>2-engine</tag>
       <tag>cargo</tag>
       <tag>curtiss-wright</tag>
@@ -186,10 +187,12 @@ Developed under GNU-GPL for FlightGear FS.
             <path>/instrumentation/comm[1]/frequencies/standby-mhz</path>
             <path>/instrumentation/comm[1]/power-btn</path>
             <path>/instrumentation/comm[1]/volume</path>
-            <path>/instrumentation/altimeter/setting-inhg</path>            
+            <path>/instrumentation/altimeter/setting-inhg</path> 
+
+            <path>/controls/fuel/left-valve/</path>
+            <path>/controls/fuel/right-valve</path> 			
             
         </aircraft-data>
-	
 	
   </sim>
  
@@ -204,9 +207,11 @@ Developed under GNU-GPL for FlightGear FS.
 	  <file>Aircraft/c46/Models/Cockpit/Instruments/kma20/kma20.nas</file>
     </c46>
     <systems>
-      <file>Aircraft/c46/Models/Cockpit/Instruments/kns80/KNS80.nas</file>
+      <file>Aircraft/c46/Models/Cockpit/Instruments/kns80/KNS80.nas</file>	  
     </systems>
   </nasal>
+  
+  
 
   <consumables include="Systems/consumables.xml"/>
   <payload include="Systems/payload.xml"/>

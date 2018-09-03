@@ -10,8 +10,43 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
  -->
 
 <system name="fuel"> 
-	<!-- This is based on the JSBSim tutorial. The idea is to feed the engines from the phantom tanks 6 and 7. This provides shortcuts on dealing with multiple tanks in the wings. -->
+	<!-- This is based on the JSBSim tutorial. The idea is to feed the engines from the phantom tanks 6 and 7. This provides shortcuts on dealing with multiple tanks in the wings.
+		Also, I am shamelessly stealing parts of the fuel system from Benedikt Hallinger, and his outstanding work on the Cessna 182 model. 
+		
+		In the real aircraft, each wing has three tanks (Forward, Center, Aft). Selector valves in the cockpit feed the engines. From the valve to the engine, fuel runs through a strainer,
+		firewall shut off valve, and engine pump before getting to the carburetor. The carburetor also supplies fuel pressure to the low pressure warning switch and fuel pressure transmitter
+		(for the indicator in the cockpit). Crossfeed happens between the stariner and firewall shutoff valve. Cockpit/cargo heaters are fed from the engine pump. Priming delivers fuel directly to the carburetor.
+		
+		In this model, we have the fuel tanks in the wings, selector valve, crossfeed valve, and "phantom" tanks, that act as a small tank from the selector valve. Additional components are to be set as needed.
+		
+		Implementation concepts:
+		- The idea is to treat every item that holds fuel as independent tank.
+		- Shut off fuel to engine by setting priority of feeder tank to 0.
+		
+		
+		To Do:
+		- Additional fuel components. (In Work)
+		- Priming system (In Work - stubbed - need switches to implement further)
+		- Heater system
+		- Fuel drains / leaks
+		- 
+		
 	
+	
+	
+	
+	
+	
+	
+	-->
+	
+	
+	<property type="double" value="17">/systems/fuel/priming-left-flow-rate</property> <!-- hard coding this until we get a priming switch -->
+	<property type="bool" value="0">/systems/fuel/engine-left-primed</property>
+    <property type="bool" value="0">/systems/fuel/engine-left-flooded</property>
+	<property type="double" value="17">/systems/fuel/priming-right-flow-rate</property> <!-- hard coding this until we get a priming switch -->
+	<property type="bool" value="0">/systems/fuel/engine-right-primed</property>
+    <property type="bool" value="0">/systems/fuel/engine-right-flooded</property>
 	
 	<!-- *********************************************************************************** -->
 	<!-- ************ LEFT ENGINE *************** -->
@@ -266,6 +301,106 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
          <output>propulsion/tank[5]/external-flow-rate-pps</output>
       </summer>
  
+   </channel>
+   
+   <channel name="fuel-system">
+        
+		<!-- ########################## -->
+        <!-- #  Priming stuff         # -->
+        <!-- ########################## -->
+        <!-- Priming is simulated using the /systems/fuel/priming-?-flow-rate property, jsbsim priority and mixture-->
+        
+		<!-- Left Engine -->
+		
+        <!-- Engine flooded indicator -->
+        <switch name="/systems/fuel/engine-left-flooded">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                /fdm/jsbsim/propulsion/tank[6]/pct-full  GT  100.0
+            </test>
+        </switch>
+        
+        <!-- Engine can start / is adequately primed indicator -->
+        <switch name="/systems/fuel/engine-left-primed">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                <!-- Engine is cold: priming required -->
+                <!-- /fdm/jsbsim/propulsion/tank[6]/pct-full  GE  /systems/fuel/priming-temperature-threshold -->
+				/systems/fuel/priming-left-flow-rate GT 14 
+				
+            </test>
+        </switch> 
+        
+        <!-- set feeder tank priority according to priming state -->
+        <!-- (engine will get no fuel unless properly primed) -->
+        <switch name="/systems/fuel/engine-left-can-start">
+            <default value="1"/>
+			<!--
+            <test logic="AND" value="1">
+                always allow engine start when engine procedures are off 
+                /engines/engine/complex-engine-procedures EQ 0
+            </test> -->
+            <test logic="AND" value="0">
+                <test logic="AND">
+                    <!-- engine not running -->
+                    /fdm/jsbsim/propulsion/engine[0]/set-running  EQ   0
+                </test>
+                <test logic="OR">
+                    <!-- engine flooded or not primed correctly -->
+                    /systems/fuel/engine-left-flooded  EQ  1
+                    /systems/fuel/engine-left-primed  EQ  0
+                </test>
+            </test>
+            <output>/fdm/jsbsim/propulsion/tank[6]/priority</output>   
+        </switch>
+		
+		<!-- Right Engine -->
+		
+        <!-- Engine flooded indicator -->
+        <switch name="/systems/fuel/engine-right-flooded">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                /fdm/jsbsim/propulsion/tank[7]/pct-full  GT  100.0
+            </test>
+        </switch>
+        
+        <!-- Engine can start / is adequately primed indicator -->
+        <switch name="/systems/fuel/engine-right-primed">
+            <default value="0"/>
+            <test logic="AND" value="1">
+                <!-- Engine is cold: priming required -->
+                <!-- /fdm/jsbsim/propulsion/tank[6]/pct-full  GE  /systems/fuel/priming-temperature-threshold -->
+				/systems/fuel/priming-right-flow-rate GT 14 
+				
+            </test>
+        </switch> 
+        
+        <!-- set feeder tank priority according to priming state -->
+        <!-- (engine will get no fuel unless properly primed) -->
+        <switch name="/systems/fuel/engine-right-can-start">
+            <default value="1"/>
+			<!--
+            <test logic="AND" value="1">
+                always allow engine start when engine procedures are off 
+                /engines/engine/complex-engine-procedures EQ 0
+            </test> -->
+            <test logic="AND" value="0">
+                <test logic="AND">
+                    <!-- engine not running -->
+                    /fdm/jsbsim/propulsion/engine[1]/set-running  EQ   0
+                </test>
+                <test logic="OR">
+                    <!-- engine flooded or not primed correctly -->
+                    /systems/fuel/engine-right-flooded  EQ  1
+                    /systems/fuel/engine-right-primed  EQ  0
+                </test>
+            </test>
+            <output>/fdm/jsbsim/propulsion/tank[7]/priority</output>   
+        </switch>
+		
+		
+   
+   
    </channel>
    
    

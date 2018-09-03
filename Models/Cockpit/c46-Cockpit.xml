@@ -253,6 +253,20 @@
     <type>pick</type>
 	<object-name>DfuelSelectCL</object-name>
     <object-name>DfuelSelectPL</object-name>
+	<action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/fuel/left-valve</property>
+		<offset>-1</offset>
+        <step>2</step>
+        <min>-2</min>
+        <max>6</max><!-- -2 0 2 4 -->
+        <wrap>true</wrap>
+      </binding>
+    </action>
     <action>
       <button>3</button>
       <repeatable>true</repeatable>
@@ -299,6 +313,19 @@
     <type>pick</type>
 	<object-name>DfuelSelectCR</object-name>
     <object-name>DfuelSelectPR</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/fuel/right-valve</property>
+        <step>2</step>
+        <min>-1</min>
+        <max>7</max>
+        <wrap>true</wrap>
+      </binding>
+    </action>
     <action>
       <button>3</button>
       <repeatable>true</repeatable>

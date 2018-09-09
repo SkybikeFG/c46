@@ -205,7 +205,7 @@ fuelPayloadValve();
 #Fuel Pressure Timer
 var fullRun = func(){
 	#Fuel Pressure Taks
-	for(var i=0; i<5; i+=1){
+	for(var i=0; i<6; i+=1){
 		fuelpressTank(i);
 	}
 	#Fuel Pressure Engines

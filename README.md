@@ -4,7 +4,9 @@
 Check out [my wiki](https://github.com/skybikefg/c46/wiki)
 
 
-> The Curtiss Wright C-46 Commando is a WWII twin-engine, taildragger and cargo aircraft. It was designed in 1937 as a pressurized passenger airliner. In WWII there were 3,181 build - around half a dozen Commandos are still flying today.
+> The Curtiss Wright C-46 Commando is a WWII era twin-engine taildragger cargo aircraft. Originally designed and built as a pressurized airliner in 1937, the CW-20 was outfitted for wartime use early in the war. 
+> With its larger engines and cargo capacity, it was immediately pressed into service flying cargo over "the Hump" between India and China. It was actually the largest transport aircraft used during the war.
+> Of the 3,181 built, around half a dozen Commandos are still flying today.
 ________________________________________________________
 <big><big><big><big>![F](http://wiki.flightgear.org/images/thumb/6/62/FlightGear_logo.png/100px-FlightGear_logo.png)lighGear Version</big></big></big></big>
 * Author: Arnd Lebert @2016/2017/2018, John Gilbert 2018

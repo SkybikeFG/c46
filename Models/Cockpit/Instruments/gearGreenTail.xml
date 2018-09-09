@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<!--By Arnd Lebert for c46 08/09/2018-->
+<PropertyList>
+
+  <path>warningLightGreen.ac</path>
+
+  <animation>
+    <object-name>Base</object-name>
+    <object-name>LightGreen</object-name>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>LightGreen</object-name>
+	<condition>
+	  <and>
+        <equals>
+          <property>gear/gear[2]/position-norm</property>
+          <value>1</value>
+        </equals>
+		<!--greater-than>
+          <property>/Electrical/system/...</property>
+          <value>20</value>
+		</greater-than-->
+	  </and>
+    </condition>
+    <emission>
+	   <red>0.4</red>
+       <green>1</green>
+       <blue>0.2</blue>
+       <factor>100</factor>
+    </emission>
+  </animation>
+
+</PropertyList>
+

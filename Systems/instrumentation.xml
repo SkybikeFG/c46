@@ -46,6 +46,7 @@ file, these values will be used (they are hardcoded).
     </comm>
     <comm n="1">
       <power-btn type="bool">1</power-btn>
+	  <mode type="int">1</mode>
       <frequencies>
         <dial-khz type="int">0</dial-khz>
         <dial-mhz type="int">0</dial-mhz>
@@ -62,6 +63,8 @@ file, these values will be used (they are hardcoded).
     </nav>
     <nav n="1">
       <volume type="double">0.7</volume>
+	  <power-btn type="bool">1</power-btn>
+	  <mode type="int">1</mode>
       <frequencies>
         <dial-khz type="int">0</dial-khz>
         <dial-mhz type="int">0</dial-mhz>

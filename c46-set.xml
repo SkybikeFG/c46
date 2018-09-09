@@ -186,7 +186,13 @@ Developed under GNU-GPL for FlightGear FS.
             <path>/instrumentation/comm[1]/frequencies/selected-mhz</path>
             <path>/instrumentation/comm[1]/frequencies/standby-mhz</path>
             <path>/instrumentation/comm[1]/power-btn</path>
+			<path>/instrumentation/comm[1]/mode</path>
             <path>/instrumentation/comm[1]/volume</path>
+            <path>/instrumentation/altimeter/setting-inhg</path> 
+			<path>/instrumentation/nav[1]/frequencies/selected-mhz</path>
+            <path>/instrumentation/nav[1]/power-btn</path>
+			<path>/instrumentation/nav[1]/mode</path>
+            <path>/instrumentation/nav[1]/volume</path>
             <path>/instrumentation/altimeter/setting-inhg</path> 
 
             <path>/controls/fuel/left-valve/</path>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<!--By Arnd Lebert for c46 08/09/2018-->
+<PropertyList>
+
+  <path>warningLightOrange.ac</path>
+
+  <animation>
+    <object-name>Base</object-name>
+    <object-name>LightOrange</object-name>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>LightOrange</object-name>
+	<condition><!-- gear[0] OR gear[1] OR gear[2]   is    not in AND not out-->
+	  <or>
+	    <and>
+          <less-than>
+            <property>gear/gear[0]/position-norm</property>
+            <value>1</value>
+          </less-than>
+		  <greater-than>
+            <property>gear/gear[0]/position-norm</property>
+            <value>0</value>
+          </greater-than>
+		</and>
+		<and>
+          <less-than>
+            <property>gear/gear[1]/position-norm</property>
+            <value>1</value>
+          </less-than>
+		  <greater-than>
+            <property>gear/gear[1]/position-norm</property>
+            <value>0</value>
+          </greater-than>
+		</and>
+		<and>
+          <less-than>
+            <property>gear/gear[2]/position-norm</property>
+            <value>1</value>
+          </less-than>
+		  <greater-than>
+            <property>gear/gear[2]/position-norm</property>
+            <value>0</value>
+          </greater-than>
+		</and>
+	  </or>
+    </condition>
+    <emission>
+	   <red>1</red>
+       <green>0.5</green>
+       <blue>0.1</blue>
+       <factor>100</factor>
+    </emission>
+  </animation>
+
+</PropertyList>
+

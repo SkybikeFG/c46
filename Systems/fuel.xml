@@ -15,7 +15,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
 		
 		In the real aircraft, each wing has three tanks (Forward, Center, Aft). Selector valves in the cockpit feed the engines. From the valve to the engine, fuel runs through a strainer,
 		firewall shut off valve, and engine pump before getting to the carburetor. The carburetor also supplies fuel pressure to the low pressure warning switch and fuel pressure transmitter
-		(for the indicator in the cockpit). Crossfeed happens between the stariner and firewall shutoff valve. Cockpit/cargo heaters are fed from the engine pump. Priming delivers fuel directly to the carburetor.
+		(for the indicator in the cockpit). Crossfeed happens between the strainer and firewall shutoff valve. Cockpit/cargo heaters are fed from the engine pump. Priming delivers fuel directly to the carburetor.
 		
 		In this model, we have the fuel tanks in the wings, selector valve, crossfeed valve, and "phantom" tanks, that act as a small tank from the selector valve. Additional components are to be set as needed.
 		
@@ -27,9 +27,11 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
 		To Do:
 		- Additional fuel components. (In Work)
 		- Priming system (In Work - stubbed - need switches to implement further)
-		- Heater system
+		- Heater system (in work - logic in place - need a switch, and some rough calculations on how fast the cabin heats up )
 		- Fuel drains / leaks
-		- 
+		- Long range tanks - additional fuel bladders would be loaded into the cargo area, and the aircraft could feed from them. (In work - stubbed - need location data / additional valve to complete)
+		- Carb vent line (In work - Functional - could use some calculations to reflect actual performance during takeoff, when the carb actually vents)
+		
 		
 	
 	
@@ -47,6 +49,9 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
 	<property type="double" value="17">/systems/fuel/priming-right-flow-rate</property> <!-- hard coding this until we get a priming switch -->
 	<property type="bool" value="0">/systems/fuel/engine-right-primed</property>
     <property type="bool" value="0">/systems/fuel/engine-right-flooded</property>
+	<property type="double" value="0">/systems/fuel/engine-left-carb-vent</property>
+	<property type="double" value="0">/systems/fuel/engine-right-carb-vent</property>
+	<property type="double" value="0">/systems/fuel/heater-set</property>
 	
 	<!-- *********************************************************************************** -->
 	<!-- ************ LEFT ENGINE *************** -->
@@ -149,6 +154,18 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
             /controls/fuel/left-feed EQ 5      
          </test>
       </switch>
+	  
+	  <!-- Carb venting when engine is running -->
+	  <switch name="fuel/engine-left-carb-vent-switch">
+	     <default value = "0"/>
+		 <test value="0.01">
+		    /fdm/jsbsim/propulsion/engine[0]/set-running EQ 1
+		</test>
+		<output>/systems/fuel/engine-left-carb-vent</output>
+	  </switch>
+	  
+	  
+	  
  
  
    </channel>
@@ -255,6 +272,15 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
             /controls/fuel/right-feed EQ 5      
          </test>
       </switch>
+	  
+	  <!-- Carb venting when engine is running -->
+	  <switch name="fuel/engine-right-carb-vent-switch">
+	     <default value = "0"/>
+		 <test value="0.01">
+		    /fdm/jsbsim/propulsion/engine[1]/set-running EQ 1
+		</test>
+		<output>/systems/fuel/engine-right-carb-vent</output>
+	  </switch>
  
  
    </channel>
@@ -292,12 +318,14 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
 	  <summer name="fuel/tank4-flow-rate">
          <input>fuel/from-tank4-to-tank6</input>
          <input>fuel/from-tank4-to-tank7</input>
+		 <input>/systems/fuel/engine-left-carb-vent</input>
          <output>propulsion/tank[4]/external-flow-rate-pps</output>
       </summer>
 	  
 	  <summer name="fuel/tank5-flow-rate">
          <input>fuel/from-tank5-to-tank6</input>
          <input>fuel/from-tank5-to-tank7</input>
+		 <input>/systems/fuel/engine-right-carb-vent</input>
          <output>propulsion/tank[5]/external-flow-rate-pps</output>
       </summer>
  
@@ -315,8 +343,8 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
         <!-- Engine flooded indicator -->
         <switch name="/systems/fuel/engine-left-flooded">
             <default value="0"/>
-            <test logic="AND" value="1">
-                /fdm/jsbsim/propulsion/tank[6]/pct-full  GT  100.0
+            <test logic="AND" value="1">                
+				/consumables/fuel/tank[6]/level-norm GT .9
             </test>
         </switch>
         
@@ -360,7 +388,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
         <switch name="/systems/fuel/engine-right-flooded">
             <default value="0"/>
             <test logic="AND" value="1">
-                /fdm/jsbsim/propulsion/tank[7]/pct-full  GT  100.0
+                /consumables/fuel/tank[6]/level-norm GT .9
             </test>
         </switch>
         
@@ -398,7 +426,20 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
             <output>/fdm/jsbsim/propulsion/tank[7]/priority</output>   
         </switch>
 		
-		
+		<!-- ########################## -->
+        <!-- #  Heater stuff         # -->
+        <!-- ########################## -->
+        <!-- Heating is simulated using the /systems/fuel/heater-set and fuel pressures (heaters are fuel driven, not bleed air driven) -->
+        
+		<!-- Heater is ready indicator -->
+        <switch name="/systems/fuel/heater-ready">
+            <default value="0"/>
+            <test logic="OR" value="1">                
+				/engines/engine[0]/fuel-psi-norm GT 5
+				/engines/engine[1]/fuel-psi-norm GT 5
+            </test>
+			<output>/systems/fuel/heater-set</output>
+        </switch>
    
    
    </channel>

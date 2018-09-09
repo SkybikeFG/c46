@@ -63,6 +63,63 @@
 	<tank n="18"> <name>Heater Valve</name>
 	  <hidden type="bool">true</hidden>
 	</tank>
+	<tank n="19"> <name>Left Carb Vent</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="20"> <name>Right Carb Vent</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="21"> <name>Long Range Tank 1</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="22"> <name>Long Range Tank 2</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="23"> <name>Long Range Tank 3</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="24"> <name>Long Range Tank 4</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="25"> <name>Long Range Tank 5</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="26"> <name>Long Range Tank 6</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="27"> <name>Long Range Tank 7</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="28"> <name>Long Range Tank 8</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="29"> <name>Long Range Tank 9</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="30"> <name>Long Range Tank 10</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="31"> <name>Long Range Tank 11</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="32"> <name>Long Range Tank 12</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="33"> <name>Long Range Tank 13</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="34"> <name>Long Range Tank 14</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="35"> <name>Long Range Tank 15</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="36"> <name>Long Range Tank 16</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="37"> <name>Long Range Valve</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
 	
   </fuel>
   

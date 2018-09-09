@@ -299,8 +299,129 @@
      <hidden type="bool">true</hidden>
   </tank>
   
+  <!-- ***************** Long Range Tanks - Optional equipment in cargo area ********************** -->
+  <!-- Each "tank" was a 100 gallon barrel, connected to a central valve in the cargo area to the fuel system. -->
+  <!--
+  <tank type="FUEL" number="21"> 
+     <location unit="M">
+       <x>8.0</x>
+       <y>0</y>
+       <z>0.25</z>
+     </location>
+     <capacity unit="LBS">600</capacity>
+     <contents unit="LBS">600</contents>
+     <priority>0</priority>
+     <hidden type="bool">false</hidden>
+  </tank>
   
+  <tank type="FUEL" number="22"> 
+     <location unit="M">
+       <x>3.749</x>
+       <y>2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">600</capacity>
+     <contents unit="LBS">600</contents>
+     <priority>0</priority>
+     <hidden type="bool">true</hidden>
+  </tank>
   
+  <tank type="FUEL" number="23"> 
+     <location unit="M">
+       <x>3.749</x>
+       <y>2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">600</capacity>
+     <contents unit="LBS">600</contents>
+     <priority>0</priority>
+     <hidden type="bool">true</hidden>
+  </tank>
+  
+  <tank type="FUEL" number="24"> 
+     <location unit="M">
+       <x>3.749</x>
+       <y>2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">600</capacity>
+     <contents unit="LBS">600</contents>
+     <priority>0</priority>
+     <hidden type="bool">true</hidden>
+  </tank>
+  
+  <tank type="FUEL" number="25"> 
+     <location unit="M">
+       <x>3.749</x>
+       <y>2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">600</capacity>
+     <contents unit="LBS">600</contents>
+     <priority>0</priority>
+     <hidden type="bool">true</hidden>
+  </tank>
+  
+  <tank type="FUEL" number="26"> 
+     <location unit="M">
+       <x>3.749</x>
+       <y>2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">600</capacity>
+     <contents unit="LBS">600</contents>
+     <priority>0</priority>
+     <hidden type="bool">true</hidden>
+  </tank>
+  
+  <tank type="FUEL" number="27"> 
+     <location unit="M">
+       <x>3.749</x>
+       <y>2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">600</capacity>
+     <contents unit="LBS">600</contents>
+     <priority>0</priority>
+     <hidden type="bool">true</hidden>
+  </tank>
+  
+  <tank type="FUEL" number="28"> 
+     <location unit="M">
+       <x>3.749</x>
+       <y>2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">600</capacity>
+     <contents unit="LBS">600</contents>
+     <priority>0</priority>
+     <hidden type="bool">true</hidden>
+  </tank>
+  
+  <tank type="FUEL" number="29"> 
+     <location unit="M">
+       <x>3.749</x>
+       <y>2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">600</capacity>
+     <contents unit="LBS">600</contents>
+     <priority>0</priority>
+     <hidden type="bool">true</hidden>
+  </tank>
+  
+  <tank type="FUEL" number="30"> 
+     <location unit="M">
+       <x>3.749</x>
+       <y>2.341</y>
+       <z>-1.258</z>
+     </location>
+     <capacity unit="LBS">600</capacity>
+     <contents unit="LBS">600</contents>
+     <priority>0</priority>
+     <hidden type="bool">true</hidden>
+  </tank>
+  -->
  </propulsion>
 
  <system file="fuel"/> 

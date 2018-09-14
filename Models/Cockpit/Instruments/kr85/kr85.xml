@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!--KR85 - based on fg default intruments kr87-adf - model by Skybike - 2018 - GNU GPL v2+-->
+<!-- KR85 - based on fg default intruments kr87-adf - model by Skybike - 2018 - GNU GPL v2+-->
+<!-- We still need help here. What are these frequency knobs for? -->
 <PropertyList>
 
     <params>
@@ -22,13 +23,14 @@
     <animation>
         <type>material</type>
         <object-name>indicator</object-name>
+		<object-name>indicator.Light</object-name>
 		<condition>
-            <property>/instrumentation/adf[0]/operable</property>
+            <property>/instrumentation/adf[0]/power-btn/power-btn</property>
         </condition>
         <emission>
-	      <red>0.015</red>
-          <green>0.015</green>
-          <blue>0.015</blue>
+	      <red>0.012</red>
+          <green>0.010</green>
+          <blue>0.010</blue>
           <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
         </emission>
     </animation>
@@ -116,7 +118,7 @@
         </axis>
     </animation>
 
-    <!-- Knobs and buttons -->
+    <!-- Knobs	-->
 	<!--Volume knob-->
 	<animation>
         <type>knob</type>
@@ -217,6 +219,7 @@
         </hovered>
     </animation>
 
+	<!-- Right frequency knobs-->
     <!-- Inner frequency (1 kHz) knob -->
     <animation>
         <type>knob</type>
@@ -304,5 +307,8 @@
             </binding>
         </hovered>
     </animation>
+	<!-- Left frequency (?) knobs -->
+	<!-- Help us to find out what these knobs are for -->
+	<!-- FRQOuterL and FRQInnerL -->
 
 </PropertyList>

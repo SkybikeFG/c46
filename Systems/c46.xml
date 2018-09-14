@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?-->
 
-<fdm_config name="c46" version="2.0" release="ALPHA"
+<fdm_config name="c46" version="2.0" release="BETA"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 
@@ -424,7 +424,6 @@
   -->
  </propulsion>
 
- <system file="fuel"/> 
  
  
  <ground_reactions>
@@ -506,12 +505,22 @@
 
  </ground_reactions>
 
+ <!-- *** Additional System files *** -->
+ 
+ <system file="fuel.xml"/> 
+ <!-- <system file="pitot-static.xml"/> -->
+ <!-- <system file="vacuum.xml"/> -->
  <system file="Propulsion.xml"/>
  <system file="Aircraft control.xml"/>
  <system file="Landing Gear.xml"/>
  <system file="Flaps.xml"/>
  <system file="tail-wheel"/>
  <system file="Oilcooler.xml"/>
+ 
+ <systems>
+    <path>/pitot-static.xml</path>
+ </systems>
+ 
  <flight_control name="FCS: c46">
  </flight_control>
 

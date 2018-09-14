@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <!-- *** Pitot System *** -->
+  <pitot>
+    <name>pitot0</name>
+    <number>0</number>
+	<stall-deg>60</stall-deg>
+  </pitot>
+  
+  <pitot>
+    <name>pitot1</name>
+    <number>1</number>
+	<stall-deg>60</stall-deg>
+  </pitot>
+
+  <!-- *** Static System *** -->
+  <static>
+    <name>static0</name>
+    <number>0</number>
+    <tau>0.1</tau>
+	<type>2</type> <!-- Static port on pitot tube -->
+	<error-factor>0.5</error-factor>
+  </static>
+  
+  <static>
+    <name>static1</name>
+    <number>1</number>
+    <tau>0.1</tau>
+	<type>2</type> <!-- Static port on pitot tube -->
+	<error-factor>0.5</error-factor>
+  </static>
+  
+  <static>
+    <name>static2</name>
+    <number>2</number>
+    <tau>0.05</tau>
+	<type>0</type> <!-- Static port on left wing -->
+	<error-factor>0.7</error-factor> <!-- POH notes that alternate static source cause 300' higher altimeter readings -->
+  </static>
+  
+</PropertyList>

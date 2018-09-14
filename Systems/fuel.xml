@@ -52,6 +52,10 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
 	<property type="double" value="0">/systems/fuel/engine-left-carb-vent</property>
 	<property type="double" value="0">/systems/fuel/engine-right-carb-vent</property>
 	<property type="double" value="0">/systems/fuel/heater-set</property>
+	<property type="double" value="0">/systems/fuel/heater-burn-cockpit</property>
+	<property type="double" value="0">/systems/fuel/heater-burn-cargo</property>
+	
+	
 	
 	<!-- *********************************************************************************** -->
 	<!-- ************ LEFT ENGINE *************** -->
@@ -440,6 +444,24 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
             </test>
 			<output>/systems/fuel/heater-set</output>
         </switch>
+		<!-- Cockpit heaters use .0009 pps of fuel when running -->
+		<!-- Cabin heaters use .0017 pps of fuel when running -->
+		
+		<switch name="/systems/fuel/cockpit-heater-running">
+			<defaul value="0"/>
+			<test logic="AND" value=".0017"> <!-- Add line in test for heater switch position in cockpit -->
+				/systems/fuel/heater-set EQ 1				
+			</test>
+			<output>/systems/fuel/heater-burn-cockpit</output>			
+		</switch>
+		
+		<switch name="/systems/fuel/cargo-heater-running">
+			<defaul value="0"/>
+			<test logic="AND" value=".0034"> <!-- Add line in test for heater switch position in cockpit -->
+				/systems/fuel/heater-set EQ 1				
+			</test>
+			<output>/systems/fuel/heater-burn-cargo</output>			
+		</switch>
    
    
    </channel>

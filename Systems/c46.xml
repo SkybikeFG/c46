@@ -130,9 +130,8 @@
        <roll>     0.00 </roll>
         <yaw>     0.00 </yaw>
     </orient>
-    <!-- 9 Jul 18 - changed from "0" - needs to be set here until we get fuel system completed -->
-	<feed>6</feed>
-	<!--<feed>2</feed>-->
+    <feed>6</feed>
+	
 	
 
     <thruster file="HamiltonStandard3Blade">
@@ -161,9 +160,8 @@
        <roll>     0.00 </roll>
         <yaw>     0.00 </yaw>
     </orient>
-    <!-- 9 Jul 18 - changed from "1" - needs to be set here until we get fuel system completed -->
-	<feed>7</feed>
-	<!--<feed>3</feed>-->
+    <feed>7</feed>
+	
 
     <thruster file="HamiltonStandard3Blade">
      <sense> 1 </sense>
@@ -181,34 +179,6 @@
   </engine>
   
 <!--  #   #   #   #   F U E L   T A N K S  #   #   #   #   -->
-<!-- Original Configuration 
-  <tank type="FUEL" number="0">
-     <location unit="M">
-       <x>   8.87 </x>
-       <y>   0.00 </y>
-       <z>   0.00 </z>
-     </location>
-     <capacity unit="LBS"> 3810.72 </capacity>
-     <contents unit="LBS"> 1905.36 </contents>
-  </tank>
-  <tank type="FUEL" number="1">
-     <location unit="M">
-       <x>   9.37 </x>
-       <y>   0.00 </y>
-       <z>   0.00 </z>
-     </location>
-     <capacity unit="LBS"> 3810.72 </capacity>
-     <contents unit="LBS"> 1905.36 </contents>
-  </tank>
-  <tank type="FUEL" number="2">
-     <location unit="M">
-       <x>   9.37 </x>
-       <y>   0.00 </y>
-       <z>   0.00 </z>
-     </location>
-     <capacity unit="LBS"> 3810.72 </capacity>
-     <contents unit="LBS"> 1905.36 </contents>
-  </tank> -->
   
   <!-- 9 Jul 18 - Updated configuration using DC3 model and JSBSim tutorial -->
   <!-- 1422 gallons total - not sure about the unusable exactly -->
@@ -508,8 +478,6 @@
  <!-- *** Additional System files *** -->
  
  <system file="fuel.xml"/> 
- <!-- <system file="pitot-static.xml"/> -->
- <!-- <system file="vacuum.xml"/> -->
  <system file="Propulsion.xml"/>
  <system file="Aircraft control.xml"/>
  <system file="Landing Gear.xml"/>
@@ -517,10 +485,7 @@
  <system file="tail-wheel"/>
  <system file="Oilcooler.xml"/>
  
- <systems>
-    <path>/pitot-static.xml</path>
- </systems>
- 
+  
  <flight_control name="FCS: c46">
  </flight_control>
 

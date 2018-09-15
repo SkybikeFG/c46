@@ -199,6 +199,8 @@ Developed under GNU-GPL for FlightGear FS.
             <path>/controls/fuel/right-valve</path> 			
             
         </aircraft-data>
+		
+		
 	
   </sim>
  
@@ -217,10 +219,24 @@ Developed under GNU-GPL for FlightGear FS.
     </systems>
   </nasal>
   
+  <systems>
   
+	<path>Systems/systems.xml</path>
+	<pitot n="1">
+	   <serviceable>1</serviceable>
+    </pitot>
+	<static n="1">
+	   <serviceable>1</serviceable>
+    </static>
+	<static n="2">
+	   <serviceable>1</serviceable>
+    </static>
+ 
+  </systems>
 
   <consumables include="Systems/consumables.xml"/>
   <payload include="Systems/payload.xml"/>
+  <instrumentation include="Systems/instrumentation.xml"/>
 
 
   <!-- TODO
@@ -252,7 +268,7 @@ Developed under GNU-GPL for FlightGear FS.
 
   </controls>
 
-  <instrumentation include="Systems/instrumentation.xml"/>
+  
 
   
 

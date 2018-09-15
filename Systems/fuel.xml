@@ -28,6 +28,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
 		- Additional fuel components. (In Work)
 		- Priming system (In Work - stubbed - need switches to implement further)
 		- Heater system (in work - logic in place - need a switch, and some rough calculations on how fast the cabin heats up )
+		--- Heat is always on full right now as it is based on fuel pressure availability. 
 		- Fuel drains / leaks
 		- Long range tanks - additional fuel bladders would be loaded into the cargo area, and the aircraft could feed from them. (In work - stubbed - need location data / additional valve to complete)
 		- Carb vent line (In work - Functional - could use some calculations to reflect actual performance during takeoff, when the carb actually vents)
@@ -448,7 +449,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
 		<!-- Cabin heaters use .0017 pps of fuel when running -->
 		
 		<switch name="/systems/fuel/cockpit-heater-running">
-			<defaul value="0"/>
+			<default value="0"/>
 			<test logic="AND" value=".0017"> <!-- Add line in test for heater switch position in cockpit -->
 				/systems/fuel/heater-set EQ 1				
 			</test>
@@ -456,9 +457,10 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
 		</switch>
 		
 		<switch name="/systems/fuel/cargo-heater-running">
-			<defaul value="0"/>
+			<default value="0"/>
 			<test logic="AND" value=".0034"> <!-- Add line in test for heater switch position in cockpit -->
-				/systems/fuel/heater-set EQ 1				
+				/systems/fuel/heater-set EQ 1
+                /velocities/airspeed-kt GT 103     <!-- This heater doesn't work until 104 kts is reached -->				
 			</test>
 			<output>/systems/fuel/heater-burn-cargo</output>			
 		</switch>

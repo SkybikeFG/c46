@@ -28,7 +28,7 @@ July 2018, Snowblind1, fuel system for JSBSim FDM
 		- Additional fuel components. (In Work)
 		- Priming system (In Work - stubbed - need switches to implement further)
 		- Heater system (in work - logic in place - need a switch, and some rough calculations on how fast the cabin heats up )
-		--- Heat is always on full right now as it is based on fuel pressure availability. 
+		       Heat is always on full right now as it is based on fuel pressure availability. 
 		- Fuel drains / leaks
 		- Long range tanks - additional fuel bladders would be loaded into the cargo area, and the aircraft could feed from them. (In work - stubbed - need location data / additional valve to complete)
 		- Carb vent line (In work - Functional - could use some calculations to reflect actual performance during takeoff, when the carb actually vents)

@@ -125,6 +125,18 @@ Developed under GNU-GPL for FlightGear FS.
     <hud>   
       <enable3d>false</enable3d>
     </hud>
+	<panel><!-- Hide the 2D panel -->
+      <visibility type="bool" archive="y">false</visibility>
+    </panel>
+	
+	<systems>
+	  <path>Systems/systems.xml</path>
+	  
+      <autopilot n="1">
+        <path>Systems/glass-rain.xml</path>
+      </autopilot>
+  
+	</systems>
  
     <menubar>
       <default>
@@ -220,8 +232,6 @@ Developed under GNU-GPL for FlightGear FS.
   </nasal>
   
   <systems>
-  
-	<path>Systems/systems.xml</path>
 	<pitot n="1">
 	   <serviceable>1</serviceable>
     </pitot>

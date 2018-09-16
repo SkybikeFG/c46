@@ -14,6 +14,13 @@
  General Public License for more details.
 -->
 <PropertyList>
+  <!-- *** Temporary Electrical System *** -->
+  <electrical>
+    <name>electrical</name>
+    <number>0</number>
+    <path>Aircraft/Generic/generic-electrical.xml</path>
+  </electrical>
+  
    <!-- *** Pitot System *** -->
   <pitot>
     <name>pitot</name>

@@ -131,6 +131,7 @@ Developed under GNU-GPL for FlightGear FS.
 	
 	<systems>
 	  <path>Systems/systems.xml</path>
+	  <path>Systems/electrical.xml</path>
 	  
       <autopilot n="1">
         <path>Systems/glass-rain.xml</path>
@@ -226,6 +227,7 @@ Developed under GNU-GPL for FlightGear FS.
 	  <file>Aircraft/c46/Models/Cockpit/Instruments/kr85/kr85.nas</file>
 	  <file>Aircraft/c46/Models/Cockpit/Instruments/kma20/kma20.nas</file>
 	  <file>Aircraft/c46/Nasal/systems.nas</file>
+	  <!--<file>Aircraft/c46/Nasal/electrical.nas</file>-->
     </c46>
     <systems>
       <file>Aircraft/c46/Models/Cockpit/Instruments/kns80/KNS80.nas</file>	  

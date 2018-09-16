@@ -23,9 +23,8 @@ var vacuum_inhg = func {
     setprop("/systems/vacuummaster/suction-inhg",m);	
 	};
 
-var vacuumtimer = maketimer(2, vacuum_inhg);
-_setlistener("/sim/signals/fdm-initialized", vacuumtimer.start());
-#vacuumtimer.start();
+var vacuumtimer = maketimer(1, vacuum_inhg);
+vacuumtimer.start();
 	
 
 printf("C46 nasal general systems initialized");

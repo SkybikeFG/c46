@@ -213,6 +213,7 @@ Developed under GNU-GPL for FlightGear FS.
 	  <!--<file>Aircraft/Instruments-3d/garmin196/garmin196.nas</file>-->	
 	  <file>Aircraft/c46/Models/Cockpit/Instruments/kr85/kr85.nas</file>
 	  <file>Aircraft/c46/Models/Cockpit/Instruments/kma20/kma20.nas</file>
+	  <file>Aircraft/c46/Nasal/systems.nas</file>
     </c46>
     <systems>
       <file>Aircraft/c46/Models/Cockpit/Instruments/kns80/KNS80.nas</file>	  
@@ -223,13 +224,13 @@ Developed under GNU-GPL for FlightGear FS.
   
 	<path>Systems/systems.xml</path>
 	<pitot n="1">
-	   <serviceable>1</serviceable>
+	   <serviceable>true</serviceable>
     </pitot>
 	<static n="1">
-	   <serviceable>1</serviceable>
+	   <serviceable>true</serviceable>
     </static>
 	<static n="2">
-	   <serviceable>1</serviceable>
+	   <serviceable>true</serviceable>
     </static>
  
   </systems>

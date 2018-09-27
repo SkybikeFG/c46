@@ -22,16 +22,17 @@ var ammeter_ave = 0.0;
 ##
 # Battery model class.
 #
+# C46 has 24 volt system with two 200 amp batteries
 
 var BatteryClass = {};
 
 BatteryClass.new = func {
     var obj = { parents : [BatteryClass],
                 ideal_volts : 24.0,
-                ideal_amps : 30.0,
-                amp_hours : 3.1875,
+                ideal_amps : 200.0,
+                amp_hours : 34,
                 charge_percent : getprop("/systems/electrical/battery-charge-percent") or 1.0,
-                charge_amps : 7.0 };
+                charge_amps : 50.0 }; # COMPLETE WAG HERE!!!
     setprop("/systems/electrical/battery-charge-percent", obj.charge_percent);
     return obj;
 }
@@ -53,7 +54,7 @@ BatteryClass.apply_load = func (amps, dt) {
     var new_charge_percent = std.max(0.0, std.min(old_charge_percent - percent_used, 1.0));
 
     if (new_charge_percent < 0.1 and old_charge_percent >= 0.1)
-        gui.popupTip("Warning: Low battery! Enable alternator or apply external power to recharge battery!", 10);
+        gui.popupTip("Warning: Low battery! Enable Generator or apply external power to recharge battery!", 10);
     me.charge_percent = new_charge_percent;
     setprop("/systems/electrical/battery-charge-percent", new_charge_percent);
     return me.amp_hours * new_charge_percent;
@@ -95,17 +96,17 @@ BatteryClass.reset_to_full_charge = func {
 }
 
 ##
-# Alternator model class.
+# Generator model class.
 #
 
-var AlternatorClass = {};
-
-AlternatorClass.new = func {
-    var obj = { parents : [AlternatorClass],
+var GeneratorClass = {};
+# ************************************   rpm_threshold is throwing an error, probably due to neither engine being "active". Need to evaluate how multi engine / generator setups do it, if at all **********
+GeneratorClass.new = func (num){
+    var obj = { parents : [GeneratorClass],
                 rpm_source : "/engines/active-engine/rpm",
-                rpm_threshold : 800.0,
+                rpm_threshold : 1400.0,
                 ideal_volts : 28.0,
-                ideal_amps : 60.0 };
+                ideal_amps : 200.0 };
     setprop( obj.rpm_source, 0.0 );
     return obj;
 }
@@ -114,16 +115,17 @@ AlternatorClass.new = func {
 # Computes available amps and returns remaining amps after load is applied
 #
 
-AlternatorClass.apply_load = func( amps, dt ) {
-    # Scale alternator output for rpms < 800.  For rpms >= 800
-    # give full output.  This is just a WAG, and probably not how
-    # it really works but I'm keeping things "simple" to start.
+GeneratorClass.apply_load = func( amps, dt ) {
+    # No generator output for rpms < 1400.  For rpms >= 1400
+    # give full output.  
     var rpm = getprop( me.rpm_source );
-    var factor = rpm / me.rpm_threshold;
-    if ( factor > 1.0 ) {
-        factor = 1.0;
+	var factor = 0;
+    #var factor = rpm / me.rpm_threshold;
+    #if ( factor > 1.0 ) {
+	if (rpm >= me.rpm_threshold) {
+        factor = 1.0;	
     }
-    # print( "alternator amps = ", me.ideal_amps * factor );
+    # print( "Generator amps = ", me.ideal_amps * factor );
     var available_amps = me.ideal_amps * factor;
     return available_amps - amps;
 }
@@ -132,16 +134,17 @@ AlternatorClass.apply_load = func( amps, dt ) {
 # Return output volts based on rpm
 #
 
-AlternatorClass.get_output_volts = func {
-    # scale alternator output for rpms < 800.  For rpms >= 800
-    # give full output.  This is just a WAG, and probably not how
-    # it really works but I'm keeping things "simple" to start.
+GeneratorClass.get_output_volts = func {
+    # No generator output for rpms < 1400.  For rpms >= 1400
+    # give full output.  
     var rpm = getprop( me.rpm_source );
-    var factor = rpm / me.rpm_threshold;
-    if ( factor > 1.0 ) {
+    var factor = 0;
+	#var factor = rpm / me.rpm_threshold;
+    #if ( factor > 1.0 ) {
+	if (rpm >= me.rpm_threshold) {
         factor = 1.0;
     }
-    # print( "alternator volts = ", me.ideal_volts * factor );
+    # print( "Generator volts = ", me.ideal_volts * factor );
     return me.ideal_volts * factor;
 }
 
@@ -150,43 +153,39 @@ AlternatorClass.get_output_volts = func {
 # Return output amps available based on rpm.
 #
 
-AlternatorClass.get_output_amps = func {
-    # scale alternator output for rpms < 800.  For rpms >= 800
-    # give full output.  This is just a WAG, and probably not how
-    # it really works but I'm keeping things "simple" to start.
+GeneratorClass.get_output_amps = func {
+    # No generator output for rpms < 1400.  For rpms >= 1400
+    # give full output.  
     var rpm = getprop( me.rpm_source );
-    var factor = rpm / me.rpm_threshold;
-    if ( factor > 1.0 ) {
+    var factor = 0;
+	#var factor = rpm / me.rpm_threshold;
+    #if ( factor > 1.0 ) {
+	if (rpm >= me.rpm_threshold) {
         factor = 1.0;
     }
-    # print( "alternator amps = ", ideal_amps * factor );
+    # print( "Generator amps = ", ideal_amps * factor );
     return me.ideal_amps * factor;
 }
 
+# Need two batteries (Left and Right)
 var battery = BatteryClass.new();
-var alternator = AlternatorClass.new();
+#Need two generators (Left and Right)
+var Generator1 = GeneratorClass.new(1);
+var Generator2 = GeneratorClass.new(2);
+
+#var Generator = GeneratorClass.new();
 
 var reset_battery_and_circuit_breakers = func {
     # Charge battery to 100 %
     battery.reset_to_full_charge();
 
     # Reset circuit breakers
-    setprop("/controls/circuit-breakers/master", 1);
-    setprop("/controls/circuit-breakers/flaps", 1);
+    setprop("/controls/circuit-breakers/left-booster-pump", 1);
+    setprop("/controls/circuit-breakers/right-booster-pump", 1);
+    setprop("/controls/circuit-breakers/landing-gear-warn-lights", 1);
+    setprop("/controls/circuit-breakers/instr-panel-light", 1);
     setprop("/controls/circuit-breakers/pitot-heat", 1);
-    setprop("/controls/circuit-breakers/instr", 1);
-    setprop("/controls/circuit-breakers/intlt", 1);
-    setprop("/controls/circuit-breakers/navlt", 1);
-    setprop("/controls/circuit-breakers/landing", 1);
-    setprop("/controls/circuit-breakers/bcnlt", 1);
-    setprop("/controls/circuit-breakers/strobe", 1);
-    setprop("/controls/circuit-breakers/turn-coordinator", 1);
-    setprop("/controls/circuit-breakers/radio1", 1);
-    setprop("/controls/circuit-breakers/radio2", 1);
-    setprop("/controls/circuit-breakers/radio3", 1);
-    setprop("/controls/circuit-breakers/radio4", 1);
-    setprop("/controls/circuit-breakers/radio5", 1);
-    setprop("/controls/circuit-breakers/autopilot", 1);
+       
 }
 
 ##
@@ -223,7 +222,7 @@ var ElectricalSystemUpdater = {
 
 ##
 # Model the system of relays and connections that join the battery,
-# alternator, starter, master/alt switches, external power supply.
+# Generator, starter, master/alt switches, external power supply.
 #
 
 var update_virtual_bus = func (dt) {
@@ -231,15 +230,17 @@ var update_virtual_bus = func (dt) {
     var external_volts = 0.0;
     var load = 0.0;
     var battery_volts = 0.0;
-    var alternator_volts = 0.0;
+    var Generator1_volts = 0.0;
+	var Generator2_volts = 0.0;
     if ( serviceable ) {
         battery_volts = battery.get_output_volts();
-        alternator_volts = alternator.get_output_volts();
+        Generator1_volts = Generator1.get_output_volts();
+		Generator2_volts = Generator2.get_output_volts();
     }
 
     # switch state
     var master_bat = getprop("/controls/switches/master-bat");
-    var master_alt = getprop("/controls/switches/master-alt");
+    #var master_alt = getprop("/controls/switches/master-alt");
     if (getprop("/controls/electric/external-power"))
     {
         external_volts = 28;
@@ -252,10 +253,14 @@ var update_virtual_bus = func (dt) {
         bus_volts = battery_volts;
         power_source = "battery";
     }
-    if ( master_alt and (alternator_volts > bus_volts) ) {
-        bus_volts = alternator_volts;
-        power_source = "alternator";
+    if ( master_bat and (Generator1_volts > bus_volts) ) {
+        bus_volts = Generator1_volts;
+        power_source = "Generator";	
     }
+	if ( master_bat and (Generator2_volts > bus_volts) ) {
+        bus_volts = Generator2_volts;
+        power_source = "Generator";
+	}
     if ( external_volts > bus_volts ) {
         bus_volts = external_volts;
         power_source = "external";
@@ -267,10 +272,11 @@ var update_virtual_bus = func (dt) {
     load += electrical_bus_1();
     load += avionics_bus_1();
     
+	# **************************** TO DO ****************************
     # swtich the master breaker off if load is out of limits
-    if ( load > 55 ) {
-      bus_volts = 0;
-    }
+    #if ( load > 55 ) {
+    #  bus_volts = 0;
+    #}
 
     # system loads and ammeter gauge
     var ammeter = 0.0;
@@ -318,29 +324,29 @@ var electrical_bus_1 = func() {
     #print("Bus volts: ", bus_volts);
     
     # Air-cond
-    if ( getprop("/controls/circuit-breakers/aircond-pwr") ) {
-        setprop("/systems/electrical/outputs/aircond", bus_volts);
-        load += bus_volts / 57;
-    } else {
+    #if ( getprop("/controls/circuit-breakers/aircond-pwr") ) {
+    #    setprop("/systems/electrical/outputs/aircond", bus_volts);
+    #    load += bus_volts / 57;
+    #} else {
         setprop("/systems/electrical/outputs/cabin-lights", 0.0);
-    }
+    #}
     
     # Flaps
-    if ( getprop("/controls/circuit-breakers/flaps") ) {
-        setprop("/systems/electrical/outputs/flaps", bus_volts);
-        load += bus_volts / 57;
-    } else {
-        setprop("/systems/electrical/outputs/flaps", 0.0);
-    }
+    #if ( getprop("/controls/circuit-breakers/flaps") ) {
+    #    setprop("/systems/electrical/outputs/flaps", bus_volts);
+    #    load += bus_volts / 57;
+    #} else {
+    #    setprop("/systems/electrical/outputs/flaps", 0.0);
+    #}
     
     # Pitot Heat Power
-    if ( getprop("/controls/anti-ice/pitot-heat" ) ) {
+    if ( getprop("/controls/anti-ice/pitot-heat" ) and getprop("/controls/circuit-breakers/pitot-heat") ) {
         setprop("/systems/electrical/outputs/pitot-heat", bus_volts);
         load += bus_volts / 28;
     } else {
         setprop("/systems/electrical/outputs/pitot-heat", 0.0);
     }
-
+# *********************************************************************************************************************************#
     # Cabin Lights Power
     if ( getprop("/controls/circuit-breakers/cabin-lights-pwr") ) {
         setprop("/systems/electrical/outputs/cabin-lights", bus_volts);
@@ -506,11 +512,11 @@ var avionics_bus_1 = func() {
 
 ############################ Utility function
 
-var flapsDown = controls.flapsDown;
-controls.flapsDown = func(v) {
-    flapsDown(v);
-    c172p.click("flaps");
-};
+#var flapsDown = controls.flapsDown;
+#controls.flapsDown = func(v) {
+#    flapsDown(v);
+#    c172p.click("flaps");
+#};
 
 ##
 # Initialize the electrical system

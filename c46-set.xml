@@ -218,6 +218,9 @@ Developed under GNU-GPL for FlightGear FS.
   </sim>
  
   <nasal>
+    <updateloop>
+            <file>Aircraft/Generic/updateloop.nas</file>
+    </updateloop>
     <c46>
       <file>Aircraft/c46/Nasal/c46.nas</file>
 	  <file>Aircraft/c46/Nasal/deicing.nas</file>
@@ -227,7 +230,7 @@ Developed under GNU-GPL for FlightGear FS.
 	  <file>Aircraft/c46/Models/Cockpit/Instruments/kr85/kr85.nas</file>
 	  <file>Aircraft/c46/Models/Cockpit/Instruments/kma20/kma20.nas</file>
 	  <file>Aircraft/c46/Nasal/systems.nas</file>
-	  <!--<file>Aircraft/c46/Nasal/electrical.nas</file>-->
+	  <file>Aircraft/c46/Nasal/electrical.nas</file>
     </c46>
     <systems>
       <file>Aircraft/c46/Models/Cockpit/Instruments/kns80/KNS80.nas</file>	  

@@ -16,10 +16,11 @@
 <PropertyList>
   <!-- *** Temporary Electrical System *** -->
   <electrical>
-    <name>electrical</name>
-    <number>0</number>
-    <path>Aircraft/Generic/generic-electrical.xml</path>
-  </electrical>
+        <name>electrical</name>
+        <number>0</number>
+        <!--path>Aircraft/Generic/generic-electrical.xml</path--><!--Delete this line only; Warning, this might kill instruments!-->
+		<path></path><!--keep this line: "</path>" is indicating "there is a custom system"-->
+    </electrical>
   
    <!-- *** Pitot System *** -->
   <pitot>

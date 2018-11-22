@@ -1,16 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- C46 3D panel  2018
+     Panel Version 1: Early 2018; Beginning (cancelled)
+	 Panel Version 2: June 2018; Restart for TinkerBelle Layout, on top of panel (completed)
+     Panel Version 3: October 2018; Cut into the panel, Glass, Maps (In progess)
    ________________
- /  A  |  C  |  E  \
+ /  1  |  3  |  5  \
 |______|_____|______|
-|   B  |  D  |  F   |
+|   2  |  4  |  6   |
 |______|_____|______|
+
+   Panel.ac (and Panel.png) contains all knobs and switches and glass and lights. 
+     Knobs are as "Knob" and "Knob_Front" as only the "Knob_Front" rotates. The "Knob" (and its lightmap) does not rotate.
+	 Panels are named 1 2 3 4 5 6 in Panel.ac and object names.
+	 Panels 2, 4, 6 are rotated -10deg at the end of this file.
 -->
 
 
 <PropertyList>
-
-  <!--Off panel instruments--> 
+   <path>Panel.ac</path>
+   
+   <!--MATERIAL "PanelGlass" rgb 0.608 1.000 0.638  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.615 0.923 1.000  shi 12 trans 0.800-->
+   <effect>
+    <inherits-from>Aircraft/c46/Models/Effects/interior/interior-glass-reflection-panel-front</inherits-from>
+    <object-name>0PanelGlass</object-name>
+   </effect>
+  
+  <effect>
+    <inherits-from>Aircraft/c46/Models/Effects/interior/lm-panel</inherits-from>
+    <object-name>0Panel</object-name>
+    <object-name>1AltKnob</object-name>
+    <object-name>1AltKnob_Front</object-name>
+    <object-name>1AnnunDim</object-name>
+    <object-name>1ClockKnob</object-name>
+    <object-name>1hdgKnob</object-name>
+    <object-name>1hdgKnob_Front</object-name>
+    <object-name>1ki206Knob</object-name>
+    <object-name>1ki206Knob_Front</object-name>
+    <object-name>1NavGpsGps</object-name>
+    <object-name>1NavGpsNav</object-name>
+    <object-name>1PitotSwitch</object-name>
+    <object-name>2ki227_228Knob</object-name>
+    <object-name>2ki227_228Knob_Front</object-name>
+    <object-name>3fuelPressWarningL</object-name>
+    <object-name>3fuelPressWarningR</object-name>
+	<object-name>3fireEngineL</object-name>
+	<object-name>3fireEngineR</object-name>
+    <object-name>3oilPressWarningR</object-name>
+    <object-name>3oilPressWarningL</object-name>
+    <object-name>3oilPressWarningR</object-name>
+    <object-name>4EngShutoffL</object-name>
+    <object-name>4EngShutoffLprotect</object-name>
+    <object-name>4EngShutoffR</object-name>
+    <object-name>4EngShutoffRprotect</object-name>
+    <object-name>4gearGreenLeft</object-name>
+    <object-name>4gearGreenRight</object-name>
+    <object-name>4gearGreenTail</object-name>
+    <object-name>4gearOrangeTransit</object-name>
+    <object-name>5AltKnob</object-name>
+    <object-name>5AltKnob_Front</object-name>
+    <object-name>5cageKnob</object-name>
+    <object-name>5ClockKnob</object-name>
+    <object-name>5hdgKnob</object-name>
+    <object-name>5hdgKnob_Front</object-name>
+    <object-name>5ki206Knob</object-name>
+    <object-name>5ki206Knob_Front</object-name>
+    <object-name>6eaterShutoff</object-name>
+    <object-name>6fireCabinHeater</object-name>
+    <object-name>6fireCockpitHeater</object-name>
+    <object-name>6fireHeaterArea</object-name>
+    <object-name>6heaterShutoffProtect</object-name>
+  </effect>
+  
+  <animation>
+    <type>material</type>
+    <object-name>1AltKnob_Front</object-name>
+    <object-name>1hdgKnob_Front</object-name>
+	<object-name>1ki206Knob_Front</object-name>
+    <object-name>2ki227_228Knob_Front</object-name>
+	<object-name>5AltKnob_Front</object-name>
+    <object-name>5hdgKnob_Front</object-name>
+	<object-name>5ki206Knob_Front</object-name>
+    <emission>
+      <red>0.028</red>
+      <green>0.014</green>
+      <blue>0.007</blue>
+      <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    </emission>
+  </animation>
+  
+  <!--Off panel instruments-->
   <model>
     <path>Aircraft/Instruments-3d/garmin196/garmin196.xml</path>
     <offsets>
@@ -25,26 +103,18 @@
   
 
   <!--_______________
-   /XXXXX|  C  |  E  \
+   /XXXXX|  3  |  5  \
   |XXXXXX|_____|______|
-  |   B  |  D  |  F   |
+  |   2  |  4  |  6   |
   |______|_____|______|
   -->
-  <!-- A -->  
+  <!-- Panel 1 -->  
   <!--1st row-->
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/asi220.xml</path>
     <offsets>
-      <x-m>-10.714 </x-m>
-      <y-m> -0.554 </y-m>
-      <z-m> -0.032 </z-m>
-    </offsets>
-  </model> 
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.714 </x-m>
-      <y-m> -0.554 </y-m>
+      <x-m>-10.721 </x-m>
+      <y-m> -0.535 </y-m>
       <z-m> -0.032 </z-m>
     </offsets>
   </model> 
@@ -52,8 +122,8 @@
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/ai.xml</path>
     <offsets>
-      <x-m>-10.710 </x-m>
-      <y-m> -0.441 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m> -0.430 </y-m>
       <z-m> -0.032 </z-m>
     </offsets>
   </model>
@@ -61,35 +131,139 @@
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/hdg-gauge.xml</path>
     <offsets>
-      <x-m>-10.712 </x-m>
-      <y-m> -0.328 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m> -0.325 </y-m>
       <z-m> -0.032 </z-m>
     </offsets>
-  </model> 
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.714 </x-m>
-      <y-m> -0.328 </y-m>
-      <z-m> -0.032 </z-m>
-    </offsets>
-  </model> 
+  </model>
+  <animation>
+    <type>knob</type>
+    <object-name>1hdgKnob</object-name>
+    <object-name>1hdgKnob_Front</object-name>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/heading-indicator/offset-deg</property>
+        <factor>1</factor>
+        <min>-45</min>
+        <max>45</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>	
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>hdg-offset</tooltip-id>
+        <label>HDG offset: %d deg</label>
+        <property>instrumentation/heading-indicator/offset-deg</property>
+      </binding>
+    </hovered>
+  </animation>
+  <animation>
+    <object-name>1hdgKnob_Front</object-name>
+    <type>rotate</type>
+    <property>instrumentation/heading-indicator/offset-deg</property>
+    <factor>-20</factor>
+    <center>
+      <x-m>  0    </x-m>
+      <y-m> -0.355</y-m>
+      <z-m> -0.060</z-m>
+    </center>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>  
+  
+  <!--switches and registration-->
+  
+  <animation>
+    <type>knob</type>
+    <object-name>1AnnunDim</object-name>	
+	<property>controls/lighting/annun-switch</property>
+    <factor>35</factor>
+    <center>
+      <x-m>-10.715</x-m>
+      <y-m> -0.264</y-m>
+      <z-m> -0.066</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+    <action>
+      <binding>
+        <command>nasal</command>
+        <script>c46.annunciator_switch();</script>
+      </binding>
+	  <binding>
+	    <command>property-assign</command>
+		<property>controls/lighting/annun-switch</property>
+		<value>0</value>
+	  </binding>
+    </action> 
+    <release>
+	  <binding>
+        <command>nasal</command>
+        <script>c46.annuntimer.start();</script>
+	  </binding>
+    </release>	
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>annunciator-dimm</tooltip-id>
+		<property>/controls/lighting/annun-on-norm</property>
+		<measure-text>Lights are bright (Hold to test)</measure-text>
+        <label>Lights are %s (Hold to test)</label>
+		<mapping>nasal</mapping>
+		<script>if(arg[0]==1){ return 'bright'; }else{ return 'dimmed';};</script>
+      </binding>
+    </hovered>
+  </animation>  
   
   <!--2nd row-->
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/clock.xml</path>
     <offsets>
-      <x-m>-10.714 </x-m>
-      <y-m> -0.673 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m> -0.653 </y-m>
       <z-m> -0.160 </z-m>
     </offsets>
-  </model>   
+  </model>
+  <animation>
+    <type>knob</type>
+    <object-name>1ClockKnob</object-name>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>/instrumentation/clock/offset-sec</property>
+        <factor>1</factor>
+      </binding>
+    </action>
+    <shift-action>
+      <binding>
+        <command>property-adjust</command>
+        <property>/instrumentation/clock/offset-sec</property>
+        <factor>3600</factor>
+      </binding>
+    </shift-action> 	
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>time-indicator</tooltip-id>
+        <label>Time: %s</label>
+        <property>/instrumentation/clock/indicated-string</property>
+      </binding>
+    </hovered>
+  </animation>  
 
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/vsi-3d.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.600 </y-m>
+      <x-m>-10.722 </x-m>
+      <y-m> -0.580 </y-m>
       <z-m> -0.148 </z-m>
     </offsets>
   </model>  
@@ -97,109 +271,111 @@
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/turn.xml</path>
     <offsets>
-      <x-m>-10.716 </x-m>
-      <y-m> -0.505 </y-m><!--+0.995-->
+      <x-m>-10.723 </x-m>
+      <y-m> -0.485 </y-m>
       <z-m> -0.148 </z-m>
     </offsets>
   </model>  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.505 </y-m>
-      <z-m> -0.148 </z-m>
-    </offsets>
-  </model> 
   
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/alt.xml</path>
     <offsets>
-      <x-m>-10.714 </x-m>
-      <y-m> -0.410 </y-m>
+      <x-m>-10.721 </x-m>
+      <y-m> -0.390 </y-m>
       <z-m> -0.148 </z-m>
     </offsets>
-  </model>  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.410 </y-m>
-      <z-m> -0.148 </z-m>
-    </offsets>
-  </model> 
+  </model>    
+  <animation>
+    <type>knob</type>
+    <object-name>1AltKnob</object-name>
+    <object-name>1AltKnob_Front</object-name>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>/instrumentation/altimeter/setting-inhg</property>
+        <factor>0.01</factor>
+        <min>26.0</min>
+        <max>33.0</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+    <shift-action>
+      <binding>
+        <command>property-adjust</command>
+        <property>/instrumentation/altimeter/setting-inhg</property>
+        <factor>0.25</factor>
+        <min>26.0</min>
+        <max>33.0</max>
+      </binding>
+    </shift-action> 	
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>alt-setting</tooltip-id>
+        <label>Altimeter In Hg: %5.2f  (Shift to jump)</label>
+        <property>instrumentation/altimeter/setting-inhg</property>
+      </binding>
+    </hovered>
+  </animation>
+  <animation>
+    <object-name>1AltKnob_Front</object-name>
+    <type>rotate</type>
+    <property>/instrumentation/altimeter/setting-inhg</property>
+    <factor>-1000</factor>
+    <center>
+      <x-m>-10.714</x-m>
+      <y-m> -0.422</y-m>
+      <z-m> -0.181</z-m>
+    </center>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
   
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/ki206/ki206_1.xml</path>
     <offsets>
-      <x-m>-10.709 </x-m>
-      <y-m> -0.315 </y-m>
-      <z-m> -0.126 </z-m>
+      <x-m>-10.717 </x-m>
+      <y-m> -0.295 </y-m>
+      <z-m> -0.138 </z-m>
     </offsets>
-  </model>  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.315 </y-m>
-      <z-m> -0.126 </z-m>
-    </offsets>
-  </model> 
+  </model>    
   
-  
-  <!-- B -->
+  <!-- Panel 2 -->
   <!--_______________
-   /  A  |  C  |  E  \
+   /  1  |  3  |  5  \
   |______|_____|______|
-  |XXXXXX|  D  |  F   |
+  |XXXXXX|  4  |  6   |
   |XXXXXX|_____|______|
   -->
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/deIcingPress.xml</path>
+	<name>2deIcingPress</name>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.560 </y-m>
-      <z-m> -0.280 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.560 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m> -0.540 </y-m>
       <z-m> -0.280 </z-m>
     </offsets>
   </model>
   
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/suction.xml</path>
+	<name>2suction</name>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.480 </y-m>
-      <z-m> -0.280 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.480 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m> -0.460 </y-m>
       <z-m> -0.280 </z-m>
     </offsets>
   </model>
 
   <model>
+    <name>2ki227</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/ki227_228.xml</path>
     <offsets>
-      <x-m>-10.714 </x-m>
-      <y-m> -0.330 </y-m>
-      <z-m> -0.270 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.714 </x-m>
-      <y-m> -0.330 </y-m>
+      <x-m>-10.721 </x-m>
+      <y-m> -0.310 </y-m>
       <z-m> -0.270 </z-m>
     </offsets>
   </model>
@@ -207,410 +383,359 @@
   
  <!--2nd row-->
   <model>
+    <name>2fuelFord</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/fuelQuantFord.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.700 </y-m>
-      <z-m> -0.390 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.700 </y-m>
+      <x-m>-10.722 </x-m>
+      <y-m> -0.680 </y-m>
       <z-m> -0.390 </z-m>
     </offsets>
   </model>  
   
   <model>
+    <name>2fuelCenter</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/fuelQuantCenter.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.600 </y-m>
-      <z-m> -0.390 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.600 </y-m>
+      <x-m>-10.722 </x-m>
+      <y-m> -0.580 </y-m>
       <z-m> -0.390 </z-m>
     </offsets>
   </model>
   
   <model>
+    <name>2fuelAft</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/fuelQuantAft.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.500 </y-m>
-      <z-m> -0.390 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.500 </y-m>
+      <x-m>-10.722 </x-m>
+      <y-m> -0.480 </y-m>
       <z-m> -0.390 </z-m>
     </offsets>
   </model>
   
   <model>
+    <name>2OilQuant</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/oilQuant.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.400 </y-m>
-      <z-m> -0.390 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.400 </y-m>
+      <x-m>-10.722 </x-m>
+      <y-m> -0.380 </y-m>
       <z-m> -0.390 </z-m>
     </offsets>
   </model>  
   
   <model>
+    <name>2outsideTemp</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/outsideTemp.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.310 </y-m>
-      <z-m> -0.380 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.310 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m> -0.290 </y-m>
       <z-m> -0.380 </z-m>
     </offsets>
   </model>
   
+  <animation>
+    <name>Panel2</name>
+    <object-name>2deIcingPress</object-name>
+	<object-name>2suction</object-name>
+	<object-name>2ki227</object-name>
+	<object-name>2fuelFord</object-name>
+	<object-name>2fuelCenter</object-name>
+	<object-name>2fuelAft</object-name>
+	<object-name>2OilQuant</object-name>
+	<object-name>2outsideTemp</object-name>
+  </animation>
   
-  <!-- C -->
+  <!-- Panel 3 -->
   <!--_______________
-   /  A  |XXXXX|  E  \
+   /  1  |XXXXX|  5  \
   |______|XXXXX|______|
-  |   B  |  D  |  F   |
+  |   2  |  4  |  6   |
   |______|_____|______|
   -->
-  <!--1st row-->
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/fireWarning.ac</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.210 </y-m>
-      <z-m> -0.010 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/warningLightRed.ac</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.230 </y-m>
-      <z-m> -0.075 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/warningLightRed.ac</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.130 </y-m>
-      <z-m> -0.075 </z-m>
-    </offsets>
-  </model>
+  <!--1st row--> 
+  
+  <!--TODO-->  
+  <!--3fuelPressWarningR-->
+  <!--3fuelPressWarningL-->
+  
+  <animation include="Instruments/oilPressWarningL.xml"/>
+  <animation include="Instruments/oilPressWarningR.xml"/>
   
   <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/oilPressWarningR.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.230 </y-m>
-      <z-m> -0.075 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/oilPressWarningL.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.130 </y-m>
-      <z-m> -0.075 </z-m>
-    </offsets>
-  </model>
-  
-  <model>
+    <name>3_1</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/tempCyl.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.120 </y-m>
+      <x-m>-10.729 </x-m>
+      <y-m> -0.060 </y-m>
       <z-m> -0.020 </z-m>
     </offsets>
   </model>  
+  
   <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
+    <name>3_2</name>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/tempCarb.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.120 </y-m>
+      <x-m>-10.729 </x-m>
+      <y-m>  0.060 </y-m>
+      <z-m> -0.020 </z-m>
+    </offsets>
+  </model>  
+  
+  <model>
+    <name>3_3</name>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/tempOil.xml</path>
+    <offsets>
+      <x-m>-10.729 </x-m>
+      <y-m>  0.160 </y-m>
       <z-m> -0.020 </z-m>
     </offsets>
   </model> 
-  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/tempCarb.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.000 </y-m>
-      <z-m> -0.020 </z-m>
-    </offsets>
-  </model>  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.000 </y-m>
-      <z-m> -0.020 </z-m>
-    </offsets>
-  </model>
-  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/tempOil.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.120 </y-m>
-      <z-m> -0.020 </z-m>
-    </offsets>
-  </model>  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.120 </y-m>
-      <z-m> -0.020 </z-m>
-    </offsets>
-  </model>
   
   
   <!--2nd row-->
   <model>
+    <name>3_4</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/fuel_pressure.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.180 </y-m>
-      <z-m> -0.090 </z-m>
+      <x-m>-10.729 </x-m>
+      <y-m> -0.160 </y-m>
+      <z-m> -0.120 </z-m>
     </offsets>
-  </model>  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.180 </y-m>
-      <z-m> -0.090 </z-m>
-    </offsets>
-  </model> 
+  </model>
 
   <model>
+    <name>3_5</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/RPM.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
+      <x-m>-10.729 </x-m>
       <y-m> -0.060 </y-m>
-      <z-m> -0.090 </z-m>
+      <z-m> -0.120 </z-m>
     </offsets>
-  </model>  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.060 </y-m>
-      <z-m> -0.090 </z-m>
-    </offsets>
-  </model> 
+  </model>
 
   <model>
+    <name>3_6</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/maniPress.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
+      <x-m>-10.729 </x-m>
       <y-m>  0.060 </y-m>
-      <z-m> -0.090 </z-m>
+      <z-m> -0.120 </z-m>
     </offsets>
-  </model>  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.060 </y-m>
-      <z-m> -0.090 </z-m>
-    </offsets>
-  </model> 
+  </model>
 
   <model>
+    <name>3_7</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/oilPress.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.180 </y-m>
-      <z-m> -0.090 </z-m>
+      <x-m>-10.729 </x-m>
+      <y-m>  0.160 </y-m>
+      <z-m> -0.120 </z-m>
     </offsets>
-  </model>  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.180 </y-m>
-      <z-m> -0.090 </z-m>
-    </offsets>
-  </model>   
+  </model>
   
-    <!-- D -->
+  <!--animation>
+    <name>Panel3</name>
+    <object-name>3_1</object-name>
+	<object-name>3_2</object-name>
+	<object-name>3_3</object-name>
+	<object-name>3_4</object-name>
+	<object-name>3_5</object-name>
+	<object-name>3_6</object-name>
+	<object-name>3_7</object-name>
+  </animation-->
+    <!-- Panel 4 -->
   <!--_______________
-   /  A  |  C  |  E  \
+   /  1  |  3  |  5  \
   |______|_____|______|
-  |   B  |xxxxx|  F   |
+  |   2  |xxxxx|  6   |
   |______|xxxxx|______|
-  -->
+  
+    left -->
   <model>
+    <name>4_1</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/kma20/kma20.xml</path>
     <offsets>
-      <x-m>-10.360 </x-m>
-      <y-m> -0.255 </y-m>
-      <z-m> -0.320 </z-m>
+      <x-m>-10.361 </x-m>
+      <y-m> -0.238 </y-m>
+      <z-m> -0.330 </z-m>
     </offsets>
   </model>
   
   <model>
+    <name>4_2</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/kx165/kx165-1.xml</path>
     <offsets>
       <x-m>-10.715 </x-m>
-      <y-m> -0.145 </y-m>
-      <z-m> -0.240 </z-m>
+      <y-m> -0.125 </y-m>
+      <z-m> -0.245 </z-m>
     </offsets>
   </model>
   
   <model>
+    <name>4_3</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/ky196/ky196-comm2.xml</path>
     <offsets>
       <x-m>-10.715 </x-m>
-      <y-m> -0.145 </y-m>
-      <z-m> -0.320 </z-m>
+      <y-m> -0.125 </y-m>
+      <z-m> -0.290 </z-m>
     </offsets>
   </model>
   
   <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/kln94/kln94.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m> -0.145 </y-m>
-      <z-m> -0.370 </z-m>
-    </offsets>
-  </model>
-  <!--Gear indication lights-->
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/gearGreenLeft.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.03 </y-m>
-      <z-m> -0.18 </z-m>
-    </offsets>
-  </model>
-  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/gearGreenRight.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.03 </y-m>
-      <z-m> -0.20 </z-m>
-    </offsets>
-  </model>
-  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/gearGreenTail.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.03 </y-m>
-      <z-m> -0.22 </z-m>
-    </offsets>
-  </model>
-  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/gearOrangeTransit.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.03 </y-m>
-      <z-m> -0.24 </z-m>
-    </offsets>
-  </model>
-  
-  
-  
-  <!--right-->
-  <model>
+    <name>4_4</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/kns80/kns80.xml</path>
     <offsets>
       <x-m>-10.715 </x-m>
-      <y-m>  0.145 </y-m>
-      <z-m> -0.20 </z-m>
+      <y-m> -0.125 </y-m>
+      <z-m> -0.36 </z-m>
     </offsets>
   </model>
   
+  <!--#  #  #  Gear indication lights  #  #  #-->  
+  <animation>
+    <type>material</type>
+    <object-name>4gearGreenLeft</object-name>
+	<condition>
+	  <and>
+        <equals>
+          <property>gear/gear[0]/position-norm</property>
+          <value>1</value>
+        </equals>
+	  </and>
+    </condition>
+    <emission>
+	  <red>0.6</red>
+      <green>1</green>
+      <blue>0.4</blue>
+      <factor-prop>controls/lighting/annun-on-norm</factor-prop>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+    <object-name>4gearGreenRight</object-name>
+	<condition>
+	  <and>
+        <equals>
+          <property>gear/gear[1]/position-norm</property>
+          <value>1</value>
+        </equals>
+	  </and>
+    </condition>
+    <emission>
+	  <red>0.6</red>
+      <green>1</green>
+      <blue>0.4</blue>
+      <factor-prop>controls/lighting/annun-on-norm</factor-prop>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+    <object-name>4gearGreenTail</object-name>
+	<condition>
+	  <and>
+        <equals>
+          <property>gear/gear[2]/position-norm</property>
+          <value>1</value>
+        </equals>
+	  </and>
+    </condition>
+    <emission>
+	  <red>0.6</red>
+      <green>1</green>
+      <blue>0.4</blue>
+      <factor-prop>controls/lighting/annun-on-norm</factor-prop>
+    </emission>
+  </animation>  
+  
+  <animation include="Instruments/gearOrangeTransit.xml"/>
+  <animation><!--Test-->
+    <type>material</type>
+    <object-name>4gearGreenLeft</object-name>
+	<object-name>4gearGreenRight</object-name>
+	<object-name>4gearGreenTail</object-name>
+	<object-name>4gearOrangeTransit</object-name>
+    <emission>
+	  <red>0.6</red>
+      <green>1</green>
+      <blue>0.4</blue>
+      <factor-prop>controls/lighting/annun-off-norm</factor-prop>
+    </emission>
+  </animation>
+  
   <model>
+    <name>4_5</name>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/kln94/kln94.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -0.434 </z-m>
+    </offsets>
+  </model>  
+  
+  <!--right-->
+  <model>
+    <name>4_6</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/kt76a/kt76a.xml</path>
     <offsets>
-      <x-m>-10.359 </x-m>
-      <y-m>  0.029 </y-m>
-      <z-m> -0.119 </z-m>
+      <x-m>-10.361 </x-m>
+      <y-m>  0.009 </y-m>
+      <z-m> -0.055 </z-m>
     </offsets>
   </model>
   
   <model>
+    <name>4_7</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/kx170/kx170-2.xml</path>
     <offsets>
       <x-m>-10.715 </x-m>
-      <y-m>  0.144 </y-m>
-      <z-m> -0.302 </z-m>
+      <y-m>  0.124 </y-m>
+      <z-m> -0.250 </z-m>
     </offsets>
   </model>
   
   <model>
+    <name>4_8</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/kr85/kr85.xml</path>
     <offsets>
       <x-m>-10.715 </x-m>
-      <y-m>  0.144 </y-m>
-      <z-m> -0.366 </z-m>
+      <y-m>  0.124 </y-m>
+      <z-m> -0.335 </z-m>
     </offsets>
   </model>
     
-  <!-- E -->
+  <animation>
+    <name>Panel4</name>
+    <object-name>4_1</object-name>
+	<object-name>4_2</object-name>
+	<object-name>4_3</object-name>
+	<object-name>4_4</object-name>
+	<object-name>4_5</object-name>
+	<object-name>4_6</object-name>
+	<object-name>4_7</object-name>
+	<object-name>4_8</object-name>
+  </animation>
+  
+  <!-- Panel 5 -->
   <!--_______________
-   /  A  |  C  |XXXXX\
+   /  1  |  3  |XXXXX\
   |______|_____|XXXXXX|
-  |   B  |  D  |  F   |
+  |   2  |  4  |  6   |
   |______|_____|______|
   -->
   <!--1st row-->
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/asi220.xml</path>
     <offsets>
-      <x-m>-10.714 </x-m>
-      <y-m>  0.328 </y-m>
+      <x-m>-10.721 </x-m>
+      <y-m>  0.308 </y-m>
       <z-m> -0.032 </z-m>
     </offsets>
-  </model> 
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.714 </x-m>
-      <y-m>  0.328 </y-m>
-      <z-m> -0.032 </z-m>
-    </offsets>
-  </model> 
+  </model>  
   
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/ai.xml</path>
     <offsets>
-      <x-m>-10.710 </x-m>
-      <y-m>  0.441 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m>  0.421 </y-m>
       <z-m> -0.032 </z-m>
     </offsets>
   </model>
@@ -618,16 +743,8 @@
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/hdg-gauge.xml</path>
     <offsets>
-      <x-m>-10.712 </x-m>
-      <y-m>  0.554 </y-m>
-      <z-m> -0.032 </z-m>
-    </offsets>
-  </model> 
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.714 </x-m>
-      <y-m>  0.554 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m>  0.535 </y-m>
       <z-m> -0.032 </z-m>
     </offsets>
   </model> 
@@ -636,8 +753,8 @@
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/clock.xml</path>
     <offsets>
-      <x-m>-10.714 </x-m>
-      <y-m>  0.673 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m>  0.653 </y-m>
       <z-m> -0.160 </z-m>
     </offsets>
   </model>   
@@ -645,8 +762,8 @@
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/vsi-3d.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.600 </y-m>
+      <x-m>-10.722 </x-m>
+      <y-m>  0.580 </y-m>
       <z-m> -0.148 </z-m>
     </offsets>
   </model>  
@@ -654,33 +771,17 @@
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/turn.xml</path>
     <offsets>
-      <x-m>-10.716 </x-m>
-      <y-m>  0.505 </y-m><!--+0.995-->
+      <x-m>-10.723 </x-m>
+      <y-m>  0.485 </y-m><!--+0.995-->
       <z-m> -0.148 </z-m>
     </offsets>
-  </model>  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.505 </y-m>
-      <z-m> -0.148 </z-m>
-    </offsets>
-  </model> 
+  </model>
   
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/alt.xml</path>
     <offsets>
-      <x-m>-10.714 </x-m>
-      <y-m>  0.410 </y-m>
-      <z-m> -0.148 </z-m>
-    </offsets>
-  </model>  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.410 </y-m>
+      <x-m>-10.721 </x-m>
+      <y-m>  0.390 </y-m>
       <z-m> -0.148 </z-m>
     </offsets>
   </model> 
@@ -688,153 +789,182 @@
     <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/ki206/ki206_1.xml</path><!--ki206_2.xml-->
     <offsets>
-      <x-m>-10.709 </x-m>
-      <y-m>  0.315 </y-m>
-      <z-m> -0.126 </z-m>
+      <x-m>-10.716 </x-m>
+      <y-m>  0.295 </y-m>
+      <z-m> -0.138 </z-m>
     </offsets>
-  </model>  
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frame.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.315 </y-m>
-      <z-m> -0.126 </z-m>
-    </offsets>
-  </model> 
+  </model>
   
-  <!-- F -->
+  
+  <!-- Panel 6 -->
   <!--_______________
-   /  A  |  C  |     \
+   /  1  |  3  |  5  \
   |______|_____|______|
-  |   B  |  D  |XXXXXX|
+  |   2  |  4  |XXXXXX|
   |______|_____|XXXXXX|
   -->
   <!--1st row-->
   <model>
+    <name>6_1</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/flaps.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.320 </y-m>
-      <z-m> -0.290 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.320 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m>  0.300 </y-m>
       <z-m> -0.290 </z-m>
     </offsets>
   </model>
   
   <model>
+    <name>6_2</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/hydPressMain.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.390 </y-m>
-      <z-m> -0.290 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.390 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m>  0.370 </y-m>
       <z-m> -0.290 </z-m>
     </offsets>
   </model>
   
   <model>
+    <name>6_3</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/hydPressLeft.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.460 </y-m>
-      <z-m> -0.290 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.460 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m>  0.440 </y-m>
       <z-m> -0.290 </z-m>
     </offsets>
   </model>
   
   <model>
+    <name>6_4</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/hydPressRight.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.530 </y-m>
-      <z-m> -0.290 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.530 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m>  0.510 </y-m>
       <z-m> -0.290 </z-m>
     </offsets>
   </model>
   
   <model>
+    <name>6_5</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/voltAC.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.600 </y-m>
-      <z-m> -0.290 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.600 </y-m>
+      <x-m>-10.719 </x-m>
+      <y-m>  0.580 </y-m>
       <z-m> -0.290 </z-m>
     </offsets>
   </model>
   
   <!--2nd row-->
+  <!--  TODO
+  6fireCockpitHeater
+  6fireCabinHeater
+  6fireHeaterArea
+  
+  6heaterShutoffProtect
+  6heaterShutoff   -->
+  
   <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/warningLightRed.xml</path>
+    <name>6_6</name>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/outsideTemp.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.410 </y-m>
-      <z-m> -0.370 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/warningLightRed.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.430 </y-m>
-      <z-m> -0.370 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/warningLightRed.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.450 </y-m>
-      <z-m> -0.370 </z-m>
+      <x-m>-10.719 </x-m>
+      <y-m>  0.480 </y-m>
+      <z-m> -0.390 </z-m>
     </offsets>
   </model>
   
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/outsideTemp.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.500 </y-m>
-      <z-m> -0.390 </z-m>
-    </offsets>
-  </model>
-  <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/frameS.xml</path>
-    <offsets>
-      <x-m>-10.715 </x-m>
-      <y-m>  0.500 </y-m>
-      <z-m> -0.390 </z-m>
-    </offsets>
-  </model>
+  <animation>
+    <name>Panel6</name>
+    <object-name>6_1</object-name>
+	<object-name>6_2</object-name>
+	<object-name>6_3</object-name>
+	<object-name>6_4</object-name>
+	<object-name>6_5</object-name>
+	<object-name>6_6</object-name>
+  </animation>
+  
+  <!--
+  ALL THE PANEL
+    _________________
+   /XXXXX|XXXXX|XXXXX\
+  |XXXXXX|XXXXX|XXXXXX|
+  |XXXXXX|XXXXX|XXXXXX|
+  |XXXXXX|XXXXX|XXXXXX|
+  -->
+  <!--Annunciator light test (also known as christmas tree) sorted by color-->
+  
+  <animation>
+    <type>material</type>
+    <object-name>4gearGreenLeft</object-name>
+	<object-name>4gearGreenRight</object-name>
+	<object-name>4gearGreenTail</object-name>
+    <emission>
+	  <red>0.6</red>
+      <green>1</green>
+      <blue>0.4</blue>
+      <factor-prop>controls/lighting/annun-off-norm</factor-prop>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+	<object-name>4gearOrangeTransit</object-name>
+	<object-name>3oilPressWarningL</object-name>
+    <object-name>3oilPressWarningR</object-name>
+    <emission>
+	  <red>1</red>
+      <green>1</green>
+      <blue>0.3</blue>
+      <factor-prop>controls/lighting/annun-off-norm</factor-prop>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+    <object-name>3fuelPressWarningL</object-name>
+    <object-name>3fuelPressWarningR</object-name>
+	<object-name>6fireCabinHeater</object-name>
+    <object-name>6fireCockpitHeater</object-name>
+    <object-name>6fireHeaterArea</object-name>
+    <emission>
+	  <red>1</red>
+      <green>1</green>
+      <blue>1</blue>
+      <factor-prop>controls/lighting/annun-off-norm</factor-prop>
+    </emission>
+  </animation>
+  <animation>
+    <type>material</type>
+    <object-name>1NavGpsGps</object-name>
+    <object-name>1NavGpsNav</object-name>
+	<object-name>3fireEngineL</object-name>
+	<object-name>3fireEngineR</object-name>
+    <emission>
+	  <red>1</red>
+      <green>1</green>
+      <blue>1</blue>
+      <factor-prop>controls/lighting/annun-off-norm</factor-prop>
+    </emission>
+  </animation>
+  
+  
+  
+  <!--Rotation-->
+  <animation>
+    <object-name>Panel2</object-name>
+	<object-name>Panel4</object-name>
+	<object-name>Panel6</object-name>
+    <type>rotate</type>
+    <offset-deg>-10</offset-deg>
+    <center>
+      <x-m>-10.72</x-m>
+      <y-m>  0.00</y-m>
+      <z-m> -0.21</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+  
+  <!--Due to rotation, panel C or 3 has been translated -0.007 (m) in x direction-->
 </PropertyList>

@@ -199,6 +199,43 @@ fuelPayloadValve();
 
 
 #####
+# Autofuel - Let autofuel change the tank (like a copilot)
+#####
+var autofuelLoop = func(){
+    var selectLeft = getprop("/controls/fuel/left-valve");
+	var selectRight = getprop("/controls/fuel/right-valve");
+    if(getprop("/consumables/fuel/tank["~ selectLeft ~"]/level-gal_us") < 20.0){
+	    if(selectLeft == 4){
+		    selectLeft = 0;
+		}else{
+		    selectLeft += 2;
+		}
+		setprop("/controls/fuel/left-valve", selectLeft);
+	}
+	if( getprop("/consumables/fuel/tank["~ selectRight ~"]/level-gal_us") < 20){
+	    if( selectRight == 5){
+		    selectRight = 1;
+		}else{
+		    selectRight += 2;
+		}
+		setprop("/controls/fuel/right-valve", selectRight );
+		gui.popupTip("Copilot changed tank selection", 4);
+	}
+}
+	
+props.globals.initNode("/controls/autoflight/autofuel", 0, "BOOL");
+
+var autofuel = maketimer(5, func{autofuelLoop();} );
+		
+_setlistener("/controls/autoflight/autofuel", func(){
+    if(getprop("/controls/autoflight/autofuel")==1){
+		autofuel.start();
+	}else{
+	    if(autofuel.isRunning){autofuel.stop();}
+	}
+});
+
+#####
 # Timers and loops for crossfeed and pressure (not valves, see listeners above)
 #####
 

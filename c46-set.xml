@@ -10,8 +10,8 @@ Developed under GNU-GPL for FlightGear FS.
  <sim>
   <description>Curtiss Wright C-46</description>
   <long-description>The Curtiss Wright C-46 Commando is a WWII era twin-engine taildragger cargo aircraft. Originally designed and built as a pressurized airliner in 1937, the CW-20 was outfitted for wartime use early in the war. 
-  With its larger engines and cargo capacity, it was immediately pressed into service flying cargo over "the Hump" between India and China. It was actually the largest transport aircraft used during the war. Early models were beset with fuel leak issues in the wing root,
-  resulting in many lost aircraft until those issues were resolved. Of the 3,181 built, around half a dozen Commandos are still flying today.
+  With its larger engines and cargo capacity, it was immediately pressed into service flying cargo over "the Hump" between India and China. It was actually the largest transport aircraft used during the war.<!-- Early models were beset with fuel leak issues in the wing root,
+  resulting in many lost aircraft until those issues were resolved.--> Of the 3,181 built, around half a dozen Commandos are still flying today.
   </long-description>
   
   <authors>
@@ -28,13 +28,13 @@ Developed under GNU-GPL for FlightGear FS.
   </authors>
   
   <status>beta</status>
-  <aircraft-version>2018.1</aircraft-version>
+  <aircraft-version>2018.3</aircraft-version>
   <minimum-fg-version>2017.2</minimum-fg-version>
   <rating>
    <FDM type="int">2</FDM>
    <systems type="int">1</systems>
-   <cockpit type="int">2</cockpit>
-   <model type="int">3</model>
+   <cockpit type="int">3</cockpit>
+   <model type="int">4</model>
   </rating>
 
     <tags>
@@ -56,7 +56,7 @@ Developed under GNU-GPL for FlightGear FS.
 	
 	<urls>
 	   <home-page>https://github.com/skybikefg/c46/wiki</home-page>
-	   <support>http://forum.flightgear.org</support>
+	   <support>https://github.com/skybikefg/c46/issues</support><!--http://forum.flightgear.org-->
 	   <wikipedia>https://en.wikipedia.org/wiki/Curtiss_C-46_Commando </wikipedia>
 	   <code-repository>https://github.com/SkybikeFG/c46</code-repository>
 	</urls>
@@ -71,7 +71,7 @@ Developed under GNU-GPL for FlightGear FS.
     </startup>
   
     <model>
-      <path>Aircraft/c46/Models/c46-model.xml</path>
+      <path>Aircraft/c46/Models/curtiss-c46.xml</path>
       <options>
         <hide-yokes type="bool" archive="y">false</hide-yokes>
       </options>
@@ -131,11 +131,14 @@ Developed under GNU-GPL for FlightGear FS.
 	
 	<systems>
 	  <path>Systems/systems.xml</path>
-	  <path>Systems/electrical.xml</path>
 	  
-      <autopilot n="1">
+      <autopilot n="2">
         <path>Systems/glass-rain.xml</path>
       </autopilot>
+	  
+	  <property-rule n="100">
+        <path>Systems/electrical.xml</path>
+      </property-rule>
   
 	</systems>
  
@@ -188,7 +191,7 @@ Developed under GNU-GPL for FlightGear FS.
             <path>/controls/lighting/nav-lights</path>
                         
             <path>/controls/engines/engine/cowl-flaps-norm</path>
-            <path>/controls/flight/elevator-trim</path>
+            <!--path>/controls/flight/elevator-trim</path-->
             <path>/controls/flight/rudder-trim</path>
             <path>/controls/flight/flaps</path>
             
@@ -219,7 +222,7 @@ Developed under GNU-GPL for FlightGear FS.
  
   <nasal>
     <updateloop>
-            <file>Aircraft/Generic/updateloop.nas</file>
+      <file>Aircraft/Generic/updateloop.nas</file>
     </updateloop>
     <c46>
       <file>Aircraft/c46/Nasal/c46.nas</file>
@@ -260,6 +263,10 @@ Developed under GNU-GPL for FlightGear FS.
   -->
 
   <controls>
+    <electric>
+	  <external-power>1</external-power>
+	</electric>
+	
     <flight>
       <elevator-trim>0.0</elevator-trim>
     </flight>
@@ -274,14 +281,20 @@ Developed under GNU-GPL for FlightGear FS.
     <gear>
       <brake-parking>1</brake-parking>
     </gear>
-
+	
+	<circuit-breakers>
+      <instr type="bool">true</instr>
+      <intlt type="bool">true</intlt>
+      <master type="bool">true</master>
+    </circuit-breakers>
+    <switches>
+      <master-bat type="bool">true</master-bat>
+    </switches>
     <lighting>
-      <strobe>1</strobe>
-      <beacon>1</beacon>
-      <landing-lights>1</landing-lights>
-      <nav-lights>1</nav-lights>
+	  <annun-on-norm type="double">1.0</annun-on-norm>
+	  <annun-off-norm type="double">0.0</annun-off-norm>
+	  <annun-switch type="int">1</annun-switch>
     </lighting>
-
   </controls>
 
   

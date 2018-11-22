@@ -39,7 +39,7 @@ Pressure - 29.92inHg(sealevel)
   <cycles>           4.0 </cycles>
   <idlerpm>        650.0 </idlerpm>
   <maxrpm>        2905.0 </maxrpm><!-- overspeed (airmanitoba)/ regular at maxhp: 2700rpm-->
-  <cooling-factor>   0.6 </cooling-factor><!--overwritten by oilcooler system-->
+  <cooling-factor>   0.7 </cooling-factor><!--overwritten by oilcooler system-->
   
   <boostmanual>    1 </boostmanual><!--cockpit switch-->
   <numboostspeeds> 2 </numboostspeeds><!--p86-->  

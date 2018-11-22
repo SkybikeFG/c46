@@ -103,7 +103,7 @@ var GeneratorClass = {};
 # ************************************   rpm_threshold is throwing an error, probably due to neither engine being "active". Need to evaluate how multi engine / generator setups do it, if at all **********
 GeneratorClass.new = func (num){
     var obj = { parents : [GeneratorClass],
-                rpm_source : "/engines/active-engine/rpm",
+                rpm_source : "/engines/engine[0]/rpm",
                 rpm_threshold : 1400.0,
                 ideal_volts : 28.0,
                 ideal_amps : 200.0 };

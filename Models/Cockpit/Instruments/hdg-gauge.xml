@@ -2,7 +2,7 @@
 <!--Authors: see FGAddon Douglas DC6-->
 <PropertyList>
 
-<path>dir-gyro.ac</path>
+<path>hdg.ac</path>
 
     <animation>
         <type>material</type>
@@ -12,10 +12,7 @@
             <red>0.028</red>
             <green>0.014</green>
             <blue>0.007</blue>
-			<!--red>0.8</red>
-            <green>0.4</green>
-            <blue>0.2</blue-->
-            <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
+            <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
         </emission>
     </animation>
 
@@ -32,7 +29,7 @@
 
 <!-- Hotspots -->
 
-    <animation>
+    <!--<animation>
         <type>pick</type>
         <object-name>hdg.knob</object-name>
         <action>
@@ -102,6 +99,6 @@
                 <wrap>false</wrap>
             </binding>
         </action>
-    </animation>
+    </animation-->
 
 </PropertyList>

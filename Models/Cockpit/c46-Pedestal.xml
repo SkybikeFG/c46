@@ -345,6 +345,15 @@
         <wrap>false</wrap>
       </binding>
 	</action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>cowlFlapsl</tooltip-id>
+        <label>Left Cowl Flaps %d%%</label>
+        <property>controls/engines/engine[0]/cowl-flaps-norm</property>
+        <mapping>percent</mapping>
+      </binding>
+    </hovered>
   </animation>
   <animation>
     <type>knob</type>
@@ -374,6 +383,15 @@
         <wrap>false</wrap>
       </binding>
 	</action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>cowlFlapsr</tooltip-id>
+        <label>Right Cowl Flaps %d%%</label>
+        <property>controls/engines/engine[1]/cowl-flaps-norm</property>
+        <mapping>percent</mapping>
+      </binding>
+    </hovered>
   </animation>
   
   <animation>
@@ -834,7 +852,7 @@
       </binding>
     </action>
   </animation>
-    <animation>
+  <animation>
     <type>rotate</type>
     <object-name>P3SuperChargerR</object-name>
     <property>fdm/jsbsim/propulsion/engine[1]/boost-speed</property>

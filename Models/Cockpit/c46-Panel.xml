@@ -1007,7 +1007,7 @@
     <factor>-20</factor>
     <center>
       <x-m>  0    </x-m>
-      <y-m> -0.355</y-m>
+      <y-m>  0.503</y-m>
       <z-m> -0.060</z-m>
     </center>
     <axis>
@@ -1129,7 +1129,7 @@
     <factor>-1000</factor>
     <center>
       <x-m>-10.714</x-m>
-      <y-m> -0.422</y-m>
+      <y-m>  0.359</y-m>
       <z-m> -0.181</z-m>
     </center>
     <axis>

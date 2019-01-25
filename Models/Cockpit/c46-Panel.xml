@@ -329,28 +329,39 @@
       <z-m> -0.160 </z-m>
     </offsets>
   </model>
-  <animation><!--Clock and its offset needs some nasal, as the original one is ...-->
+  <animation>
+    <type>pick</type>
+	<object-name>1ClockKnob</object-name>
+	<action>
+	  <button>0</button>
+	  <binding>
+        <command>dialog-show</command>
+        <dialog-name>clock-dialog-pilot</dialog-name>
+	  </binding>
+	</action>
+  </animation>
+  <animation>
     <type>knob</type>
     <object-name>1ClockKnob</object-name>
     <action>
       <binding>
         <command>property-adjust</command>
-        <property>/instrumentation/clock/offset-sec</property>
-        <factor>1</factor>
+        <property>/instrumentation/clock/offset-min</property>
+        <factor>3600</factor>
       </binding>
     </action>
     <shift-action>
       <binding>
         <command>property-adjust</command>
         <property>/instrumentation/clock/offset-sec</property>
-        <factor>3600</factor>
+        <factor>60</factor>
       </binding>
     </shift-action> 	
     <hovered>
       <binding>
         <command>set-tooltip</command>
         <tooltip-id>time-indicator</tooltip-id>
-        <label>Time: %s</label>
+        <label>Time: %s (Click to change)</label>
         <property>/instrumentation/clock/indicated-string</property>
       </binding>
     </hovered>
@@ -926,13 +937,37 @@
   </model>  
   
   <model>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/ai.xml</path>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/ai_1.xml</path>
     <offsets>
       <x-m>-10.719 </x-m>
       <y-m>  0.421 </y-m>
       <z-m> -0.032 </z-m>
     </offsets>
   </model>
+  <animation>
+    <type>pick</type>
+	<object-name>5cageKnob</object-name>
+	<action>
+	  <button>0</button>
+	  <binding>
+        <command>property-toggle</command>
+        <property>instrumentation/attitude-indicator[1]/caged-flag</property>
+	  </binding>
+	</action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>cageknob</tooltip-id>
+        <mapping>nasal</mapping>
+		<label>AI %s</label>
+		<property>instrumentation/attitude-indicator[1]/caged-flag</property>
+        <script>
+          var modes = ['free, not caged', 'caged and fixed for rough maneuvers'];
+          return modes[arg[0]];
+        </script>
+      </binding>
+    </hovered>
+  </animation>
   
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/hdg-gauge_1.xml</path>
@@ -991,32 +1026,43 @@
       <z-m> -0.160 </z-m>
     </offsets>
   </model> 
-  <!--animation>
+  <animation>
+    <type>pick</type>
+	<object-name>5ClockKnob</object-name>
+	<action>
+	  <button>0</button>
+	  <binding>
+        <command>dialog-show</command>
+        <dialog-name>clock-dialog-copilot</dialog-name>
+	  </binding>
+	</action>
+  </animation>
+  <animation>
     <type>knob</type>
     <object-name>5ClockKnob</object-name>
     <action>
       <binding>
         <command>property-adjust</command>
-        <property>/instrumentation/clock[1]/offset-sec</property>
-        <factor>1</factor>
+        <property>/instrumentation/clock[1]/offset-min</property>
+        <factor>3600</factor>
       </binding>
     </action>
     <shift-action>
       <binding>
         <command>property-adjust</command>
         <property>/instrumentation/clock[1]/offset-sec</property>
-        <factor>3600</factor>
+        <factor>60</factor>
       </binding>
     </shift-action> 	
     <hovered>
       <binding>
         <command>set-tooltip</command>
         <tooltip-id>time-indicator</tooltip-id>
-        <label>Time: %s</label>
+        <label>Time: %s (Click to change)</label>
         <property>/instrumentation/clock[1]/indicated-string</property>
       </binding>
     </hovered>
-  </animation-->    
+  </animation>      
 
   <model>
     <path>Aircraft/c46/Models/Cockpit/Instruments/vsi-4_1.xml</path>
@@ -1046,8 +1092,8 @@
   </model>
   <animation>
     <type>knob</type>
-    <object-name>1AltKnob</object-name>
-    <object-name>1AltKnob_Front</object-name>
+    <object-name>5AltKnob</object-name>
+    <object-name>5AltKnob_Front</object-name>
     <action>
       <binding>
         <command>property-adjust</command>
@@ -1077,7 +1123,7 @@
     </hovered>
   </animation>
   <animation>
-    <object-name>1AltKnob_Front</object-name>
+    <object-name>5AltKnob_Front</object-name>
     <type>rotate</type>
     <property>/instrumentation/altimeter[1]/setting-inhg</property>
     <factor>-1000</factor>

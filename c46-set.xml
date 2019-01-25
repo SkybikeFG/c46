@@ -128,6 +128,11 @@ Developed under GNU-GPL for FlightGear FS.
 	<panel><!-- Hide the 2D panel -->
       <visibility type="bool" archive="y">false</visibility>
     </panel>
+	<rendering>
+      <redout><!--Disable redout and blackout-->
+        <enabled type="bool" userarchive="y">false</enabled>
+      </redout>
+	</rendering>
 	
 	<instrumentation>
       <path>Systems/c46-instrumentation.xml</path>

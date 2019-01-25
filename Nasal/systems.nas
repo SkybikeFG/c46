@@ -25,8 +25,44 @@ var vacuum_inhg = func {
 
 var vacuumtimer = maketimer(1, vacuum_inhg);
 vacuumtimer.start();
+
+############################################
+# Copilots AI Cageflag / Offflag
+# offlag is on(1)  at  low spin(<1)  or  when cage-flag is on(1). 
+# It works with listeners, Best for performance
+#
+# Step1: Wait for a property to change. If so, start a timer.
+# Step2: "offlag_want" is 1-spin (eg. spin=0.8, flag=0.2)  or  1 if cage-flag is selected.
+# Step3: add 0.01 (or -0.01) to the property until  "offflag_want" is reached. Then it stops the timer.
+# See also: set.xml>instrumentation.xml (initialise flag properties) and models>cockpit>instruments>ai_2.xml
+############################################
+
+#var offflagb = props.globals.initNode("/instrumentation/attitude-indicator[1]/off-flag",1.0);
+
+
+var ai_flag = func{
+    var offflag = getprop("/instrumentation/attitude-indicator[1]/off-flag");
 	
+	var offflag_want=1-getprop("/instrumentation/attitude-indicator[1]/spin");
+    if(getprop("/instrumentation/attitude-indicator[1]/caged-flag")==1){offflag_want=1;}
 	
+	printf(""~offflag_want);
+	if(offflag-offflag_want>=0.01){
+	    setprop("/instrumentation/attitude-indicator[1]/off-flag", offflag-0.01);
+		printf("kleiner");
+	}else{ 
+	    if(offflag_want-offflag>=0.01){
+	        setprop("/instrumentation/attitude-indicator[1]/off-flag", offflag+0.02);
+			printf("groesser");
+	    }else{aiflagtimer.stop();printf("Timerstop");}
+	}
+}
+
+var aiflagtimer = maketimer(0.001, ai_flag);
+_setlistener("/instrumentation/attitude-indicator[1]/caged-flag", func(){aiflagtimer.start();});
+_setlistener("/systems/vacuummaster/suction-inhg", func(){aiflagtimer.start();});# "instr/ai[1]/spin" doesn't support listeners
+
+
 	
 ############################################
 # Electrical helper system

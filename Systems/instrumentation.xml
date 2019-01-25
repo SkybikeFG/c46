@@ -34,13 +34,35 @@ file, these values will be used (they are hardcoded).
 	
 	<attitude-indicator n="1">
 	    <serviceable type="bool">true</serviceable>
+		<off-flag type="double">1.0</off-flag>
+		<caged-flag type="bool">0</caged-flag>
 	</attitude-indicator>
+	
 	<altimeter n="1">
 	  <serviceable type="bool">true</serviceable>
 	</altimeter>
 	<airspeed-indicator n="1">
 	  <serviceable type="bool">true</serviceable>
 	</airspeed-indicator>
+	<clock n="0">
+	  <offset-sec>0</offset-sec>
+	  <dialog>
+	    <utc type="bool">0</utc>
+		<local type="bool">0</local>
+		<custom type="bool">0</custom>
+		<zone type="bool">0</zone>
+		<real type="bool">0</real>
+		<copilot type="bool">0</copilot>
+		<sync type="bool">0</sync>
+		<custom-zone type="double">0.0</custom-zone>
+		<custom-hour type="int">0</custom-hour>
+		<custom-min type="int">0</custom-min>
+	  </dialog>
+	</clock>
+	<clock n="1">
+	  <serviceable type="bool">true</serviceable>
+	  <offset-sec>0</offset-sec>
+	</clock>
 	
     <kma20 include="Aircraft/Instruments-3d/kma20/kma20init.xml"/>
 	

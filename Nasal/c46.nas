@@ -23,3 +23,19 @@ setprop("/systems/electrical/outputs/comm[0]",28);
 if(getprop("/sim/rendering/rembrandt/enabled")==1){
     printf("Rembrandt not supported! Use ALS.");
 	gui.popupTip("Rembrandt is not supported. Please use ALS instead", 20);}
+
+#Dialog
+var clockDialogP = gui.Dialog.new("/sim/gui/dialogs/panel/clock0/dialog",
+                        "Aircraft/c46/Dialogs/clockPilot.xml");
+var clockDialogC = gui.Dialog.new("/sim/gui/dialogs/panel/clock1/dialog",
+                        "Aircraft/c46/Dialogs/clockCopilot.xml");
+						
+_setlistener("/sim/time/warp", func(){
+    if(getprop("instrumentation/clock[0]/dialog/real")==1){
+		setprop("instrumentation/clock[0]/offset-sec", getprop("/sim/time/warp")*(-1));
+	}
+	if(getprop("instrumentation/clock[1]/dialog/real")==1){
+		setprop("instrumentation/clock[1]/offset-sec", getprop("/sim/time/warp")*(-1));
+	}
+	
+});

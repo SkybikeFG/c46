@@ -24,7 +24,26 @@ file, these values will be used (they are hardcoded).
 -->
 
 <PropertyList>
+    <vertical-speed-indicator n="0">
+	  <offset-fpm type="int">0</offset-fpm>
+	</vertical-speed-indicator>
+	<vertical-speed-indicator n="1">
+	  <offset-fpm type="int">0</offset-fpm>
+	  <serviceable type="bool">true</serviceable>
+	</vertical-speed-indicator>
+	
+	<attitude-indicator n="1">
+	    <serviceable type="bool">true</serviceable>
+	</attitude-indicator>
+	<altimeter n="1">
+	  <serviceable type="bool">true</serviceable>
+	</altimeter>
+	<airspeed-indicator n="1">
+	  <serviceable type="bool">true</serviceable>
+	</airspeed-indicator>
+	
     <kma20 include="Aircraft/Instruments-3d/kma20/kma20init.xml"/>
+	
     <encoder>
       <serviceable type="bool">true</serviceable>
     </encoder>

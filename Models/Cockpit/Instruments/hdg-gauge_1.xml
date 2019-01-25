@@ -19,7 +19,7 @@
     <animation>
         <type>rotate</type>
         <object-name>HDGneedle</object-name>
-        <property>instrumentation/heading-indicator/indicated-heading-deg</property>
+        <property>instrumentation/heading-indicator[1]/indicated-heading-deg</property>
         <axis>
             <x>1.0</x>
             <y>0.0</y>

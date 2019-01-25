@@ -129,11 +129,18 @@ Developed under GNU-GPL for FlightGear FS.
       <visibility type="bool" archive="y">false</visibility>
     </panel>
 	
+	<instrumentation>
+      <path>Systems/c46-instrumentation.xml</path>
+    </instrumentation>
+   
 	<systems>
 	  <path>Systems/systems.xml</path>
 	  
       <autopilot n="2">
         <path>Systems/glass-rain.xml</path>
+      </autopilot>
+	  <autopilot n="3">
+        <path>Systems/select-value.xml</path>
       </autopilot>
 	  
 	  <property-rule n="100">
@@ -234,6 +241,7 @@ Developed under GNU-GPL for FlightGear FS.
 	  <file>Aircraft/c46/Models/Cockpit/Instruments/kma20/kma20.nas</file>
 	  <file>Aircraft/c46/Nasal/systems.nas</file>
 	  <file>Aircraft/c46/Nasal/electrical.nas</file>
+	  <file>Aircraft/c46/Nasal/immat.nas</file>
     </c46>
     <systems>
       <file>Aircraft/c46/Models/Cockpit/Instruments/kns80/KNS80.nas</file>	  
@@ -250,7 +258,10 @@ Developed under GNU-GPL for FlightGear FS.
 	<static n="2">
 	   <serviceable>true</serviceable>
     </static>
- 
+	<static-pilot>
+	   <serviceable type="bool">true</serviceable>
+	   <alternate type="bool">false</alternate>
+	</static-pilot>
   </systems>
 
   <consumables include="Systems/consumables.xml"/>
@@ -283,18 +294,57 @@ Developed under GNU-GPL for FlightGear FS.
     </gear>
 	
 	<circuit-breakers>
+      <!--<aircond type="bool">true</aircond>
+      <autopilot type="bool">true</autopilot>
+      <bcnlt type="bool">true</bcnlt>
+      <flaps type="bool">true</flaps>-->
       <instr type="bool">true</instr>
       <intlt type="bool">true</intlt>
+      <!--landing type="bool">true</landing>-->
       <master type="bool">true</master>
+      <!--<navlt type="bool">true</navlt>
+      <pitot-heat type="bool">true</pitot-heat>
+      <radio1 type="bool">true</radio1>
+      <radio2 type="bool">true</radio2>
+      <radio3 type="bool">true</radio3>
+      <radio4 type="bool">true</radio4>
+      <radio5 type="bool">true</radio5>
+      <strobe type="bool">true</strobe>
+      <turn-coordinator type="bool">true</turn-coordinator>-->
     </circuit-breakers>
     <switches>
+      <!--<master-avionics type="bool">false</master-avionics>
+      <master-gear type="bool">false</master-gear>
+      <starter type="bool">false</starter>
+      <master-alt type="bool">false</master-alt>-->
       <master-bat type="bool">true</master-bat>
+      <!--<magnetos type="int">0</magnetos>
+      <dome-red type="int">0</dome-red>
+      <dome-white type="bool">false</dome-white>-->
     </switches>
     <lighting>
+      <!--<nav-lights type="bool">false</nav-lights>
+      <beacon type="bool">false</beacon>
+      <strobe type="bool">false</strobe>
+      <taxi-light type="bool">false</taxi-light>
+      <landing-lights type="bool">false</landing-lights>-->
+      <!--instruments-norm type="double">0.0</instruments-norm-->
+      <!--<radio-norm type="double">0.0</radio-norm>
+      <dome-white-norm type="double">1.0</dome-white-norm>
+      <gps-norm type="double">0.0</gps-norm>
+      <gearled type="bool">true</gearled>-->
 	  <annun-on-norm type="double">1.0</annun-on-norm>
 	  <annun-off-norm type="double">0.0</annun-off-norm>
 	  <annun-switch type="int">1</annun-switch>
     </lighting>
+
+    <!--lighting>
+      <strobe>1</strobe>
+      <beacon>1</beacon>
+      <landing-lights>1</landing-lights>
+      <nav-lights>1</nav-lights>
+    </lighting-->
+
   </controls>
 
   

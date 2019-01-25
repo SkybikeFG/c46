@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 
 <PropertyList>
+<!--scaled to 0 0.65 0.65-->
  <path>clock.ac</path>
 
  <animation>
@@ -9,6 +10,7 @@
   <object-name>second</object-name>
   <object-name>minute</object-name>
   <object-name>hour</object-name>
+  <object-name>frame</object-name>
     <emission>
         <red>0.028</red>
         <green>0.014</green>

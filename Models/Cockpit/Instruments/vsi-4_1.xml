@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!--Addapted from vsi-6-->
+<PropertyList>
+
+    <path>vsi-4.ac</path>
+
+    <animation>
+        <type>material</type>
+        <object-name>VSIface</object-name>
+        <object-name>VSIneedle</object-name>
+        <emission>
+            <red>0.028</red>
+            <green>0.014</green>
+            <blue>0.007</blue>
+            <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>VSIneedle</object-name>
+		<property>instrumentation/vertical-speed-indicator[1]/indicated-speed-fpm</property>
+        <interpolation>
+            <entry><ind>-4000.0</ind><dep>-170.0</dep></entry>
+            <entry><ind>-3000.0</ind><dep>-135.0</dep></entry>
+            <entry><ind>-2000.0</ind><dep>-90.0</dep></entry>
+            <entry><ind>-1000.0</ind><dep>-45.0</dep></entry>
+            <entry><ind>-500.0</ind><dep>-22.5</dep></entry>
+            <entry><ind>0.0</ind><dep>0.0</dep></entry>
+            <entry><ind>500.0</ind><dep>22.5</dep></entry>
+            <entry><ind>1000.0</ind><dep>45.0</dep></entry>
+            <entry><ind>2000.0</ind><dep>90.0</dep></entry>
+            <entry><ind>3000.0</ind><dep>135.0</dep></entry>
+            <entry><ind>4000.0</ind><dep>170.0</dep></entry>
+        </interpolation>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+	<animation>
+        <type>rotate</type>
+        <object-name>VSIneedle</object-name>
+	    <property>/instrumentation/vertical-speed-indicator[1]/offset-fpm</property>
+		<interpolation>
+            <entry><ind>-4000.0</ind><dep>-170.0</dep></entry>
+            <entry><ind>-3000.0</ind><dep>-135.0</dep></entry>
+            <entry><ind>-2000.0</ind><dep>-90.0</dep></entry>
+            <entry><ind>-1000.0</ind><dep>-45.0</dep></entry>
+            <entry><ind>-500.0</ind><dep>-22.5</dep></entry>
+            <entry><ind>0.0</ind><dep>0.0</dep></entry>
+            <entry><ind>500.0</ind><dep>22.5</dep></entry>
+            <entry><ind>1000.0</ind><dep>45.0</dep></entry>
+            <entry><ind>2000.0</ind><dep>90.0</dep></entry>
+            <entry><ind>3000.0</ind><dep>135.0</dep></entry>
+            <entry><ind>4000.0</ind><dep>170.0</dep></entry>
+        </interpolation>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+		
+		
+    <animation>
+        <type>knob</type>
+        <object-name>VSIKnob</object-name>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>/instrumentation/vertical-speed-indicator[1]/offset-fpm</property>
+                <factor>100</factor>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>VSIoffset</tooltip-id>
+                <label>Offset: %d fpm</label>
+                <property>/instrumentation/vertical-speed-indicator[1]/offset-fpm</property>
+            </binding>
+        </hovered>
+    </animation>
+
+</PropertyList>

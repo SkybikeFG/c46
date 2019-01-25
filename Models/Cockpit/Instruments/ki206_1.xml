@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+    ##########################################
+     # From
+     # DR400-dauphin by PAF team
+     # April 2012 : Modified by PAF team
+     # http://equipe-flightgear.forumactif.com
+     # December 2013
+    ##########################################
+	 # Modified for Curtiss c46 December 2018
+	 # Needs texture ki227_228  instead of ki206
+	 # AND knob not included...
+	##########################################
+-->
+
+<!-- 
+    KI 206 
+    Bendix/King VOR / LOC / Glideslope Indicator
+    Syd Adams
+-->
+
+<PropertyList>
+
+    <path>ki206.ac</path>
+    <animation>
+        <type>material</type>
+        <object-name>KI206.fromflag</object-name>
+        <object-name>KI206.gsflag</object-name>
+        <object-name>KI206.navflag</object-name>
+        <object-name>KI206.toflag</object-name>
+        <object-name>KI206.face</object-name>
+        <object-name>KI206.gsneedle</object-name>
+        <object-name>KI206.locneedle</object-name>
+        <object-name>KI206card</object-name>
+        <emission>
+            <red>0.028</red>
+            <green>0.014</green>
+            <blue>0.007</blue>
+            <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+        </emission>
+    </animation>
+
+    <!--animation>  could become annunciator dimmer test
+        <type>material</type>
+        <object-name>KI206.gsflag</object-name>
+        <object-name>KI206.toflag</object-name>
+        <object-name>KI206.fromflag</object-name>
+        <object-name>KI206.navflag</object-name>
+        <object-name>KI206.face</object-name>
+        <object-name>KI206card</object-name>
+        <object-name>KI206.locneedle</object-name>
+        <object-name>KI206.gsneedle</object-name>
+        <emission>
+            <red>   0.07 </red>
+            <green> 0.04 </green>
+            <blue>  0.04 </blue>
+            <factor-prop>systems/electrical/outputs/plt-eng-inst-emer-pnl-lts</factor-prop>
+        </emission>
+    </animation-->
+
+    <animation>
+        <type>select</type>
+        <object-name>KI206.navflag</object-name>
+        <condition>
+            <or>
+                <not>
+                    <property>instrumentation/nav[0]/data-is-valid</property>
+                </not>
+                <less-than>
+                    <property>systems/electrical/outputs/nav[0]</property>
+                    <value>0.1</value>
+                </less-than>
+                <not>
+                    <property>instrumentation/nav[0]/in-range</property>
+                </not>
+            </or>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>KI206.gsflag</object-name>
+        <condition>
+            <or>
+                <not>
+                    <property>instrumentation/nav[0]/has-gs</property>
+                </not>
+                <less-than>
+                    <property>systems/electrical/outputs/nav[0]</property>
+                    <value>8</value>
+                </less-than>
+                <greater-than>
+                    <property>instrumentation/nav[0]/in-range</property>
+                    <value>30000</value>
+                </greater-than>
+            </or>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>KI206.toflag</object-name>
+        <condition>
+            <property>instrumentation/nav[0]/to-flag</property>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>KI206.fromflag</object-name>
+        <condition>
+            <property>instrumentation/nav[0]/from-flag</property>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>KI206card</object-name>
+        <property>instrumentation/nav[0]/radials/selected-deg</property>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>KI206.locneedle</object-name>
+        <property>instrumentation/nav[0]/heading-needle-deflection</property>
+        <interpolation>
+            <entry><ind>-10.0</ind><dep>-0.0113</dep></entry>
+            <entry><ind>  0.0</ind><dep> 0.0   </dep></entry>
+            <entry><ind> 10.0</ind><dep> 0.0113</dep></entry>
+        </interpolation>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+ 
+    <animation>
+        <type>translate</type>
+        <object-name>KI206.gsneedle</object-name>
+        <property>instrumentation/nav[0]/gs-needle-deflection</property>
+        <interpolation>
+            <entry><ind>-9999.0</ind><dep>-0.0113</dep></entry>
+            <entry><ind>   -3.5</ind><dep>-0.0113</dep></entry>
+            <entry><ind>    0.0</ind><dep> 0.0   </dep></entry>
+            <entry><ind>    3.5</ind><dep> 0.0113</dep></entry>
+            <entry><ind> 9999.0</ind><dep> 0.0113</dep></entry>
+        </interpolation>
+        <axis>
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>1.0</z>
+        </axis>
+    </animation>
+	
+    <!-- TEXT OSG -->
+    <text>
+        <name>textosg</name>
+        <type type="string">literal</type>
+        <text type="string">NAV 1 Display</text>
+        <draw-text type="bool">true</draw-text>
+        <font>Helvetica.txf</font>
+        <character-size type="double">0.014</character-size>
+        <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+        <axis-alignment>yz-plane</axis-alignment>
+        <max-height>0.06</max-height>
+        <max-width>0.05</max-width>
+        <font-resolution>
+            <width type="int">64</width>
+            <height type="int">64</height>
+        </font-resolution>
+        <alignment>center-center</alignment>
+        <offsets>
+            <x-m>  0.005 </x-m>
+            <y-m>  0.000 </y-m>
+            <z-m>  0.000 </z-m>
+        </offsets>
+    </text>
+
+    <animation>
+        <type>material</type>
+        <object-name>textosg</object-name>
+        <emission>
+            <red>   0.8 </red>
+            <green> 0.8 </green>
+            <blue>  0.0 </blue>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>textosg</object-name>
+        <condition>
+            <property>sim/panel-hotspots</property>
+        </condition>
+    </animation>
+</PropertyList>

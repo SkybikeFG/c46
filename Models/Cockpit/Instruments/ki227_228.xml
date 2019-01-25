@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <!--
-  Taken from the default Cessna C127p which is GNU GPL V2+
+  Default Cessna C127p (which is GNU GPL V2+)
+  Use the original one as this one lost its knob
   
   ADF based on ki227 by Torsten Dreyer
 -->
@@ -34,7 +35,6 @@
   
     
     <object-name>Marker</object-name>
-    <object-name>HDGSelector</object-name>
     <emission>
 	   <red>0.028</red>
        <green>0.014</green>
@@ -48,9 +48,6 @@
   <animation>
     <type>select</type>
     <object-name>KI227.ADFNeedle</object-name>
-    <object-name>HDGSelector</object-name>
-    <object-name>HDGSelectorPick.L</object-name>
-    <object-name>HDGSelectorPick.R</object-name>
     <condition>
       <not>
         <equals>
@@ -99,12 +96,6 @@
     </axis>
   </animation>
 
-  
-
-  
-
-  
-
   <animation>
     <type>rotate</type>
     <object-name>KI227.ADFNeedle</object-name>
@@ -115,112 +106,4 @@
       <z>0</z>
     </axis>
   </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>HDGSelector</object-name>
-    <property alias="../../params/rotation-deg"/>
-    <factor>8.0</factor>
-    <axis>
-      <x>1.0</x>
-      <y>0.0</y>
-      <z>0.0</z>
-    </axis>
-    <center>
-      <x-m>0</x-m>
-      <y-m>-0.0318072</y-m>
-      <z-m>-0.0327009</z-m>
-    </center>
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <object-name>HDGSelectorPick.L</object-name>
-    <visible>false</visible>
-    <action>
-      <button>0</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/rotation-deg"/>
-        <step>-1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-    <action>
-      <button>1</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/rotation-deg"/>
-        <step>-10</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <object-name>HDGSelectorPick.R</object-name>
-    <visible>false</visible>
-    <action>
-      <button>0</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/rotation-deg"/>
-        <step>1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-    <action>
-      <button>1</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/rotation-deg"/>
-        <step>10</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <object-name>HDGSelector</object-name>
-    <visible>true</visible>
-    <action>
-      <button>3</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/rotation-deg"/>
-        <step>-1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-    <action>
-      <button>4</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property alias="../../../../params/rotation-deg"/>
-        <step>1</step>
-        <min>0</min>
-        <max>360</max>
-        <wrap>1</wrap>
-      </binding>
-    </action>
-  </animation>
-
 </PropertyList>

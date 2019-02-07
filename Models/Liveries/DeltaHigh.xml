@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Delta Air Freighter</name>
+		<texture-fuselage>Liveries/Delta.png</texture-fuselage>
+		<texture-wings>Liveries/Wings.png</texture-wings>
+		<texture-propeller>Liveries/Propeller.png</texture-propeller>
+		<propeller-cone type="bool">0</propeller-cone>
+		<immatriculation type="string">N9884F</immatriculation>
+	  </livery>
+    </model>
+  </sim>
+</PropertyList>

@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Overhead Panel - model by Arnd Lebert in 02/2019 FGFS C46 TinkerBelle
+    Made rather low-Poly compared to panel(Effects by texture rather than 3D faces)
+	most is still to come-->
+<PropertyList>
+<!--<object-name>O0oh</object-name>
+    <object-name>O1amps1Needle</object-name>
+    <object-name>O1Amps2Needle</object-name>
+    <object-name>O1Bat1</object-name>
+    <object-name>O1Bat2</object-name>
+    <object-name>O1Beacon</object-name>
+    <object-name>O1Dome</object-name>
+    <object-name>O1FwrdBelly</object-name>
+    <object-name>O1gauges</object-name>
+    <object-name>O1Gen1</object-name>
+    <object-name>O1Gen2</object-name>
+    <object-name>O1Glass</object-name>
+    <object-name>O1HornRelease</object-name>
+    <object-name>O1HydLight</object-name>
+    <object-name>O1IceCarb</object-name>
+    <object-name>O1IcePitot</object-name>
+    <object-name>O1Invert</object-name>
+    <object-name>O1LampInside</object-name>
+    <object-name>O1Mag1</object-name>
+    <object-name>O1Mag2</object-name>
+    <object-name>O1Mag2.001</object-name>
+    <object-name>O1NavigLights</object-name>
+    <object-name>O1Preoiler</object-name>
+    <object-name>O1Primer1</object-name>
+    <object-name>O1Primer2</object-name>
+    <object-name>O1PropellorPump</object-name>
+    <object-name>O1RadioMaster</object-name>
+    <object-name>O1RhCompass</object-name>
+    <object-name>O1RhInstPanel</object-name>
+    <object-name>O1RhInstruments</object-name>
+    <object-name>O1RhOverhead</object-name>
+    <object-name>O1Starter1</object-name>
+    <object-name>O1Starter2</object-name>
+    <object-name>O1VoltsNeedle</object-name>-->
+   <path>OHP.ac</path>
+   
+   <effect>
+    <inherits-from>Aircraft/c46/Models/Effects/interior/interior-glass-reflection-panel-front</inherits-from>
+    <object-name>O1Glass</object-name>
+   </effect>
+   
+   <!--#########################################################################-->
+   <!-- GAUGES -->
+   <animation>
+    <type>rotate</type>
+    <object-name>O1VoltsNeedle</object-name>
+    <property>/systems/electrical/volts</property>
+    <factor>-2.6</factor>
+	<offset-deg>40</offset-deg>
+    <center>
+      <x-m>-10.524</x-m>
+      <y-m>-0.0210</y-m>
+      <z-m>0.3612</z-m>
+    </center>
+    <axis>
+      <x>0.309</x>
+      <y>0.0</y>
+      <z>-1.0</z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>O1amps1Needle</object-name>
+    <property>/systems/electrical/amps</property>
+    <factor>-.26</factor>
+	<condition>
+	  <greater-than>
+	    <property>/systems/electrical/amps</property>
+		<value>-50</value>
+	  </greater-than>
+	</condition>
+	<offset-deg>40</offset-deg>
+    <center>
+      <x-m>-10.524</x-m>
+      <y-m>0.0730</y-m>
+      <z-m>0.3612</z-m>
+    </center>
+    <axis>
+      <x>0.309</x>
+      <y>0.0</y>
+      <z>-1.0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>O1Amps2Needle</object-name>
+    <property>/systems/electrical/amps</property>
+    <factor>-.26</factor>
+	<condition>
+	  <greater-than>
+	    <property>/systems/electrical/amps</property>
+		<value>-50</value>
+	  </greater-than>
+	</condition>
+	<offset-deg>40</offset-deg>
+    <center>
+      <x-m>-10.524</x-m>
+      <y-m>0.1676</y-m>
+      <z-m>0.3612</z-m>
+    </center>
+    <axis>
+      <x>0.309</x>
+      <y>0.0</y>
+      <z>-1.0</z>
+    </axis>
+  </animation>
+  
+  <animation>
+  <type>material</type>
+  <object-name>O1gauges</object-name>
+    <emission>
+        <red>0.028</red>
+        <green>0.014</green>
+        <blue>0.007</blue>
+        <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    </emission>
+  </animation>
+  
+    <!--#########################################################################--> 
+    <!--RHEOSTATS-->
+    <!--<object-name>O1RhCompass</object-name>
+        <object-name>O1RhInstPanel</object-name>
+        <object-name>O1RhInstruments</object-name>
+        <object-name>O1RhOverhead</object-name>-->
+    <animation>
+      <type>knob</type>
+      <object-name>O1RhInstPanel</object-name>
+      <property>/controls/lighting/panel-norm</property>	
+      <factor>-300</factor>
+      <offset-deg>150</offset-deg>
+      <center>
+        <x-m>-10.4379</x-m><y-m>-0.18844</y-m><z-m>0.395229</z-m>
+      </center>
+      <axis>
+        <x>0.309</x><y>0</y><z>-1</z>
+      </axis>
+      <action>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/lighting/panel-norm</property>
+          <factor>0.2</factor>
+          <min>0</min>
+          <max>1</max>                
+          <wrap>false</wrap>
+          <drag-scale-px>2</drag-scale-px>
+		</binding>
+      </action>
+      <hovered>
+        <binding>
+          <command>set-tooltip</command>
+          <tooltip-id>rhinstpan</tooltip-id>
+		  <property>/controls/lighting/panel-norm</property>
+		  <measure-text>Panel: 100%</measure-text>
+          <label>Panel: %d%%</label>
+		  <mapping>percent</mapping>
+        </binding>
+      </hovered>
+    </animation>
+    
+    <animation><!--"Compass" switch here for Radio-->
+      <type>knob</type>
+      <object-name>O1RhCompass</object-name>
+      <property>/controls/lighting/radio-norm</property>	
+      <factor>-300</factor>
+      <offset-deg>150</offset-deg>
+      <center>
+        <x-m>-10.5079</x-m><y-m>-0.190329</y-m><z-m>0.371103</z-m>
+      </center>
+      <axis>
+        <x>0.309</x><y>0</y><z>-1</z>
+      </axis>
+      <action>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/lighting/radio-norm</property>
+          <factor>0.2</factor>
+          <min>0</min>
+          <max>1</max>                
+          <wrap>false</wrap>
+		</binding>
+      </action>
+      <hovered>
+        <binding>
+          <command>set-tooltip</command>
+          <tooltip-id>rhradios</tooltip-id>
+		  <property>/controls/lighting/radio-norm</property>
+		  <measure-text>Navigation Radio: 100%</measure-text>
+          <label>Navigation/Radios: %d%%</label>
+		  <mapping>percent</mapping>
+        </binding>
+      </hovered>
+    </animation>
+    
+    <animation>
+      <type>knob</type>
+      <object-name>O1RhInstruments</object-name>
+      <property>/controls/lighting/instruments-norm</property>	
+      <factor>-300</factor>
+      <offset-deg>150</offset-deg>
+      <center>
+        <x-m>-10.5079</x-m><y-m>-0.136367</y-m><z-m>0.371103</z-m>
+      </center>
+      <axis>
+        <x>0.309</x><y>0</y><z>-1</z>
+      </axis>
+      <action>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/lighting/instruments-norm</property>
+          <factor>0.2</factor>
+          <min>0</min>
+          <max>1</max>                
+          <wrap>false</wrap>
+		</binding>
+      </action>
+      <hovered>
+        <binding>
+          <command>set-tooltip</command>
+          <tooltip-id>instruments</tooltip-id>
+		  <property>/controls/lighting/instruments-norm</property>
+		  <measure-text>Instruments: 100%</measure-text>
+          <label>Instruments: %d%%</label>
+		  <mapping>percent</mapping>
+        </binding>
+      </hovered>
+    </animation>
+    
+    
+    <animation><!--"Overhead" switch here for Cockpit light-->
+      <type>knob</type>
+      <object-name>O1RhOverhead</object-name>
+      <property>/controls/lighting/dome-white-norm</property>	
+      <factor>-300</factor>
+      <offset-deg>150</offset-deg>
+      <center>
+        <x-m>-10.5079</x-m><y-m>-0.086311</y-m><z-m>0.371103</z-m>
+      </center>
+      <axis>
+        <x>0.309</x><y>0</y><z>-1</z>
+      </axis>
+      <action>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/lighting/dome-white-norm</property>
+          <factor>0.2</factor>
+          <min>0</min>
+          <max>1</max>                
+          <wrap>false</wrap>
+		</binding>
+      </action>
+      <hovered>
+        <binding>
+          <command>set-tooltip</command>
+          <tooltip-id>dome</tooltip-id>
+		  <property>/controls/lighting/dome-white-norm</property>
+		  <measure-text>Cockpit: 100%</measure-text>
+          <label>Cockpit: %d%%</label>
+		  <mapping>percent</mapping>
+        </binding>
+      </hovered>
+    </animation>
+   <!--#########################################################################-->
+   <!-- MAGNETOS  PANEL-->
+   <animation>
+      <type>knob</type>
+      <object-name>O1Mag1</object-name>
+      <property>/controls/engines/engine/magnetos</property>	
+	  <factor>-35</factor>
+      <center>
+        <x-m>-10.3167</x-m><y-m>-0.033928</y-m><z-m>0.43094</z-m>
+      </center>
+      <axis>
+        <x>0.309</x><y>0</y><z>-1</z>
+      </axis>
+      <action>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine/magnetos</property>
+          <factor>1</factor>
+          <min>0</min>
+          <max>3</max>                
+          <wrap>false</wrap>
+		</binding>
+      </action>
+      <hovered>
+        <binding>
+          <command>set-tooltip</command>
+          <tooltip-id>mag-left</tooltip-id>
+		  <property>/controls/engines/engine/magnetos</property>
+		  <measure-text>Left Magnetos: 1 only</measure-text>
+          <label>Left Magnetos: %s</label>
+		  <mapping>nasal</mapping>
+		 <script>modes=['off', 'L only', 'R only', 'both'];
+		         return modes[arg[0]];</script>
+        </binding>
+      </hovered>
+    </animation>
+    <animation>
+      <type>knob</type>
+      <object-name>O1Mag2</object-name>
+      <property>/controls/engines/engine[1]/magnetos</property>	
+	  <factor>35</factor>
+      <center>
+        <x-m>-10.3167</x-m><y-m>0.016426</y-m><z-m>0.43094</z-m>
+      </center>
+      <axis>
+        <x>0.309</x><y>0</y><z>-1</z>
+      </axis>
+      <action>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[1]/magnetos</property>
+          <factor>1</factor>
+          <min>0</min>
+          <max>3</max>                
+          <wrap>false</wrap>
+		</binding>
+      </action>
+      <hovered>
+        <binding>
+          <command>set-tooltip</command>
+          <tooltip-id>mag-right</tooltip-id>
+		  <property>/controls/engines/engine[1]/magnetos</property>
+		  <measure-text>Right Magnetos: 1 only</measure-text>
+          <label>Right Magnetos: %s</label>
+		  <mapping>nasal</mapping>
+		 <script>modes=['off', 'L only', 'R only', 'both'];
+		         return modes[arg[0]];</script>
+        </binding>
+      </hovered>
+    </animation>
+	
+	<!--#########################################################################-->
+	<!--SWITCHES row "magnetos"-->
+			
+  <animation>
+    <type>rotate</type>
+    <object-name>O1NavigLights</object-name>
+    <property>/controls/lighting/nav-int</property>
+	<interpolation>
+	  <entry><ind>0</ind><dep>-25</dep></entry>
+	  <entry><ind>0.5</ind><dep>-45</dep></entry>
+	  <entry><ind>1</ind><dep>-60</dep></entry>
+	  <entry><ind>1.5</ind><dep>-25</dep></entry>
+	  <entry><ind>2</ind><dep> 10</dep></entry>
+    </interpolation>  
+    <factor>1</factor>
+	<offset-deg>0</offset-deg>
+    <center>
+      <x-m>-10.315</x-m>
+      <y-m>0</y-m>
+      <z-m>0.438</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O1NavigLights</object-name>
+	  <!--object-name>O1NavigLightsArea</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/lighting/nav-int</property>
+		  <step>1</step>
+          <min>0</min>
+          <max>3</max>
+          <wrap>true</wrap>
+          <drag-direction>vertical</drag-direction>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Navigation Lights: %s</label>
+        <tooltip-id>navlgt</tooltip-id>
+	    <mapping>nasal</mapping>
+        <property>/controls/lighting/nav-int</property>
+		<script>ausgabe=['OFF','FLASH','STEADY']; return ausgabe[arg[0]];</script>
+      </binding>
+    </hovered>
+  </animation>
+  
+	  
+  <animation>
+    <type>rotate</type>
+    <object-name>O1Beacon</object-name>
+    <property>controls/lighting/beacon</property>
+    <factor>-70</factor>
+	<offset-deg>10</offset-deg>
+    <center>
+      <x-m>-10.315</x-m>
+      <y-m>0</y-m>
+      <z-m>0.438</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O1Beacon</object-name>
+	  <!--object-name>O1Bat1Area</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/lighting/beacon</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Beacon Light: %s</label>
+        <tooltip-id>beacon</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/lighting/beacon</property>
+      </binding>
+    </hovered>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>O1Bat1</object-name>
+    <property>controls/switches/master-bat</property><!--Todo: Extend the electrical system for TWO batteries-->
+    <factor>-70</factor>
+	<offset-deg>10</offset-deg>
+    <center>
+      <x-m>-10.315</x-m>
+      <y-m>0</y-m>
+      <z-m>0.438</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O1Bat1</object-name>
+	  <!--object-name>O1Bat1Area</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/switches/master-bat</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Left Battery: %s</label>
+        <tooltip-id>bat1</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/switches/master-bat</property>
+      </binding>
+    </hovered>
+  </animation>
+	
+  <animation>
+    <type>rotate</type>
+    <object-name>O1Bat2</object-name>
+    <property>controls/switches/master-bat</property>
+    <factor>-70</factor>
+	<offset-deg>10</offset-deg>
+    <center>
+      <x-m>-10.315</x-m>
+      <y-m>0</y-m>
+      <z-m>0.438</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O1Bat2</object-name>
+	  <!--object-name>O1Bat2Area</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/switches/master-bat</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Right Battery: %s</label>
+        <tooltip-id>bat2</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/switches/master-bat</property>
+      </binding>
+    </hovered>
+  </animation>
+  
+	
+  <animation>
+    <type>rotate</type>
+    <object-name>O1Gen1</object-name>
+    <property>controls/electric/engine/generator</property>
+    <factor>-70</factor>
+	<offset-deg>10</offset-deg>
+    <center>
+      <x-m>-10.315</x-m>
+      <y-m>0</y-m>
+      <z-m>0.438</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O1Gen1</object-name>
+	  <!--object-name>O1Gen1Area</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/electric/engine/generator</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Left Generator: %s</label>
+        <tooltip-id>gen1</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/electric/engine/generator</property>
+      </binding>
+    </hovered>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>O1Gen2</object-name>
+    <property>controls/electric/engine[1]/generator</property>
+    <factor>-70</factor>
+	<offset-deg>10</offset-deg>
+    <center>
+      <x-m>-10.315</x-m>
+      <y-m>0</y-m>
+      <z-m>0.438</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O1Gen2</object-name>
+	  <!--object-name>O1Gen2Area</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/electric/engine[1]/generator</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Right Generator: %s</label>
+        <tooltip-id>gen2</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/electric/engine[1]/generator</property>
+      </binding>
+    </hovered>
+  </animation>
+  
+  <!--#########################################################################-->
+  <!---->
+	
+	
+</PropertyList>

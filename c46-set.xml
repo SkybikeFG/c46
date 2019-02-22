@@ -119,6 +119,19 @@ Developed under GNU-GPL for FlightGear FS.
         <pitch-offset-deg type="double">-68.0</pitch-offset-deg>
        </config>
     </view>
+	<view n="109">
+      <name>Overhead View</name>
+      <type>lookfrom</type>
+      <internal type="bool">true</internal>
+      <config>
+        <default-field-of-view-deg type="double">70</default-field-of-view-deg>
+	    <from-model type="bool">true</from-model>
+        <x-offset-m type="double" archive="y">0.00</x-offset-m>
+        <y-offset-m type="double" archive="y">0.00</y-offset-m>
+        <z-offset-m type="double" archive="y">-10.0</z-offset-m>
+        <pitch-offset-deg type="double">60.0</pitch-offset-deg>
+       </config>
+    </view>
 
     <chase-distance-m type="double" archive="y">-40.0</chase-distance-m>
 
@@ -196,13 +209,14 @@ Developed under GNU-GPL for FlightGear FS.
             <path>/controls/engines/engine[1]/throttle</path>
             <path>/controls/engines/engine[1]/propeller-pitch</path>
                         
-            <path>/controls/lighting/landing-lights</path>
+            <!--path>/controls/lighting/landing-lights</path>
             <path>/controls/lighting/taxi-light</path>
             <path>/controls/lighting/strobe</path>
             <path>/controls/lighting/beacon</path>
             <path>/controls/lighting/nav-lights</path>
                         
-            <path>/controls/engines/engine/cowl-flaps-norm</path>
+		    <path>/controls/engines/engine[1]/cowl-flaps-norm</path
+            <path>/controls/engines/engine/cowl-flaps-norm</path-->
             <!--path>/controls/flight/elevator-trim</path-->
             <path>/controls/flight/rudder-trim</path>
             <path>/controls/flight/flaps</path>
@@ -266,7 +280,7 @@ Developed under GNU-GPL for FlightGear FS.
 	<static-pilot>
 	   <serviceable type="bool">true</serviceable>
 	   <alternate type="bool">false</alternate>
-	</static-pilot>
+	</static-pilot>  
   </systems>
 
   <consumables include="Systems/consumables.xml"/>
@@ -280,7 +294,7 @@ Developed under GNU-GPL for FlightGear FS.
 
   <controls>
     <electric>
-	  <external-power>1</external-power>
+	  <external-power>0</external-power>
 	</electric>
 	
     <flight>
@@ -300,44 +314,47 @@ Developed under GNU-GPL for FlightGear FS.
 	
 	<circuit-breakers>
       <!--<aircond type="bool">true</aircond>
-      <autopilot type="bool">true</autopilot>
+      <autopilot type="bool">true</autopilot>-->
       <bcnlt type="bool">true</bcnlt>
-      <flaps type="bool">true</flaps>-->
+      <!--<flaps type="bool">true</flaps>-->
       <instr type="bool">true</instr>
       <intlt type="bool">true</intlt>
       <!--landing type="bool">true</landing>-->
       <master type="bool">true</master>
-      <!--<navlt type="bool">true</navlt>
-      <pitot-heat type="bool">true</pitot-heat>
+      <navlt type="bool">true</navlt>
+      <!--pitot-heat type="bool">true</pitot-heat>
       <radio1 type="bool">true</radio1>
       <radio2 type="bool">true</radio2>
       <radio3 type="bool">true</radio3>
       <radio4 type="bool">true</radio4>
       <radio5 type="bool">true</radio5>
-      <strobe type="bool">true</strobe>
-      <turn-coordinator type="bool">true</turn-coordinator>-->
+      <strobe type="bool">true</strobe>-->
+      <turn-coordinator type="bool">true</turn-coordinator>
     </circuit-breakers>
     <switches>
-      <!--<master-avionics type="bool">false</master-avionics>
-      <master-gear type="bool">false</master-gear>
-      <starter type="bool">false</starter>
-      <master-alt type="bool">false</master-alt>-->
+      <master-avionics type="bool">false</master-avionics>
+      <!--<master-gear type="bool">false</master-gear>-->
+      <starterr type="bool">false</starterr>
+	  <starterl type="bool">false</starterl>
+      <master-alt type="int">0</master-alt>
       <master-bat type="bool">true</master-bat>
       <!--<magnetos type="int">0</magnetos>
       <dome-red type="int">0</dome-red>
       <dome-white type="bool">false</dome-white>-->
     </switches>
     <lighting>
-      <!--<nav-lights type="bool">false</nav-lights>
+      <nav-int type="int">0</nav-int>
       <beacon type="bool">false</beacon>
-      <strobe type="bool">false</strobe>
+      <!--<strobe type="bool">false</strobe>  currently not used-->
       <taxi-light type="bool">false</taxi-light>
-      <landing-lights type="bool">false</landing-lights>-->
-      <!--instruments-norm type="double">0.0</instruments-norm-->
-      <!--<radio-norm type="double">0.0</radio-norm>
+      <landing-lights type="bool">false</landing-lights>
+      <instruments-norm type="double">0.5</instruments-norm>
+	  <panel-norm type="double">0.0</panel-norm>
+      <radio-norm type="double">0.0</radio-norm>
       <dome-white-norm type="double">1.0</dome-white-norm>
-      <gps-norm type="double">0.0</gps-norm>
-      <gearled type="bool">true</gearled>-->
+      <!--<gps-norm type="double">0.0</gps-norm>-->
+      <!--<gearled type="bool">true</gearled>-->
+	  <!--annunciator switch located on panel. "on" is brightness of signal, "off" is the test signal channel.-->
 	  <annun-on-norm type="double">1.0</annun-on-norm>
 	  <annun-off-norm type="double">0.0</annun-off-norm>
 	  <annun-switch type="int">1</annun-switch>

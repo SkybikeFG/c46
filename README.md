@@ -9,15 +9,17 @@ Check out [my wiki](https://github.com/skybikefg/c46/wiki)
 > Of the 3,181 built, around half a dozen Commandos are still flying today.
 ________________________________________________________
 <big><big><big><big>![F](http://wiki.flightgear.org/images/thumb/6/62/FlightGear_logo.png/100px-FlightGear_logo.png)lighGear Version</big></big></big></big>
-* Author: Arnd Lebert @2016/2017/2018, John Gilbert 2018
+* Author: Arnd Lebert @2016/2017/2018/2019, John Gilbert 2018/2019
 * FDM: JSBsim
-* Exterior: animated 3D model, 4 liveries
+* Exterior: animated 3D model, 5 liveries
 * Interior: animated pedestal, 3D cockpit, Instruments
 * Systems: Oilcooler, tailwheel lock, fuel systems
 
 __________________________________________________________
 
 [Check for Updates](https://github.com/SkybikeFG/c46) or download the [latest version](https://github.com/SkybikeFG/c46/archive/master.zip)
+
+A newer version may be available at [development branch](https://github.com/skybikefg/c46/tree/Development) ([download](https://github.com/SkybikeFG/c46/archive/development.zip))
 
 Also visit [my wiki](https://github.com/skybikefg/c46/wiki) for news, tutorials, todos, more information...: 
 

@@ -76,6 +76,22 @@
   <z-m>  1.137 </z-m>
  </offsets>
 </model>
+<model>
+ <path>Aircraft/c46/Models/Lights/RedLight.xml</path>
+ <offsets>
+  <x-m>  -2.33 </x-m>
+  <y-m>  -16.492 </y-m>
+  <z-m>  -0.14 </z-m>
+ </offsets>
+</model>
+<model>
+ <path>Aircraft/c46/Models/Lights/GreenLight.xml</path>
+ <offsets>
+  <x-m>  -2.33 </x-m>
+  <y-m>  16.492 </y-m>
+  <z-m>  -0.14 </z-m>
+ </offsets>
+</model>
 
 <!--Effects-->
 <effect>

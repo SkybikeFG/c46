@@ -46,21 +46,21 @@ var ai_flag = func{
 	var offflag_want=1-getprop("/instrumentation/attitude-indicator[1]/spin");
     if(getprop("/instrumentation/attitude-indicator[1]/caged-flag")==1){offflag_want=1;}
 	
-	printf(""~offflag_want);
+	#printf(""~offflag_want);
 	if(offflag-offflag_want>=0.01){
 	    setprop("/instrumentation/attitude-indicator[1]/off-flag", offflag-0.01);
-		printf("kleiner");
+		#printf("too small");
 	}else{ 
 	    if(offflag_want-offflag>=0.01){
 	        setprop("/instrumentation/attitude-indicator[1]/off-flag", offflag+0.02);
-			printf("groesser");
-	    }else{aiflagtimer.stop();printf("Timerstop");}
+			#printf("too large");
+	    }else{aiflagtimer.stop();}#printf("reached value");}
 	}
 }
 
 var aiflagtimer = maketimer(0.001, ai_flag);
-_setlistener("/instrumentation/attitude-indicator[1]/caged-flag", func(){aiflagtimer.start();});
-_setlistener("/systems/vacuummaster/suction-inhg", func(){aiflagtimer.start();});# "instr/ai[1]/spin" doesn't support listeners
+setlistener("/instrumentation/attitude-indicator[1]/caged-flag", func(){aiflagtimer.start();},1,0);
+setlistener("/systems/vacuummaster/suction-inhg", func(){aiflagtimer.start();},0,0);# "instr/ai[1]/spin" doesn't support listeners
 
 
 	

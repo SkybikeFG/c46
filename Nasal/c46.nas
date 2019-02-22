@@ -2,6 +2,8 @@ aircraft.livery.init("Aircraft/c46/Models/Liveries");
 
 beacon_switch = props.globals.getNode("controls/switches/beacon", 1);
 var beacon = aircraft.light.new( "/sim/model/lights/beacon", [0.05, 0.8,], "/controls/lighting/beacon" );
+var navig = aircraft.light.new( "/sim/model/lights/nav", [0.1, 1.2,], "/controls/lighting/nav-int" );
+
 
 #OILCOOLER
 var oilcoolerl = props.globals.initNode("/controls/engines/engine[0]/oilcooler",0,"BOOL");#Left Oilcooler

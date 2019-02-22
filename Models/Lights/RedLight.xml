@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-
+<!--C46 Navigation lights - based on dc2 - A Lebert 02/2019-->
 <PropertyList>
 
   <path>RedLight.ac</path>
@@ -24,7 +24,19 @@
     <type>select</type>
     <object-name>Light</object-name>
     <condition>
-      <property>/controls/lighting/nav-lights</property>
+      <and>
+	    <greather-than>
+		  <property>/systems/electrical/outputs/nav-lights</property>
+		  <value>18</value>
+		</greather-than>
+	    <or>
+          <property>/sim/model/lights/nav/state</property>
+          <equals>
+		    <property>/controls/lighting/nav-int</property>
+			<value>2</value>
+		  </equals>
+		</or>
+      </and>
     </condition>
   </animation>
 
@@ -34,19 +46,19 @@
     <interpolation>
       <entry>
         <ind>0</ind>
-        <dep>1</dep>
+        <dep>0.5</dep>
       </entry>
       <entry>
         <ind>300</ind>
-        <dep>4</dep>
+        <dep>2</dep>
       </entry>
       <entry>
         <ind>1500</ind>
-        <dep>8</dep>
+        <dep>4</dep>
       </entry>
       <entry>
         <ind>6000</ind>
-        <dep>12</dep>
+        <dep>6</dep>
       </entry>
     </interpolation>
   </animation>

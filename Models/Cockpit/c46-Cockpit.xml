@@ -14,6 +14,11 @@
   </model>
   
   <model>
+    <name>Overhead</name>
+    <path>Aircraft/c46/Models/Cockpit/c46-Ohp.xml</path>
+  </model>
+  
+  <model>
     <name>Instruments</name>
     <path>Aircraft/c46/Models/Cockpit/c46-Panel.xml</path>
   </model>

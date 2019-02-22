@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <PropertyList>
-
+<!--C46 Beacon light - based on dc2 - A Lebert 02/2019-->
   <path>RedLight.ac</path>
 
   <animation>
@@ -23,9 +23,15 @@
   <animation>
     <type>select</type>
     <object-name>Light</object-name>
-    <condition>
+	<condition>
+	<and>
+	  <greather-than>
+	    <property>/systems/electrical/outputs/beacon</property>
+	    <value>1</value>
+	  </greather-than>
       <property>/sim/model/lights/beacon/state</property>
-    </condition>
+	</and>
+	</condition>
   </animation>
 
   <animation>

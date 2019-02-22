@@ -19,9 +19,9 @@
   <object-name>Front</object-name>
   <object-name>Cageflag</object-name>
   <emission>
-        <red>  0.028</red>
-        <green>0.014</green>
-        <blue> 0.007</blue>
+        <red>  0.021</red>
+        <green>0.010</green>
+        <blue> 0.005</blue>
    <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
   </emission>
  </animation>

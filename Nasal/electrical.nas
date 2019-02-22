@@ -100,7 +100,8 @@ BatteryClass.reset_to_full_charge = func {
 #
 
 var GeneratorClass = {};
-# ************************************   rpm_threshold is throwing an error, probably due to neither engine being "active". Need to evaluate how multi engine / generator setups do it, if at all **********
+# ************************************  John wrote: rpm_threshold is throwing an error, probably due to neither engine being "active". Need to evaluate how multi engine / generator setups do it, if at all **********
+# ************************************  Arnd wrote: the c172p has two different engines to choose from, "active-engine" contains a copy of the chosen engine. ****
 GeneratorClass.new = func (num){
     var obj = { parents : [GeneratorClass],
                 rpm_source : "/engines/engine[0]/rpm",
@@ -241,6 +242,8 @@ var update_virtual_bus = func (dt) {
     # switch state
     var master_bat = getprop("/controls/switches/master-bat");
     #var master_alt = getprop("/controls/switches/master-alt");
+	var master_gen1 = 1;
+	var master_gen2 = 0;
     if (getprop("/controls/electric/external-power"))
     {
         external_volts = 28;
@@ -253,11 +256,11 @@ var update_virtual_bus = func (dt) {
         bus_volts = battery_volts;
         power_source = "battery";
     }
-    if ( master_bat and (Generator1_volts > bus_volts) ) {
+    if ( master_gen1 and (Generator1_volts > bus_volts) ) {
         bus_volts = Generator1_volts;
         power_source = "Generator";	
     }
-	if ( master_bat and (Generator2_volts > bus_volts) ) {
+	if ( master_gen2 and (Generator2_volts > bus_volts) ) {
         bus_volts = Generator2_volts;
         power_source = "Generator";
 	}
@@ -375,13 +378,23 @@ var electrical_bus_1 = func() {
         setprop("/systems/electrical/outputs/starter", 0.0);
     }
     
-    # Interior lights
+    # Instruments lights
     if ( getprop("/controls/circuit-breakers/intlt") ) {
-        setprop("/systems/electrical/outputs/instrument-lights", bus_volts);
-        load += bus_volts / 57;
+        instrumentsrheo = bus_volts * getprop("/controls/lighting/instruments-norm") * 1.4;
+        setprop("/systems/electrical/outputs/instrument-lights", instrumentsrheo);
+        load += instrumentsrheo / 57;
     } else {
         setprop("/systems/electrical/outputs/instrument-lights", 0.0);
     }    
+    
+    # Panel lights
+    if ( getprop("/controls/circuit-breakers/intlt") ) {
+        panelnorm = (bus_volts/28) * getprop("/controls/lighting/panel-norm") * 2;
+        setprop("/systems/electrical/outputs/panel-norm", panelnorm);
+        load += panelnorm / 2;
+    } else {
+        setprop("/systems/electrical/outputs/panel-norm", 0.0);
+    } 
 
     # Landing Light Power
     if ( getprop("/controls/circuit-breakers/landing") and getprop("/controls/lighting/landing-lights") ) {
@@ -402,14 +415,14 @@ var electrical_bus_1 = func() {
 
     # Beacon Power
     if ( getprop("/controls/circuit-breakers/bcnlt") and getprop("/controls/lighting/beacon" ) ) {
-        setprop("/systems/electrical/outputs/beacon", bus_volts);
+        setprop("/systems/electrical/outputs/beacon", bus_volts/20);
         load += bus_volts / 28;
     } else {
         setprop("/systems/electrical/outputs/beacon", 0.0);
     }
     
     # Nav Lights Power
-    if ( getprop("/controls/circuit-breakers/navlt") and getprop("/controls/lighting/nav-lights" ) ) {
+    if ( getprop("/controls/circuit-breakers/navlt") and getprop("/controls/lighting/nav-int" ) ) {
         setprop("/systems/electrical/outputs/nav-lights", bus_volts);
         load += bus_volts / 14;
     } else {

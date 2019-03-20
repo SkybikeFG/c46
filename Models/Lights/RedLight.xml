@@ -1,9 +1,34 @@
 <?xml version="1.0"?>
-<!--C46 Navigation lights - based on dc2 - A Lebert 02/2019-->
 <PropertyList>
+  
+  <!--C46 light - based on dc2, c172p and IDG - A Lebert 2015, 02/2019-->
+  <!--ALS Lights-->
+  <path>procedural_light.ac</path>
+  <nopreview/>
 
-  <path>RedLight.ac</path>
+  <effect>
+    <inherits-from>light-nav-red</inherits-from>
+    <object-name>procedural_light</object-name>
+  </effect>
 
+  <animation>
+    <type>scale</type>
+    <x-offset>0.9</x-offset>
+    <y-offset>0.9</y-offset>
+    <z-offset>0.9</z-offset>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>procedural_light</object-name>
+    <condition>
+      <property>/sim/rendering/shaders/skydome</property><!--TRUE if ALS enabled-->
+    </condition>
+  </animation>
+ 
+
+<!--Rembrandt and others-->
+  <path>GreenLight.ac</path>
   <animation>
     <type>noshadow</type>
     <object-name>Light</object-name>
@@ -19,12 +44,23 @@
     <object-name>Light</object-name>
     <spherical type="bool">true</spherical>
   </animation>
-
+  
   <animation>
     <type>select</type>
     <object-name>Light</object-name>
     <condition>
-      <and>
+      <not><property>/sim/rendering/shaders/skydome</property></not><!--TRUE if ALS enabled-->
+    </condition>
+  </animation>
+  
+  <!--both-->
+
+  <animation>
+    <type>select</type>
+    <object-name>Light</object-name>
+    <object-name>procedural_light</object-name>
+    <condition>
+	  <and><!--Voltage AND constantOn  OR  Voltage AND BlinkNow-->
 	    <greather-than>
 		  <property>/systems/electrical/outputs/nav-lights</property>
 		  <value>18</value>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PropertyList>
+	<name>Effects/beacon</name>
+	<inherits-from>Effects/procedural-light</inherits-from>
+
+<parameters>
+    <texture n="0">
+      	<type>white</type>
+    </texture>
+
+    <light_color_base_r type="float">0.98</light_color_base_r>
+    <light_color_base_g type="float">0.2</light_color_base_g>
+    <light_color_base_b type="float">0.2</light_color_base_b>
+    <light_color_center_r type="float">0.98</light_color_center_r>
+    <light_color_center_g type="float">0.6</light_color_center_g>
+    <light_color_center_b type="float">0.3</light_color_center_b>
+    <intensity_scale type="float"><use>sim/model/lights/beacon/state</use></intensity_scale>
+    <is_directional type="bool">false</is_directional>
+    <is_strobe type="bool">false</is_strobe>
+   </parameters>
+</PropertyList>

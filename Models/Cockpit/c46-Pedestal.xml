@@ -1003,7 +1003,7 @@
         <property>controls/gear/tailwheel-lock</property>
         <mapping>nasal</mapping>
         <script>
-          var twLock = ['unlocked', 'locked'];
+          var twLock = ['locked', 'unlocked'];
           return twLock[(arg[0])];
         </script>
       </binding>

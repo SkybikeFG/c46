@@ -1,9 +1,37 @@
 <?xml version="1.0"?>
 
 <PropertyList>
-<!--C46 Beacon light - based on dc2 - A Lebert 02/2019-->
+  <!--C46 Beacon light - based on dc2, c172p and IDG - A Lebert 2015, 02/2019-->
+  <!--ALS Lights-->
+  <path>strobe_light.ac</path>
+ 
+  <animation>
+    <type>select</type>
+    <object-name>strobe_light</object-name>
+    <condition>
+      <property>/sim/rendering/shaders/skydome</property><!--TRUE if ALS enabled-->
+    </condition>
+  </animation>
+  
+  <effect>
+    <inherits-from>Aircraft/c46/Models/Lights/beacon</inherits-from>
+    <object-name>strobe_light</object-name>
+  </effect>
+ 
+
+<!--Rembrandt and others-->
   <path>RedLight.ac</path>
 
+  <animation>
+    <type>select</type>
+    <object-name>Light</object-name>
+    <condition>
+      <not>
+        <property>/sim/rendering/shaders/skydome</property><!--TRUE if ALS enabled-->
+      </not>
+    </condition>
+  </animation>
+  
   <animation>
     <type>noshadow</type>
     <object-name>Light</object-name>
@@ -19,10 +47,13 @@
     <object-name>Light</object-name>
     <spherical type="bool">true</spherical>
   </animation>
-
+  
+  
+  <!--Both-->
   <animation>
     <type>select</type>
     <object-name>Light</object-name>
+    <object-name>strobe_light</object-name>
 	<condition>
 	<and>
 	  <greather-than>

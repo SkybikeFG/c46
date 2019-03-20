@@ -89,7 +89,7 @@
   </animation>
   
   <!--Off panel instruments-->
-  <model>
+  <!--model>
     <path>Aircraft/Instruments-3d/garmin196/garmin196.xml</path>
     <offsets>
       <x-m>-10.550 </x-m>
@@ -99,7 +99,7 @@
       <pitch-deg>  24.4 </pitch-deg>
       <heading-deg> 0.0 </heading-deg>
     </offsets>
-  </model>    
+  </model-->    
   
 
   <!--_______________
@@ -801,6 +801,10 @@
     <object-name>4gearGreenLeft</object-name>
 	<condition>
 	  <and>
+        <greater-than>
+          <property>/systems/electrical/outputs/gear-warn-lights</property>
+          <value>10</value>
+        </greater-than>
         <equals>
           <property>gear/gear[0]/position-norm</property>
           <value>1</value>
@@ -823,6 +827,10 @@
           <property>gear/gear[1]/position-norm</property>
           <value>1</value>
         </equals>
+        <greater-than>
+          <property>/systems/electrical/outputs/gear-warn-lights</property>
+          <value>10</value>
+        </greater-than>
 	  </and>
     </condition>
     <emission>
@@ -841,6 +849,10 @@
           <property>gear/gear[2]/position-norm</property>
           <value>1</value>
         </equals>
+        <greater-than>
+          <property>/systems/electrical/outputs/gear-warn-lights</property>
+          <value>10</value>
+        </greater-than>
 	  </and>
     </condition>
     <emission>

@@ -146,6 +146,8 @@ Developed under GNU-GPL for FlightGear FS.
         <enabled type="bool" userarchive="y">false</enabled>
       </redout>
 	</rendering>
+    <virtual-cockpit archive="y">true</virtual-cockpit>
+    <allow-toggle-cockpit archive="y">false</allow-toggle-cockpit>
 	
 	<instrumentation>
       <path>Systems/c46-instrumentation.xml</path>
@@ -313,23 +315,25 @@ Developed under GNU-GPL for FlightGear FS.
     </gear>
 	
 	<circuit-breakers>
-      <!--<aircond type="bool">true</aircond>
-      <autopilot type="bool">true</autopilot>-->
+      <!--<aircond type="bool">true</aircond>-->
+      <autopilot type="bool">true</autopilot>
       <bcnlt type="bool">true</bcnlt>
       <!--<flaps type="bool">true</flaps>-->
       <instr type="bool">true</instr>
       <intlt type="bool">true</intlt>
-      <!--landing type="bool">true</landing>-->
+      <!--<landing type="bool">true</landing>-->
       <master type="bool">true</master>
       <navlt type="bool">true</navlt>
-      <!--pitot-heat type="bool">true</pitot-heat>
+      <!--pitot-heat type="bool">true</pitot-heat>-->
       <radio1 type="bool">true</radio1>
       <radio2 type="bool">true</radio2>
       <radio3 type="bool">true</radio3>
       <radio4 type="bool">true</radio4>
       <radio5 type="bool">true</radio5>
-      <strobe type="bool">true</strobe>-->
+      <gear-warn-lights type="bool">true</gear-warn-lights>
+      <!--<strobe type="bool">true</strobe>-->
       <turn-coordinator type="bool">true</turn-coordinator>
+      <cockpit-light tyoe="bool">true</cockpit-light>
     </circuit-breakers>
     <switches>
       <master-avionics type="bool">false</master-avionics>
@@ -351,7 +355,7 @@ Developed under GNU-GPL for FlightGear FS.
       <instruments-norm type="double">0.5</instruments-norm>
 	  <panel-norm type="double">0.0</panel-norm>
       <radio-norm type="double">0.0</radio-norm>
-      <dome-white-norm type="double">1.0</dome-white-norm>
+      <dome-white-norm type="double">0.0</dome-white-norm>
       <!--<gps-norm type="double">0.0</gps-norm>-->
       <!--<gearled type="bool">true</gearled>-->
 	  <!--annunciator switch located on panel. "on" is brightness of signal, "off" is the test signal channel.-->
@@ -359,14 +363,6 @@ Developed under GNU-GPL for FlightGear FS.
 	  <annun-off-norm type="double">0.0</annun-off-norm>
 	  <annun-switch type="int">1</annun-switch>
     </lighting>
-
-    <!--lighting>
-      <strobe>1</strobe>
-      <beacon>1</beacon>
-      <landing-lights>1</landing-lights>
-      <nav-lights>1</nav-lights>
-    </lighting-->
-
   </controls>
 
   

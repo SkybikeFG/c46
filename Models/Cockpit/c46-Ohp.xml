@@ -4,39 +4,20 @@
 	most is still to come-->
 <PropertyList>
 <!--<object-name>O0oh</object-name>
-    <object-name>O1amps1Needle</object-name>
-    <object-name>O1Amps2Needle</object-name>
-    <object-name>O1Bat1</object-name>
-    <object-name>O1Bat2</object-name>
-    <object-name>O1Beacon</object-name>
     <object-name>O1Dome</object-name>
     <object-name>O1FwrdBelly</object-name>
-    <object-name>O1gauges</object-name>
-    <object-name>O1Gen1</object-name>
-    <object-name>O1Gen2</object-name>
-    <object-name>O1Glass</object-name>
     <object-name>O1HornRelease</object-name>
     <object-name>O1HydLight</object-name>
     <object-name>O1IceCarb</object-name>
     <object-name>O1IcePitot</object-name>
     <object-name>O1Invert</object-name>
-    <object-name>O1LampInside</object-name>
-    <object-name>O1Mag1</object-name>
-    <object-name>O1Mag2</object-name>
-    <object-name>O1Mag2.001</object-name>
-    <object-name>O1NavigLights</object-name>
     <object-name>O1Preoiler</object-name>
     <object-name>O1Primer1</object-name>
     <object-name>O1Primer2</object-name>
     <object-name>O1PropellorPump</object-name>
     <object-name>O1RadioMaster</object-name>
-    <object-name>O1RhCompass</object-name>
-    <object-name>O1RhInstPanel</object-name>
-    <object-name>O1RhInstruments</object-name>
-    <object-name>O1RhOverhead</object-name>
     <object-name>O1Starter1</object-name>
-    <object-name>O1Starter2</object-name>
-    <object-name>O1VoltsNeedle</object-name>-->
+    <object-name>O1Starter2</object-name>-->
    <path>OHP.ac</path>
    
    <effect>
@@ -44,8 +25,13 @@
     <object-name>O1Glass</object-name>
    </effect>
    
+   <!--      /|
+            / |
+              |
+              |
+              |    -->
    <!--#########################################################################-->
-   <!-- GAUGES -->
+   <!-- GAUGES --><!--Done, second "amp" source needed-->
    <animation>
     <type>rotate</type>
     <object-name>O1VoltsNeedle</object-name>
@@ -112,22 +98,19 @@
   </animation>
   
   <animation>
-  <type>material</type>
-  <object-name>O1gauges</object-name>
+    <type>material</type>
+    <object-name>O1gauges</object-name>
     <emission>
-        <red>0.028</red>
-        <green>0.014</green>
-        <blue>0.007</blue>
-        <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+      <red>0.028</red>
+      <green>0.014</green>
+      <blue>0.007</blue>
+      <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
     </emission>
   </animation>
   
     <!--#########################################################################--> 
     <!--RHEOSTATS-->
-    <!--<object-name>O1RhCompass</object-name>
-        <object-name>O1RhInstPanel</object-name>
-        <object-name>O1RhInstruments</object-name>
-        <object-name>O1RhOverhead</object-name>-->
+    <!--Done, compass needed-->
     <animation>
       <type>knob</type>
       <object-name>O1RhInstPanel</object-name>
@@ -150,6 +133,11 @@
           <wrap>false</wrap>
           <drag-scale-px>2</drag-scale-px>
 		</binding>
+        <binding>
+          <command>nasal</command>
+          <script>if(getprop("/controls/circuit-breakers/intlt")==0){
+	            gui.popupTip("Check Circuit-Breaker for Instrument Panel Light", 5);}</script>
+        </binding>
       </action>
       <hovered>
         <binding>
@@ -163,7 +151,7 @@
       </hovered>
     </animation>
     
-    <animation><!--"Compass" switch here for Radio-->
+    <animation><!--"Compass" switch, here for Radio-->
       <type>knob</type>
       <object-name>O1RhCompass</object-name>
       <property>/controls/lighting/radio-norm</property>	
@@ -218,6 +206,11 @@
           <max>1</max>                
           <wrap>false</wrap>
 		</binding>
+        <binding>
+          <command>nasal</command>
+          <script>if(getprop("/controls/circuit-breakers/intlt")==0){
+	            gui.popupTip("Check Circuit-Breaker for Instrument Panel Light", 5);}</script>
+        </binding>
       </action>
       <hovered>
         <binding>
@@ -231,8 +224,7 @@
       </hovered>
     </animation>
     
-    
-    <animation><!--"Overhead" switch here for Cockpit light-->
+    <animation><!--"Overhead" switch used for Cockpit dome light-->
       <type>knob</type>
       <object-name>O1RhOverhead</object-name>
       <property>/controls/lighting/dome-white-norm</property>	
@@ -253,6 +245,11 @@
           <max>1</max>                
           <wrap>false</wrap>
 		</binding>
+        <binding>
+          <command>nasal</command>
+          <script>if(getprop("/controls/circuit-breakers/cockpit-light")==0){
+	            gui.popupTip("Check Circuit-Breaker for Cockpit Light", 5);}</script>
+        </binding>
       </action>
       <hovered>
         <binding>
@@ -265,8 +262,10 @@
         </binding>
       </hovered>
     </animation>
+    
    <!--#########################################################################-->
    <!-- MAGNETOS  PANEL-->
+   <!--<object-name>O1MagMaster</object-name>-->
    <animation>
       <type>knob</type>
       <object-name>O1Mag1</object-name>
@@ -378,6 +377,11 @@
           <wrap>true</wrap>
           <drag-direction>vertical</drag-direction>
 		</binding>
+        <binding>
+          <command>nasal</command>
+          <script>if(getprop("/controls/circuit-breakers/navlt")==0){
+	            gui.popupTip("Check Circuit Breaker for Position Light", 5);}</script>
+        </binding>
       </action>
 	<hovered>
       <binding>
@@ -410,16 +414,21 @@
     </axis>
   </animation>
   <animation>
-      <type>knob</type>
-      <object-name>O1Beacon</object-name>
-	  <!--object-name>O1Bat1Area</object-name-->
-      <value>0</value>	
-      <action>
-        <binding>
-          <command>property-toggle</command>
-          <property>controls/lighting/beacon</property>
-		</binding>
-      </action>
+    <type>knob</type>
+    <object-name>O1Beacon</object-name>
+	<!--object-name>O1Bat1Area</object-name-->
+    <value>0</value>	
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/lighting/beacon</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>if(getprop("/controls/circuit-breakers/bcnlt")==0){
+	            gui.popupTip("Check Beacon Circuit-Breaker", 5);}</script>
+      </binding>
+    </action>
 	<hovered>
       <binding>
         <command>set-tooltip</command>
@@ -430,6 +439,8 @@
       </binding>
     </hovered>
   </animation>
+  
+  <!--Battery and Generators-->
 
   <animation>
     <type>rotate</type>
@@ -586,10 +597,274 @@
         <property>controls/electric/engine[1]/generator</property>
       </binding>
     </hovered>
+  </animation> 
+  
+  <!--##########################################################-->
+  <!-- Lights -->
+  <model>
+    <path>Aircraft/c46/Models/Effects/interior/procedural_light_pedestal.xml</path>
+    <offsets>
+      <x-m> -10.2 </x-m>
+      <y-m> 0.015 </y-m>
+      <z-m> 0.472 </z-m>
+    </offsets>
+    <condition>
+      <greater-than>
+        <property>/systems/electrical/outputs/cockpit-dome</property>
+        <value>0</value>
+    </greater-than>
+    </condition>
+  </model>
+  <animation>
+    <type>material</type>
+    <object-name>O1LampInside</object-name>
+    <emission>
+      <red>0.8</red>
+      <green>0.7</green>
+      <blue>0.5</blue>
+      <factor-prop>/systems/electrical/outputs/cockpit-dome</factor-prop>
+    </emission>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>O1LampInside</object-name>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Use Rheostat labeled "Overhead"</label>
+        <tooltip-id>beacf</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/circuit-breakers/bcnlt</property>
+      </binding>
+    </hovered>
   </animation>
   
-  <!--#########################################################################-->
-  <!---->
-	
-	
+<!--         _____
+            /     \
+           /       \
+                   |
+                 ./
+               ./
+             ./
+           ./______-->
+           
+<!--      ______
+         /      \
+        |        \
+        ''       |
+               _/
+                \
+        ,,       |
+        |        /
+         \______/-->
+<!--#########################################################################-->
+  <!--Fuses-->
+  <!--
+	<object-name>O3AntiIcerPump</object-name>
+    <object-name>O3CabinLight</object-name>
+    <object-name>O3DeIcer</object-name>
+    <object-name>O3IceLight</object-name>
+    <object-name>O3PassingLight</object-name>   passing fuse is Wings navigation lights? Belly fuse is nose light?
+    <object-name>O3PitotHeat</object-name>
+    <object-name>O3PositionLight</object-name>-->
+  <animation>
+    <type>rotate</type>
+    <object-name>O3RotatingBeacon</object-name>
+    <property>controls/circuit-breakers/bcnlt</property>
+    <factor>-35</factor>
+	<offset-deg>0</offset-deg>
+    <center>
+      <x-m>-9.78847</x-m>
+      <y-m>0</y-m>
+      <z-m>0.575203</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O3RotatingBeacon</object-name>
+	  <!--object-name>O3RotatingBeaconArea</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/circuit-breakers/bcnlt</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Beacon Fuse: %s</label>
+        <tooltip-id>beacf</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/circuit-breakers/bcnlt</property>
+      </binding>
+    </hovered>
+  </animation> 
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>O3CockpitLight</object-name>
+    <property>controls/circuit-breakers/cockpit-light</property>
+    <factor>-35</factor>
+	<offset-deg>0</offset-deg>
+    <center>
+      <x-m>-9.78847</x-m>
+      <y-m>0</y-m>
+      <z-m>0.575203</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O3CockpitLight</object-name>
+	  <!--object-name>O3RotatingBeaconArea</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/circuit-breakers/cockpit-light</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Cockpit Dome Fuse: %s</label>
+        <tooltip-id>beacf</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/circuit-breakers/cockpit-light</property>
+      </binding>
+    </hovered>
+  </animation> 
+  
+  
+  
+  <animation>
+    <type>translate</type>
+    <object-name>O3InstPanelLight</object-name>
+    <property>controls/circuit-breakers/intlt</property>
+    <factor>-35</factor>
+	<offset-deg>0</offset-deg>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>0.0</y>
+      <z>1.0</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O3InstPanelLight</object-name>
+	  <!--object-name>O3InstPanelLightArea</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/circuit-breakers/intlt</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Panel Light Fuse: %s</label>
+        <tooltip-id>panf</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/circuit-breakers/bcnlt</property>
+      </binding>
+    </hovered>
+  </animation> 
+
+  <animation>
+    <type>rotate</type>
+    <object-name>O3PositionLight</object-name>
+    <property>/controls/circuit-breakers/navlt</property>
+    <factor>.006</factor>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O3PositionLight</object-name>
+	  <!--object-name>O3PositionLightArea</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/circuit-breakers/navlt</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Navigation position Light Fuse: %s</label>
+        <tooltip-id>posf</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>/controls/circuit-breakers/navlt</property>
+      </binding>
+    </hovered>
+  </animation>  
+    
+    
+    <!-- 5-->
+    <!--###################################################################-->
+    
+    <!--<object-name>O5CabinLight</object-name>
+    <object-name>O5Belly</object-name>
+    <object-name>O5LhBooster</object-name>
+    <object-name>O5RhBooster</object-name>-->
+    
+    <animation>
+    <type>translate</type>
+    <object-name>O5LandGear</object-name>
+    <property>/controls/circuit-breakers/gear-warn-lights</property>
+    <factor>.006</factor>
+    <center>
+      <x-m>-9.78847</x-m>
+      <y-m>0</y-m>
+      <z-m>0.575203</z-m>
+    </center>
+    <axis>
+      <x>-0.342</x>
+      <y>0.0</y>
+      <z>0.939</z>
+    </axis>
+  </animation>
+    <animation>
+      <type>knob</type>
+      <object-name>O5LandGear</object-name>
+	  <!--object-name>O5LandGearArea</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/circuit-breakers/gear-warn-lights</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Gear warning lights Fuse: %s</label>
+        <tooltip-id>gwlf</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>/controls/circuit-breakers/gear-warn-lights</property>
+      </binding>
+    </hovered>
+  </animation>
+    
+    
 </PropertyList>

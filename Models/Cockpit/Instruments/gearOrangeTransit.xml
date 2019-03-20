@@ -5,40 +5,48 @@
 
     <type>material</type>
     <object-name>4gearOrangeTransit</object-name>
-	<condition><!--one of   "gear[0] OR gear[1] OR gear[2]"  has to be   "(not in)  AND (not down)"
+	<condition>
+      <and>
+        <greater-than>
+          <property>/systems/electrical/outputs/gear-warn-lights</property>
+          <value>10</value>
+        </greater-than>
+        
+        <!--one of   "gear[0] OR gear[1] OR gear[2]"  has to be   "(not in)  AND (not down)"
 	               {(gear[0] not in) AND (gear[0] not down)} OR {(gear[1] not in) AND (gear[1] not down)} ...-->
-	  <or>
-	    <and>
-          <less-than>
-            <property>gear/gear[0]/position-norm</property>
-            <value>1</value>
-          </less-than>
-		  <greater-than>
-            <property>gear/gear[0]/position-norm</property>
-            <value>0</value>
-          </greater-than>
-		</and>
-		<and>
-          <less-than>
-            <property>gear/gear[1]/position-norm</property>
-            <value>1</value>
-          </less-than>
-		  <greater-than>
-            <property>gear/gear[1]/position-norm</property>
-            <value>0</value>
-          </greater-than>
-		</and>
-		<and>
-          <less-than>
-            <property>gear/gear[2]/position-norm</property>
-            <value>1</value>
-          </less-than>
-		  <greater-than>
-            <property>gear/gear[2]/position-norm</property>
-            <value>0</value>
-          </greater-than>
-		</and>
-	  </or>
+	    <or>
+	      <and>
+            <less-than>
+              <property>gear/gear[0]/position-norm</property>
+              <value>1</value>
+            </less-than>
+            <greater-than>
+              <property>gear/gear[0]/position-norm</property>
+              <value>0</value>
+            </greater-than>
+          </and>
+          <and>
+            <less-than>
+              <property>gear/gear[1]/position-norm</property>
+              <value>1</value>
+            </less-than>
+            <greater-than>
+              <property>gear/gear[1]/position-norm</property>
+              <value>0</value>
+            </greater-than>
+          </and>
+          <and>
+            <less-than>
+              <property>gear/gear[2]/position-norm</property>
+              <value>1</value>
+            </less-than>
+            <greater-than>
+              <property>gear/gear[2]/position-norm</property>
+              <value>0</value>
+            </greater-than>
+          </and>
+        </or>
+      </and>
     </condition>
     <emission>
 	   <red>1</red>

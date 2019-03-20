@@ -183,9 +183,14 @@ var reset_battery_and_circuit_breakers = func {
     # Reset circuit breakers
     setprop("/controls/circuit-breakers/left-booster-pump", 1);
     setprop("/controls/circuit-breakers/right-booster-pump", 1);
-    setprop("/controls/circuit-breakers/landing-gear-warn-lights", 1);
+    setprop("/controls/circuit-breakers/gear-warn-lights", 1);
     setprop("/controls/circuit-breakers/instr-panel-light", 1);
+    setprop("/controls/circuit-breakers/bcnlt", 1);
+    setprop("/controls/circuit-breakers/navlt",1);
+    setprop("/controls/circuit-breakers/cockpit-light",1);
+    
     setprop("/controls/circuit-breakers/pitot-heat", 1);
+    
        
 }
 
@@ -334,13 +339,13 @@ var electrical_bus_1 = func() {
         setprop("/systems/electrical/outputs/cabin-lights", 0.0);
     #}
     
-    # Flaps
-    #if ( getprop("/controls/circuit-breakers/flaps") ) {
-    #    setprop("/systems/electrical/outputs/flaps", bus_volts);
-    #    load += bus_volts / 57;
-    #} else {
-    #    setprop("/systems/electrical/outputs/flaps", 0.0);
-    #}
+    # Gear warn ligts
+    if ( getprop("/controls/circuit-breakers/gear-warn-lights") ) {
+        setprop("/systems/electrical/outputs/gear-warn-lights", bus_volts);
+        load += bus_volts / 200;
+    } else {
+        setprop("/systems/electrical/outputs/gear-warn-lights", 0.0);
+    }
     
     # Pitot Heat Power
     if ( getprop("/controls/anti-ice/pitot-heat" ) and getprop("/controls/circuit-breakers/pitot-heat") ) {
@@ -357,54 +362,75 @@ var electrical_bus_1 = func() {
     } else {
         setprop("/systems/electrical/outputs/cabin-lights", 0.0);
     }
+    
+    # Cockpit (Pedestal) Lights Power    works
+    if ( getprop("/controls/circuit-breakers/cockpit-light") ) {
+        dome_out=getprop("/controls/lighting/dome-white-norm")*bus_volts;
+        setprop("/systems/electrical/outputs/cockpit-dome", dome_out);
+        load += (dome_out+0.001) / 57;
+    } else {
+        setprop("/systems/electrical/outputs/cockpit-dome", 0.0);
+    }
 
     # Instrument Power: ignition, fuel, oil temperature
-    if ( getprop("/controls/circuit-breakers/instr") ) {
-        setprop("/systems/electrical/outputs/instr-ignition-switch", bus_volts);
-        if ( bus_volts > 12 ) {
-            # starter
+    #if ( getprop("/controls/circuit-breakers/instr") ) {
+    #    setprop("/systems/electrical/outputs/instr-ignition-switch", bus_volts);
+    #    if ( bus_volts > 12 ) {
+    #        # starter
+    #        if ( getprop("controls/switches/starter") ) {
+    #            setprop("systems/electrical/outputs/starter", bus_volts);
+    #            load += 24;
+    #        } else {
+    #            setprop("systems/electrical/outputs/starter", 0.0);
+    #        }
+    #        load += bus_volts / 57;
+    #    } else {
+    #        setprop("systems/electrical/outputs/starter", 0.0);
+    #    }
+    #} else {
+    #    setprop("/systems/electrical/outputs/instr-ignition-switch", 0.0);
+    #    setprop("/systems/electrical/outputs/starter", 0.0);
+    #}
+    
+    # Starter, master-ignition, primer  not used
+    if ( getprop("/controls/switches/master-ignition") ) {
+        if (bus_volts > 12) {
             if ( getprop("controls/switches/starter") ) {
                 setprop("systems/electrical/outputs/starter", bus_volts);
                 load += 24;
             } else {
                 setprop("systems/electrical/outputs/starter", 0.0);
             }
-            load += bus_volts / 57;
-        } else {
-            setprop("systems/electrical/outputs/starter", 0.0);
         }
-    } else {
-        setprop("/systems/electrical/outputs/instr-ignition-switch", 0.0);
-        setprop("/systems/electrical/outputs/starter", 0.0);
     }
     
-    # Instruments lights
+    # Instruments lights  works
     if ( getprop("/controls/circuit-breakers/intlt") ) {
         instrumentsrheo = bus_volts * getprop("/controls/lighting/instruments-norm") * 1.4;
         setprop("/systems/electrical/outputs/instrument-lights", instrumentsrheo);
         load += instrumentsrheo / 57;
     } else {
         setprop("/systems/electrical/outputs/instrument-lights", 0.0);
-    }    
+    }
     
-    # Panel lights
+    # Panel lights  works
     if ( getprop("/controls/circuit-breakers/intlt") ) {
         panelnorm = (bus_volts/28) * getprop("/controls/lighting/panel-norm") * 2;
         setprop("/systems/electrical/outputs/panel-norm", panelnorm);
         load += panelnorm / 2;
     } else {
         setprop("/systems/electrical/outputs/panel-norm", 0.0);
-    } 
+    }
 
-    # Landing Light Power
+    # Landing Light Power  not used
     if ( getprop("/controls/circuit-breakers/landing") and getprop("/controls/lighting/landing-lights") ) {
         setprop("/systems/electrical/outputs/landing-lights", bus_volts);
         load += bus_volts / 5;
     } else {
         setprop("/systems/electrical/outputs/landing-lights", 0.0 );
-    }    
+    }
         
-    # Taxi Lights Power
+    # Taxi Lights Power  not used
     # Notice taxi lights also use landing lights breaker. It is not a bug.
     if ( getprop("/controls/circuit-breakers/landing") and getprop("/controls/lighting/taxi-light" ) ) {
         setprop("/systems/electrical/outputs/taxi-light", bus_volts);
@@ -413,7 +439,7 @@ var electrical_bus_1 = func() {
         setprop("/systems/electrical/outputs/taxi-light", 0.0);
     }
 
-    # Beacon Power
+    # Beacon Power    working
     if ( getprop("/controls/circuit-breakers/bcnlt") and getprop("/controls/lighting/beacon" ) ) {
         setprop("/systems/electrical/outputs/beacon", bus_volts/20);
         load += bus_volts / 28;
@@ -421,7 +447,7 @@ var electrical_bus_1 = func() {
         setprop("/systems/electrical/outputs/beacon", 0.0);
     }
     
-    # Nav Lights Power
+    # Nav Lights Power    main switch only
     if ( getprop("/controls/circuit-breakers/navlt") and getprop("/controls/lighting/nav-int" ) ) {
         setprop("/systems/electrical/outputs/nav-lights", bus_volts);
         load += bus_volts / 14;
@@ -430,7 +456,7 @@ var electrical_bus_1 = func() {
     }
 
           
-    # Strobe Lights Power
+    # Strobe Lights Power  not used
     if ( getprop("/controls/circuit-breakers/strobe") and getprop("/controls/lighting/strobe" ) ) {
         setprop("/systems/electrical/outputs/strobe", bus_volts);
         load += bus_volts / 14;
@@ -438,7 +464,7 @@ var electrical_bus_1 = func() {
         setprop("/systems/electrical/outputs/strobe", 0.0);
     }
     
-    # Turn Coordinator and directional gyro Power
+    # Turn Coordinator and directional gyro Power  needed by instrument-no breaker
     if ( getprop("/controls/circuit-breakers/turn-coordinator") ) {
         setprop("/systems/electrical/outputs/turn-coordinator", bus_volts);
         setprop("/systems/electrical/outputs/DG", bus_volts);
@@ -470,14 +496,14 @@ var avionics_bus_1 = func() {
     # Avionics Fan Power
     #setprop("/systems/electrical/outputs/avionics-fan", bus_volts);
 
-    # Audio Panel 1 Power
+    # Audio Panel 1 Power not used
     if ( getprop("/controls/circuit-breakers/radio1") ) {
       setprop("/systems/electrical/outputs/audio-panel[0]", bus_volts);
     } else {
       setprop("/systems/electrical/outputs/audio-panel[0]", 0.0);
     }
 
-    # Com and Nav 1 Power
+    # Com and Nav 1 Power   not used
     if ( getprop("/controls/circuit-breakers/radio2") ) {
       setprop("/systems/electrical/outputs/nav[0]", bus_volts);
       setprop("systems/electrical/outputs/comm[0]", bus_volts);
@@ -486,7 +512,7 @@ var avionics_bus_1 = func() {
       setprop("systems/electrical/outputs/comm[0]", 0.0);
     }
     
-    # Com and Nav 2 Power
+    # Com and Nav 2 Power   not used
     if ( getprop("/controls/circuit-breakers/radio3") ) {
       setprop("/systems/electrical/outputs/nav[1]", bus_volts);
       setprop("systems/electrical/outputs/comm[1]", bus_volts);
@@ -495,14 +521,14 @@ var avionics_bus_1 = func() {
       setprop("systems/electrical/outputs/comm[1]", 0.0);
     }
 
-    # Transponder Power
+    # Transponder Power   not used
     if ( getprop("/controls/circuit-breakers/radio4") ) {
       setprop("/systems/electrical/outputs/transponder", bus_volts);
     } else {
       setprop("/systems/electrical/outputs/transponder", 0.0);
     }
     
-    # DME and ADF Power
+    # DME and ADF Power  not used
     if ( getprop("/controls/circuit-breakers/radio5") ) {
       setprop("/systems/electrical/outputs/dme", bus_volts);
       setprop("/systems/electrical/outputs/adf", bus_volts);
@@ -511,7 +537,7 @@ var avionics_bus_1 = func() {
       setprop("/systems/electrical/outputs/adf", 0.0);
     }
 
-    # Autopilot Power
+    # Autopilot Power   not used
     if ( getprop("/controls/circuit-breakers/autopilot") ) {
       setprop("/systems/electrical/outputs/autopilot", bus_volts);
     } else {

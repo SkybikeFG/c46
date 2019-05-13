@@ -28,7 +28,10 @@
  
 
 <!--Rembrandt and others-->
-  <path>WhiteLight.ac</path>
+  <model>
+    <path>WhiteLight.ac</path>
+    <name>Light</name>
+  </model>
   
   <animation><!--Light is red/green but from behind the plane (-x axis) you should see this white light.-->
     <type>translate</type>
@@ -91,6 +94,7 @@
   <animation>
     <type>dist-scale</type>
     <object-name>Light</object-name>
+    <object-name>strobe_light</object-name>
     <interpolation>
       <entry>
         <ind>0</ind>

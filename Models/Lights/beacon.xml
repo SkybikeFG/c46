@@ -20,7 +20,10 @@
  
 
 <!--Rembrandt and others-->
-  <path>RedLight.ac</path>
+  <model>
+    <path>RedLight.ac</path>
+    <name>Light</name>
+  </model>
 
   <animation>
     <type>select</type>
@@ -68,6 +71,7 @@
   <animation>
     <type>dist-scale</type>
     <object-name>Light</object-name>
+    <object-name>strobe_light</object-name>
     <interpolation>
       <entry>
         <ind>0</ind>

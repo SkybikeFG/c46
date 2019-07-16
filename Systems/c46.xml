@@ -245,7 +245,7 @@
   </tank>
   
   <!-- see /Systems/fuel.xml for details on how these are fed -->
-  <tank type="FUEL" number="6"> <!-- Collector - left engine - .5 gal at full -->
+  <tank type="FUEL" number="6"> <!-- Collector - left engine - .5 lbs at full -->
      <location unit="M">
        <x>3.749</x>
        <y>-2.341</y>
@@ -253,11 +253,11 @@
      </location>
      <capacity unit="LBS">0.5</capacity>
      <contents unit="LBS">0</contents>
-     <priority>0</priority>
+     <priority>1</priority>
      <hidden type="bool">true</hidden>
   </tank>
   
-  <tank type="FUEL" number="7"> <!-- Collector - right engine - .5 gal at full -->
+  <tank type="FUEL" number="7"> <!-- Collector - right engine - .5 lbs at full -->
      <location unit="M">
        <x>3.749</x>
        <y>2.341</y>
@@ -265,7 +265,7 @@
      </location>
      <capacity unit="LBS">0.5</capacity>
      <contents unit="LBS">0</contents>
-     <priority>0</priority>
+     <priority>1</priority>
      <hidden type="bool">true</hidden>
   </tank>
   

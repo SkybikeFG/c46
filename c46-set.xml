@@ -28,11 +28,11 @@ Developed under GNU-GPL for FlightGear FS.
   </authors>
   
   <status>beta</status>
-  <aircraft-version>2018.3</aircraft-version>
+  <aircraft-version>2019.1</aircraft-version>
   <minimum-fg-version>2017.2</minimum-fg-version>
   <rating>
    <FDM type="int">2</FDM>
-   <systems type="int">1</systems>
+   <systems type="int">2</systems>
    <cockpit type="int">3</cockpit>
    <model type="int">4</model>
   </rating>
@@ -42,11 +42,12 @@ Developed under GNU-GPL for FlightGear FS.
 	  <tag>ww2</tag>
       <tag>2-engine</tag>
       <tag>cargo</tag>
-      <tag>curtiss-wright</tag>
+      <!--tag>curtiss-wright</tag-->
       <tag>ifr</tag>
       <tag>piston</tag>
       <tag>propeller</tag>
       <tag>radial</tag>
+      <tag>turbocharged</tag>
       <tag>retractable-gear</tag>
       <tag>tail-dragger</tag>
       <tag>transport</tag>

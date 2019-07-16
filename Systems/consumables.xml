@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-  
+  <!-- 1 gal_us = 6.6 lbs   or   1 lbs = 0.15 us-gal-->
   <fuel>
-    <tank n="0"> 
-	  <name>Aft Left</name>
-      <unusable-gal_us>5.0</unusable-gal_us>
+    <tank n="0"> <name>Aft Left</name>
+      <unusable-gal_us>5.0</unusable-gal_us><!--33 lbs-->
     </tank>
     <tank n="1"> <name>Aft Right</name>
       <unusable-gal_us>5.0</unusable-gal_us>
@@ -23,11 +22,11 @@
       <unusable-gal_us>5.0</unusable-gal_us>
     </tank>
 	<tank n="6"> <name>Feeder Left</name>
-      <unusable-gal_us>0.1</unusable-gal_us>
+      <unusable-gal_us>0.015</unusable-gal_us><!--0.1 lbs-->
 	  <hidden type="bool">true</hidden>
     </tank>
 	<tank n="7"> <name>Feeder Right</name>
-	  <unusable-gal_us>0.1</unusable-gal_us>
+	  <unusable-gal_us>0.015</unusable-gal_us><!--0.1 lbs-->
 	  <hidden type="bool">true</hidden>
     </tank>
 	<tank n="8"> <name>Left Strainer Valve</name>

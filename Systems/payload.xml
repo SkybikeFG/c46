@@ -5,6 +5,7 @@
      <name type="string">Cargo</name>
      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
      <min-lb type="double">0.0</min-lb>
+	 <!-- Will need some calculations to adjust maximum carge when long range tanks are installed -->
      <max-lb type="double">5000</max-lb>
   </weight>
    <weight>

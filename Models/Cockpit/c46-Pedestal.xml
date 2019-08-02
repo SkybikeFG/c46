@@ -143,6 +143,19 @@
         <property>controls/engines/engine[0]/oilcooler</property>
       </binding>
     </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>oilcoolerL</tooltip-id>
+        <label>Oilcooler Shutters %s</label>
+        <property>controls/engines/engine[0]/oilcooler</property>
+        <mapping>nasal</mapping>
+        <script>
+          var ocName = ['closed', 'open'];
+          return ocName[(arg[0])];
+        </script>
+      </binding>
+    </hovered>
   </animation>
   <animation>
     <type>rotate</type>
@@ -171,6 +184,19 @@
         <property>controls/engines/engine[1]/oilcooler</property>
       </binding>
     </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>oilcoolerR</tooltip-id>
+        <label>Oilcooler Shutters %s</label>
+        <property>controls/engines/engine[1]/oilcooler</property>
+        <mapping>nasal</mapping>
+        <script>
+          var ocName = ['closed', 'open'];
+          return ocName[(arg[0])];
+        </script>
+      </binding>
+    </hovered>
   </animation>
   
   <animation>
@@ -319,6 +345,15 @@
         <wrap>false</wrap>
       </binding>
 	</action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>cowlFlapsl</tooltip-id>
+        <label>Left Cowl Flaps %d%%</label>
+        <property>controls/engines/engine[0]/cowl-flaps-norm</property>
+        <mapping>percent</mapping>
+      </binding>
+    </hovered>
   </animation>
   <animation>
     <type>knob</type>
@@ -348,6 +383,15 @@
         <wrap>false</wrap>
       </binding>
 	</action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>cowlFlapsr</tooltip-id>
+        <label>Right Cowl Flaps %d%%</label>
+        <property>controls/engines/engine[1]/cowl-flaps-norm</property>
+        <mapping>percent</mapping>
+      </binding>
+    </hovered>
   </animation>
   
   <animation>
@@ -407,7 +451,7 @@
 	</action>
   </animation>
  <!--Buttons/Knobs/... central pedestral ("P2")-->
-    <animation>
+  <animation>
     <type>rotate</type>
     <object-name>P2RudderTab1</object-name>
     <property>controls/flight/rudder-trim</property>
@@ -765,6 +809,19 @@
         <property>controls/gear/brake-parking</property>
       </binding>
     </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>parkingBrake</tooltip-id>
+        <label>Parking Brake %s</label>
+        <property>controls/gear/brake-parking</property>
+        <mapping>nasal</mapping>
+        <script>
+          var ocName = ['disengaged', 'engaged'];
+          return ocName[(arg[0])];
+        </script>
+      </binding>
+    </hovered>
   </animation>
   
   <animation>
@@ -795,7 +852,7 @@
       </binding>
     </action>
   </animation>
-    <animation>
+  <animation>
     <type>rotate</type>
     <object-name>P3SuperChargerR</object-name>
     <property>fdm/jsbsim/propulsion/engine[1]/boost-speed</property>
@@ -938,6 +995,19 @@
         <property>controls/gear/tailwheel-lock</property>
       </binding>
     </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>TWlock</tooltip-id>
+        <label>Tail wheel %s</label>
+        <property>controls/gear/tailwheel-lock</property>
+        <mapping>nasal</mapping>
+        <script>
+          var twLock = ['locked', 'unlocked'];
+          return twLock[(arg[0])];
+        </script>
+      </binding>
+    </hovered>
   </animation>
 <!-- P4-->
   <animation>

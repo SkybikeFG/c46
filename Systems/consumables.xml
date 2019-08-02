@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-  
+  <!-- 1 gal_us = 6.6 lbs   or   1 lbs = 0.15 us-gal-->
   <fuel>
-    <tank n="0"> 
-	  <name>Aft Left</name>
-      <unusable-gal_us>5.0</unusable-gal_us>
+    <tank n="0"> <name>Aft Left</name>
+      <unusable-gal_us>5.0</unusable-gal_us><!--33 lbs-->
     </tank>
     <tank n="1"> <name>Aft Right</name>
       <unusable-gal_us>5.0</unusable-gal_us>
@@ -23,13 +22,104 @@
       <unusable-gal_us>5.0</unusable-gal_us>
     </tank>
 	<tank n="6"> <name>Feeder Left</name>
-      <unusable-gal_us>0.1</unusable-gal_us>
+      <unusable-gal_us>0.015</unusable-gal_us><!--0.1 lbs-->
 	  <hidden type="bool">true</hidden>
     </tank>
 	<tank n="7"> <name>Feeder Right</name>
-	  <unusable-gal_us>0.1</unusable-gal_us>
+	  <unusable-gal_us>0.015</unusable-gal_us><!--0.1 lbs-->
 	  <hidden type="bool">true</hidden>
     </tank>
+	<tank n="8"> <name>Left Strainer Valve</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="9"> <name>Right Strainer Valve</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="10"> <name>Left Firewall Shutoff Valve</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="11"> <name>Right Firewall Shutoff Valve</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="12"> <name>Left Engine Pump</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="13"> <name>Right Engine Pump</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="14"> <name>Left Carburetor</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="15"> <name>Right Carburetor</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="16"> <name>Left Primer Solenoid</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="17"> <name>Right Primer Solenoid</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="18"> <name>Heater Valve</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="19"> <name>Left Carb Vent</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="20"> <name>Right Carb Vent</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="21"> <name>Long Range Tank 1</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="22"> <name>Long Range Tank 2</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="23"> <name>Long Range Tank 3</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="24"> <name>Long Range Tank 4</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="25"> <name>Long Range Tank 5</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="26"> <name>Long Range Tank 6</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="27"> <name>Long Range Tank 7</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="28"> <name>Long Range Tank 8</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="29"> <name>Long Range Tank 9</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="30"> <name>Long Range Tank 10</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="31"> <name>Long Range Tank 11</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="32"> <name>Long Range Tank 12</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="33"> <name>Long Range Tank 13</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="34"> <name>Long Range Tank 14</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="35"> <name>Long Range Tank 15</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="36"> <name>Long Range Tank 16</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	<tank n="37"> <name>Long Range Valve</name>
+	  <hidden type="bool">true</hidden>
+	</tank>
+	
   </fuel>
   
 </PropertyList>

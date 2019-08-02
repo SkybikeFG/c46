@@ -5,7 +5,7 @@
   <fx>
     <crank>
       <name>engstart1</name>
-      <path>Aircraft/c46/Sound/engine_crank.wav</path>
+      <path>Aircraft/c46/Sound/r2800_crank.wav</path>
       <property>/engines/engine[0]/cranking</property>
       <volume> 
         <property>/orientation/alpha-deg</property>
@@ -23,7 +23,7 @@
 
     <crank>
       <name>cough1</name>
-      <path>Aircraft/c46/Sound/engine_cough.wav</path>
+      <path>Aircraft/c46/Sound/r2800_cough.wav</path>
       <property>/engines/engine[0]/running</property>
       <volume> 
         <property>/orientation/alpha-deg</property>
@@ -42,7 +42,7 @@
     <crank>
       <name>crank1</name>
       <mode>looped</mode>
-      <path>Aircraft/c46/Sound/engine_crank.wav</path>
+      <path>Aircraft/c46/Sound/r2800_crank.wav</path>
       <condition>
         <property>engines/engine[0]/cranking</property>
         <not>
@@ -58,7 +58,7 @@
 
     <engine>
       <name>engine early start1</name>
-      <path>Aircraft/c46/Sound/engine_cough.wav</path>
+      <path>Aircraft/c46/Sound/r2800_cough.wav</path>
       <property>/engines/engine[0]/cranking</property>
       <condition>
         <less-than>
@@ -91,7 +91,7 @@
     <engine>
       <name>engine1_idle</name>
       <mode>looped</mode>
-      <path>Aircraft/c46/Sound/engine_idle.wav</path>
+      <path>Aircraft/c46/Sound/r2800_idle.wav</path>
       <condition>
         <and>
           <property>engines/engine[0]/running</property>
@@ -328,7 +328,7 @@
 
     <crank>
       <name>engstart2</name>
-      <path>Aircraft/c46/Sound/engine_crank.wav</path>
+      <path>Aircraft/c46/Sound/r2800_crank.wav</path>
       <property>/engines/engine[1]/cranking</property>
       <volume> 
         <property>/orientation/alpha-deg</property>
@@ -346,7 +346,7 @@
 
     <crank>
       <name>cough2</name>
-      <path>Aircraft/c46/Sound/engine_cough.wav</path>
+      <path>Aircraft/c46/Sound/r2800_cough.wav</path>
       <property>/engines/engine[1]/running</property>
       <volume> 
         <property>/orientation/alpha-deg</property>
@@ -365,7 +365,7 @@
     <crank>
       <name>crank2</name>
       <mode>looped</mode>
-      <path>Aircraft/c46/Sound/engine_crank.wav</path>
+      <path>Aircraft/c46/Sound/r2800_crank.wav</path>
       <condition>
         <property>engines/engine[1]/cranking</property>
         <not>
@@ -381,7 +381,7 @@
 
     <engine>
       <name>engine early start2</name>
-      <path>Aircraft/c46/Sound/engine_cough.wav</path>
+      <path>Aircraft/c46/Sound/r2800_cough.wav</path>
       <property>/engines/engine[1]/cranking</property>
       <condition>
         <less-than>
@@ -412,7 +412,7 @@
     <engine>
       <name>engine2_idle</name>
       <mode>looped</mode>
-      <path>Aircraft/c46/Sound/engine_idle.wav</path>
+      <path>Aircraft/c46/Sound/r2800_idle.wav</path>
       <condition>
         <and>
           <property>engines/engine[1]/running</property>
@@ -810,8 +810,13 @@
       <reference-dist>4.0</reference-dist>
       <max-dist>10.0</max-dist>
     </stall>
-    
 -->
+<!--	<gear>
+	  <name>gear</name>
+	  <path>Sounds/gear.wav</path>
+	  <condition>  Same as yellow gear light
+	</gear>-->
+
   </fx>
 
 </PropertyList>

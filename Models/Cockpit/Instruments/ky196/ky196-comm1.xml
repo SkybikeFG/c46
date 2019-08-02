@@ -6,8 +6,8 @@
         <type>material</type>
         <object-name>KY196.swap</object-name>
         <object-name>KY196.volume</object-name>
-        <object-name>KY196.knob</object-name>
-		<object-name>KY196.knob1</object-name>
+        <object-name>KY196.MHz</object-name>
+		<object-name>KY196.KHz</object-name>
         <emission>
             <red>0.028</red>
             <green>0.014</green>
@@ -358,7 +358,7 @@
 
     <animation>
         <type>pick</type>
-        <object-name>KY196.knob</object-name>
+        <object-name>KY196.MHz</object-name>
         <action>
             <button>0</button>
             <repeatable>true</repeatable>
@@ -378,7 +378,7 @@
 
     <animation>
         <type>pick</type>
-        <object-name>KY196.knob</object-name>
+        <object-name>KY196.MHz</object-name>
         <action>
             <button>1</button>
             <repeatable>true</repeatable>
@@ -398,7 +398,7 @@
 
     <animation>
         <type>pick</type>
-        <object-name>KY196.knob</object-name>
+        <object-name>KY196.MHz</object-name>
         <action>
             <button>3</button>
             <binding>
@@ -416,7 +416,7 @@
 
     <animation>
         <type>pick</type>
-        <object-name>KY196.knob</object-name>
+        <object-name>KY196.MHz</object-name>
         <action>
             <button>4</button>
             <binding>
@@ -434,7 +434,7 @@
 
     <animation>
         <type>pick</type>
-        <object-name>KY196.knob1</object-name>
+        <object-name>KY196.KHz</object-name>
         <action>
             <button>0</button>
             <repeatable>true</repeatable>
@@ -454,7 +454,7 @@
     
     <animation>
         <type>pick</type>
-        <object-name>KY196.knob1</object-name>
+        <object-name>KY196.KHz</object-name>
         <action>
             <button>1</button>
             <repeatable>true</repeatable>
@@ -474,7 +474,7 @@
 
     <animation>
         <type>pick</type>
-        <object-name>KY196.knob1</object-name>
+        <object-name>KY196.KHz</object-name>
         <action>
             <button>3</button>
             <binding>
@@ -492,7 +492,7 @@
     
     <animation>
         <type>pick</type>
-        <object-name>KY196.knob1</object-name>
+        <object-name>KY196.KHz</object-name>
         <action>
             <button>4</button>
             <binding>

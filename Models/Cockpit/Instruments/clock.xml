@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 
 <PropertyList>
-<!--scaled to 0 0.65 0.65-->
  <path>clock.ac</path>
 
  <animation>
@@ -10,7 +9,6 @@
   <object-name>second</object-name>
   <object-name>minute</object-name>
   <object-name>hour</object-name>
-  <object-name>frame</object-name>
     <emission>
         <red>0.028</red>
         <green>0.014</green>
@@ -19,10 +17,11 @@
     </emission>
  </animation>
 
+ <!-- Sim- Time-->
  <animation>
   <type>rotate</type>
   <object-name>second</object-name>
-  <property>/sim/time/utc/day-seconds</property>
+  <property>/instrumentation/clock[0]/indicated-sec</property>
   <factor>6</factor>
   <axis>
    <x>-1</x>
@@ -34,7 +33,7 @@
  <animation>
   <type>rotate</type>
   <object-name>minute</object-name>
-  <property>/sim/time/utc/day-seconds</property>
+  <property>/instrumentation/clock[0]/indicated-sec</property>
   <factor>0.1</factor>
   <axis>
    <x>-1</x>
@@ -46,7 +45,7 @@
  <animation>
   <type>rotate</type>
   <object-name>hour</object-name>
-  <property>/sim/time/utc/day-seconds</property>
+  <property>/instrumentation/clock[0]/indicated-sec</property>
   <factor>0.008333</factor>
   <axis>
    <x>-1</x>

@@ -1,8 +1,8 @@
 AC3Db
 MATERIAL "ac3dmat12" rgb 0.214 0.214 0.214  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.200 0.200 0.200  shi 128 trans 0.000
 MATERIAL "ac3dmat1" rgb 0.800 0.800 0.800  amb 0.502 0.502 0.502  emis 0.000 0.000 0.000  spec 0.200 0.200 0.200  shi 128 trans 0.000
-MATERIAL "ac3dmat1.001" rgb 0.800 0.800 0.800  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.252 0.252 0.252  shi 128 trans 0.000
-MATERIAL "ac3dmat1.002" rgb 0.800 0.800 0.800  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.269 0.269 0.269  shi 10 trans 0.000
+MATERIAL "ac3dmat1.001" rgb 1.000 1.000 1.000  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 1.000 1.000 1.000  shi 32 trans 0.000
+MATERIAL "ac3dmat1.002" rgb 1.000 1.000 1.000  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 1.000 1.000 1.000  shi 32 trans 0.000
 MATERIAL "ac3dmat2" rgb 0.800 0.800 0.800  amb 0.200 0.200 0.200  emis 0.000 0.000 0.000  spec 0.200 0.200 0.200  shi 128 trans 1.000
 OBJECT world
 name "Blender_exporter_v2.26__kma20.ac"

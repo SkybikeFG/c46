@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Written in 2018 for c46 by c46 team 
+	This "autopilot" file selects the static source to copy and view on panel 
+	+ Lowpass filter for the moment of switching the source.
+	All in runtime optimized real time - a lot more fluent than a nasal timer 
+	
+	Feel free to add other instruments here
+	
+	Syntax reference: http://wiki.flightgear.org/Autopilot_configuration_reference
+	
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<PropertyList>
+
+    <filter>
+        <name>static-source</name>
+        <update-interval-secs type="double">0.05</update-interval-secs><!--20fps-->
+		<type>exponential</type><!--Low pass, fc=1Hz-->
+        <filter-time>0.16</filter-time>
+        <input><!--Alternate (on wing)-->
+            <condition>
+                <property>/systems/static-pilot/alternate</property>
+            </condition>
+            <property>/systems/static[2]/pressure-inhg</property>
+			<scale>1</scale><!--Error multiply-->
+            <offset>-0.3</offset><!--Error add-->
+        </input><!--should take other params(speed,propeller...) into account. Now it changes at ground!-->
+        <input><!--Normal (on pitot)-->
+            <condition>
+                <not>
+                    <property>/systems/static-pilot/alternate</property>
+                </not>
+            </condition>
+            <property>/systems/static[0]/pressure-inhg</property>
+        </input>
+        <output>
+            <property>/systems/static-pilot/pressure-inhg</property>
+        </output>
+    </filter>
+	
+	<!--filter>
+	   <type>gain</type>
+       <gain>1.0</gain>
+	</filter-->
+</PropertyList>

@@ -22,24 +22,29 @@
 	Max Cruise  2100   32.3   1100  10,000  LOW   -
 	                   30      975  20,000  HIGH  -
 Pressure - 29.92inHg(sealevel)
+
+Tuned according to FG-Wiki JSBsim engine to the following values
+On ground, v=0, ram-air-fac=0, outside temp = +10 C, no wind
+
+Additional to PFOI Page 35: Outside Temp degC:+10; 2500RPM; 40.0in.Hg (Must not exceed)
 -->
 
 <piston_engine name="propHamiltonStandard3Blade">
   <minmp unit="INHG">        10 </minmp>
-  <maxmp unit="INHG">        52 </maxmp><!--21(aeromatic)-airmanitoba4-10-5-->
-  <displacement unit="IN3">2804 </displacement><!--aeromatic: 3798.92-->
+  <!--maxmp unit="INHG">        52 </maxmp--><!--airmanitoba4-10-5 commented as it cuts away detailed caculations-->
+  <displacement unit="IN3">2804 </displacement><!--2804, aeromatic: 3798.92-->
   <bore unit="IN">         5.75 </bore><!-- Unused-airmanitoba,page86-->
   <stroke unit="IN">       6    </stroke>
   <cylinders>             18    </cylinders>
   <cylinder-head-mass>    21.0 </cylinder-head-mass><!--guessed-->
   
   <compression-ratio>6.65</compression-ratio><!--airmanitoba 86-->
-  <sparkfaildrop>    0.1 </sparkfaildrop>
+  <sparkfaildrop>    3.7 </sparkfaildrop><!-- 100RPM maximum drop (at 30in.Hg), in percent-->
   <maxhp>         2000.0 </maxhp>
   <cycles>           4.0 </cycles>
   <idlerpm>        650.0 </idlerpm>
   <maxrpm>        2905.0 </maxrpm><!-- overspeed (airmanitoba)/ regular at maxhp: 2700rpm-->
-  <cooling-factor>   0.6 </cooling-factor><!--overwritten by oilcooler system-->
+  <cooling-factor>   0.7 </cooling-factor><!--overwritten by oilcooler system-->
   
   <boostmanual>    1 </boostmanual><!--cockpit switch-->
   <numboostspeeds> 2 </numboostspeeds><!--p86-->  
@@ -59,12 +64,14 @@ Pressure - 29.92inHg(sealevel)
   <ratedaltitude2> 14000 </ratedaltitude2>
   
   
-  <volumetric-efficiency>      0.71 </volumetric-efficiency><!--wikipedia/aeromatic0.85-->
+  <volumetric-efficiency>      0.75 </volumetric-efficiency><!--wikipedia0.71 /aeromatic0.85-->
   <static-friction  unit="HP"> 9.99715 </static-friction>
   <man-press-lag>    0.1 </man-press-lag>
   <starter-torque> 1599.54 </starter-torque>
   <starter-rpm>    1400 </starter-rpm>
- <!--<bsfc>           0.45 </bsfc> Defining <bsfc> over-rides the built-in horsepower calculations -->
+  <bsfc>           0.55 </bsfc> <!--Defining <bsfc> over-rides the built-in horsepower calculations -->
+  <air-intake-impedance-factor> 0.16 </air-intake-impedance-factor>
+  <ram-air-factor> 2 </ram-air-factor>
  
   <!--oil-viscosity-index>  94 </oil-viscosity-index--><!--oil:aeroshell 100-->
   <oil-pressure-relief-valve-psi> 90 </oil-pressure-relief-valve-psi>

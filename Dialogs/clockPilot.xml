@@ -1,0 +1,417 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+    <!--This is the time selection dialog for FlightGear c46 (pilots) clock.
+	    it has the following options:
+		  o utc
+		  o local time, grabs it once. Won't change by flying into another zone.
+		  o custom time, (compared to the dialog time above, the time you opened the dialog)
+		  o custom zone (eg -5.25)
+		  o real time  compares to the real utc time.
+          o copilots time		
+		you need to add this dialog to your plane using nasal:
+		
+		var clockDialogP = gui.Dialog.new("/sim/gui/dialogs/panel/clock0/dialog",
+                        "Aircraft/c46/Dialogs/clockPilot.xml");
+        _setlistener("/sim/time/warp", func(){
+          if(getprop("instrumentation/clock[0]/dialog/real")==1)
+		     setprop("instrumentation/clock[0]/offset-sec", getprop("/sim/time/warp")*(-1));
+        });
+		
+		"listener" is the routine to update "real time" for the case you use time shifting.
+		
+		creates a "dialog" tree with booleans for each of these options above.
+		there is an internal "offset buffer" at /instrumentation/clock[0]/dialog/offset-dialog
+		it gets the offset once you select an option
+		by clicking "Apply" the dialog will copy this offset to the real clock model. 
+		you can click "cancel" or "X"; they ignore the offset buffer
+		-->
+		
+    <name>clock-dialog-pilot</name>
+    <layout>vbox</layout>
+    <resizable>false</resizable>
+    <modal>false</modal>
+    <draggable>true</draggable>
+    
+	<nasal>
+	    <open>
+		     # String to display local time (and zone)
+		     var localsec = getprop("/sim/time/local-day-seconds");
+			 var localh = math.floor(localsec/3600);
+			 var localmin = math.fmod(math.floor(localsec/60),60);
+			 var offsh = getprop("/sim/time/local-offset")/3600;
+			 setprop("/instrumentation/clock[0]/local-string", localh~":"~localmin~"  (UTC+ "~offsh~" )");
+			 
+			 # Buffer utc to calculate custom time (this time will show up as "utc" and "local" while dialog is open).
+			 setprop("/instrumentation/clock[0]/dialog/utc-dialogopen", getprop("/sim/time/utc/day-seconds"));
+			 
+			 # Property to store value for "apply" (and "cancel") knob
+			 setprop("/instrumentation/clock[0]/dialog/offset-dialog", getprop("/instrumentation/clock[0]/offset-sec"));
+			 
+			 #
+			 setprop("/instrumentation/clock[0]/dialog/custom-zone", math.round(getprop("/instrumentation/clock[0]/offset-sec")/36)/100);
+			 setprop("/instrumentation/clock[0]/dialog/custom-min", getprop("/instrumentation/clock[0]/indicated-min"));
+			 setprop("/instrumentation/clock[0]/dialog/custom-hour", getprop("/instrumentation/clock[0]/indicated-hour"));
+			 
+		</open>
+	</nasal>
+    <group>
+        <layout>hbox</layout>
+
+        <empty><stretch>true</stretch></empty>
+        <text>
+            <label>Clock Pilot</label>
+        </text>
+        <empty><stretch>true</stretch></empty>
+
+        <button>
+            <legend/>
+            <key>Esc</key>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+
+    <hrule/>
+
+	
+	<group>
+        <layout>table</layout>
+		<radio>
+		    <row>0</row>
+            <col>0</col>
+			<property>/instrumentation/clock[0]/dialog/utc</property>
+			<live>true</live>
+			<binding>
+			    <command>nasal</command>
+				<script>setprop("/instrumentation/clock[0]/dialog/utc",1);
+				setprop("/instrumentation/clock[0]/dialog/local",0);
+				setprop("/instrumentation/clock[0]/dialog/custom",0);
+				setprop("/instrumentation/clock[0]/dialog/zone",0);
+				setprop("/instrumentation/clock[0]/dialog/real",0);
+				setprop("/instrumentation/clock[0]/dialog/copilot",0);
+				
+				setprop("/instrumentation/clock[0]/dialog/offset-dialog",0);</script>
+			</binding>
+		</radio>
+		<text>
+            <label>UTC</label>
+            <halign>left</halign>
+		    <row>0</row>
+		    <col>1</col>
+        </text>
+		<group>
+		    <layout>hbox</layout>
+			<row>0</row>
+		    <col>2</col>
+		    <text>
+		        <label>0:</label> 
+                <format>%d:</format>
+                <property>/sim/time/utc/hour</property>
+				<halign>right</halign>
+		    </text>
+		    <text>
+		        <label>00</label> 
+                <format>%d</format>
+                <property>/sim/time/utc/minute</property>
+				<halign>left</halign>
+		    </text>
+		</group>
+		
+		<!-- Local Time -->
+		<radio>
+		    <row>1</row>
+            <col>0</col>
+			<property>/instrumentation/clock[0]/dialog/local</property>
+			<live>true</live>
+			<binding>
+			    <command>nasal</command>
+				<script>setprop("/instrumentation/clock[0]/dialog/utc",0);
+				setprop("/instrumentation/clock[0]/dialog/local",1);
+				setprop("/instrumentation/clock[0]/dialog/custom",0);
+				setprop("/instrumentation/clock[0]/dialog/zone",0);
+				setprop("/instrumentation/clock[0]/dialog/real",0);
+				setprop("/instrumentation/clock[0]/dialog/copilot",0);
+				setprop("/instrumentation/clock[0]/dialog/offset-dialog", getprop("/sim/time/local-offset"));</script>
+			</binding>
+		</radio>
+		<text>
+            <label>Local</label>
+            <halign>left</halign>
+		    <row>1</row>
+		    <col>1</col>
+        </text>
+		<group>
+		    <layout>hbox</layout>
+			<row>1</row>
+		    <col>2</col>
+		    <text>
+		        <label>00:00  (UTC+ 1 )</label>
+                <format>%s</format>
+                <property>/instrumentation/clock/local-string</property>
+		    </text>
+		</group>
+		
+		<!--Custom Time-->
+		<radio>
+		    <row>2</row>
+            <col>0</col>
+			<property>/instrumentation/clock[0]/dialog/custom</property>
+			<!--live>true</live-->
+			<binding>
+			    <command>nasal</command>
+				<script>setprop("/instrumentation/clock[0]/dialog/utc",0);
+				setprop("/instrumentation/clock[0]/dialog/local",0);
+				setprop("/instrumentation/clock[0]/dialog/custom",1);
+				setprop("/instrumentation/clock[0]/dialog/zone",0);
+				setprop("/instrumentation/clock[0]/dialog/real",0);
+				setprop("/instrumentation/clock[0]/dialog/copilot",0);
+				</script>
+			</binding>
+		</radio>
+		<text>
+            <label>Custom Time</label>
+            <halign>left</halign>
+		    <row>2</row>
+		    <col>1</col>
+        </text>
+		<group>
+		    <layout>hbox</layout>
+			<row>2</row>
+		    <col>2</col>
+		    <input>
+               <width>5</width>
+               <property>/instrumentation/clock[0]/dialog/custom-hour</property>
+			   <type>DOUBLE</type>
+            </input>
+			<text>
+			   <label>:</label>
+			</text>
+			<input>
+               <width>5</width>
+               <property>/instrumentation/clock[0]/dialog/custom-min</property>
+			   <type>DOUBLE</type>
+            </input>
+		</group>
+	
+	<!--Custom Timezone-->
+	    <radio>
+		    <row>3</row>
+            <col>0</col>
+			<property>/instrumentation/clock[0]/dialog/zone</property>
+			<live>true</live>
+			<binding>
+			    <command>nasal</command>
+				<script>setprop("/instrumentation/clock[0]/dialog/utc",0);
+				setprop("/instrumentation/clock[0]/dialog/local",0);
+				setprop("/instrumentation/clock[0]/dialog/custom",0);
+				setprop("/instrumentation/clock[0]/dialog/zone",1);
+				setprop("/instrumentation/clock[0]/dialog/real",0);
+				setprop("/instrumentation/clock[0]/dialog/copilot",0);
+				</script>
+			</binding>
+		</radio>
+	    <text>
+            <label>Custom Zone</label>
+            <halign>left</halign>
+		    <row>3</row>
+		    <col>1</col>
+        </text>
+		<group>
+		    <layout>hbox</layout>
+			<row>3</row>
+		    <col>2</col>
+			<text>
+			   <label>UTC + </label>
+			   <halign>right</halign>
+			</text>
+			<input>
+               <width>5</width>
+               <property>/instrumentation/clock[0]/dialog/custom-zone</property>
+			   <type>DOUBLE</type>
+			   <halign>left</halign>
+            </input>
+		</group>
+		
+		<!-- real time -->
+		<radio>
+		    <row>4</row>
+            <col>0</col>
+			<property>/instrumentation/clock[0]/dialog/real</property>
+			<live>true</live>
+			<binding>
+			    <command>nasal</command>
+				<script>setprop("/instrumentation/clock[0]/dialog/utc",0);
+				setprop("/instrumentation/clock[0]/dialog/local",0);
+				setprop("/instrumentation/clock[0]/dialog/custom",0);
+				setprop("/instrumentation/clock[0]/dialog/zone",0);
+				setprop("/instrumentation/clock[0]/dialog/real",1);
+				setprop("/instrumentation/clock[0]/dialog/copilot",0);
+				
+				#sec = getprop("/sim/time/real/hour")*3600;
+				#sec += getprop("/sim/time/real/minute")*60;
+				#sec = sec-getprop("/sim/time/utc/day-seconds");
+				setprop("/instrumentation/clock[0]/dialog/offset-dialog", getprop("/sim/time/warp")*(-1));</script>
+			</binding>
+		</radio>
+		<text>
+            <label>Real Time</label>
+            <halign>left</halign>
+		    <row>4</row>
+		    <col>1</col>
+        </text>
+		<group>
+		    <layout>hbox</layout>
+			<row>4</row>
+		    <col>2</col>
+		    <text>
+		        <label>0:</label> 
+                <format>%d:</format>
+                <property>/sim/time/real/hour</property>
+				<halign>right</halign>
+		    </text>
+		    <text>
+		        <label>00</label> 
+                <format>%d</format>
+                <property>/sim/time/real/minute</property>
+				<halign>left</halign>
+		    </text>
+		</group>
+		
+		<!-- Copilot -->
+		<radio>
+		    <row>5</row>
+            <col>0</col>
+			<property>/instrumentation/clock[0]/dialog/copilot</property>
+			<live>true</live>
+			<binding>
+			    <command>nasal</command>
+				<script>setprop("/instrumentation/clock[0]/dialog/utc",0);
+				setprop("/instrumentation/clock[0]/dialog/local",0);
+				setprop("/instrumentation/clock[0]/dialog/custom",0);
+				setprop("/instrumentation/clock[0]/dialog/zone",0);
+				setprop("/instrumentation/clock[0]/dialog/real",0);
+				setprop("/instrumentation/clock[0]/dialog/copilot",1);
+				
+				setprop("/instrumentation/clock[0]/dialog/offset-dialog", getprop("/instrumentation/clock[1]/offset-sec"));</script>
+			</binding>
+		</radio>
+		<text>
+            <label>Copilot</label>
+            <halign>left</halign>
+		    <row>5</row>
+		    <col>1</col>
+        </text>
+		<group>
+		    <layout>hbox</layout>
+			<row>5</row>
+		    <col>2</col>
+		    <text>
+		        <label>0:</label> 
+                <format>%d:</format>
+                <property>/instrumentation/clock[1]/indicated-hour</property>
+				<halign>right</halign>
+		    </text>
+		    <text>
+		        <label>00</label> 
+                <format>%d</format>
+                <property>/instrumentation/clock[1]/indicated-min</property>
+				<halign>left</halign>
+		    </text>
+		</group>
+		
+	</group>
+
+    <!--hrule/>
+	
+	<group>
+	    <layout>hbox</layout>
+        <default-padding>6</default-padding>
+		<empty><stretch>true</stretch></empty>
+		
+		<checkbox>
+            <halign>left</halign>
+            <label>Keep in sync</label>
+            <property>/instrumentation/clock[0]/dialog/sync</property>
+            <live>true</live>
+			<enable>
+			    <or>
+				    <property>/instrumentation/clock[0]/dialog/local</property>
+					<property>/instrumentation/clock[0]/dialog/real</property>
+					<property>/instrumentation/clock[0]/dialog/copilot</property>
+				</or>
+            </enable>
+			<binding>
+			    <command>property-toggle</command>
+				<property>/instrumentation/clock[0]/dialog/sync</property>
+			</binding>
+		</checkbox>	
+	</group-->
+	
+	<hrule/>
+     
+    <group>
+        <layout>hbox</layout>
+        <default-padding>6</default-padding>
+
+        <empty><stretch>true</stretch></empty>
+
+        <button>
+            <legend>Apply</legend>
+            <equal>true</equal>
+            <default>false</default>
+			<binding>
+                <command>dialog-apply</command>
+            </binding>
+			<binding>
+                <command>nasal</command>
+				<script>
+				setprop("/instrumentation/clock[0]/real",0);
+				
+				# read internal offset buffer
+				var sec = getprop("/instrumentation/clock[0]/dialog/offset-dialog");
+				
+				# calculate offset for custom time and custom zone
+			    if(getprop("/instrumentation/clock[0]/dialog/custom")==1){
+				    hour = getprop("/instrumentation/clock[0]/dialog/custom-hour");
+			        min = getprop("/instrumentation/clock[0]/dialog/custom-min");
+					
+					if(num(hour) and num(min))
+				        sec = hour*3600 + min*60 - getprop("/instrumentation/clock[0]/dialog/utc-dialogopen");
+					else
+						gui.popupTip("Input has to be as two valid numbers!",5);
+				}
+				if(getprop("/instrumentation/clock[0]/dialog/zone")==1){
+				    if(num(getprop("/instrumentation/clock[0]/dialog/custom-zone")))
+				        sec = getprop("/instrumentation/clock[0]/dialog/custom-zone")*3600;
+					else
+					    gui.popupTip("Input has to be a valid number, like "-3.5" for Newfoundland!",5);
+				}
+				
+				# write internal offset buffer
+		        setprop("/instrumentation/clock[0]/offset-sec",sec);
+			    </script>
+            </binding>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+
+        <button>
+            <legend>Cancel</legend>
+            <equal>true</equal>
+            <key>Esc</key>
+            <default>true</default>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+
+</PropertyList>

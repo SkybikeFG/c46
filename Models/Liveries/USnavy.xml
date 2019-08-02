@@ -9,6 +9,7 @@
 			<texture-wings>Liveries/Wings.png</texture-wings>
 			<texture-propeller>Liveries/PropellerCone.png</texture-propeller>
 			<propeller-cone type="bool">1</propeller-cone>
+			<immatriculation type="string"></immatriculation>
 	  </livery>
     </model>
   </sim>

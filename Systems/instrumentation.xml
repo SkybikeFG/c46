@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+**********************************************************************
+instrumentation.xml
+
+c46 instrumentation configuration. This file selects the
+instrumentation modules that should be available.
+
+You can have several instances of the same instrument type.
+The value inside the name tag becomes the node in the property tree.
+If two instruments have the same name you must use the number tag
+to separate them. They become name[number] in the property tree.
+Some instruments have additional configuration tags like static-port
+and pitot-port. The static- and pitot-ports (and any other system that
+an instrument depend on) have to be configured in the systems
+configuration file: generic-systems.xml
+
+The values in this file are the default values. If any configuration
+tags are omitted in an aircraft specific version of this configuration
+file, these values will be used (they are hardcoded).
+
+**********************************************************************
+-->
+
+<PropertyList>
+    <vertical-speed-indicator n="0">
+	  <offset-fpm type="int">0</offset-fpm>
+	</vertical-speed-indicator>
+	<vertical-speed-indicator n="1">
+	  <offset-fpm type="int">0</offset-fpm>
+	  <serviceable type="bool">true</serviceable>
+	</vertical-speed-indicator>
+	
+	<attitude-indicator n="1">
+	    <serviceable type="bool">true</serviceable>
+		<off-flag type="double">1.0</off-flag>
+		<caged-flag type="bool">0</caged-flag>
+	</attitude-indicator>
+	
+	<altimeter n="1">
+	  <serviceable type="bool">true</serviceable>
+	</altimeter>
+	<airspeed-indicator n="1">
+	  <serviceable type="bool">true</serviceable>
+	</airspeed-indicator>
+	<clock n="0">
+	  <offset-sec>0</offset-sec>
+	  <dialog>
+	    <utc type="bool">0</utc>
+		<local type="bool">0</local>
+		<custom type="bool">0</custom>
+		<zone type="bool">0</zone>
+		<real type="bool">0</real>
+		<copilot type="bool">0</copilot>
+		<sync type="bool">0</sync>
+		<custom-zone type="double">0.0</custom-zone>
+		<custom-hour type="int">0</custom-hour>
+		<custom-min type="int">0</custom-min>
+	  </dialog>
+	</clock>
+	<clock n="1">
+	  <serviceable type="bool">true</serviceable>
+	  <offset-sec>0</offset-sec>
+	</clock>
+	
+    <kma20 include="Aircraft/Instruments-3d/kma20/kma20init.xml"/>
+	
+    <encoder>
+      <serviceable type="bool">true</serviceable>
+    </encoder>
+    <adf n="0">
+      <ident-audible type="bool">false</ident-audible>
+      <volume type="double">0.7</volume>
+      <frequencies>
+        <dial-1-khz type="int">0</dial-1-khz>
+        <dial-100-khz type="int">0</dial-100-khz>
+      </frequencies>
+    </adf>
+    <comm n="0">
+      <power-btn type="bool">1</power-btn>
+      <frequencies>
+        <dial-khz type="int">0</dial-khz>
+        <dial-mhz type="int">0</dial-mhz>
+      </frequencies>
+      <volume-selected type="double">0.7</volume-selected>
+    </comm>
+    <comm n="1">
+      <power-btn type="bool">1</power-btn>
+	  <mode type="int">1</mode>
+      <frequencies>
+        <dial-khz type="int">0</dial-khz>
+        <dial-mhz type="int">0</dial-mhz>
+      </frequencies>
+      <volume-selected type="double">0.7</volume-selected>
+    </comm>
+    <nav n="0">
+      <volume type="double">0.7</volume>
+      <frequencies>
+        <dial-khz type="int">0</dial-khz>
+        <dial-mhz type="int">0</dial-mhz>
+      </frequencies>
+      <ident-audible type="bool">false</ident-audible>
+    </nav>
+    <nav n="1">
+      <volume type="double">0.7</volume>
+	  <power-btn type="bool">1</power-btn>
+	  <mode type="int">1</mode>
+      <frequencies>
+        <dial-khz type="int">0</dial-khz>
+        <dial-mhz type="int">0</dial-mhz>
+      </frequencies>
+      <ident-audible type="bool">false</ident-audible>
+    </nav>
+</PropertyList>

@@ -1,6 +1,6 @@
 AC3Db
-MATERIAL "metal" rgb 1 1 1 amb 1 1 1 emis 0.1 0.1 0.1 spec 1 1 1 shi 6 trans 0
-MATERIAL "led" rgb 1 1 1 amb 1 1 1 emis 0.9 0.9 0.9 spec 0 0 0 shi 32 trans 0
+MATERIAL "metal" rgb 1.000 1.000 1.000  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 1.000 1.000 1.000  shi 32 trans 0.000
+MATERIAL "led" rgb 1.000 1.000 1.000  amb 1.000 1.000 1.000  emis 0.900 0.900 0.900  spec 0.000 0.000 0.000  shi 32 trans 0.000
 OBJECT world
 kids 44
 OBJECT poly

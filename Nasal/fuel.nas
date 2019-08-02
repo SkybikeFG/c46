@@ -17,7 +17,7 @@
 props.globals.initNode("/controls/fuel/crossfeed", 0, "BOOL");
 props.globals.initNode("/controls/fuel/left-feed", getprop("/controls/fuel/left-valve"), "INT");
 props.globals.initNode("/controls/fuel/right-feed", getprop("/controls/fuel/right-valve"), "INT");
-props.globals.initNode("/consumables/fuel/tank[10]/pressure-pump-psi", 0, "INT");
+props.globals.initNode("/consumables/fuel/tank[99]/pressure-pump-psi", 0, "INT");#Off position tank[99], as getprop(".../tank[-1]/...") trows an error
 
 var fuelpressTank = func(tank){
 	var levelGalUS = getprop("/consumables/fuel/tank["~tank~"]/level-gal_us");
@@ -37,9 +37,9 @@ var fuelpressTank = func(tank){
 		}
 	}
 	
-	if(tank == getprop("/controls/fuel/left-valve") and getprop("controls/fuel/boostpumps-l-high")==1){
+	if(tank == getprop("/controls/fuel/left-valve") and getprop("/controls/fuel/boostpumps-l-high")==1){
 		press = press + 2;}#boostpumps==1
-	if(tank == getprop("/controls/fuel/right-valve") and getprop("controls/fuel/boostpumps-r-high")==1){
+	if(tank == getprop("/controls/fuel/right-valve") and getprop("/controls/fuel/boostpumps-r-high")==1){
 		press = press + 2;}
 		
 	if(levelGalUS ==0){#empty, no pressure
@@ -70,9 +70,9 @@ var selectTank = func(){
 		var leftValve = getprop("/controls/fuel/left-valve");
 		var rightValve = getprop("/controls/fuel/right-valve");
 		if(leftValve<0){# off position
-			leftValve=10}
+			leftValve=99}
 		if(rightValve<0){# off position
-			rightValve=10}
+			rightValve=99}
 		setprop("/controls/fuel/left-feed", leftValve);
 		setprop("/controls/fuel/right-feed", rightValve);
 		
@@ -199,13 +199,50 @@ fuelPayloadValve();
 
 
 #####
+# Autofuel - Let autofuel change the tank (like a copilot)
+#####
+var autofuelLoop = func(){
+    var selectLeft = getprop("/controls/fuel/left-valve");
+	var selectRight = getprop("/controls/fuel/right-valve");
+    if(getprop("/consumables/fuel/tank["~ selectLeft ~"]/level-gal_us") < 20.0){
+	    if(selectLeft == 4){
+		    selectLeft = 0;
+		}else{
+		    selectLeft += 2;
+		}
+		setprop("/controls/fuel/left-valve", selectLeft);
+	}
+	if( getprop("/consumables/fuel/tank["~ selectRight ~"]/level-gal_us") < 20){
+	    if( selectRight == 5){
+		    selectRight = 1;
+		}else{
+		    selectRight += 2;
+		}
+		setprop("/controls/fuel/right-valve", selectRight );
+		gui.popupTip("Copilot changed tank selection", 4);
+	}
+}
+	
+props.globals.initNode("/controls/autoflight/autofuel", 0, "BOOL");
+
+var autofuel = maketimer(5, func{autofuelLoop();} );
+		
+_setlistener("/controls/autoflight/autofuel", func(){
+    if(getprop("/controls/autoflight/autofuel")==1){
+		autofuel.start();
+	}else{
+	    if(autofuel.isRunning){autofuel.stop();}
+	}
+});
+
+#####
 # Timers and loops for crossfeed and pressure (not valves, see listeners above)
 #####
 
 #Fuel Pressure Timer
 var fullRun = func(){
 	#Fuel Pressure Taks
-	for(var i=0; i<5; i+=1){
+	for(var i=0; i<6; i+=1){
 		fuelpressTank(i);
 	}
 	#Fuel Pressure Engines

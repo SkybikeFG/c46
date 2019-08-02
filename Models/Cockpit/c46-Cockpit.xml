@@ -14,10 +14,33 @@
   </model>
   
   <model>
+    <name>Overhead</name>
+    <path>Aircraft/c46/Models/Cockpit/c46-Ohp.xml</path>
+  </model>
+  
+  <model>
     <name>Instruments</name>
     <path>Aircraft/c46/Models/Cockpit/c46-Panel.xml</path>
   </model>
-
+  
+  <!--Materials and effects-->
+  <!--MATERIAL "WindowGlass" rgb 0.608 1.000 0.638  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.615 0.923 1.000  shi 12 trans 0.800-->
+  <effect>
+    <inherits-from>Aircraft/c46/Models/Effects/interior/interior-glass-reflection-window-front</inherits-from>
+    <object-name>CockpitWindow</object-name>
+  </effect>
+  <!--effect>
+    <inherits-from>Effects/interior/interior-glass-reflection-panel-front</inherits-from>
+    <object-name>glass_panel</object-name>
+  </effect>
+  <effect>
+    <inherits-from>Effects/interior/interior-glass-reflection-window-side</inherits-from>
+    <object-name>glas_front_interior_sides</object-name>
+    <object-name>leftwindow_interior</object-name>
+    <object-name>rightwindow_interior</object-name>
+    <object-name>glas_interior_sides</object-name>
+    <object-name>glas_interior_back</object-name>
+  </effect-->
 
   <!-- Pedals (pilot(P)/copilot(C))-->
   <animation>
@@ -253,6 +276,20 @@
     <type>pick</type>
 	<object-name>DfuelSelectCL</object-name>
     <object-name>DfuelSelectPL</object-name>
+	<action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/fuel/left-valve</property>
+		<offset>-1</offset>
+        <step>2</step>
+        <min>-2</min>
+        <max>6</max><!-- -2 0 2 4 -->
+        <wrap>true</wrap>
+      </binding>
+    </action>
     <action>
       <button>3</button>
       <repeatable>true</repeatable>
@@ -299,6 +336,19 @@
     <type>pick</type>
 	<object-name>DfuelSelectCR</object-name>
     <object-name>DfuelSelectPR</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/fuel/right-valve</property>
+        <step>2</step>
+        <min>-1</min>
+        <max>7</max>
+        <wrap>true</wrap>
+      </binding>
+    </action>
     <action>
       <button>3</button>
       <repeatable>true</repeatable>

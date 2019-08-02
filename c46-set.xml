@@ -9,36 +9,58 @@ Developed under GNU-GPL for FlightGear FS.
 <PropertyList>
  <sim>
   <description>Curtiss Wright C-46</description>
-  <long-description>The Curtiss Wright C-46 Commando is a WWII twin-engine, taildragger and cargo aircraft. 
-  It was designed in 1937 as a pressurized passenger airliner. In WWII there were 3,181 build - around half a dozen Commandos are still flying today
+  <long-description>The Curtiss Wright C-46 Commando is a WWII era twin-engine taildragger cargo aircraft. Originally designed and built as a pressurized airliner in 1937, the CW-20 was outfitted for wartime use early in the war. 
+  With its larger engines and cargo capacity, it was immediately pressed into service flying cargo over "the Hump" between India and China. It was actually the largest transport aircraft used during the war.<!-- Early models were beset with fuel leak issues in the wing root,
+  resulting in many lost aircraft until those issues were resolved.--> Of the 3,181 built, around half a dozen Commandos are still flying today.
   </long-description>
   
-  <author>Arnd Lebert</author>
+  <authors>
+     <author n="0">
+	    <name>Arnd Lebert</name>
+		<description>3D Model, FDM, systems, liveries, etc.</description>
+		<nick>SkyBikeFG</nick>
+	 </author>
+	 <author n="1">
+	    <name>John Gilbert</name>
+		<description>Systems, liveries</description>
+		<nick>Snowblind1</nick>
+	 </author>
+  </authors>
+  
   <status>beta</status>
-  <aircraft-version>2018.1</aircraft-version>
+  <aircraft-version>2019.1</aircraft-version>
   <minimum-fg-version>2017.2</minimum-fg-version>
   <rating>
    <FDM type="int">2</FDM>
-   <systems type="int">1</systems>
-   <cockpit type="int">2</cockpit>
-   <model type="int">3</model>
+   <systems type="int">2</systems>
+   <cockpit type="int">3</cockpit>
+   <model type="int">4</model>
   </rating>
 
     <tags>
       <tag>1940s</tag>
+	  <tag>ww2</tag>
       <tag>2-engine</tag>
       <tag>cargo</tag>
-      <tag>curtiss-wright</tag>
+      <!--tag>curtiss-wright</tag-->
       <tag>ifr</tag>
       <tag>piston</tag>
       <tag>propeller</tag>
       <tag>radial</tag>
+      <tag>turbocharged</tag>
       <tag>retractable-gear</tag>
       <tag>tail-dragger</tag>
       <tag>transport</tag>
       <tag>twin-engine</tag>
       <tag>variable-pitch</tag>
     </tags>
+	
+	<urls>
+	   <home-page>https://github.com/skybikefg/c46/wiki</home-page>
+	   <support>https://github.com/skybikefg/c46/issues</support><!--http://forum.flightgear.org-->
+	   <wikipedia>https://en.wikipedia.org/wiki/Curtiss_C-46_Commando </wikipedia>
+	   <code-repository>https://github.com/SkybikeFG/c46</code-repository>
+	</urls>
   
     <flight-model>jsb</flight-model>
     <aero>Systems/c46</aero>
@@ -50,12 +72,7 @@ Developed under GNU-GPL for FlightGear FS.
     </startup>
   
     <model>
-      <path>Aircraft/c46/Models/c46-model.xml</path>
-      <!--
-      <livery>
-        <file type="string">USnavy</file>
-      </livery>
-      -->
+      <path>Aircraft/c46/Models/curtiss-c46.xml</path>
       <options>
         <hide-yokes type="bool" archive="y">false</hide-yokes>
       </options>
@@ -103,16 +120,56 @@ Developed under GNU-GPL for FlightGear FS.
         <pitch-offset-deg type="double">-68.0</pitch-offset-deg>
        </config>
     </view>
+	<view n="109">
+      <name>Overhead View</name>
+      <type>lookfrom</type>
+      <internal type="bool">true</internal>
+      <config>
+        <default-field-of-view-deg type="double">70</default-field-of-view-deg>
+	    <from-model type="bool">true</from-model>
+        <x-offset-m type="double" archive="y">0.00</x-offset-m>
+        <y-offset-m type="double" archive="y">0.00</y-offset-m>
+        <z-offset-m type="double" archive="y">-10.0</z-offset-m>
+        <pitch-offset-deg type="double">60.0</pitch-offset-deg>
+       </config>
+    </view>
 
     <chase-distance-m type="double" archive="y">-40.0</chase-distance-m>
 
     <hud>   
       <enable3d>false</enable3d>
     </hud>
-
+	<panel><!-- Hide the 2D panel -->
+      <visibility type="bool" archive="y">false</visibility>
+    </panel>
+	<rendering>
+      <redout><!--Disable redout and blackout-->
+        <enabled type="bool" userarchive="y">false</enabled>
+      </redout>
+	</rendering>
+    <virtual-cockpit archive="y">true</virtual-cockpit>
+    <allow-toggle-cockpit archive="y">false</allow-toggle-cockpit>
+	
+	<instrumentation>
+      <path>Systems/c46-instrumentation.xml</path>
+    </instrumentation>
+   
+	<systems>
+	  <path>Systems/systems.xml</path>
+	  
+      <autopilot n="2">
+        <path>Systems/glass-rain.xml</path>
+      </autopilot>
+	  <autopilot n="3">
+        <path>Systems/select-value.xml</path>
+      </autopilot>
+	  
+	  <property-rule n="100">
+        <path>Systems/electrical.xml</path>
+      </property-rule>
   
-  
-  
+	</systems>
+ 
     <menubar>
       <default>
         <menu n="10">
@@ -143,9 +200,59 @@ Developed under GNU-GPL for FlightGear FS.
     -->
   
     <help include="Help/c46-help.xml"/>
+	
+	<!-- Save these properties between sessions -->
+        <aircraft-data>                       
+                        
+            <path>/controls/engines/engine[0]/mixture</path>
+            <path>/controls/engines/engine[0]/throttle</path>
+            <path>/controls/engines/engine[0]/propeller-pitch</path>
+            			
+			<path>/controls/engines/engine[1]/mixture</path>
+            <path>/controls/engines/engine[1]/throttle</path>
+            <path>/controls/engines/engine[1]/propeller-pitch</path>
+                        
+            <!--path>/controls/lighting/landing-lights</path>
+            <path>/controls/lighting/taxi-light</path>
+            <path>/controls/lighting/strobe</path>
+            <path>/controls/lighting/beacon</path>
+            <path>/controls/lighting/nav-lights</path>
+                        
+		    <path>/controls/engines/engine[1]/cowl-flaps-norm</path
+            <path>/controls/engines/engine/cowl-flaps-norm</path-->
+            <!--path>/controls/flight/elevator-trim</path-->
+            <path>/controls/flight/rudder-trim</path>
+            <path>/controls/flight/flaps</path>
+            
+            <path>/instrumentation/comm[0]/frequencies/selected-mhz</path>
+            <path>/instrumentation/comm[0]/frequencies/standby-mhz</path>
+            <path>/instrumentation/comm[0]/power-btn</path>
+            <path>/instrumentation/comm[0]/volume</path>
+            <path>/instrumentation/comm[1]/frequencies/selected-mhz</path>
+            <path>/instrumentation/comm[1]/frequencies/standby-mhz</path>
+            <path>/instrumentation/comm[1]/power-btn</path>
+			<path>/instrumentation/comm[1]/mode</path>
+            <path>/instrumentation/comm[1]/volume</path>
+            <path>/instrumentation/altimeter/setting-inhg</path> 
+			<path>/instrumentation/nav[1]/frequencies/selected-mhz</path>
+            <path>/instrumentation/nav[1]/power-btn</path>
+			<path>/instrumentation/nav[1]/mode</path>
+            <path>/instrumentation/nav[1]/volume</path>
+            <path>/instrumentation/altimeter/setting-inhg</path> 
+
+            <path>/controls/fuel/left-valve/</path>
+            <path>/controls/fuel/right-valve</path> 			
+            
+        </aircraft-data>
+		
+		
+	
   </sim>
  
   <nasal>
+    <updateloop>
+      <file>Aircraft/Generic/updateloop.nas</file>
+    </updateloop>
     <c46>
       <file>Aircraft/c46/Nasal/c46.nas</file>
 	  <file>Aircraft/c46/Nasal/deicing.nas</file>
@@ -154,17 +261,34 @@ Developed under GNU-GPL for FlightGear FS.
 	  <!--<file>Aircraft/Instruments-3d/garmin196/garmin196.nas</file>-->	
 	  <file>Aircraft/c46/Models/Cockpit/Instruments/kr85/kr85.nas</file>
 	  <file>Aircraft/c46/Models/Cockpit/Instruments/kma20/kma20.nas</file>
+	  <file>Aircraft/c46/Nasal/systems.nas</file>
+	  <file>Aircraft/c46/Nasal/electrical.nas</file>
+	  <file>Aircraft/c46/Nasal/immat.nas</file>
     </c46>
     <systems>
-      <file>Aircraft/c46/Models/Cockpit/Instruments/kns80/KNS80.nas</file>
+      <file>Aircraft/c46/Models/Cockpit/Instruments/kns80/KNS80.nas</file>	  
     </systems>
   </nasal>
+  
+  <systems>
+	<pitot n="1">
+	   <serviceable>true</serviceable>
+    </pitot>
+	<static n="1">
+	   <serviceable>true</serviceable>
+    </static>
+	<static n="2">
+	   <serviceable>true</serviceable>
+    </static>
+	<static-pilot>
+	   <serviceable type="bool">true</serviceable>
+	   <alternate type="bool">false</alternate>
+	</static-pilot>  
+  </systems>
 
-  <!-- 27 Jul 18 -->
   <consumables include="Systems/consumables.xml"/>
-
-  <!-- 27 Jul 18 -->
   <payload include="Systems/payload.xml"/>
+  <instrumentation include="Systems/instrumentation.xml"/>
 
 
   <!-- TODO
@@ -172,6 +296,10 @@ Developed under GNU-GPL for FlightGear FS.
   -->
 
   <controls>
+    <electric>
+	  <external-power>0</external-power>
+	</electric>
+	
     <flight>
       <elevator-trim>0.0</elevator-trim>
     </flight>
@@ -186,63 +314,61 @@ Developed under GNU-GPL for FlightGear FS.
     <gear>
       <brake-parking>1</brake-parking>
     </gear>
-
+	
+	<circuit-breakers>
+      <!--<aircond type="bool">true</aircond>-->
+      <autopilot type="bool">true</autopilot>
+      <bcnlt type="bool">true</bcnlt>
+      <!--<flaps type="bool">true</flaps>-->
+      <instr type="bool">true</instr>
+      <intlt type="bool">true</intlt>
+      <!--<landing type="bool">true</landing>-->
+      <master type="bool">true</master>
+      <navlt type="bool">true</navlt>
+      <!--pitot-heat type="bool">true</pitot-heat>-->
+      <radio1 type="bool">true</radio1>
+      <radio2 type="bool">true</radio2>
+      <radio3 type="bool">true</radio3>
+      <radio4 type="bool">true</radio4>
+      <radio5 type="bool">true</radio5>
+      <gear-warn-lights type="bool">true</gear-warn-lights>
+      <!--<strobe type="bool">true</strobe>-->
+      <turn-coordinator type="bool">true</turn-coordinator>
+      <cockpit-light tyoe="bool">true</cockpit-light>
+    </circuit-breakers>
+    <switches>
+      <master-avionics type="bool">false</master-avionics>
+      <!--<master-gear type="bool">false</master-gear>-->
+      <starterr type="bool">false</starterr>
+	  <starterl type="bool">false</starterl>
+      <master-alt type="int">0</master-alt>
+      <master-bat type="bool">true</master-bat>
+      <!--<magnetos type="int">0</magnetos>
+      <dome-red type="int">0</dome-red>
+      <dome-white type="bool">false</dome-white>-->
+    </switches>
     <lighting>
-      <strobe>1</strobe>
-      <beacon>1</beacon>
-      <landing-lights>1</landing-lights>
-      <nav-lights>1</nav-lights>
+      <nav-int type="int">0</nav-int>
+      <beacon type="bool">false</beacon>
+      <!--<strobe type="bool">false</strobe>  currently not used-->
+      <taxi-light type="bool">false</taxi-light>
+      <landing-lights type="bool">false</landing-lights>
+      <instruments-norm type="double">0.5</instruments-norm>
+	  <panel-norm type="double">0.0</panel-norm>
+      <radio-norm type="double">0.0</radio-norm>
+      <dome-white-norm type="double">0.0</dome-white-norm>
+      <!--<gps-norm type="double">0.0</gps-norm>-->
+      <!--<gearled type="bool">true</gearled>-->
+	  <!--annunciator switch located on panel. "on" is brightness of signal, "off" is the test signal channel.-->
+	  <annun-on-norm type="double">1.0</annun-on-norm>
+	  <annun-off-norm type="double">0.0</annun-off-norm>
+	  <annun-switch type="int">1</annun-switch>
     </lighting>
+  </controls>
 
-</controls>
+  
 
-  <instrumentation>
-    <kma20 include="Aircraft/Instruments-3d/kma20/kma20init.xml"/>
-    <encoder>
-      <serviceable type="bool">true</serviceable>
-    </encoder>
-    <adf n="0">
-      <ident-audible type="bool">false</ident-audible>
-      <volume type="double">0.7</volume>
-      <frequencies>
-        <dial-1-khz type="int">0</dial-1-khz>
-        <dial-100-khz type="int">0</dial-100-khz>
-      </frequencies>
-    </adf>
-    <comm n="0">
-      <power-btn type="bool">1</power-btn>
-      <frequencies>
-        <dial-khz type="int">0</dial-khz>
-        <dial-mhz type="int">0</dial-mhz>
-      </frequencies>
-      <volume-selected type="double">0.7</volume-selected>
-    </comm>
-    <comm n="1">
-      <power-btn type="bool">1</power-btn>
-      <frequencies>
-        <dial-khz type="int">0</dial-khz>
-        <dial-mhz type="int">0</dial-mhz>
-      </frequencies>
-      <volume-selected type="double">0.7</volume-selected>
-    </comm>
-    <nav n="0">
-      <volume type="double">0.7</volume>
-      <frequencies>
-        <dial-khz type="int">0</dial-khz>
-        <dial-mhz type="int">0</dial-mhz>
-      </frequencies>
-      <ident-audible type="bool">false</ident-audible>
-    </nav>
-    <nav n="1">
-      <volume type="double">0.7</volume>
-      <frequencies>
-        <dial-khz type="int">0</dial-khz>
-        <dial-mhz type="int">0</dial-mhz>
-      </frequencies>
-      <ident-audible type="bool">false</ident-audible>
-    </nav>
-  </instrumentation>
-
+  
 
   <limits>
     <mass-and-balance><!--Manitoba 4:6:5: page 78-->
@@ -258,17 +384,6 @@ Developed under GNU-GPL for FlightGear FS.
     <max-positive-g type="double">2.5</max-positive-g>
     <vne type="double">234</vne>
   </limits>
-
-  <!--
-  <payload>
-    <weight>
-      <name type="string">Payload</name>
-      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs"/>
-      <min-lb type="double">10</min-lb>
-      <max-lb type="double">541.41</max-lb>
-    </weight>
-  </payload>
-  -->
 
   <!--
   More:

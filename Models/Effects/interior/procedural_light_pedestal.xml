@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <path>procedural_light.ac</path>
+    <nopreview/>
+
+    <effect>
+        <inherits-from>procedural-light-pedestal</inherits-from>
+        <object-name>procedural_light</object-name>
+    </effect>
+    
+  <!--Rembrandt and default-->
+    <model>
+      <path>Aircraft/c46/Models/Lights/WhiteLight.ac</path>
+      <name>Light</name>
+    </model>
+      
+    
+    <animation>
+    <type>select</type>
+      <object-name>Light</object-name>
+      <condition>
+        <not><property>/sim/rendering/shaders/skydome</property></not>
+      </condition>
+    </animation>
+    
+    <!--End of Rembrandt-->
+    
+    <animation>
+        <object-name>procedural_light</object-name>
+        <object-name>Light</object-name>
+        <type>scale</type>
+        <x-offset>.3</x-offset>
+        <y-offset>.4</y-offset>
+        <z-offset>.3</z-offset>
+    </animation>
+
+
+</PropertyList>

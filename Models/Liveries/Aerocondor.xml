@@ -5,10 +5,11 @@
     <model>
       <livery>
         <name type="string">Aerocondor Colombia</name>
-			<texture-fuselage>Liveries/AerocondorFuselage.png</texture-fuselage>
-			<texture-wings>Liveries/Wings.png</texture-wings>
-			<texture-propeller>Liveries/PropellerCone.png</texture-propeller>
-			<propeller-cone type="bool">1</propeller-cone>
+		<texture-fuselage>Liveries/AerocondorFuselage.png</texture-fuselage>
+		<texture-wings>Liveries/Wings.png</texture-wings>
+		<texture-propeller>Liveries/PropellerCone.png</texture-propeller>
+		<propeller-cone type="bool">1</propeller-cone>
+		<immatriculation type="string">HK-400</immatriculation>
 	  </livery>
     </model>
   </sim>

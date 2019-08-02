@@ -2,7 +2,7 @@
 <!--Authors: see FGAddon Douglas DC6-->
 <PropertyList>
 
-<path>dir-gyro.ac</path>
+<path>hdg.ac</path>
 
     <animation>
         <type>material</type>
@@ -12,10 +12,7 @@
             <red>0.028</red>
             <green>0.014</green>
             <blue>0.007</blue>
-			<!--red>0.8</red>
-            <green>0.4</green>
-            <blue>0.2</blue-->
-            <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
+            <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
         </emission>
     </animation>
 
@@ -29,79 +26,4 @@
             <z>0.0</z>
         </axis>
     </animation>
-
-<!-- Hotspots -->
-
-    <animation>
-        <type>pick</type>
-        <object-name>hdg.knob</object-name>
-        <action>
-            <button>0</button>
-            <repeatable>true</repeatable>
-            <interval-sec>0.2</interval-sec>
-            <binding>
-                <command>property-adjust</command>
-                <property>instrumentation/heading-indicator/offset-deg</property>
-                <step>1</step>
-                <min>-45.0</min>
-                <max>45.0</max>
-                <wrap>false</wrap>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>hdg.knob</object-name>
-        <action>
-            <button>1</button>
-            <repeatable>true</repeatable>
-            <interval-sec>0.2</interval-sec>
-            <binding>
-                <command>property-adjust</command>
-                <property>instrumentation/heading-indicator/offset-deg</property>
-                <step>-1</step>
-                <min>-45.0</min>
-                <max>45.0</max>
-                <wrap>false</wrap>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>hdg.knob</object-name>
-        <action>
-            <button>3</button>
-            <repeatable>true</repeatable>
-            <interval-sec>0.2</interval-sec>
-            <binding>
-                <command>property-adjust</command>
-                <property>instrumentation/heading-indicator/offset-deg</property>
-                <step>1</step>
-                <min>-45.0</min>
-                <max>45.0</max>
-                <wrap>false</wrap>
-            </binding>
-        </action>
-    </animation>
-
-    <animation>
-        <type>pick</type>
-        <object-name>hdg.knob</object-name>
-        <action>
-            <button>4</button>
-            <repeatable>true</repeatable>
-            <interval-sec>0.2</interval-sec>
-            <binding>
-                <command>property-adjust</command>
-                <property>instrumentation/heading-indicator/offset-deg</property>
-                <step>-1</step>
-                <min>-45.0</min>
-                <max>45.0</max>
-                <wrap>false</wrap>
-            </binding>
-        </action>
-    </animation>
-
 </PropertyList>

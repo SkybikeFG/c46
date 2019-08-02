@@ -24,6 +24,8 @@
 	   a. Gear Ratio  -  0.5:1    Anti-Icing  -  Alcohol
 	   b. Propellor pitch settings are as follows (meassured at 72'' blade station)
 	       low pitch-10°   high pitch-42°   feathered-83°
+		   
+    Blade: 6491A-0  Propeller type: 23E50-473
 -->
 
 <propeller version="1.01" name="prop">

@@ -2,7 +2,7 @@
 <!-- Animation file for the Engine AND main Gear-->
 <PropertyList>
 
-  <path>Engine.ac</path>
+  <path>engine.ac</path>
   <!--
     EngineLeft or [0]
    !  !  !   S T O P    ! ! !

@@ -2,7 +2,7 @@
 <!-- Animation file for the Engine AND main Gear-->
 <PropertyList>
 
-  <path>Engine.ac</path>
+  <path>engine.ac</path>
 <!--
   ENGINE   R   -   or [1]
   Never forget to do your changes also at EngineL.xml   (or the whole thing 

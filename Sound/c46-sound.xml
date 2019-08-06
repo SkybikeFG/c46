@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-<!--Sounds from BristolFreighter-->
+<!--Sounds from BristolFreighter
+    and real r2800 c46 sounds-->
   <fx>
+    <!--  LEFT  ENGINE-->
     <crank>
       <name>engstart1</name>
       <path>Aircraft/c46/Sound/r2800_crank.wav</path>
@@ -89,12 +91,56 @@
     <!--idle-->
 
     <engine>
-      <name>engine1_idle</name>
+      <name>engine1_idle_ext</name>
       <mode>looped</mode>
       <path>Aircraft/c46/Sound/r2800_idle.wav</path>
       <condition>
         <and>
-          <property>engines/engine[0]/running</property>
+          <and>
+            <property>engines/engine[0]/running</property>
+            <not>
+              <property>/sim/current-view/internal</property>
+            </not>
+          </and>
+          <less-than>
+            <property>engines/engine[0]/rpm</property>
+            <value>700</value>
+          </less-than>
+        </and>
+      </condition>
+      <volume>
+          <property>engines/engine[0]/mp-osi</property>
+          <factor>0.009</factor>
+          <min>0.15</min>
+          <max>0.6</max>
+          <offset>0.15</offset>
+      </volume>
+      <pitch>
+          <property>engines/engine[0]/rpm</property>
+          <factor>0.0004</factor>
+          <min>0.1</min>
+          <max>2.0</max>
+          <offset>0.3</offset>
+      </pitch>
+      <position>
+          <x>-3.10</x>
+          <y>8.35</y>
+          <z>-0.3</z>
+      </position>
+      <reference-dist>20.0</reference-dist>
+      <max-dist>50.0</max-dist>
+    </engine>
+    
+    <engine>
+      <name>engine1_idle_int</name>
+      <mode>looped</mode>
+      <path>Aircraft/c46/Sound/r2800_idle_int.wav</path>
+      <condition>
+        <and>
+          <and>
+            <property>engines/engine[0]/running</property>
+            <property>/sim/current-view/internal</property>
+          </and>
           <less-than>
             <property>engines/engine[0]/rpm</property>
             <value>700</value>
@@ -242,7 +288,7 @@
     <propellerhigh>
       <name>propellerhighLeft</name>
       <mode>looped</mode>
-      <path>Aircraft/c46/Sound/engine_running_int_1.wav</path>
+      <path>Aircraft/c46/Sound/r2800_running_int_1.wav</path>
       <condition>
         <and>
           <property>/engines/engine[0]/running</property>
@@ -285,7 +331,7 @@
     <propellerlow>
       <name>propellerlowLeft</name>
       <mode>looped</mode>
-      <path>Aircraft/c46/Sound/engine_running_int_2.wav</path>
+      <path>Aircraft/c46/Sound/r2800_running_int_2.wav</path>
       <condition>
         <and>
           <property>/engines/engine[0]/running</property>
@@ -326,6 +372,8 @@
       </position>
     </propellerlow>
 
+
+    <!-- Right Engine-->
     <crank>
       <name>engstart2</name>
       <path>Aircraft/c46/Sound/r2800_crank.wav</path>
@@ -408,14 +456,19 @@
       <reference-dist>100</reference-dist>
       <max-dist>1000</max-dist>
     </engine>
-
+    
     <engine>
-      <name>engine2_idle</name>
+      <name>engine2_idle_ext</name>
       <mode>looped</mode>
       <path>Aircraft/c46/Sound/r2800_idle.wav</path>
       <condition>
         <and>
-          <property>engines/engine[1]/running</property>
+          <and>
+            <property>engines/engine[1]/running</property>
+            <not>
+              <property>/sim/current-view/internal</property>
+            </not>
+          </and>
           <less-than>
             <property>engines/engine[1]/rpm</property>
             <value>700</value>
@@ -423,23 +476,62 @@
         </and>
       </condition>
       <volume>
-        <property>engines/engine[1]/mp-osi</property>
-        <factor>0.009</factor>
-        <min>0.15</min>
-        <max>0.6</max>
-        <offset>0.15</offset>
+          <property>engines/engine[1]/mp-osi</property>
+          <factor>0.009</factor>
+          <min>0.15</min>
+          <max>0.6</max>
+          <offset>0.15</offset>
       </volume>
       <pitch>
-        <property>engines/engine[1]/rpm</property>
-        <factor>0.0004</factor>
-        <min>0.1</min>
-        <max>2.0</max>
-        <offset>0.3</offset>
+          <property>engines/engine[1]/rpm</property>
+          <factor>0.0004</factor>
+          <min>0.1</min>
+          <max>2.0</max>
+          <offset>0.3</offset>
       </pitch>
       <position>
-        <x>-3.10</x>
-        <y>8.35</y>
-        <z>-0.3</z>
+          <x>-3.10</x>
+          <y>8.35</y>
+          <z>-0.3</z>
+      </position>
+      <reference-dist>20.0</reference-dist>
+      <max-dist>50.0</max-dist>
+    </engine>
+    
+    <engine>
+      <name>engine2_idle_int</name>
+      <mode>looped</mode>
+      <path>Aircraft/c46/Sound/r2800_idle_int.wav</path>
+      <condition>
+        <and>
+          <and>
+            <property>engines/engine[1]/running</property>
+            <property>/sim/current-view/internal</property>
+          </and>
+          <less-than>
+            <property>engines/engine[1]/rpm</property>
+            <value>700</value>
+          </less-than>
+        </and>
+      </condition>
+      <volume>
+          <property>engines/engine[1]/mp-osi</property>
+          <factor>0.009</factor>
+          <min>0.15</min>
+          <max>0.6</max>
+          <offset>0.15</offset>
+      </volume>
+      <pitch>
+          <property>engines/engine[1]/rpm</property>
+          <factor>0.0004</factor>
+          <min>0.1</min>
+          <max>2.0</max>
+          <offset>0.3</offset>
+      </pitch>
+      <position>
+          <x>-3.10</x>
+          <y>8.35</y>
+          <z>-0.3</z>
       </position>
       <reference-dist>20.0</reference-dist>
       <max-dist>50.0</max-dist>
@@ -560,7 +652,7 @@
     <propellerhigh>
       <name>propellerhighRight</name>
       <mode>looped</mode>
-      <path>Aircraft/c46/Sound/engine_running_int_1.wav</path>
+      <path>Aircraft/c46/Sound/r2800_running_int_1.wav</path>
       <condition>
         <and>
           <property>/engines/engine[1]/running</property>
@@ -603,7 +695,7 @@
     <propellerlow>
       <name>propellerlowRight</name>
       <mode>looped</mode>
-      <path>Aircraft/c46/Sound/engine_running_int_2.wav</path>
+      <path>Aircraft/c46/Sound/r2800_running_int_2.wav</path>
       <condition>
         <and>
           <property>/engines/engine[1]/running</property>
@@ -633,6 +725,8 @@
       </position>
     </propellerlow>
 
+
+   <!-- OTHERS-->
     <rumble>
       <name>rumble</name>
       <mode>looped</mode>

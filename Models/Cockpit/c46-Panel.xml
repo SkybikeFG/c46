@@ -795,6 +795,38 @@
     </offsets>
   </model>
   
+  <animation>
+	<type>knob</type>
+	<object-name>APswitch</object-name>
+	<property>/it-stec55x/input/ap-master-sw</property>
+	<offset-deg>-30</offset-deg>
+	<factor>45</factor>
+	<center>
+		<x-m>-10.6911</x-m>
+		<y-m>-0.001134</y-m>
+		<z-m>-0.340975</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+	<action>
+		<binding>
+			<command>property-adjust</command>
+			<property>it-stec55x/input/ap-master-sw</property>
+			<min>0</min>
+			<max>1</max>
+		</binding>
+	</action>
+	<hovered>
+		<binding>
+			<command>set-tooltip</command>
+			<tooltip-id>apswitch</tooltip-id>
+			<label>Autopilot Master Switch</label>
+		</binding>
+	</hovered>
+  </animation>
   
   <!--#  #  #  Gear indication lights  #  #  #-->  
   <animation>

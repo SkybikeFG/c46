@@ -104,7 +104,7 @@ var GeneratorClass = {};
 # ************************************  Arnd wrote: the c172p has two different engines to choose from, "active-engine" contains a copy of the chosen engine. ****
 GeneratorClass.new = func (num){
     var obj = { parents : [GeneratorClass],
-                rpm_source : "/engines/engine[0]/rpm",
+                rpm_source : "/engines/engine[" ~ num ~ "]/rpm",
                 rpm_threshold : 1400.0,
                 ideal_volts : 28.0,
                 ideal_amps : 200.0 };
@@ -486,10 +486,7 @@ var avionics_bus_1 = func() {
     var load = 0.0;
 
     # we are fed from the electrical bus 1
-    var master_av = getprop("/controls/switches/master-avionics");
-    if ( master_av ) {
-        bus_volts = ebus1_volts;
-    }
+	bus_volts = ebus1_volts;
 
     load += bus_volts / 20.0;
 

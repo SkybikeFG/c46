@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- C46 3D panel  2018
-     Panel Version 1: Early 2018; Beginning (cancelled)
+<!-- C46 3D panel  2018-2019
+     Panel Version 1: Early 2018; Mixed layout for default instrumets (cancelled)
 	 Panel Version 2: June 2018; Restart for TinkerBelle Layout, on top of panel (completed)
-     Panel Version 3: October 2018; Cut into the panel, Glass, Maps (In progess)
+     Panel Version 3: October 2018; Sink instruments into panel, Glass, AO Map, Lightmap (completed)
    ________________
  /  1  |  3  |  5  \
 |______|_____|______|
@@ -787,13 +787,46 @@
   
   <model>
     <name>4_4</name>
-    <path>Aircraft/c46/Models/Cockpit/Instruments/kns80/kns80.xml</path>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/stec-55x/stec-55x.xml</path>
     <offsets>
-      <x-m>-10.715 </x-m>
+      <x-m>-10.711 </x-m>
       <y-m> -0.125 </y-m>
-      <z-m> -0.36 </z-m>
+      <z-m> -0.34 </z-m>
     </offsets>
   </model>
+  
+  <animation>
+	<type>knob</type>
+	<object-name>APswitch</object-name>
+	<property>/it-stec55x/input/ap-master-sw</property>
+	<offset-deg>-30</offset-deg>
+	<factor>45</factor>
+	<center>
+		<x-m>-10.6911</x-m>
+		<y-m>-0.001134</y-m>
+		<z-m>-0.340975</z-m>
+	</center>
+	<axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+	</axis>
+	<action>
+		<binding>
+			<command>property-adjust</command>
+			<property>it-stec55x/input/ap-master-sw</property>
+			<min>0</min>
+			<max>1</max>
+		</binding>
+	</action>
+	<hovered>
+		<binding>
+			<command>set-tooltip</command>
+			<tooltip-id>apswitch</tooltip-id>
+			<label>Autopilot Master Switch</label>
+		</binding>
+	</hovered>
+  </animation>
   
   <!--#  #  #  Gear indication lights  #  #  #-->  
   <animation>
@@ -880,13 +913,22 @@
   
   <model>
     <name>4_5</name>
+    <path>Aircraft/c46/Models/Cockpit/Instruments/kns80/kns80.xml</path>
+    <offsets>
+      <x-m>-10.715 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -0.423 </z-m>
+    </offsets>
+  </model>
+  <!--model>
+    <name>4_5</name>
     <path>Aircraft/c46/Models/Cockpit/Instruments/kln94/kln94.xml</path>
     <offsets>
       <x-m>-10.715 </x-m>
       <y-m>  0.000 </y-m>
       <z-m> -0.434 </z-m>
     </offsets>
-  </model>  
+  </model-->  
   
   <!--right-->
   <model>

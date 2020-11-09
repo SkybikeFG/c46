@@ -1,12 +1,20 @@
 <!-- C46 cockpit -->
-<!-- 2018 -->
-
-
+<!-- 2018 2019 -->
 <PropertyList>
-
   <path>Cockpit.ac</path>
-
-  <!-- Sub-Model Imports -->
+  
+  <!--TOC:
+    1) Sub-Model imports
+    2) Effects
+    3) Main control elements (Rudder, yoke)
+        labeled as Pedal "LC" (meaning LeftCopilot) or "RP" (RightPilot)
+    4) Seat: (armrest animation/seat belt) and Copilot model
+    5) Fuel Selector
+    6) Window sell pilot
+    7) Window sell copilot
+        
+   -->
+  <!-- ### 1) Sub-Model Imports ### -->
 
   <model>
     <name>Pedestal</name>
@@ -23,7 +31,7 @@
     <path>Aircraft/c46/Models/Cockpit/c46-Panel.xml</path>
   </model>
   
-  <!--Materials and effects-->
+  <!-- ### 2) Materials and effects ### -->
   <!--MATERIAL "WindowGlass" rgb 0.608 1.000 0.638  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.615 0.923 1.000  shi 12 trans 0.800-->
   <effect>
     <inherits-from>Aircraft/c46/Models/Effects/interior/interior-glass-reflection-window-front</inherits-from>
@@ -42,7 +50,7 @@
     <object-name>glas_interior_back</object-name>
   </effect-->
 
-  <!-- Pedals (pilot(P)/copilot(C))-->
+  <!-- ### 3.1) Pedals (pilot(P)/copilot(C) and left(L)/right(R)) ### -->
   <animation>
     <type>translate</type>
     <object-name>DRudderLP</object-name>
@@ -90,7 +98,7 @@
   </animation>
 
 
-  <!-- Yokes -->
+  <!-- 3.2) Yokes -->
 
   <animation>
     <type>select</type>
@@ -176,7 +184,7 @@
   </animation>
   
   
-  <!--Seat and Copilot-->
+  <!-- ## 4) Seat and Copilot ###-->
   <animation>
     <type>pick</type>
     <object-name>DSeatParmrest</object-name>  
@@ -235,6 +243,7 @@
   
   <animation>
     <object-name>DCopilot</object-name>
+    <object-name>DSeatCbelt</object-name>
     <type>select</type>
     <condition>
 	  <not>
@@ -247,7 +256,7 @@
   </animation>
   
   
-  <!--Fuel Select-->
+  <!-- ## 5) Fuel Select ##-->
   <animation>
     <name>fuelSelectors</name>
 	<object-name>DfuelSelectCL</object-name>
@@ -389,5 +398,7 @@
       </binding>
     </hovered>
   </animation>
+  
+  <!-- ## 6) Window sell Pilot ## -->
 
 </PropertyList>

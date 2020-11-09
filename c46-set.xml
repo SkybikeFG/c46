@@ -27,59 +27,116 @@ Developed under GNU-GPL for FlightGear FS.
 	 </author>
   </authors>
   
+    <maintainers>
+        <maintainer n="0">
+            <name>Arnd Lebert</name>
+            <!--email>skybike@skybike.fg</email-->
+        </maintainer>
+    </maintainers>
+  
   <status>beta</status>
-  <aircraft-version>2019.1</aircraft-version>
+  <aircraft-version>2020.3</aircraft-version>
   <minimum-fg-version>2017.2</minimum-fg-version>
   <rating>
    <FDM type="int">2</FDM>
    <systems type="int">2</systems>
-   <cockpit type="int">3</cockpit>
+   <cockpit type="int">4</cockpit>
    <model type="int">4</model>
   </rating>
 
     <tags>
-      <tag>1940s</tag>
-	  <tag>ww2</tag>
-      <tag>2-engine</tag>
-      <tag>cargo</tag>
-      <!--tag>curtiss-wright</tag-->
-      <tag>ifr</tag>
-      <tag>piston</tag>
-      <tag>propeller</tag>
-      <tag>radial</tag>
-      <tag>turbocharged</tag>
-      <tag>retractable-gear</tag>
-      <tag>tail-dragger</tag>
-      <tag>transport</tag>
-      <tag>twin-engine</tag>
-      <tag>variable-pitch</tag>
+      <!-- Era -->
+        <tag>1940s</tag>
+	    <tag>ww2</tag>
+      <!-- Manufacturer curtiss wright not implemented-->
+      <!-- Aircraft Type -->
+        <tag>cargo</tag>
+        <tag>transport</tag>
+      <!-- Propulsion -->
+        <tag>piston</tag>
+        <tag>propeller</tag>
+        <tag>radial</tag>
+        <tag>supercharged</tag>
+        <tag>twin-engine</tag>
+        <tag>variable-pitch</tag>
+      <!-- Feature -->
+        <tag>mid-wing</tag>
+        <tag>ifr</tag>
+        <tag>retractable-gear</tag>
+        <tag>supercharger</tag>
+        <tag>tail-dragger</tag>      
+        <tag>variable-pitch</tag>
     </tags>
 	
 	<urls>
-	   <home-page>https://github.com/skybikefg/c46/wiki</home-page>
-	   <support>https://github.com/skybikefg/c46/issues</support><!--http://forum.flightgear.org-->
-	   <wikipedia>https://en.wikipedia.org/wiki/Curtiss_C-46_Commando </wikipedia>
-	   <code-repository>https://github.com/SkybikeFG/c46</code-repository>
+	    <home-page>https://github.com/skybikefg/c46/wiki</home-page>
+	    <support>https://github.com/skybikefg/c46/issues</support><!--http://forum.flightgear.org-->
+	    <wikipedia>https://en.wikipedia.org/wiki/Curtiss_C-46_Commando </wikipedia>
+	    <code-repository>https://github.com/SkybikeFG/c46</code-repository>
 	</urls>
   
     <flight-model>jsb</flight-model>
     <aero>Systems/c46</aero>
+    
+    <previews>
+        <preview>
+            <type>exterior</type><splash type="bool">true</splash>
+            <path>Previews/Preview0.png</path>
+        </preview>
+        <preview>
+            <type>panel</type><splash type="bool">true</splash>
+            <path>Previews/Preview1.png</path>
+        </preview>
+        <preview>
+            <type>exterior</type><splash type="bool">true</splash>
+            <path>Previews/Preview2.png</path>
+        </preview>
+        <preview>
+            <type>exterior</type><splash type="bool">true</splash>
+            <path>Previews/Preview3.png</path>
+        </preview>
+        <preview>
+            <type>exterior</type><splash type="bool">true</splash>
+            <path>Previews/Preview4.png</path>
+        </preview>
+        <preview>
+            <type>exterior</type><splash type="bool">true</splash>
+            <path>Previews/Preview5.png</path>
+        </preview>
+        <preview>
+            <type>exterior</type><splash type="bool">true</splash>
+            <path>Previews/Preview6.png</path>
+        </preview>
+    </previews>
     <startup>
-      <splash-texture>Aircraft/c46/splash.png</splash-texture>
-      <splash-texture>Aircraft/c46/splash1.png</splash-texture>
-      <splash-texture>Aircraft/c46/splash3.png</splash-texture>
-      <!--splash-title>Text</splash-title-->
+        <splash-logo-image>Previews/CurtissWright.png</splash-logo-image>
+        <!-- old splash screens -->
+        <splash-texture>Aircraft/c46/splash.png</splash-texture>
+        <splash-texture>Aircraft/c46/splash1.png</splash-texture>
+        <splash-texture>Aircraft/c46/splash3.png</splash-texture>
     </startup>
+    
+    <dimensions>
+		<radius-m type="double">38</radius-m>
+		<parkpos-offset-m type="double">0.5</parkpos-offset-m>
+	</dimensions>
+	<aircraft-class type="string">ga</aircraft-class>
+	<aircraft-operator type="string">NONE</aircraft-operator>
   
     <model>
-      <path>Aircraft/c46/Models/curtiss-c46.xml</path>
-      <options>
-        <hide-yokes type="bool" archive="y">false</hide-yokes>
-      </options>
+        <path>Aircraft/c46/Models/curtiss-c46.xml</path>
+        <options>
+            <hide-yokes type="bool" archive="y">false</hide-yokes>
+        </options>
+      
+        <!-- Default livery -->
+        <livery>
+            <name type="string">Tinker Belle</name>
+        </livery>
     </model> 
 
     <sound>
-      <path>Aircraft/c46/Sound/c46-sound.xml</path>
+        <path>Aircraft/c46/Sound/c46-sound.xml</path>
     </sound>
 
     <view>
@@ -155,27 +212,37 @@ Developed under GNU-GPL for FlightGear FS.
     </instrumentation>
    
 	<systems>
-	  <path>Systems/systems.xml</path>
+	    <path>Systems/systems.xml</path>
 	  
-	  <autopilot>
-		<name>IT-STEC55X</name>
-		<path>Systems/stec-55x.xml</path>
-	  </autopilot>
-      <autopilot n="2">
-        <path>Systems/glass-rain.xml</path>
-      </autopilot>
-	  <autopilot n="3">
-        <path>Systems/select-value.xml</path>
-      </autopilot>
+	    <autopilot n="3">
+		  <name>IT-STEC55X</name>
+		    <path>Systems/stec-55x.xml</path>
+	    </autopilot>
+        <autopilot n="4">
+            <path>Systems/glass-rain.xml</path>
+        </autopilot>
+	    <autopilot n="5">
+            <path>Systems/select-value.xml</path>
+        </autopilot>
 	  
-	  <property-rule n="100">
-        <path>Systems/electrical.xml</path>
-      </property-rule>
+	    <property-rule n="100">
+            <path>Systems/electrical.xml</path>
+        </property-rule>
   
 	</systems>
  
     <menubar>
       <default>
+        <menu n="3">
+            <item n="4">
+                <label>STec-55x new Autopilot</label>
+                <enabled type="bool">true</enabled>
+                <binding>
+                    <command>dialog-show</command>
+                    <dialog-name>autopilot2</dialog-name>
+                </binding>
+            </item>
+        </menu>
         <menu n="10">
           <label>C-46</label>
           <enabled type="bool">true</enabled>
@@ -256,14 +323,15 @@ Developed under GNU-GPL for FlightGear FS.
   <it-stec55x>
 	<settings>
 		<fd-equipped type="bool">0</fd-equipped> <!-- Does the aircraft have a flight director installed? -->
-		<gain-pitch type="double">1.0</gain-pitch> <!-- Modify the pitch axis gain -->
-		<gain-roll type="double">1.5</gain-roll> <!-- Modify the roll axis gain -->
-		<gain-yaw type="double">1.5</gain-yaw> <!-- Modify the yaw axis gain -->
+		<gain-pitch type="double">1</gain-pitch> <!-- Modify the pitch axis gain -->
+		<gain-roll type="double">4.0</gain-roll> <!-- Modify the roll axis gain -->
+		<gain-yaw type="double">1.0</gain-yaw> <!-- Modify the yaw axis gain -->
 		<hsi-equipped-1 type="bool">1</hsi-equipped-1> <!-- Does the aircraft have an HSI or OBS for NAV1? -->
 		<hsi-equipped-2 type="bool">0</hsi-equipped-2> <!-- Does the aircraft have an HSI or OBS for NAV2? -->
 		<is-turboprop type="bool">0</is-turboprop> <!-- Does the aircraft have turboprop engines? -->
 		<use-controls-flight type="bool">1</use-controls-flight> <!-- Use generic /controls/flight for flight controls instead of custom properties -->
 		<yd-equipped type="bool">1</yd-equipped> <!-- Does the aircraft have the optional yaw damper installed? -->
+        <predict-turn-s type="double">8</predict-turn-s> <!-- Predict turn rate in x seconds - Default was two -->
 	</settings>
  </it-stec55x>
  
@@ -328,6 +396,8 @@ Developed under GNU-GPL for FlightGear FS.
     <fuel>
       <left-valve type="int">0</left-valve>
       <right-valve type="int">1</right-valve>
+      <left-valve-pos type="double">1</left-valve-pos>
+      <right-valve-pos type="double">1</right-valve-pos>
 	  <boostpumps-l-high type="bool">0</boostpumps-l-high>
 	  <boostpumps-r-high type="bool">0</boostpumps-r-high>
     </fuel>
@@ -387,10 +457,6 @@ Developed under GNU-GPL for FlightGear FS.
     </lighting>
   </controls>
 
-  
-
-  
-
   <limits>
     <mass-and-balance><!--Manitoba 4:6:5: page 78-->
       <maximum-takeoff-mass-lbs type="double">48000</maximum-takeoff-mass-lbs>
@@ -410,5 +476,14 @@ Developed under GNU-GPL for FlightGear FS.
   More:
   constants: V1 : 89, V2: 93 (NAM 4:5:10)
   -->
+  
+  <aircraft>
+    <icao>
+      <wake-turbulence-category>M</wake-turbulence-category>
+      <type type="string">C46</type>
+      <equipment type="string">SDFGY</equipment>
+      <surveillance type="string">S</surveillance>
+    </icao>
+  </aircraft>
 
 </PropertyList>

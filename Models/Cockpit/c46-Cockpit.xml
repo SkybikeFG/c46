@@ -267,7 +267,8 @@
     <object-name>DfuelSelectPR</object-name>
   </animation>
   <!--animation>
-    <object-name>fuelSelectors</object-name>
+    <object-name>DfuelSelectP</object-name>
+    <object-name>DfuelSelectP</object-name>
     <type>pick</type> 
 	<action>
       <button>0</button>
@@ -398,6 +399,72 @@
       </binding>
     </hovered>
   </animation>
+  
+  <animation><!--rotating animation, see fuel.nas-->
+    <type>rotate</type>
+    <object-name>DfuelSelectCL</object-name>
+    <property>controls/fuel/left-valve-pos</property>
+    <factor>-90</factor>
+    <center>
+      <x-m>-10.5553</x-m>
+      <y-m>0.7185</y-m>
+      <z-m>-0.5453</z-m>
+    </center>
+    <axis>
+      <x>-0.2588</x>
+      <y>0.9659</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>DfuelSelectCR</object-name>
+    <property>controls/fuel/right-valve-pos</property>
+    <factor>-90</factor>
+    <center>
+      <x-m>-10.5553</x-m>
+      <y-m>0.7185</y-m>
+      <z-m>-0.5453</z-m>
+    </center>
+    <axis>
+      <x>-0.2588</x>
+      <y>0.9659</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>DfuelSelectPL</object-name>
+    <property>controls/fuel/left-valve-pos</property>
+    <factor>90</factor>
+    <center>
+      <x-m>-10.5553</x-m>
+      <y-m>-0.7185</y-m>
+      <z-m>-0.5453</z-m>
+    </center>
+    <axis>
+      <x>-0.2588</x>
+      <y>-0.9659</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>DfuelSelectPR</object-name>
+    <property>controls/fuel/right-valve-pos</property>
+    <factor>90</factor>
+    <center>
+      <x-m>-10.5553</x-m>
+      <y-m>-0.7185</y-m>
+      <z-m>-0.5453</z-m>
+    </center>
+    <axis>
+      <x>-0.2588</x>
+      <y>-0.9659</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  
   
   <!-- ## 6) Window sell Pilot ## -->
 

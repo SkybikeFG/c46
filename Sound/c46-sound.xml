@@ -860,7 +860,7 @@
 
     <click>
       <name>clickOn</name>
-      <path>Sound/click.wav</path>
+      <path>Sounds/click.wav</path>
       <condition>
         <property>sim/model/sound/click</property>
       </condition>
@@ -871,7 +871,7 @@
 
     <click>
       <name>clickOff</name>
-      <path>Sound/click.wav</path>
+      <path>Sounds/click.wav</path>
       <condition>
         <not><property>sim/model/sound/click</property></not>
       </condition>

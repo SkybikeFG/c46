@@ -12,7 +12,7 @@
 		<button-translate>-0.002</button-translate> <!-- Button translate factor -->
 	</params>
 	
-	<animation>
+	<animation><!-- indirect lightning knobs decals (panel-norm) -->
 		<type>material</type>
 		<object-name>GroupLighting</object-name>
 		<emission>
@@ -23,14 +23,31 @@
 		</emission>
 	</animation>
 	
-	<animation>
+	<animation><!-- indirect lightning display (panel norm)-->
+		<type>material</type>
+		<object-name>Display</object-name>
+        <condition>		
+            <greater-than>		
+                <property>controls/lighting/panel-norm</property>
+                <property>controls/lighting/radio-norm</property>
+            </greater-than>
+        </condition>
+		<emission>
+			<red>0.4</red>
+			<green>0.4</green>
+			<blue>0.4</blue>
+			<factor-prop>controls/lighting/panel-norm</factor-prop>
+		</emission>
+	</animation>
+    
+    <animation><!-- or if greater, back lightning display (radio-norm) -->
 		<type>material</type>
 		<object-name>Display</object-name>
 		<emission>
 			<red>0.4</red>
 			<green>0.4</green>
 			<blue>0.4</blue>
-			<factor-prop>controls/lighting/panel-norm</factor-prop>
+			<factor-prop>controls/lighting/radio-norm</factor-prop>
 		</emission>
 	</animation>
 	

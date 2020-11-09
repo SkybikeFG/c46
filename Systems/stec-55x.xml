@@ -385,6 +385,16 @@
 			<max>180</max>
 		</period>
 	</filter>
+    
+    <filter>
+		<name>HDG INPUT KNOB</name>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<input>
+			<property>/instrumentation/adf[0]/rotation-deg</property>
+		</input>
+		<output>/it-stec55x/input/hdg</output>
+	</filter>
 	
 	<!-- Roll Axis -->
 	
@@ -672,7 +682,7 @@
 		<debug>false</debug>
 		<input>/instrumentation/turn-indicator/indicated-turn-rate</input>
 		<output>/it-stec55x/internal/predicted-turn-rate</output>
-		<seconds>2.0</seconds>
+		<seconds>/it-stec55x/settings/predict-turn-s</seconds>
 		<filter-gain>0.0</filter-gain>
 	</predict-simple>
 	

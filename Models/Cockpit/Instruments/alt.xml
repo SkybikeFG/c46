@@ -21,7 +21,7 @@
 
  <animation>
   <type>material</type>
-  <object-name>disk</object-name>
+  <object-name>Face</object-name>
   <emission>
    <red>0.0004</red>
    <green>0.0004</green>

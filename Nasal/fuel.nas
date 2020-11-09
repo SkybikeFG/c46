@@ -197,6 +197,63 @@ setlistener("/consumables/fuel/tank[0]/selected", func(){ listenerfunc(0);},0,0)
 #first Run
 fuelPayloadValve();
 
+#####
+# Define fuel selector position and limit its rotation speed
+#####
+# define "timer" variable (although the callback does not exist yet, so we use another one)
+var fuelpositionTimer = maketimer(0.1, func{listenerfunc();} );
+
+var rotatevalve = func(){
+    var jobDone = 1;#end timer
+    # current animation position (0.0 ... 3.9)
+    var rValvePos = getprop("/controls/fuel/right-valve-pos");
+    var lValvePos = getprop("/controls/fuel/left-valve-pos");
+    
+    # wanted value (make -2...4 to 0...3) 
+    var valvePattern = [0.0, 0.0, 1.0, 1.0, 2.0, 2.0, 3.0, 3.0];
+    var rGoal = valvePattern[ getprop("/controls/fuel/right-valve")+2 ];
+    var lGoal = valvePattern[ getprop("/controls/fuel/left-valve")+2 ];
+    
+    #end of ring scale
+    if(rGoal==3 and rValvePos < 1){
+        rValvePos=rValvePos+4;
+    }
+    if(rGoal==0 and rValvePos > 2){
+        rValvePos=rValvePos-4;
+    }
+    if(lGoal==3 and lValvePos < 1){
+        lValvePos=lValvePos+4;
+    }
+    if(lGoal==0 and lValvePos > 2){
+        lValvePos=lValvePos-4;
+    }
+    
+    # right value rising or falling? then let valve slowly rise or fall as well
+    if(rValvePos < rGoal-0.03){
+        # "< Goal-0.03" to prevent it from oszillating 0.99 1.04 0.99 1.04 forever
+        setprop("/controls/fuel/right-valve-pos", rValvePos + 0.05);
+        jobDone = 0;
+    }else if(rValvePos > rGoal+0.03){
+        setprop("/controls/fuel/right-valve-pos", rValvePos - 0.05);
+        jobDone = 0;
+    }
+    if(lValvePos < lGoal-0.03){
+        setprop("/controls/fuel/left-valve-pos", lValvePos + 0.05);
+        jobDone = 0;
+    }else if(lValvePos > lGoal+0.03){
+        setprop("/controls/fuel/left-valve-pos", lValvePos - 0.05);
+        jobDone = 0;
+    }
+    
+    # stop timer
+    if(jobDone==1){
+        fuelpositionTimer.stop();
+    }
+}
+
+# now the callback for our timer exists, here we go to redefine it.
+fuelpositionTimer = maketimer(0.05, func{rotatevalve();} );
+fuelpositionTimer.start();#start during fg startup
 
 #####
 # Autofuel - Let autofuel change the tank (like a copilot)
@@ -264,8 +321,8 @@ setlistener("/controls/fuel/crossfeed", func(){
 			selectTank();}
 	},0,0);
 	#if not it changes when valves change
-setlistener("/controls/fuel/left-valve", func(){ selectTank(); });
-setlistener("/controls/fuel/right-valve", func(){ selectTank(); });
+setlistener("/controls/fuel/left-valve", func(){ selectTank(); fuelpositionTimer.start();});
+setlistener("/controls/fuel/right-valve", func(){ selectTank(); fuelpositionTimer.start();});
 _setlistener("/sim/signals/fdm-initialized", func(){ selectTank(); });#initial start
 	
 	

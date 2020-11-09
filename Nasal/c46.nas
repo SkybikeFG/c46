@@ -28,9 +28,9 @@ if(getprop("/sim/rendering/rembrandt/enabled")==1){
 
 #Dialog
 var clockDialogP = gui.Dialog.new("/sim/gui/dialogs/panel/clock0/dialog",
-                        "Aircraft/c46/Dialogs/clockPilot.xml");
+                        "Aircraft/c46/gui/dialogs/clockPilot.xml");
 var clockDialogC = gui.Dialog.new("/sim/gui/dialogs/panel/clock1/dialog",
-                        "Aircraft/c46/Dialogs/clockCopilot.xml");
+                        "Aircraft/c46/gui/dialogs/clockCopilot.xml");
 						
 _setlistener("/sim/time/warp", func(){
     if(getprop("instrumentation/clock[0]/dialog/real")==1){

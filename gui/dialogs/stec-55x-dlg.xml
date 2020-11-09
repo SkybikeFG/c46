@@ -5,7 +5,7 @@
 
 <PropertyList>
 
-	<name>autopilot</name>
+	<name>autopilot2</name>
 	<layout>vbox</layout>
 	
 	<group>
@@ -30,7 +30,8 @@
 				<legend>?</legend>
 				<binding>
 					<command>nasal</command>
-					<script>gui.popupTip("Please refer to the POH, this autopilot operates as per the manual.");</script>
+					<!--script>gui.popupTip("Please refer to the POH, this autopilot operates as per the manual.");</script-->
+                    <script>gui.popupTip("Activate autopilot master switch (lower central panel) and wait 10 sec, press hdg and set heading on ADF gauge (lower pilot panel)");</script>
 				</binding>
 			</button>
 			<button>

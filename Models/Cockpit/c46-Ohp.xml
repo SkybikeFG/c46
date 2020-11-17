@@ -4,8 +4,6 @@
 	most is still to come-->
 <PropertyList>
 <!--<object-name>O0oh</object-name>
-    <object-name>O1Dome</object-name>
-    <object-name>O1FwrdBelly</object-name>
     <object-name>O1HornRelease</object-name>
     <object-name>O1HydLight</object-name>
     <object-name>O1IceCarb</object-name>
@@ -15,7 +13,6 @@
     <object-name>O1Primer1</object-name>
     <object-name>O1Primer2</object-name>
     <object-name>O1PropellorPump</object-name>
-    <object-name>O1RadioMaster</object-name>
     <object-name>O1Starter1</object-name>
     <object-name>O1Starter2</object-name>-->
    <path>OHP.ac</path>
@@ -25,13 +22,31 @@
     <object-name>O1Glass</object-name>
    </effect>
    
+   <!-- from bottom to top
+   
+        1A Gauges Volt Amp
+        1B Rheostats
+        1C Switch row
+        1D Magnetos Panel
+        1E Switches Exterior light
+        1F Batteries/Generators
+        1G Dome Light / Preoiler
+        1F Ignition
+        
+        2 - Radios 
+         not yet animated - I even dont think they are functional in Tinker Belle
+        
+        3A Fuses
+        3B Belly /LDG warning
+        3C Booster / light-->
+
    <!--      /|
             / |
               |
               |
               |    -->
    <!--#########################################################################-->
-   <!-- GAUGES --><!--Done, second "amp" source needed-->
+   <!-- 1A GAUGES --><!--Done, second "amp" source needed-->
    <animation>
     <type>rotate</type>
     <object-name>O1VoltsNeedle</object-name>
@@ -53,11 +68,11 @@
   <animation>
     <type>rotate</type>
     <object-name>O1amps1Needle</object-name>
-    <property>/systems/electrical/amps</property>
+    <property>/systems/electrical/engine[0]/ammeter</property>
     <factor>-.26</factor>
 	<condition>
 	  <greater-than>
-	    <property>/systems/electrical/amps</property>
+	    <property>/systems/electrical/engine[0]/ammeter</property>
 		<value>-50</value>
 	  </greater-than>
 	</condition>
@@ -76,11 +91,11 @@
   <animation>
     <type>rotate</type>
     <object-name>O1Amps2Needle</object-name>
-    <property>/systems/electrical/amps</property>
+    <property>/systems/electrical/engine[1]/ammeter</property>
     <factor>-.26</factor>
 	<condition>
 	  <greater-than>
-	    <property>/systems/electrical/amps</property>
+	    <property>/systems/electrical/engine[1]/ammeter</property>
 		<value>-50</value>
 	  </greater-than>
 	</condition>
@@ -109,7 +124,7 @@
   </animation>
   
     <!--#########################################################################--> 
-    <!--RHEOSTATS-->
+    <!--1B RHEOSTATS-->
     <!--Done, compass needed-->
     <animation>
       <type>knob</type>
@@ -126,7 +141,7 @@
       <action>
         <binding>
           <command>property-adjust</command>
-          <property>/controls/lighting/panel-norm</property>
+          <property>/controls/lighting/panel-rheo</property>
           <factor>0.2</factor>
           <min>0</min>
           <max>1</max>                
@@ -143,7 +158,7 @@
         <binding>
           <command>set-tooltip</command>
           <tooltip-id>rhinstpan</tooltip-id>
-		  <property>/controls/lighting/panel-norm</property>
+		  <property>/controls/lighting/panel-rheo</property>
 		  <measure-text>Panel: 100%</measure-text>
           <label>Panel: %d%%</label>
 		  <mapping>percent</mapping>
@@ -188,7 +203,7 @@
     <animation>
       <type>knob</type>
       <object-name>O1RhInstruments</object-name>
-      <property>/controls/lighting/instruments-norm</property>	
+      <property>/controls/lighting/instruments-rheo</property>	
       <factor>-300</factor>
       <offset-deg>150</offset-deg>
       <center>
@@ -200,7 +215,7 @@
       <action>
         <binding>
           <command>property-adjust</command>
-          <property>/controls/lighting/instruments-norm</property>
+          <property>/controls/lighting/instruments-rheo</property>
           <factor>0.2</factor>
           <min>0</min>
           <max>1</max>                
@@ -216,7 +231,7 @@
         <binding>
           <command>set-tooltip</command>
           <tooltip-id>instruments</tooltip-id>
-		  <property>/controls/lighting/instruments-norm</property>
+		  <property>/controls/lighting/instruments-rheo</property>
 		  <measure-text>Instruments: 100%</measure-text>
           <label>Instruments: %d%%</label>
 		  <mapping>percent</mapping>
@@ -227,7 +242,7 @@
     <animation><!--"Overhead" switch used for Cockpit dome light-->
       <type>knob</type>
       <object-name>O1RhOverhead</object-name>
-      <property>/controls/lighting/dome-white-norm</property>	
+      <property>/controls/lighting/cockpit-fwd-rheo</property>	
       <factor>-300</factor>
       <offset-deg>150</offset-deg>
       <center>
@@ -239,7 +254,7 @@
       <action>
         <binding>
           <command>property-adjust</command>
-          <property>/controls/lighting/dome-white-norm</property>
+          <property>/controls/lighting/cockpit-fwd-rheo</property>
           <factor>0.2</factor>
           <min>0</min>
           <max>1</max>                
@@ -255,7 +270,7 @@
         <binding>
           <command>set-tooltip</command>
           <tooltip-id>dome</tooltip-id>
-		  <property>/controls/lighting/dome-white-norm</property>
+		  <property>/controls/lighting/cockpit-fwd-rheo</property>
 		  <measure-text>Cockpit: 100%</measure-text>
           <label>Cockpit: %d%%</label>
 		  <mapping>percent</mapping>
@@ -263,8 +278,89 @@
       </hovered>
     </animation>
     
+    <!--########################-->
+    <!-- 1C Switch row above instruments below magnetos -->
+    <!--object-name>O1FwrdBelly</object-name-->
+    <animation>
+    <type>rotate</type>
+    <object-name>O1Dome</object-name>
+    <property>controls/switches/rear-dome</property>
+    <factor>-70</factor>
+	<offset-deg>10</offset-deg>
+    <center>
+      <x-m>-10.4321</x-m>
+      <y-m>0</y-m>
+      <z-m>0.397</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>knob</type>
+    <object-name>O1Dome</object-name>
+	<!--object-name>O1DomeArea</object-name-->
+    <value>0</value>	
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/rear-dome</property>
+      </binding>
+    </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Rear cockpit dome: %s</label>
+        <tooltip-id>reardomesw</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/switches/rear-dome</property>
+      </binding>
+    </hovered>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>O1RadioMaster</object-name>
+    <property>controls/switches/master-avionics</property>
+    <factor>-70</factor>
+	<offset-deg>10</offset-deg>
+    <center>
+      <x-m>-10.4256</x-m>
+      <y-m>0</y-m>
+      <z-m>0.3994</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>knob</type>
+    <object-name>O1RadioMaster</object-name>
+	<!--object-name>O1DomeArea</object-name-->
+    <value>0</value>	
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/master-avionics</property>
+      </binding>
+    </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Radio master %s</label>
+        <tooltip-id>radiomaster</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/switches/master-avionics</property>
+      </binding>
+    </hovered>
+  </animation>
+  
    <!--#########################################################################-->
-   <!-- MAGNETOS  PANEL-->
+   <!-- 1D MAGNETOS  PANEL-->
    <!--<object-name>O1MagMaster</object-name>-->
    <animation>
       <type>knob</type>
@@ -336,7 +432,7 @@
     </animation>
 	
 	<!--#########################################################################-->
-	<!--SWITCHES row "magnetos"-->
+	<!-- 1E LIGHT SWITCHES row "magnetos" -->
 			
   <animation>
     <type>rotate</type>
@@ -399,7 +495,7 @@
   <animation>
     <type>rotate</type>
     <object-name>O1Beacon</object-name>
-    <property>controls/lighting/beacon</property>
+    <property>controls/switches/beacon</property>
     <factor>-70</factor>
 	<offset-deg>10</offset-deg>
     <center>
@@ -421,7 +517,7 @@
     <action>
       <binding>
         <command>property-toggle</command>
-        <property>controls/lighting/beacon</property>
+        <property>controls/switches/beacon</property>
       </binding>
       <binding>
         <command>nasal</command>
@@ -435,17 +531,17 @@
         <label>Beacon Light: %s</label>
         <tooltip-id>beacon</tooltip-id>
 	    <mapping>on-off</mapping>
-        <property>controls/lighting/beacon</property>
+        <property>controls/switches/beacon</property>
       </binding>
     </hovered>
   </animation>
   
-  <!--Battery and Generators-->
+  <!-- 1F Battery and Generators-->
 
   <animation>
     <type>rotate</type>
     <object-name>O1Bat1</object-name>
-    <property>controls/switches/master-bat</property><!--Todo: Extend the electrical system for TWO batteries-->
+    <property>controls/switches/master-bat-1</property>
     <factor>-70</factor>
 	<offset-deg>10</offset-deg>
     <center>
@@ -467,7 +563,7 @@
       <action>
         <binding>
           <command>property-toggle</command>
-          <property>controls/switches/master-bat</property>
+          <property>controls/switches/master-bat-1</property>
 		</binding>
       </action>
 	<hovered>
@@ -476,7 +572,7 @@
         <label>Left Battery: %s</label>
         <tooltip-id>bat1</tooltip-id>
 	    <mapping>on-off</mapping>
-        <property>controls/switches/master-bat</property>
+        <property>controls/switches/master-bat-1</property>
       </binding>
     </hovered>
   </animation>
@@ -484,7 +580,7 @@
   <animation>
     <type>rotate</type>
     <object-name>O1Bat2</object-name>
-    <property>controls/switches/master-bat</property>
+    <property>controls/switches/master-bat-2</property>
     <factor>-70</factor>
 	<offset-deg>10</offset-deg>
     <center>
@@ -506,7 +602,7 @@
       <action>
         <binding>
           <command>property-toggle</command>
-          <property>controls/switches/master-bat</property>
+          <property>controls/switches/master-bat-2</property>
 		</binding>
       </action>
 	<hovered>
@@ -515,7 +611,7 @@
         <label>Right Battery: %s</label>
         <tooltip-id>bat2</tooltip-id>
 	    <mapping>on-off</mapping>
-        <property>controls/switches/master-bat</property>
+        <property>controls/switches/master-bat-2</property>
       </binding>
     </hovered>
   </animation>
@@ -524,7 +620,7 @@
   <animation>
     <type>rotate</type>
     <object-name>O1Gen1</object-name>
-    <property>controls/electric/engine/generator</property>
+    <property>controls/switches/master-gen-1</property>
     <factor>-70</factor>
 	<offset-deg>10</offset-deg>
     <center>
@@ -546,7 +642,8 @@
       <action>
         <binding>
           <command>property-toggle</command>
-          <property>controls/electric/engine/generator</property>
+          <!--property>controls/electric/engine/generator</property-->
+          <property>controls/switches/master-gen-1</property>
 		</binding>
       </action>
 	<hovered>
@@ -555,7 +652,7 @@
         <label>Left Generator: %s</label>
         <tooltip-id>gen1</tooltip-id>
 	    <mapping>on-off</mapping>
-        <property>controls/electric/engine/generator</property>
+        <property>controls/switches/master-gen-1</property>
       </binding>
     </hovered>
   </animation>
@@ -563,7 +660,7 @@
   <animation>
     <type>rotate</type>
     <object-name>O1Gen2</object-name>
-    <property>controls/electric/engine[1]/generator</property>
+    <property>controls/switches/master-gen-1</property>
     <factor>-70</factor>
 	<offset-deg>10</offset-deg>
     <center>
@@ -585,7 +682,7 @@
       <action>
         <binding>
           <command>property-toggle</command>
-          <property>controls/electric/engine[1]/generator</property>
+          <property>controls/switches/master-gen-1</property>
 		</binding>
       </action>
 	<hovered>
@@ -594,13 +691,13 @@
         <label>Right Generator: %s</label>
         <tooltip-id>gen2</tooltip-id>
 	    <mapping>on-off</mapping>
-        <property>controls/electric/engine[1]/generator</property>
+        <property>controls/switches/master-gen-1</property>
       </binding>
     </hovered>
   </animation> 
   
   <!--##########################################################-->
-  <!-- Lights -->
+  <!-- 1G Lights -->
   <model>
     <path>Aircraft/c46/Models/Effects/interior/procedural_light_pedestal.xml</path>
     <offsets>
@@ -610,8 +707,8 @@
     </offsets>
     <condition>
       <greater-than>
-        <property>/systems/electrical/outputs/cockpit-dome</property>
-        <value>0</value>
+        <property>/systems/electrical/outputs/cockpit-fwd-dome</property>
+        <value>5</value>
     </greater-than>
     </condition>
   </model>
@@ -622,7 +719,7 @@
       <red>0.8</red>
       <green>0.7</green>
       <blue>0.5</blue>
-      <factor-prop>/systems/electrical/outputs/cockpit-dome</factor-prop>
+      <factor-prop>/systems/electrical/outputs/cockpit-fwd-norm</factor-prop>
     </emission>
   </animation>
   <animation>
@@ -632,9 +729,7 @@
       <binding>
         <command>set-tooltip</command>
         <label>Use Rheostat labeled "Overhead"</label>
-        <tooltip-id>beacf</tooltip-id>
-	    <mapping>on-off</mapping>
-        <property>controls/circuit-breakers/bcnlt</property>
+        <tooltip-id>o1lamptip</tooltip-id>
       </binding>
     </hovered>
   </animation>
@@ -664,8 +759,7 @@
     <object-name>O3CabinLight</object-name>
     <object-name>O3DeIcer</object-name>
     <object-name>O3IceLight</object-name>
-    <object-name>O3PassingLight</object-name>   passing fuse is Wings navigation lights? Belly fuse is nose light?
-    <object-name>O3PitotHeat</object-name>
+    <object-name>O3PassingLight</object-name>   What is passing fuse to navigation light fuse? Belly fuse is nose light?
     <object-name>O3PositionLight</object-name>-->
   <animation>
     <type>rotate</type>
@@ -705,6 +799,46 @@
       </binding>
     </hovered>
   </animation> 
+  
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>O3PositionLight</object-name>
+    <property>/controls/circuit-breakers/navlt</property>
+    <factor>-35</factor>
+    <center>
+      <x-m>-9.78847</x-m>
+      <y-m>0</y-m>
+      <z-m>0.575203</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O3PositionLight</object-name>
+	  <!--object-name>O3PositionLightArea</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/circuit-breakers/navlt</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Navigation position Light Fuse: %s</label>
+        <tooltip-id>posf</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>/controls/circuit-breakers/navlt</property>
+      </binding>
+    </hovered>
+  </animation>
+  
   
   <animation>
     <type>rotate</type>
@@ -746,13 +880,50 @@
   </animation> 
   
   
+  <animation>
+    <type>rotate</type>
+    <object-name>O3CabinLight</object-name>
+    <property>/controls/circuit-breakers/cabinlt</property>
+    <factor>-35</factor>
+    <center>
+      <x-m>-9.78847</x-m>
+      <y-m>0</y-m>
+      <z-m>0.575203</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O3CabinLight</object-name>
+	  <!--object-name>O3CabinLightArea</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/circuit-breakers/cabinlt</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Cabin Light Fuse: %s</label>
+        <tooltip-id>posf</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>/controls/circuit-breakers/cabinlt</property>
+      </binding>
+    </hovered>
+  </animation>
+  
   
   <animation>
     <type>translate</type>
     <object-name>O3InstPanelLight</object-name>
-    <property>controls/circuit-breakers/intlt</property>
-    <factor>-35</factor>
-	<offset-deg>0</offset-deg>
+    <property>controls/circuit-breakers/instlt</property>
+    <factor>0.006</factor>
     <center>
       <x-m>0</x-m>
       <y-m>0</y-m>
@@ -772,7 +943,7 @@
       <action>
         <binding>
           <command>property-toggle</command>
-          <property>controls/circuit-breakers/intlt</property>
+          <property>controls/circuit-breakers/instlt</property>
 		</binding>
       </action>
 	<hovered>
@@ -781,43 +952,48 @@
         <label>Panel Light Fuse: %s</label>
         <tooltip-id>panf</tooltip-id>
 	    <mapping>on-off</mapping>
-        <property>controls/circuit-breakers/bcnlt</property>
+        <property>controls/circuit-breakers/instlt</property>
       </binding>
     </hovered>
-  </animation> 
-
+  </animation>
+  
   <animation>
-    <type>rotate</type>
-    <object-name>O3PositionLight</object-name>
-    <property>/controls/circuit-breakers/navlt</property>
-    <factor>.006</factor>
+    <type>translate</type>
+    <object-name>O3PitotHeat</object-name>
+    <property>controls/circuit-breakers/pitot-heat</property>
+    <factor>0.006</factor>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
     <axis>
       <x>0.0</x>
-      <y>1.0</y>
-      <z>0.0</z>
+      <y>0.0</y>
+      <z>1.0</z>
     </axis>
   </animation>
   <animation>
       <type>knob</type>
-      <object-name>O3PositionLight</object-name>
-	  <!--object-name>O3PositionLightArea</object-name-->
+      <object-name>O3PitotHeat</object-name>
+	  <!--object-name>O3InstPanelLightArea</object-name-->
       <value>0</value>	
       <action>
         <binding>
           <command>property-toggle</command>
-          <property>/controls/circuit-breakers/navlt</property>
+          <property>controls/circuit-breakers/pitot-heat</property>
 		</binding>
       </action>
 	<hovered>
       <binding>
         <command>set-tooltip</command>
-        <label>Navigation position Light Fuse: %s</label>
-        <tooltip-id>posf</tooltip-id>
+        <label>3.14159tot Heat Fuse: %s</label>
+        <tooltip-id>threedotonesevenonetot</tooltip-id>
 	    <mapping>on-off</mapping>
-        <property>/controls/circuit-breakers/navlt</property>
+        <property>controls/circuit-breakers/pitot-heat</property>
       </binding>
     </hovered>
-  </animation>  
+  </animation> 
     
     
     <!-- 5-->
@@ -828,11 +1004,48 @@
     <object-name>O5LhBooster</object-name>
     <object-name>O5RhBooster</object-name>-->
     
-    <animation>
+   <model>
+    <path>Aircraft/c46/Models/Effects/interior/procedural_light_cockpit.xml</path>
+    <offsets>
+      <x-m> -9.59  </x-m>
+      <y-m> 0.003 </y-m>
+      <z-m> 0.630 </z-m>
+    </offsets>
+    <condition>
+      <greater-than>
+        <property>/systems/electrical/outputs/cockpit-rear-dome</property>
+        <value>5</value>
+    </greater-than>
+    </condition>
+  </model>
+  <animation>
+    <type>material</type>
+    <object-name>O5RearLight</object-name>
+    <emission>
+      <red>0.8</red>
+      <green>0.7</green>
+      <blue>0.5</blue>
+      <factor-prop>/systems/electrical/outputs/cockpit-rear-norm</factor-prop>
+    </emission>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>O5RearLight</object-name>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Use switch "Dome" at voltmeter</label>
+        <tooltip-id>o5lamptip</tooltip-id>
+      </binding>
+    </hovered>
+  </animation>
+    
+  <animation>
     <type>translate</type>
     <object-name>O5LandGear</object-name>
     <property>/controls/circuit-breakers/gear-warn-lights</property>
     <factor>.006</factor>
+    <offset>.006</offset>
     <center>
       <x-m>-9.78847</x-m>
       <y-m>0</y-m>
@@ -844,7 +1057,7 @@
       <z>0.939</z>
     </axis>
   </animation>
-    <animation>
+  <animation>
       <type>knob</type>
       <object-name>O5LandGear</object-name>
 	  <!--object-name>O5LandGearArea</object-name-->
@@ -862,6 +1075,44 @@
         <tooltip-id>gwlf</tooltip-id>
 	    <mapping>on-off</mapping>
         <property>/controls/circuit-breakers/gear-warn-lights</property>
+      </binding>
+    </hovered>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>O5CabinLight</object-name>
+    <property>/controls/switches/cabinlt</property>
+    <factor>-35</factor>
+    <center>
+      <x-m>-9.57196</x-m>
+      <y-m>0</y-m>
+      <z-m>0.636698</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O5CabinLight</object-name>
+	  <!--object-name>O3CabinLightArea</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/cabinlt</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Cabin Light not yet implemented: %s</label>
+        <tooltip-id>posf</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>/controls/switches/cabinlt</property>
       </binding>
     </hovered>
   </animation>

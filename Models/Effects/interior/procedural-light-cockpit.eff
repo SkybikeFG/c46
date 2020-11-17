@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PropertyList>
 
-    <name>procedural-light-pedestal</name>
+    <name>procedural-light-cockpit</name>
     <inherits-from>Effects/procedural-light</inherits-from>
 
     <parameters>
-        <intensity_scale type="float"><use>/systems/electrical/outputs/cockpit-fwd-norm</use></intensity_scale>
+        <intensity_scale type="float"><use>/systems/electrical/outputs/cockpit-rear-norm</use></intensity_scale>
         <light_color_base_r type="float">0.700</light_color_base_r>
         <light_color_base_g type="float">0.600</light_color_base_g>
         <light_color_base_b type="float">0.500</light_color_base_b>

@@ -275,52 +275,48 @@ Developed under GNU-GPL for FlightGear FS.
 	<!-- Save these properties between sessions -->
         <aircraft-data>                       
                         
-            <path>/controls/engines/engine[0]/mixture</path>
-            <path>/controls/engines/engine[0]/throttle</path>
-            <path>/controls/engines/engine[0]/propeller-pitch</path>
+        <path>/controls/engines/engine[0]/mixture</path>
+        <path>/controls/engines/engine[0]/throttle</path>
+        <path>/controls/engines/engine[0]/propeller-pitch</path>
             			
-			<path>/controls/engines/engine[1]/mixture</path>
-            <path>/controls/engines/engine[1]/throttle</path>
-            <path>/controls/engines/engine[1]/propeller-pitch</path>
+		<path>/controls/engines/engine[1]/mixture</path>
+        <path>/controls/engines/engine[1]/throttle</path>
+        <path>/controls/engines/engine[1]/propeller-pitch</path>
                         
-            <!--path>/controls/lighting/landing-lights</path>
-            <path>/controls/lighting/taxi-light</path>
-            <path>/controls/lighting/strobe</path>
-            <path>/controls/lighting/beacon</path>
-            <path>/controls/lighting/nav-lights</path>
+        <!--path>/controls/lighting/landing-lights</path>
+        <path>/controls/lighting/taxi-light</path>
+        <path>/controls/lighting/strobe</path>
+        <path>/controls/lighting/beacon</path>
+        <path>/controls/lighting/nav-lights</path>
                         
-		    <path>/controls/engines/engine[1]/cowl-flaps-norm</path
-            <path>/controls/engines/engine/cowl-flaps-norm</path-->
-            <!--path>/controls/flight/elevator-trim</path-->
-            <path>/controls/flight/rudder-trim</path>
-            <path>/controls/flight/flaps</path>
+		<path>/controls/engines/engine[1]/cowl-flaps-norm</path
+        <path>/controls/engines/engine/cowl-flaps-norm</path-->
+        <!--path>/controls/flight/elevator-trim</path-->
+        <path>/controls/flight/rudder-trim</path>
+        <path>/controls/flight/flaps</path>
             
-            <path>/instrumentation/comm[0]/frequencies/selected-mhz</path>
-            <path>/instrumentation/comm[0]/frequencies/standby-mhz</path>
-            <path>/instrumentation/comm[0]/power-btn</path>
-            <path>/instrumentation/comm[0]/volume</path>
-            <path>/instrumentation/comm[1]/frequencies/selected-mhz</path>
-            <path>/instrumentation/comm[1]/frequencies/standby-mhz</path>
-            <path>/instrumentation/comm[1]/power-btn</path>
-			<path>/instrumentation/comm[1]/mode</path>
-            <path>/instrumentation/comm[1]/volume</path>
-            <path>/instrumentation/altimeter/setting-inhg</path> 
-			<path>/instrumentation/nav[1]/frequencies/selected-mhz</path>
-            <path>/instrumentation/nav[1]/power-btn</path>
-			<path>/instrumentation/nav[1]/mode</path>
-            <path>/instrumentation/nav[1]/volume</path>
-            <path>/instrumentation/altimeter/setting-inhg</path> 
+        <path>/instrumentation/comm[0]/frequencies/selected-mhz</path>
+        <path>/instrumentation/comm[0]/frequencies/standby-mhz</path>
+        <path>/instrumentation/comm[0]/power-btn</path>
+        <path>/instrumentation/comm[0]/volume</path>
+        <path>/instrumentation/comm[1]/frequencies/selected-mhz</path>
+        <path>/instrumentation/comm[1]/frequencies/standby-mhz</path>
+        <path>/instrumentation/comm[1]/power-btn</path>
+		<path>/instrumentation/comm[1]/mode</path>
+        <path>/instrumentation/comm[1]/volume</path>
+        <path>/instrumentation/altimeter/setting-inhg</path> 
+		<path>/instrumentation/nav[1]/frequencies/selected-mhz</path>
+        <path>/instrumentation/nav[1]/power-btn</path>
+		<path>/instrumentation/nav[1]/mode</path>
+        <path>/instrumentation/nav[1]/volume</path>
+        <path>/instrumentation/altimeter/setting-inhg</path> 
 
-            <path>/controls/fuel/left-valve/</path>
-            <path>/controls/fuel/right-valve</path> 			
-            
-        </aircraft-data>
-		
-		
-	
-  </sim>
+        <path>/controls/fuel/left-valve/</path>
+        <path>/controls/fuel/right-valve</path> 			          
+    </aircraft-data>
+</sim>
  
-  <it-stec55x>
+<it-stec55x>
 	<settings>
 		<fd-equipped type="bool">0</fd-equipped> <!-- Does the aircraft have a flight director installed? -->
 		<gain-pitch type="double">1</gain-pitch> <!-- Modify the pitch axis gain -->
@@ -333,9 +329,9 @@ Developed under GNU-GPL for FlightGear FS.
 		<yd-equipped type="bool">1</yd-equipped> <!-- Does the aircraft have the optional yaw damper installed? -->
         <predict-turn-s type="double">8</predict-turn-s> <!-- Predict turn rate in x seconds - Default was two -->
 	</settings>
- </it-stec55x>
+</it-stec55x>
  
-  <nasal>
+<nasal>
     <updateloop>
       <file>Aircraft/Generic/updateloop.nas</file>
     </updateloop>
@@ -357,34 +353,34 @@ Developed under GNU-GPL for FlightGear FS.
 	<stec55x>
 		<file>Aircraft/c46/Nasal/stec-55x.nas</file>
 	</stec55x>
-  </nasal>
+</nasal>
   
-  <systems>
+<systems>
 	<pitot n="1">
-	   <serviceable>true</serviceable>
+	    <serviceable>true</serviceable>
     </pitot>
 	<static n="1">
-	   <serviceable>true</serviceable>
+	    <serviceable>true</serviceable>
     </static>
 	<static n="2">
-	   <serviceable>true</serviceable>
+	    <serviceable>true</serviceable>
     </static>
 	<static-pilot>
-	   <serviceable type="bool">true</serviceable>
-	   <alternate type="bool">false</alternate>
+	    <serviceable type="bool">true</serviceable>
+	    <alternate type="bool">false</alternate>
 	</static-pilot>  
-  </systems>
+</systems>
 
-  <consumables include="Systems/consumables.xml"/>
-  <payload include="Systems/payload.xml"/>
-  <instrumentation include="Systems/instrumentation.xml"/>
+<consumables include="Systems/consumables.xml"/>
+<payload include="Systems/payload.xml"/>
+<instrumentation include="Systems/instrumentation.xml"/>
 
 
-  <!-- TODO
-  <tutorials include="Tutorials/c46-tutorials.xml"/>
+<!-- TODO
+<tutorials include="Tutorials/c46-tutorials.xml"/>
   -->
 
-  <controls>
+<controls>
     <electric>
 	  <external-power>0</external-power>
 	</electric>
@@ -394,96 +390,107 @@ Developed under GNU-GPL for FlightGear FS.
     </flight>
 
     <fuel>
-      <left-valve type="int">0</left-valve>
-      <right-valve type="int">1</right-valve>
-      <left-valve-pos type="double">1</left-valve-pos>
-      <right-valve-pos type="double">1</right-valve-pos>
-	  <boostpumps-l-high type="bool">0</boostpumps-l-high>
-	  <boostpumps-r-high type="bool">0</boostpumps-r-high>
+        <left-valve type="int">0</left-valve>
+        <right-valve type="int">1</right-valve>
+        <left-valve-pos type="double">1</left-valve-pos>
+        <right-valve-pos type="double">1</right-valve-pos>
+	    <boostpumps-l-high type="bool">0</boostpumps-l-high>
+	    <boostpumps-r-high type="bool">0</boostpumps-r-high>
     </fuel>
 
     <gear>
-      <brake-parking>1</brake-parking>
+        <brake-parking>1</brake-parking>
     </gear>
 	
 	<circuit-breakers>
       <!--<aircond type="bool">true</aircond>-->
       <autopilot type="bool">true</autopilot>
-      <bcnlt type="bool">true</bcnlt>
+        <bcnlt type="bool">true</bcnlt>
       <!--<flaps type="bool">true</flaps>-->
       <instr type="bool">true</instr>
-      <intlt type="bool">true</intlt>
+        <instlt type="bool">true</instlt>
       <!--<landing type="bool">true</landing>-->
       <master type="bool">true</master>
-      <navlt type="bool">true</navlt>
+        <navlt type="bool">true</navlt>
+        <cabinlt type="bool">true</cabinlt>
       <!--pitot-heat type="bool">true</pitot-heat>-->
       <radio1 type="bool">true</radio1>
       <radio2 type="bool">true</radio2>
       <radio3 type="bool">true</radio3>
       <radio4 type="bool">true</radio4>
       <radio5 type="bool">true</radio5>
-      <gear-warn-lights type="bool">true</gear-warn-lights>
+        <gear-warn-lights type="bool">true</gear-warn-lights>
       <!--<strobe type="bool">true</strobe>-->
       <turn-coordinator type="bool">true</turn-coordinator>
-      <cockpit-light tyoe="bool">true</cockpit-light>
+        <cockpit-light type="bool">true</cockpit-light>
     </circuit-breakers>
     <switches>
-      <master-avionics type="bool">false</master-avionics>
+        <beacon type="bool">false</beacon>
+        <master-avionics type="bool">false</master-avionics>
       <!--<master-gear type="bool">false</master-gear>-->
       <starterr type="bool">false</starterr>
 	  <starterl type="bool">false</starterl>
-      <master-alt type="int">0</master-alt>
-      <master-bat type="bool">true</master-bat>
-      <!--<magnetos type="int">0</magnetos>
-      <dome-red type="int">0</dome-red>
-      <dome-white type="bool">false</dome-white>-->
+        <master-bat-1 type="bool">true</master-bat-1>
+        <master-bat-2 type="bool">true</master-bat-2>
+        <master-gen-1 type="bool">true</master-gen-1>
+        <master-gen-2 type="bool">true</master-gen-2>
+      <magnetosr type="int">0</magnetosr>
+      <magnetosl type="int">0</magnetosl>
+        <rear-dome type="bool">false</rear-dome>
+        <cabinlt type="bool">false</cabinlt>
     </switches>
     <lighting>
-      <nav-int type="int">0</nav-int>
-      <beacon type="bool">false</beacon>
-      <!--<strobe type="bool">false</strobe>  currently not used-->
+        <nav-int type="int">0</nav-int>
+        <beacon type="bool">false</beacon>
+        <!--<strobe type="bool">false</strobe>  currently not used-->
       <taxi-light type="bool">false</taxi-light>
       <landing-lights type="bool">false</landing-lights>
-      <instruments-norm type="double">0.5</instruments-norm>
-	  <panel-norm type="double">0.0</panel-norm>
-      <radio-norm type="double">0.0</radio-norm>
-      <dome-white-norm type="double">0.0</dome-white-norm>
+        <instruments-rheo type="double">0.5</instruments-rheo>
+        <!--panel-norm type="double">0.0</panel-norm-->
+        <panel-rheo type="double">0.0</panel-rheo>
+        <!--radio-norm type="double">0.0</radio-norm-->
+        <!--cockpit-fwd-norm type="double">0.0</cockpit-fwd-norm-->
+        <cockpit-fwd-rheo type="double">0.0</cockpit-fwd-rheo>
       <!--<gps-norm type="double">0.0</gps-norm>-->
-      <!--<gearled type="bool">true</gearled>-->
-	  <!--annunciator switch located on panel. "on" is brightness of signal, "off" is the test signal channel.-->
-	  <annun-on-norm type="double">1.0</annun-on-norm>
-	  <annun-off-norm type="double">0.0</annun-off-norm>
-	  <annun-switch type="int">1</annun-switch>
+	    <!--annunciator switch located on panel. "on" is brightness of signal, "off" is the test signal channel.-->
+	    <annun-on-norm type="double">1.0</annun-on-norm>
+	    <annun-off-norm type="double">0.0</annun-off-norm>
+	    <annun-switch type="int">1</annun-switch>
     </lighting>
-  </controls>
+    
+    <seat>
+        <armrest-copilot type="bool">0</armrest-copilot>
+        <armrest-pilot type="bool">0</armrest-pilot>
+    </seat>
+</controls>
 
-  <limits>
+<limits>
     <mass-and-balance><!--Manitoba 4:6:5: page 78-->
-      <maximum-takeoff-mass-lbs type="double">48000</maximum-takeoff-mass-lbs>
-      <maximum-landing-mass-lbs type="double">48000</maximum-landing-mass-lbs>
+        <maximum-takeoff-mass-lbs type="double">48000</maximum-takeoff-mass-lbs>
+        <maximum-landing-mass-lbs type="double">48000</maximum-landing-mass-lbs>
     </mass-and-balance>
     <max-flap-extension-speed>
-      <flaps type="double">1.0</flaps><!--MaxFlapExtended-->
-      <speed type="double">117</speed>
+        <flaps type="double">1.0</flaps><!--MaxFlapExtended-->
+        <speed type="double">117</speed>
     </max-flap-extension-speed>
     <max-gear-extension-speed type="double">130</max-gear-extension-speed>
     <max-negative-g type="double">-1.0</max-negative-g>
     <max-positive-g type="double">2.5</max-positive-g>
     <vne type="double">234</vne>
-  </limits>
+</limits>
 
   <!--
   More:
   constants: V1 : 89, V2: 93 (NAM 4:5:10)
   -->
   
-  <aircraft>
+<aircraft>
     <icao>
-      <wake-turbulence-category>M</wake-turbulence-category>
-      <type type="string">C46</type>
-      <equipment type="string">SDFGY</equipment>
-      <surveillance type="string">S</surveillance>
+        <wake-turbulence-category>M</wake-turbulence-category>
+        <type type="string">C46</type>
+        <equipment type="string">SDFGY</equipment>
+        <surveillance type="string">S</surveillance>
     </icao>
-  </aircraft>
+</aircraft>
 
 </PropertyList>

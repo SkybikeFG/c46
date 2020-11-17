@@ -221,12 +221,21 @@
       <binding>
         <command>property-adjust</command>
         <property>controls/engines/engine[0]/propeller-pitch</property>
-        <factor>-0.08</factor>
+        <factor>0.1</factor>
         <min>0</min>
         <max>1</max>
         <wrap>false</wrap>
       </binding>
 	</action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>propPitchl</tooltip-id>
+        <label>Left Prop Pitch %d%%</label>
+        <property>controls/engines/engine[0]/propeller-pitch</property>
+        <mapping>percent</mapping>
+      </binding>
+    </hovered>
   </animation>
   <animation>
     <type>knob</type>
@@ -250,12 +259,21 @@
       <binding>
         <command>property-adjust</command>
         <property>controls/engines/engine[1]/propeller-pitch</property>
-        <factor>-0.08</factor>
+        <factor>0.1</factor>
         <min>0</min>
         <max>1</max>
         <wrap>false</wrap>
       </binding>
 	</action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>propPitchr</tooltip-id>
+        <label>Right Prop Pitch %d%%</label>
+        <property>controls/engines/engine[1]/propeller-pitch</property>
+        <mapping>percent</mapping>
+      </binding>
+    </hovered>
   </animation>
   
   <animation>
@@ -455,7 +473,8 @@
     <type>rotate</type>
     <object-name>P2RudderTab1</object-name>
     <property>controls/flight/rudder-trim</property>
-    <factor>-4680</factor>
+    <factor>-900</factor><!---4680-->
+    <offset-deg>180</offset-deg>
     <center>
       <x-m>-10.2809</x-m>
       <y-m>0</y-m>
@@ -486,7 +505,7 @@
       <binding>
         <command>property-adjust</command>
         <property>controls/flight/rudder-trim</property>
-        <step>0.01</step>
+        <step>0.025</step>
         <min>-1</min>
         <max>1</max>
         <wrap>false</wrap>
@@ -499,7 +518,7 @@
       <binding>
         <command>property-adjust</command>
         <property>controls/flight/rudder-trim</property>
-        <step>-0.01</step>
+        <step>-0.025</step>
         <min>-1</min>
         <max>1</max>
         <wrap>false</wrap>
@@ -508,7 +527,7 @@
 	<hovered>
       <binding>
         <command>set-tooltip</command>
-        <label>Rudder Trim: %3d</label>
+        <label>Rudder Trim: %2d</label>
         <tooltip-id>rudtrim</tooltip-id>
 	    <mapping>percent</mapping>
         <property>controls/flight/rudder-trim</property>

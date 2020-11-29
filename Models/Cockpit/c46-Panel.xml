@@ -849,7 +849,7 @@
       <green>1</green>
       <blue>0.4</blue>
       <factor-prop>controls/lighting/annun-on-norm</factor-prop>
-    </emission>
+    </emission><!--annun-on-norm is annunciator dimming-->
   </animation>
   <animation>
     <type>material</type>

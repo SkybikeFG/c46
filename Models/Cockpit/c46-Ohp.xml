@@ -280,8 +280,46 @@
     
     <!--########################-->
     <!-- 1C Switch row above instruments below magnetos -->
-    <!--object-name>O1FwrdBelly</object-name-->
-    <animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>O1FwrdBelly</object-name>
+    <property>controls/switches/ldg-nose</property>
+    <factor>-70</factor>
+	<offset-deg>10</offset-deg>
+    <center>
+      <x-m>-10.4321</x-m>
+      <y-m>0</y-m>
+      <z-m>0.397</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>knob</type>
+    <object-name>O1FwrdBelly</object-name>
+	<!--object-name>O1DomeArea</object-name-->
+    <value>0</value>	
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/ldg-nose</property>
+      </binding>
+    </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Landing Light Nose: %s</label>
+        <tooltip-id>fwdldg</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/switches/ldg-nose</property>
+      </binding>
+    </hovered>
+  </animation>
+    
+  <animation>
     <type>rotate</type>
     <object-name>O1Dome</object-name>
     <property>controls/switches/rear-dome</property>
@@ -359,77 +397,175 @@
     </hovered>
   </animation>
   
+  <animation>
+    <type>rotate</type>
+    <object-name>O1HydLight</object-name>
+    <property>controls/switches/hyd-light</property>
+    <factor>-70</factor>
+	<offset-deg>10</offset-deg>
+    <center>
+      <x-m>-10.4256</x-m>
+      <y-m>0</y-m>
+      <z-m>0.3994</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>knob</type>
+    <object-name>O1HydLight</object-name>
+	<!--object-name>O1DomeArea</object-name-->
+    <value>0</value>	
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/hyd-light</property>
+      </binding>
+    </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Hydraulic warning lights %s</label>
+        <tooltip-id>radiomaster</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/switches/hyd-light</property>
+      </binding>
+    </hovered>
+  </animation>
+  
    <!--#########################################################################-->
    <!-- 1D MAGNETOS  PANEL-->
    <!--<object-name>O1MagMaster</object-name>-->
    <animation>
-      <type>knob</type>
-      <object-name>O1Mag1</object-name>
-      <property>/controls/engines/engine/magnetos</property>	
-	  <factor>-35</factor>
-      <center>
-        <x-m>-10.3167</x-m><y-m>-0.033928</y-m><z-m>0.43094</z-m>
-      </center>
-      <axis>
-        <x>0.309</x><y>0</y><z>-1</z>
-      </axis>
-      <action>
-        <binding>
-          <command>property-adjust</command>
-          <property>/controls/engines/engine/magnetos</property>
-          <factor>1</factor>
-          <min>0</min>
-          <max>3</max>                
-          <wrap>false</wrap>
-		</binding>
-      </action>
-      <hovered>
-        <binding>
-          <command>set-tooltip</command>
-          <tooltip-id>mag-left</tooltip-id>
-		  <property>/controls/engines/engine/magnetos</property>
-		  <measure-text>Left Magnetos: 1 only</measure-text>
-          <label>Left Magnetos: %s</label>
-		  <mapping>nasal</mapping>
-		 <script>modes=['off', 'L only', 'R only', 'both'];
-		         return modes[arg[0]];</script>
-        </binding>
-      </hovered>
-    </animation>
-    <animation>
-      <type>knob</type>
-      <object-name>O1Mag2</object-name>
-      <property>/controls/engines/engine[1]/magnetos</property>	
-	  <factor>35</factor>
-      <center>
-        <x-m>-10.3167</x-m><y-m>0.016426</y-m><z-m>0.43094</z-m>
-      </center>
-      <axis>
-        <x>0.309</x><y>0</y><z>-1</z>
-      </axis>
-      <action>
-        <binding>
-          <command>property-adjust</command>
-          <property>/controls/engines/engine[1]/magnetos</property>
-          <factor>1</factor>
-          <min>0</min>
-          <max>3</max>                
-          <wrap>false</wrap>
-		</binding>
-      </action>
-      <hovered>
-        <binding>
-          <command>set-tooltip</command>
-          <tooltip-id>mag-right</tooltip-id>
-		  <property>/controls/engines/engine[1]/magnetos</property>
-		  <measure-text>Right Magnetos: 1 only</measure-text>
-          <label>Right Magnetos: %s</label>
-		  <mapping>nasal</mapping>
-		 <script>modes=['off', 'L only', 'R only', 'both'];
-		         return modes[arg[0]];</script>
-        </binding>
-      </hovered>
-    </animation>
+    <type>rotate</type>
+    <object-name>O1MagMaster</object-name>
+    <property>controls/switches/master-ignition</property>
+    <factor>-70</factor>
+	<offset-deg>10</offset-deg>
+    <center>
+      <x-m>-10.2873</x-m>
+      <y-m>0</y-m>
+      <z-m>0.4467</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>knob</type>
+    <object-name>O1MagMaster</object-name>
+	<!--object-name>O1MagMasterArea</object-name-->
+    <value>0</value>	
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/master-ignition</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>
+          c46.mag_l_changed();
+          c46.mag_r_changed();
+        </script>
+      </binding>
+    </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Master ignition %s</label>
+        <tooltip-id>masterignition</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>controls/switches/master-ignition</property>
+      </binding>
+    </hovered>
+  </animation>
+   
+  <animation>
+    <type>knob</type>
+    <object-name>O1Mag1</object-name>
+    <property>/controls/switches/magnetos-l</property>	
+	<factor>-35</factor>
+    <center>
+      <x-m>-10.3167</x-m><y-m>-0.033928</y-m><z-m>0.43094</z-m>
+    </center>
+    <axis>
+      <x>0.309</x><y>0</y><z>-1</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/switches/magnetos-l</property>
+        <factor>1</factor>
+        <min>0</min>
+        <max>3</max>                
+        <wrap>false</wrap>
+	  </binding>
+      <binding>
+        <command>nasal</command>
+        <script>
+          c46.mag_l_changed();
+        </script>
+      </binding>
+    </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>mag-left</tooltip-id>
+		<property>/controls/switches/magnetos-l</property>
+		<measure-text>Left Magnetos: 1 only</measure-text>
+        <label>Left Magnetos: %s</label>
+		<mapping>nasal</mapping>
+	    <script>modes=['off', 'L only', 'R only', 'both'];
+		       return modes[arg[0]];
+        </script>
+      </binding>
+    </hovered>
+  </animation>
+  <animation>
+    <type>knob</type>
+    <object-name>O1Mag2</object-name>
+    <property>/controls/switches/magnetos-r</property>	
+	<factor>35</factor>
+    <center>
+      <x-m>-10.3167</x-m><y-m>0.016426</y-m><z-m>0.43094</z-m>
+    </center>
+    <axis>
+      <x>0.309</x><y>0</y><z>-1</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/switches/magnetos-r</property>
+        <factor>1</factor>
+        <min>0</min>
+        <max>3</max>                
+        <wrap>false</wrap>
+	  </binding>
+      <binding>
+        <command>nasal</command>
+        <script>
+          c46.mag_r_changed();
+        </script>
+      </binding>
+    </action>
+    <hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <tooltip-id>mag-right</tooltip-id>
+		<property>/controls/switches/magnetos-r</property>
+		<measure-text>Right Magnetos: 1 only</measure-text>
+        <label>Right Magnetos: %s</label>
+        <mapping>nasal</mapping>
+        <script>modes=['off', 'L only', 'R only', 'both'];
+          return modes[arg[0]];</script>
+      </binding>
+    </hovered>
+  </animation>
 	
 	<!--#########################################################################-->
 	<!-- 1E LIGHT SWITCHES row "magnetos" -->
@@ -660,7 +796,7 @@
   <animation>
     <type>rotate</type>
     <object-name>O1Gen2</object-name>
-    <property>controls/switches/master-gen-1</property>
+    <property>controls/switches/master-gen-2</property>
     <factor>-70</factor>
 	<offset-deg>10</offset-deg>
     <center>
@@ -682,7 +818,7 @@
       <action>
         <binding>
           <command>property-toggle</command>
-          <property>controls/switches/master-gen-1</property>
+          <property>controls/switches/master-gen-2</property>
 		</binding>
       </action>
 	<hovered>
@@ -691,7 +827,7 @@
         <label>Right Generator: %s</label>
         <tooltip-id>gen2</tooltip-id>
 	    <mapping>on-off</mapping>
-        <property>controls/switches/master-gen-1</property>
+        <property>controls/switches/master-gen-2</property>
       </binding>
     </hovered>
   </animation> 
@@ -731,6 +867,174 @@
         <label>Use Rheostat labeled "Overhead"</label>
         <tooltip-id>o1lamptip</tooltip-id>
       </binding>
+    </hovered>
+  </animation>
+  
+  <!--##########################################################-->
+  <!-- 1H Engine control -->
+  <animation>
+    <type>knob</type>
+    <object-name>O1Starter1</object-name>
+    <property>/controls/switches/starter-l</property>
+    <offset-deg>10</offset-deg>
+    <factor>-70</factor>
+    <center>
+      <x-m>-10.212</x-m>
+      <y-m>0</y-m>
+      <z-m>0.4726</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-assign</command>
+        <property>/controls/switches/starter-l</property>
+        <value>1</value>
+      </binding>
+    </action>
+    <release>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/switches/starter-l</property>
+        <step>0</step>
+        <min>0</min>
+        <max>0</max>
+      </binding>
+    </release>
+    <hovered>
+        <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>startl</tooltip-id>
+            <label>Left starter</label>
+        </binding>
+    </hovered>
+  </animation>
+  
+  <animation>
+    <type>knob</type>
+    <object-name>O1Primer1</object-name>
+    <property>/controls/switches/priming-l</property>
+    <offset-deg>10</offset-deg>
+    <factor>-70</factor>
+    <center>
+      <x-m>-10.212</x-m>
+      <y-m>0</y-m>
+      <z-m>0.4726</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-assign</command>
+        <property>/controls/switches/priming-l</property>
+        <value>1</value>
+      </binding>
+    </action>
+    <release>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/switches/priming-l</property>
+        <step>0</step>
+        <min>0</min>
+        <max>0</max>
+      </binding>
+    </release>
+    <hovered>
+        <binding>
+          <command>set-tooltip</command>
+          <tooltip-id>primerr</tooltip-id>
+          <property>/systems/electrical/outputs/priming-seconds-l</property>
+          <label>Left Primer: %d</label>
+        </binding>
+    </hovered>
+  </animation>
+  
+  <animation>
+    <type>knob</type>
+    <object-name>O1Starter2</object-name>
+    <property>/controls/switches/starter-r</property>
+    <offset-deg>10</offset-deg>
+    <factor>-70</factor>
+    <center>
+      <x-m>-10.212</x-m>
+      <y-m>0</y-m>
+      <z-m>0.4726</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-assign</command>
+        <property>/controls/switches/starter-r</property>
+        <value>1</value>
+      </binding>
+    </action>
+    <release>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/switches/starter-r</property>
+        <step>0</step>
+        <min>0</min>
+        <max>0</max>
+      </binding>
+    </release>
+    <hovered>
+        <binding>
+          <command>set-tooltip</command>
+          <tooltip-id>primerr</tooltip-id>
+          <label>Right starter</label>
+        </binding>
+    </hovered>
+  </animation>
+  
+  <animation>
+    <type>knob</type>
+    <object-name>O1Primer2</object-name>
+    <property>/controls/switches/priming-r</property>
+    <offset-deg>10</offset-deg>
+    <factor>-70</factor>
+    <center>
+      <x-m>-10.212</x-m>
+      <y-m>0</y-m>
+      <z-m>0.4726</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-assign</command>
+        <property>/controls/switches/priming-r</property>
+        <value>1</value>
+      </binding>
+    </action>
+    <release>
+      <binding>
+        <command>property-adjust</command>
+        <property>/controls/switches/priming-r</property>
+        <step>0</step>
+        <min>0</min>
+        <max>0</max>
+      </binding>
+    </release>
+    <hovered>
+        <binding>
+            <command>set-tooltip</command>
+            <tooltip-id>primerr</tooltip-id>
+            <property>/systems/electrical/outputs/priming-seconds-r</property>
+            <label>Right Primer: %d</label>
+        </binding>
     </hovered>
   </animation>
   
@@ -804,7 +1108,7 @@
   <animation>
     <type>rotate</type>
     <object-name>O3PositionLight</object-name>
-    <property>/controls/circuit-breakers/navlt</property>
+    <property>/controls/circuit-breakers/poslt</property>
     <factor>-35</factor>
     <center>
       <x-m>-9.78847</x-m>
@@ -825,16 +1129,54 @@
       <action>
         <binding>
           <command>property-toggle</command>
-          <property>/controls/circuit-breakers/navlt</property>
+          <property>/controls/circuit-breakers/poslt</property>
 		</binding>
       </action>
 	<hovered>
       <binding>
         <command>set-tooltip</command>
-        <label>Navigation position Light Fuse: %s</label>
+        <label>Navigation Light and Strobe Fuse: %s</label>
         <tooltip-id>posf</tooltip-id>
 	    <mapping>on-off</mapping>
-        <property>/controls/circuit-breakers/navlt</property>
+        <property>/controls/circuit-breakers/poslt</property>
+      </binding>
+    </hovered>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>O3PassingLight</object-name>
+    <property>/controls/circuit-breakers/landing</property>
+    <factor>-35</factor>
+    <center>
+      <x-m>-9.78847</x-m>
+      <y-m>0</y-m>
+      <z-m>0.575203</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>knob</type>
+    <object-name>O3PassingLight</object-name>
+	<!--object-name>O3PositionLightArea</object-name-->
+    <value>0</value>	
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/circuit-breakers/landing</property>
+      </binding>
+    </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Landing Lights Breaker: %s</label>
+        <tooltip-id>ldglt</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>/controls/circuit-breakers/landing</property>
       </binding>
     </hovered>
   </animation>
@@ -996,7 +1338,14 @@
   </animation> 
     
     
-    <!-- 5-->
+    <!-- ,________
+         |
+         |
+         | ______
+         ''      `,
+                  }
+                 ,'
+          i_____,'  -->
     <!--###################################################################-->
     
     <!--<object-name>O5CabinLight</object-name>
@@ -1075,6 +1424,83 @@
         <tooltip-id>gwlf</tooltip-id>
 	    <mapping>on-off</mapping>
         <property>/controls/circuit-breakers/gear-warn-lights</property>
+      </binding>
+    </hovered>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>O5LhBooster</object-name>
+    <property>/controls/circuit-breakers/fuel-booster-l</property>
+    <factor>40</factor>
+    <offset-deg>-20</offset-deg>
+    <center>
+      <x-m>-9.6202</x-m>
+      <y-m>-0.1039</y-m>
+      <z-m>0.625</z-m>
+    </center>
+    <axis>
+      <x>0.9397</x>
+      <y>0.0</y>
+      <z>0.342</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O5LhBooster</object-name>
+	  <!--object-name>O3CabinLightArea</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/circuit-breakers/fuel-booster-l</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Left fuel booster pump: %s</label>
+        <tooltip-id>booleft</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>/controls/circuit-breakers/fuel-booster-l</property>
+      </binding>
+    </hovered>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>O5RhBooster</object-name>
+    <property>/controls/circuit-breakers/fuel-booster-r</property>
+    <factor>40</factor>
+    <offset-deg>-20</offset-deg>
+    <center>
+      <x-m>-9.6202</x-m>
+      <y-m>0.1101</y-m>
+      <z-m>0.625</z-m>
+    </center>
+    <axis>
+      <x>0.9397</x>
+      <y>0.0</y>
+      <z>0.342</z>
+    </axis>
+  </animation>
+  <animation>
+      <type>knob</type>
+      <object-name>O5RhBooster</object-name>
+	  <!--object-name>O3CabinLightArea</object-name-->
+      <value>0</value>	
+      <action>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/circuit-breakers/fuel-booster-r</property>
+		</binding>
+      </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Right fuel booster pump: %s</label>
+        <tooltip-id>booright</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>/controls/circuit-breakers/fuel-booster-r</property>
       </binding>
     </hovered>
   </animation>

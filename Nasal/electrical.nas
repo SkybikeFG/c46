@@ -397,14 +397,16 @@ var update_virtual_bus = func (dt) {
     #print( "virtual bus volts = ", bus_volts );
 
     # bus network (1. these must be called in the right order
-    load += electrical_bus_1();
+    load += electrical_bus_1(dt);
     load += avionics_bus_1();
     
 	# **************************** TO DO ****************************
-    # swtich the master breaker off if load is out of limits
+    # switch the master breaker off if load is out of limits
     #if ( load > 55 ) {
     #  bus_volts = 0;
     #}
+    # Not sure if there is a master switch. But there is some sort of generator protection fuse
+    # somewhere in the engine narcelle and only acessible from the ground
     
     
     var charge_amp=0.0;
@@ -467,7 +469,12 @@ var update_virtual_bus = func (dt) {
 
 # initialise voltmeter
 setprop("/systems/electrical/voltmeter", 0.0);
-
+var starter_overwrite = 0;#overwrite keyboard input
+var starter_overwrite_r = 0;
+var priming_s_l = 0.0;
+var priming_s_r = 0.0;
+setprop("/systems/electrical/outputs/priming-seconds-r",priming_s_r);
+setprop("/systems/electrical/outputs/priming-seconds-l",priming_s_l);
 #########
 # Set bus load (main bus / avionics bus)
 #########
@@ -482,7 +489,7 @@ setprop("/systems/electrical/voltmeter", 0.0);
 #   10     |   58  Refrigerator Bulb / 1m LED stripe
 #   30     |   19  regular bulb
 #   TBC...
-var electrical_bus_1 = func() {
+var electrical_bus_1 = func(dt) {
     var bus_volts = 0.0;
     var load = 0.0;
     var annun_norm = getprop("/controls/lighting/annun-on-norm");# annunciator dimmer
@@ -494,6 +501,7 @@ var electrical_bus_1 = func() {
     }
     #print("Bus volts: ", bus_volts);
     
+# ************* Panel ************************************#
     # Gear warn ligts
     if ( getprop("/controls/circuit-breakers/gear-warn-lights") ) {
         setprop("/systems/electrical/outputs/gear-warn-lights", bus_volts);
@@ -509,13 +517,44 @@ var electrical_bus_1 = func() {
         setprop("/systems/electrical/outputs/gear-warn-lights", 0.0);
     }
     
-    # TODO Pitot Heat Power - currently not more than a fuse
+    # Hydraulic warning lights
+    if ( getprop("/controls/switches/hyd-light") ) {
+        setprop("/systems/electrical/outputs/hyd-light-norm", bus_volts/28);
+        # hydraulic warning lights: steady from 2 to 45, blink above 95
+        var pressl=getprop("/fdm/jsbsim/propulsion/engine[0]/oil-pressure-psi");
+        var pressr=getprop("/fdm/jsbsim/propulsion/engine[1]/oil-pressure-psi");
+        if(pressl>2 and pressl<45)
+            load += bus_volts / 1000;
+        if(pressl>97)
+            load += bus_volts / 2000;
+        if(pressr>2 and pressr<46)
+            load += bus_volts / 1000;
+        if(pressr>96)
+            load += bus_volts / 2000;
+    } else {
+        setprop("/systems/electrical/outputs/hyd-light-norm", 0.0);
+    }
+    
+    # Turn Coordinator and directional gyro Power  needed by instrument - no breaker found
+    if ( getprop("/controls/circuit-breakers/turn-coordinator") ) {
+        setprop("/systems/electrical/outputs/turn-coordinator", bus_volts);
+        setprop("/systems/electrical/outputs/DG", bus_volts);
+        load += bus_volts / 14;
+    } else {
+        setprop("/systems/electrical/outputs/turn-coordinator", 0.0);
+        setprop("/systems/electrical/outputs/DG", 0.0);
+    }
+    
+# ************* Heater and Anti-ice ****************************#
+    
+    # TODO: implement Pitot Heat Power - currently not more than a fuse
     if ( getprop("/controls/anti-ice/pitot-heat" ) and getprop("/controls/circuit-breakers/pitot-heat") ) {
         setprop("/systems/electrical/outputs/pitot-heat", bus_volts);
         #load += bus_volts / 28;
     } else {
         setprop("/systems/electrical/outputs/pitot-heat", 0.0);
     }
+    
 # ************* Lights Cockpit ************************************#
     # TBC Cabin Lights Power, todo, build cabin, or at least windows to light up;) and adjust load
     if ( getprop("/controls/circuit-breakers/cabinlt") and getprop("/controls/switches/cabinlt")) {
@@ -565,60 +604,146 @@ var electrical_bus_1 = func() {
         setprop("/systems/electrical/outputs/instrument-lights", 0.0);
     }
     
-    # TODO Instrument Power: ignition, fuel, oil temperature
-    #if ( getprop("/controls/circuit-breakers/instr") ) {
-    #    setprop("/systems/electrical/outputs/instr-ignition-switch", bus_volts);
-    #    if ( bus_volts > 12 ) {
-    #        # starter
-    #        if ( getprop("controls/switches/starter") ) {
-    #            setprop("systems/electrical/outputs/starter", bus_volts);
-    #            load += 24;
-    #        } else {
-    #            setprop("systems/electrical/outputs/starter", 0.0);
-    #        }
-    #        load += bus_volts / 57;
-    #    } else {
-    #        setprop("systems/electrical/outputs/starter", 0.0);
-    #    }
-    #} else {
-    #    setprop("/systems/electrical/outputs/instr-ignition-switch", 0.0);
-    #    setprop("/systems/electrical/outputs/starter", 0.0);
-    #}
+# ************* Engine management ************************************#    
+    # Magnetos: accepts "{" key inputs (even if ignition=off) as well as overhead input
+    # Inputs via the overhead 3d model will trigger an own method below this bus method
+    # Inputs using "{" and "}" keys will be covered now
+    var mag_key=getprop("/controls/engines/engine[0]/magnetos");
+    var mag_swi=getprop("/controls/switches/magnetos-l");
     
-    # TODO Starter, master-ignition, primer
-    if ( getprop("/controls/switches/master-ignition") ) {
-        if (bus_volts > 12) {
-            if ( getprop("controls/switches/starter") ) {
-                setprop("systems/electrical/outputs/starter", bus_volts);
-                load += 24;
-            } else {
-                setprop("systems/electrical/outputs/starter", 0.0);
-            }
+    if(getprop("/controls/switches/master-ignition")==0){
+        mag_swi=0;
+    }
+    
+    if (mag_key != mag_swi){
+        setprop("/controls/switches/magnetos-l", mag_key);
+        if(mag_key>0){
+            setprop("/controls/switches/master-ignition", 1);
         }
     }
     
-    
-    
-    
-
-    # TODO Landing Light Power  not used
-    if ( getprop("/controls/circuit-breakers/landing") and getprop("/controls/lighting/landing-lights") ) {
-        setprop("/systems/electrical/outputs/landing-lights", bus_volts);
-        load += bus_volts / 5;
-    } else {
-        setprop("/systems/electrical/outputs/landing-lights", 0.0 );
+    mag_key=getprop("/controls/engines/engine[1]/magnetos");
+    mag_swi=getprop("/controls/switches/magnetos-r");
+    if(getprop("/controls/switches/master-ignition")==0){
+        mag_swi=0;
     }
+    if (mag_key != mag_swi){
+        setprop("/controls/switches/magnetos-r", mag_key);
+        if(mag_key>0){
+            setprop("/controls/switches/master-ignition", 1);
+        }
+    }
+    
+    # Engine Starter. TODO: search if the alternator is needed to do this
+    if (bus_volts > 6) {
+        if ( getprop("controls/switches/starter-l") ) {
+            setprop("systems/electrical/outputs/starter-l", bus_volts);
+            load += 24;
+            setprop("controls/engines/engine[0]/starter", 1);
+            starter_overwrite=1;# var defined above this bus method
+        } elsif (starter_overwrite==1) {
+            setprop("systems/electrical/outputs/starter-l", 0.0);
+            setprop("controls/engines/engine[0]/starter", 0);
+            starter_overwrite = 0;#set properties only once to not block keyboard input
+        }
         
-    # TODO Taxi Lights Power  not used
-    # Notice taxi lights also use landing lights breaker. It is not a bug.
-    if ( getprop("/controls/circuit-breakers/landing") and getprop("/controls/lighting/taxi-light" ) ) {
-        setprop("/systems/electrical/outputs/taxi-light", bus_volts);
-        load += bus_volts / 10;
+        if ( getprop("controls/switches/starter-r") ) {
+            setprop("systems/electrical/outputs/starter-r", bus_volts);
+            load += 24;
+            setprop("controls/engines/engine[1]/starter", 1);
+            starter_overwrite_r=1;# same as left engine - 
+        } elsif (starter_overwrite_r==1) {
+            setprop("systems/electrical/outputs/starter-r", 0.0);
+            setprop("controls/engines/engine[1]/starter", 0);
+            starter_overwrite_r = 0;#set properties only once to not block keyboard input
+        }
+    }else {
+        # No electricity, overwrite even keyboard input
+        setprop("systems/electrical/outputs/starter-l", 0.0);
+        setprop("controls/engines/engine[0]/starter", 0);
+        setprop("systems/electrical/outputs/starter-r", 0.0);
+        setprop("controls/engines/engine[1]/starter", 0);
+    }
+    
+    # Starters always draw a lot of current, no matter how they have been activated
+    if(getprop("controls/engines/engine[0]/starter"))
+        load += 24;
+    if(getprop("controls/engines/engine[1]/starter"))
+        load += 24;
+    
+    # fuel booster pump
+    if ( getprop("/controls/circuit-breakers/fuel-booster-l") and getprop("/controls/fuel/boostpumps-l-high")) {
+      setprop("/systems/electrical/outputs/fuel-booster-l", bus_volts);
+      
+      if(getprop("/controls/fuel/left-valve")>0)# fuel selectors not "off"
+        load += bus_volts / 24;
+        
     } else {
-        setprop("/systems/electrical/outputs/taxi-light", 0.0);
+      setprop("/systems/electrical/outputs/fuel-booster-l", 0);
+    }
+    
+    if ( getprop("/controls/circuit-breakers/fuel-booster-r") and getprop("/controls/fuel/boostpumps-r-high")) {
+      setprop("/systems/electrical/outputs/fuel-booster-r", bus_volts);
+      
+      if(getprop("/controls/fuel/right-valve")>0)# fuel selectors not "off"
+        load += bus_volts / 24;
+        
+    } else {
+      setprop("/systems/electrical/outputs/fuel-booster-r", 0);
+    }
+    
+    # TODO: Implement Priming for real!!! See /systems/fuel.xml at line 340  TODO
+    # Fake priming - just showing "primed for x seconds" 
+    if ( getprop("/controls/switches/priming-l") ) {
+        priming_s_l += dt;
+        gui.popupTip("Left engine priming: " ~ math.floor(priming_s_l) ~ "s", 2);
+        load += bus_volts / 28;
+    }elsif( priming_s_r > 0 and (getprop("/engines/engine[0]/cranking") or getprop("/engines/engine[0]/running"))){
+        priming_s_l -= dt;
+    }
+    setprop("/systems/electrical/outputs/priming-seconds-l",priming_s_l);
+    
+    if ( getprop("/controls/switches/priming-r") ) {
+        priming_s_r += dt;
+        gui.popupTip("Right engine priming: " ~ math.floor(priming_s_r) ~ "s", 2);
+        load += bus_volts / 28;
+    }elsif( priming_s_r > 0 and (getprop("/engines/engine[1]/cranking") or getprop("/engines/engine[1]/running"))){
+        priming_s_r -= dt;
+    }
+    setprop("/systems/electrical/outputs/priming-seconds-r",priming_s_r);
+    
+    
+# ************* Aircraft Lights ************************************#
+    # Landing Light Power - TODO define ALS and model exterior lights
+    if ( getprop("/controls/circuit-breakers/landing")) {
+        if ( getprop("/controls/switches/ldg-nose") or getprop("/controls/lighting/landing-lights") ){
+            setprop("/systems/electrical/outputs/landing-light-nose", bus_volts);
+            load += bus_volts / 10;
+        } else {
+        setprop("/systems/electrical/outputs/landing-light-nose", 0.0);
+        }
+        
+        if( getprop("/controls/switches/ldg-right") or getprop("/controls/lighting/landing-lights") ){
+            setprop("/systems/electrical/outputs/landing-light-right", bus_volts);
+            load += bus_volts / 10;
+        } else {
+        setprop("/systems/electrical/outputs/landing-light-right", 0.0);
+        }
+        
+        if ( getprop("/controls/switches/ldg-left") or getprop("/controls/lighting/landing-lights") ){
+            setprop("/systems/electrical/outputs/landing-light-left", bus_volts);
+            load += bus_volts / 10;
+        } else {
+        setprop("/systems/electrical/outputs/landing-light-left", 0.0);
+        }
+     
+    } else {
+        setprop("/systems/electrical/outputs/landing-lights-nose", 0.0 );
+        setprop("/systems/electrical/outputs/landing-lights-right", 0.0 );
+        setprop("/systems/electrical/outputs/landing-lights-left", 0.0 );
     }
 
-    # TODO Beacon Power    working
+    # Beacon Power
     if ( getprop("/controls/circuit-breakers/bcnlt") and getprop("/controls/switches/beacon" ) ) {
         setprop("/systems/electrical/outputs/beacon", bus_volts/20);
         load += bus_volts / 28;
@@ -626,8 +751,8 @@ var electrical_bus_1 = func() {
         setprop("/systems/electrical/outputs/beacon", 0.0);
     }
     
-    # TODO Nav Lights Power    main switch only
-    if ( getprop("/controls/circuit-breakers/navlt") and getprop("/controls/lighting/nav-int" ) ) {
+    # Nav Lights Power (breaker "position lights")
+    if ( getprop("/controls/circuit-breakers/poslt") and getprop("/controls/lighting/nav-int" ) ) {
         setprop("/systems/electrical/outputs/nav-lights", bus_volts);
         load += bus_volts / 14;
     } else {
@@ -636,21 +761,11 @@ var electrical_bus_1 = func() {
 
           
     # TODO Strobe Lights Power  not used
-    if ( getprop("/controls/circuit-breakers/strobe") and getprop("/controls/lighting/strobe" ) ) {
+    if ( getprop("/controls/circuit-breakers/poslt") and getprop("/controls/lighting/strobe" ) ) {#(probably "belly" switch?)
         setprop("/systems/electrical/outputs/strobe", bus_volts);
         load += bus_volts / 14;
     } else {
         setprop("/systems/electrical/outputs/strobe", 0.0);
-    }
-    
-    # TODO Turn Coordinator and directional gyro Power  needed by instrument-no breaker
-    if ( getprop("/controls/circuit-breakers/turn-coordinator") ) {
-        setprop("/systems/electrical/outputs/turn-coordinator", bus_volts);
-        setprop("/systems/electrical/outputs/DG", bus_volts);
-        load += bus_volts / 14;
-    } else {
-        setprop("/systems/electrical/outputs/turn-coordinator", 0.0);
-        setprop("/systems/electrical/outputs/DG", 0.0);
     }
 
     # register bus voltage
@@ -659,6 +774,26 @@ var electrical_bus_1 = func() {
     # return cumulative load
     return load;
 }
+
+# These functions get called during changes to the overhead magnetos switch
+var mag_l_changed = func() {
+    var mag_panel = 0;
+    
+    if (getprop("/controls/switches/master-ignition")){
+        mag_panel = getprop("/controls/switches/magnetos-l");
+    }
+    setprop("/controls/engines/engine[0]/magnetos",mag_panel);
+}
+
+var mag_r_changed = func() {
+    var mag_panel = 0;
+    
+    if (getprop("/controls/switches/master-ignition")){
+        mag_panel = getprop("/controls/switches/magnetos-r");
+    }
+    setprop("/controls/engines/engine[1]/magnetos",mag_panel);
+}
+
 
 var avionics_bus_1 = func() {
     var bus_volts = 0.0;

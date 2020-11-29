@@ -565,10 +565,86 @@
       <y>0.0</y>
       <z>0.0</z>
     </axis>
-  </animation>
-</PropertyList-->
+  </animation>-->
 
-<animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>P2LandingLightL</object-name>
+    <property>/controls/switches/ldg-left</property>
+    <factor>40</factor>
+    <offset-deg>-20</offset-deg>
+    <center>
+      <x-m>-10.298</x-m>
+      <y-m>0</y-m>
+      <z-m>-0.506262</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>knob</type>
+    <object-name>P2LandingLightL</object-name>
+	<!--object-name>switchArea</object-name-->
+    <value>0</value>	
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/switches/ldg-left</property>
+      </binding>
+    </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Left Landing Lights: %s</label>
+        <tooltip-id>ldglt</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>/controls/switches/ldg-left</property>
+      </binding>
+    </hovered>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>P2LandingLightR</object-name>
+    <property>/controls/switches/ldg-right</property>
+    <factor>40</factor>
+    <offset-deg>-20</offset-deg>
+    <center>
+      <x-m>-10.298</x-m>
+      <y-m>0</y-m>
+      <z-m>-0.506262</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>knob</type>
+    <object-name>P2LandingLightR</object-name>
+	<!--object-name>switchArea</object-name-->
+    <value>0</value>	
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/switches/ldg-right</property>
+      </binding>
+    </action>
+	<hovered>
+      <binding>
+        <command>set-tooltip</command>
+        <label>Right Landing Lights: %s</label>
+        <tooltip-id>ldgltr</tooltip-id>
+	    <mapping>on-off</mapping>
+        <property>/controls/switches/ldg-right</property>
+      </binding>
+    </hovered>
+  </animation>
+
+  <animation>
     <type>rotate</type>
     <object-name>P2AileronTab1</object-name>
     <property>controls/flight/aileron-trim</property>

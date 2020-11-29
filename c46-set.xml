@@ -8,7 +8,7 @@ Developed under GNU-GPL for FlightGear FS.
 -->
 <PropertyList>
  <sim>
-  <description>Curtiss Wright C-46</description>
+  <description>Curtiss Wright C-46F</description>
   <long-description>The Curtiss Wright C-46 Commando is a WWII era twin-engine taildragger cargo aircraft. Originally designed and built as a pressurized airliner in 1937, the CW-20 was outfitted for wartime use early in the war. 
   With its larger engines and cargo capacity, it was immediately pressed into service flying cargo over "the Hump" between India and China. It was actually the largest transport aircraft used during the war.<!-- Early models were beset with fuel leak issues in the wing root,
   resulting in many lost aircraft until those issues were resolved.--> Of the 3,181 built, around half a dozen Commandos are still flying today.
@@ -18,7 +18,7 @@ Developed under GNU-GPL for FlightGear FS.
      <author n="0">
 	    <name>Arnd Lebert</name>
 		<description>3D Model, FDM, systems, liveries, etc.</description>
-		<nick>SkyBikeFG</nick>
+		<nick>SkyBike</nick>
 	 </author>
 	 <author n="1">
 	    <name>John Gilbert</name>
@@ -409,9 +409,9 @@ Developed under GNU-GPL for FlightGear FS.
       <!--<flaps type="bool">true</flaps>-->
       <instr type="bool">true</instr>
         <instlt type="bool">true</instlt>
-      <!--<landing type="bool">true</landing>-->
+      <landing type="bool">true</landing>
       <master type="bool">true</master>
-        <navlt type="bool">true</navlt>
+        <poslt type="bool">true</poslt>
         <cabinlt type="bool">true</cabinlt>
       <!--pitot-heat type="bool">true</pitot-heat>-->
       <radio1 type="bool">true</radio1>
@@ -420,31 +420,35 @@ Developed under GNU-GPL for FlightGear FS.
       <radio4 type="bool">true</radio4>
       <radio5 type="bool">true</radio5>
         <gear-warn-lights type="bool">true</gear-warn-lights>
-      <!--<strobe type="bool">true</strobe>-->
       <turn-coordinator type="bool">true</turn-coordinator>
         <cockpit-light type="bool">true</cockpit-light>
     </circuit-breakers>
     <switches>
         <beacon type="bool">false</beacon>
-        <master-avionics type="bool">false</master-avionics>
-      <!--<master-gear type="bool">false</master-gear>-->
-      <starterr type="bool">false</starterr>
-	  <starterl type="bool">false</starterl>
+        <master-avionics type="bool">true</master-avionics>
+        <master-ignition type="bool">true</master-ignition>
+        <starter-r type="bool">false</starter-r>
+	    <starter-l type="bool">false</starter-l>
         <master-bat-1 type="bool">true</master-bat-1>
         <master-bat-2 type="bool">true</master-bat-2>
         <master-gen-1 type="bool">true</master-gen-1>
         <master-gen-2 type="bool">true</master-gen-2>
-      <magnetosr type="int">0</magnetosr>
-      <magnetosl type="int">0</magnetosl>
         <rear-dome type="bool">false</rear-dome>
         <cabinlt type="bool">false</cabinlt>
+        <ldg-nose type="bool">false</ldg-nose>
+        <ldg-left type="bool">false</ldg-left>
+        <ldg-right type="bool">false</ldg-right>
+        <magnetos-r type="int">0</magnetos-r>
+        <magnetos-l type="int">0</magnetos-l>
+        <priming-l type="bool">false</priming-l>
+        <priming-r type="bool">false</priming-r>
+        <hyd-light type="bool">true</hyd-light>
     </switches>
     <lighting>
         <nav-int type="int">0</nav-int>
         <beacon type="bool">false</beacon>
         <!--<strobe type="bool">false</strobe>  currently not used-->
-      <taxi-light type="bool">false</taxi-light>
-      <landing-lights type="bool">false</landing-lights>
+        <landing-lights type="bool">false</landing-lights>
         <instruments-rheo type="double">0.5</instruments-rheo>
         <!--panel-norm type="double">0.0</panel-norm-->
         <panel-rheo type="double">0.0</panel-rheo>

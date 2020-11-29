@@ -9,35 +9,41 @@
     <type>material</type>
     <object-name>3oilPressWarningR</object-name>
 	<condition>
-	  <or>
-	    <!--blink - above 95psi-->  
-	    <and>
-          <greater-than>
-            <property>/fdm/jsbsim/propulsion/engine[1]/oil-pressure-psi</property>
-            <value>96</value><!--should be 95psi-->
-          </greater-than>
-		  <greater-than>
-		    <expression>
-              <mod>
-                <property>/sim/time/mp-clock-sec</property>
-		        <value>1</value>
-			  </mod>
-            </expression>
-		    <value>0.5</value>
-		  </greater-than>
-	    </and>
-		<!--constant - below 45psi-->
-		<and>
-          <less-than>
-            <property>/fdm/jsbsim/propulsion/engine[1]/oil-pressure-psi</property>
-            <value>46</value><!--should be 45psi-->
-          </less-than>
-		  <greater-than>
-            <property>/fdm/jsbsim/propulsion/engine[1]/oil-pressure-psi</property>
-            <value>2</value><!--engine not running-->
-		  </greater-than>
-	    </and>
-	  </or>
+      <and>
+	    <or>
+	      <!--blink - above 95psi-->  
+	      <and>
+            <greater-than>
+              <property>/fdm/jsbsim/propulsion/engine[1]/oil-pressure-psi</property>
+              <value>96</value><!--should be 95psi-->
+            </greater-than>
+		    <greater-than>
+		      <expression>
+                <mod>
+                  <property>/sim/time/mp-clock-sec</property>
+		          <value>1</value>
+			    </mod>
+              </expression>
+		      <value>0.5</value>
+		    </greater-than>
+	      </and>
+		  <!--constant - below 45psi-->
+		  <and>
+            <less-than>
+              <property>/fdm/jsbsim/propulsion/engine[1]/oil-pressure-psi</property>
+              <value>46</value><!--should be 45psi-->
+            </less-than>
+		    <greater-than>
+              <property>/fdm/jsbsim/propulsion/engine[1]/oil-pressure-psi</property>
+              <value>2</value><!--engine not running-->
+	      </greater-than>
+	      </and>
+	    </or>
+        <greater-than>
+          <property>/systems/electrical/outputs/hyd-light-norm</property>
+          <value>0.3</value><!--should be 95psi but looks odd to have perfect instruments-->
+        </greater-than>
+      </and>
     </condition>
     <emission>
 	   <red>1.0</red>

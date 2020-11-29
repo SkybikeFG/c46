@@ -38,14 +38,16 @@ var fuelpressTank = func(tank){
 	}
 	
 	if(tank == getprop("/controls/fuel/left-valve") and getprop("/controls/fuel/boostpumps-l-high")==1){
-		press = press + 2;}#boostpumps==1
+		press = press + getprop("/systems/electrical/outputs/fuel-booster-l")/12;# +2psi with boostpump active
+    }
 	if(tank == getprop("/controls/fuel/right-valve") and getprop("/controls/fuel/boostpumps-r-high")==1){
-		press = press + 2;}
+		press = press + getprop("/systems/electrical/outputs/fuel-booster-r")/12;
+    }
 		
 	if(levelGalUS ==0){#empty, no pressure
 		press = 0;}
 	# Add new calculations here:
-	
+    
 	setprop("/consumables/fuel/tank["~tank~"]/pressure-pump-psi", press);
 }
 
